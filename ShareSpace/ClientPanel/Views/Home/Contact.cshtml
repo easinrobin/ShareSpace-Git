@@ -1,0 +1,69 @@
+﻿@using ShareSpace.BusinessLayer
+@using ShareSpace.Models
+@model List<ShareSpace.Models.Client>
+
+
+@{
+	ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+
+@using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+{
+	<div class="container">
+		<h2>Client Information Form</h2>
+		<form action="HomeController/Contact" method="post">
+			<div class="form-group">
+				<label for="inputClientId">ID</label>
+				<input type="text" class="form-control" name="ClientId" id="ClientId" runat="server" placeholder="ID"/>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Search" class="btn btn-default"/>
+			</div>
+		</form>
+	</div>
+
+	<br/>
+
+	<div class="">
+		<table class="table table-bordered">
+			<thead>
+			<tr>
+				<th>Client ID</th>
+				<th>FirstName</th>
+				<th>LastName</th>
+				<th>Email</th>
+				<th>Country</th>
+				<th>Mobile No.</th>
+				<th>BirthDate</th>
+				<th>Password</th>
+				<th>CreatedBy</th>
+				<th>UpdateBy</th>
+				<th>CreatedDate</th>
+				<th>UpdateDate</th>
+			</tr>
+			</thead>
+			<tbody>
+			@*@foreach (var item in ClientManager.GetClientById(ClientId))
+			{
+				<tr>
+					<th scope="row">@item.ClientId</th>
+					<td>@item.FirstName</td>
+					<td>@item.LastName</td>
+					<td>@item.Email</td>
+					<td>@item.Country</td>
+					<td>@item.MobileNo</td>
+					<td>@item.BirthDate.Date.ToString("MM/dd/yyyy")</td>
+					<td>@item.Password</td>
+					<td>@item.CreatedBy</td>
+					<td>@item.UpdateBy</td>
+					<td>@item.CreatedDate.Date.ToString("MM/dd/yyyy")</td>
+					<td>@item.UpdateDate.Date.ToString("MM/dd/yyyy")</td>
+				</tr>
+			}*@
+			</tbody>
+		</table>
+	</div>
+}
