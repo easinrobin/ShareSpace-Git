@@ -343,6 +343,14 @@ a:hover {
     padding: 0;
 }
 
+.image-shader {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    opacity: .25;
+}
+
 .top-header .sign-in {
     margin-left: 20px;
     text-transform: uppercase;
@@ -749,7 +757,7 @@ a:hover {
 
 .search-area-box-3 {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.6);
     padding: 30px 15px 10px;
     max-width: 500px;
     top: 35%;
@@ -810,8 +818,8 @@ a:hover {
 
 .search-contents .btn-default {
     background: transparent !important;
-    border: solid 1px #969696 !important;
-    color: #757575;
+    border: solid 1px #b0b0b0 !important;
+    color: #b0b0b0;
     padding: 9px 15px;
     width: 100%;
 }
@@ -3277,9 +3285,10 @@ a:hover {
 
 /** SUB BANNER AREA START **/
 .sub-banner {
-    background: url(../img/banner/banner-slider-3.jpg);
+    background: url(../img/banner/office2.jpg);
     background-size: cover;
     position: relative;
+    
 }
 
 .breadcrumb-area {
@@ -3433,7 +3442,7 @@ a:hover {
 }
 
 .rooms-detail-photo {
-    background: url(../img/banner/banner-slider-3.jpg);
+    background: url(../img/banner/office2.jpg);
     background-size: cover;
     padding: 50px 0 20px;
 }

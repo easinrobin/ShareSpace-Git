@@ -1,69 +1,465 @@
-﻿@using ShareSpace.BusinessLayer
-@using ShareSpace.Models
-@model List<ShareSpace.Models.Client>
-
-
-@{
+﻿@{
 	ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-
-@using (Html.BeginForm("Contact", "Home", FormMethod.Post))
-{
+<div class="sub-banner">
 	<div class="container">
-		<h2>Client Information Form</h2>
-		<form action="HomeController/Contact" method="post">
-			<div class="form-group">
-				<label for="inputClientId">ID</label>
-				<input type="text" class="form-control" name="ClientId" id="ClientId" runat="server" placeholder="ID"/>
-			</div>
-			<div class="form-group">
-				<input type="submit" value="Search" class="btn btn-default"/>
-			</div>
-		</form>
+		<div class="breadcrumb-area">
+			<h1>Room Details 2</h1>
+			<ul class="breadcrumbs">
+				<li><a href="../Home/Index">Home</a></li>
+				<li class="active">Room Details 2</li>
+			</ul>
+		</div>
 	</div>
+</div>
 
-	<br/>
+<div class="content-area rooms-details-page">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<!-- Header -->
+				<div class="heading-rooms  clearfix sidebar-widget">
+					<div class="pull-left">
+						<h3>Shared Office</h3>
+						<p>
+							<i class="fa fa-map-marker"></i>123 Uttara, Dhaka City,
+						</p>
+					</div>
+					<div class="pull-right">
+						<h3><span>৳800</span></h3>
+						<h5>/ Hour</h5>
+					</div>
+				</div>
 
-	<div class="">
-		<table class="table table-bordered">
-			<thead>
-			<tr>
-				<th>Client ID</th>
-				<th>FirstName</th>
-				<th>LastName</th>
-				<th>Email</th>
-				<th>Country</th>
-				<th>Mobile No.</th>
-				<th>BirthDate</th>
-				<th>Password</th>
-				<th>CreatedBy</th>
-				<th>UpdateBy</th>
-				<th>CreatedDate</th>
-				<th>UpdateDate</th>
-			</tr>
-			</thead>
-			<tbody>
-			@*@foreach (var item in ClientManager.GetClientById(ClientId))
-			{
-				<tr>
-					<th scope="row">@item.ClientId</th>
-					<td>@item.FirstName</td>
-					<td>@item.LastName</td>
-					<td>@item.Email</td>
-					<td>@item.Country</td>
-					<td>@item.MobileNo</td>
-					<td>@item.BirthDate.Date.ToString("MM/dd/yyyy")</td>
-					<td>@item.Password</td>
-					<td>@item.CreatedBy</td>
-					<td>@item.UpdateBy</td>
-					<td>@item.CreatedDate.Date.ToString("MM/dd/yyyy")</td>
-					<td>@item.UpdateDate.Date.ToString("MM/dd/yyyy")</td>
-				</tr>
-			}*@
-			</tbody>
-		</table>
+				<div class="detail-slider-full mrg-btm-40">
+					<!-- Rooms detail slider start -->
+					<div class="rooms-detail-photo">
+						<div class="container">
+							<div class="col-md-4 col-sm-5 col-xs-12 col-pad">
+								<div class="sidebar-widget contact-form agent-widget">
+									<div class="main-title-2">
+										<h1><span>Message</span> to Dealer</h1>
+									</div>
+									<form id="agent_form" action="#"
+										  method="GET" enctype="multipart/form-data">
+										<div class="row">
+											<div class="col-lg-12">
+												<div class="form-group enter-email">
+													<input type="email" name="email" class="input-text" placeholder="Your Email">
+												</div>
+											</div>
+											<div class="col-lg-12">
+												<div class="form-group number">
+													<input type="text" name="phone" class="input-text" placeholder="Your Phone">
+												</div>
+											</div>
+											<div class="col-lg-12">
+												<div class="form-group message">
+													<textarea class="input-text" name="message" placeholder="Message"></textarea>
+												</div>
+											</div>
+											<div class="col-lg-12">
+												<button type="submit" class="button-md button-theme btn-block">Send Message</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Rooms detail slider end -->
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+				<!-- Rooms details section start -->
+				<div class="rooms-detail-slider  sidebar-widget">
+
+					<!-- Search area box 2 start -->
+					<div class="sidebar-widget search-area-box-2 hidden-lg hidden-md clearfix">
+						<h3>Search Your Rooms</h3>
+						<h1>৳800/Hour</h1>
+						<div class="search-contents">
+							<form method="GET">
+								<div class="row">
+									<div class="search-your-details">
+										<div class="col-md-12 col-sm-6 col-xs-12">
+											<div class="form-group">
+												<input type="text" class="btn-default datepicker" placeholder="Check In">
+											</div>
+										</div>
+										<div class="col-md-12 col-sm-6 col-xs-12">
+											<div class="form-group">
+												<input type="text" class="btn-default datepicker" placeholder="Check Out">
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<div class="form-group">
+												<select class="selectpicker search-fields form-control-2" name="room">
+													<option>Room</option>
+													<option>Single Room</option>
+													<option>Double Room</option>
+													<option>Deluxe Room</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<div class="form-group">
+												<select class="selectpicker search-fields form-control-2" name="beds">
+													<option>Beds</option>
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+													<option>4</option>
+													<option>5</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<div class="form-group">
+												<select class="selectpicker search-fields form-control-2" name="adults">
+													<option>Adult</option>
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+													<option>4</option>
+													<option>5</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<div class="form-group">
+												<select class="selectpicker search-fields form-control-2" name="children">
+													<option>Child</option>
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+													<option>4</option>
+													<option>5</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<div class="form-group">
+												<button class="search-button">Book Now</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!-- Search area box 2 end -->
+
+					<div class="mrg-btm-30">
+						<!-- Title -->
+						<h3>Rooms Description</h3>
+						<!-- paragraph -->
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus
+							lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar
+							nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor
+							iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam
+							pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus
+							accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla.
+							Curabitur lobortis nunc velit,
+						</p>
+					</div>
+
+					<!-- Rooms features start -->
+					<div class="rooms-features mrg-btm-30">
+						<h3>Rooms Features</h3>
+						<div class="row">
+							<div class="col-md-4 col-sm-4 col-xs-12">
+								<ul class="condition">
+									<li>
+										<i class="flaticon-air-conditioner"></i>Air conditioning
+									</li>
+									<li>
+										<i class="flaticon-balcony-and-door"></i>Balcony
+									</li>
+									<li>
+										<i class="flaticon-weightlifting"></i>Gym
+									</li>
+									<li>
+										<i class="flaticon-parking"></i>Parking
+									</li>
+									<li>
+										<i class="flaticon-sunbed"></i>Beach View
+									</li>
+									
+								</ul>
+							</div>
+							<div class="col-md-4 col-sm-4 col-xs-12">
+								<ul class="condition">
+									<li>
+										<i class="flaticon-bed"></i>2 Bedroom
+									</li>
+									<li>
+										<i class="flaticon-person-learning-by-reading"></i>Free Newspaper
+									</li>
+									<li>
+										<i class="flaticon-swimming-silhouette"></i>Use of pool
+									</li>
+									<li>
+										<i class="flaticon-monitor"></i>TV
+									</li>
+									<li>
+										<i class="flaticon-no-smoking-sign"></i>No Smoking
+									</li>
+								</ul>
+							</div>
+							<div class="col-md-4 col-sm-4 col-xs-12">
+								<ul class="condition">
+									<li>
+										<i class="flaticon-room-service"></i>Room Service
+									</li>
+									<li>
+										<i class="flaticon-breakfast"></i>Breakfast
+									</li>
+									<li>
+										<i class="flaticon-phone-receiver"></i>Telephone
+									</li>
+									<li>
+										<i class="flaticon-bed"></i>2 Bedroom
+									</li>
+									<li>
+										<i class="flaticon-wifi-connection-signal-symbol"></i>Free Wi-Fi
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- Rooms features end -->
+					
+					<!-- Comments section start -->
+					<div class="comments-section mrg-btm-30">
+						<!-- Main Title 2 -->
+						<div class="main-title-2">
+							<h1><span>Rooms </span> Reviews</h1>
+						</div>
+
+						<ul class="comments">
+							<li>
+								<div class="comment">
+									<div class="comment-author">
+										<a href="#">
+											<img src="img/avatar/avatar-5.png" alt="avatar-5">
+										</a>
+									</div>
+									<div class="comment-content">
+										<div class="comment-meta">
+											<div class="comment-meta-author">
+												Jane Doe
+											</div>
+											
+											<div class="comment-meta-date">
+												<span class="hidden-xs">8:42 PM 3/3/2017</span>
+											</div>
+										</div>
+										<div class="clearfix"></div>
+										<div class="comment-body">
+											<div class="comment-rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<p>
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam.
+												Aliquam gravida massa at sem vulputate interdum et vel eros. Maecenas eros enim, tincidunt vel
+												turpis vel, dapibus tempus nulla. Donec vel nulla dui. Pellentesque sed ante sed ligula
+												hendrerit condimentum. Suspendisse rhoncus fringilla ipsum quis porta.
+											</p>
+										</div>
+									</div>
+								</div>
+								
+							</li>
+							<li>
+								<div class="comment">
+									<div class="comment-author">
+										<a href="#">
+											<img src="/img/avatar/avatar-5.png" alt="avatar-5">
+										</a>
+									</div>
+									<div class="comment-content">
+										<div class="comment-meta">
+											<div class="comment-meta-author">
+												Jane Doe
+											</div>
+											<div class="comment-meta-date">
+												<span class="hidden-xs">8:42 PM 3/3/2017</span>
+											</div>
+										</div>
+										<div class="clearfix"></div>
+										<div class="comment-body">
+											<div class="comment-rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<p>
+												Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+												been the industry's standard dummy text ever since the 1500s, when an unknown printer
+											</p>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!-- Comments section end -->
+					<!-- Contact form start -->
+					<div class="contact-form">
+						<div class="main-title-2">
+							<h1> <span>Leave</span> a Comment</h1>
+						</div>
+						<form id="contact_form" action="https://storage.googleapis.com/themevessel-hotel-alpha/index.html"
+							  method="GET" enctype="multipart/form-data">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<div class="form-group fullname">
+										<input type="text" name="full-name" class="input-text" placeholder="Full Name">
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<div class="form-group enter-email">
+										<input type="email" name="email" class="input-text" placeholder="Enter email">
+									</div>
+								</div>
+								
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="form-group message">
+										<textarea class="input-text" name="message" placeholder="Write message"></textarea>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+									<div class="form-group send-btn">
+										<button type="submit" class="button-md button-theme">Send Message</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<!-- Contact form end -->
+				</div>
+				<!-- Course details section end -->
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+				<!-- Sidebar start -->
+				<div class="sidebar right">
+
+					<!-- Search area box 2 start -->
+					<div class="sidebar-widget search-area-box-2 hidden-sm hidden-xs clearfix">
+						<h3>Search Your Rooms</h3>
+						<h1>৳800/Hour</h1>
+						<div class="search-contents">
+							<form method="GET">
+								<div class="row">
+									<div class="search-your-details">
+										<div class="col-md-12 col-sm-6 col-xs-12">
+											<div class="form-group">
+												<input type="text" class="btn-default datepicker" placeholder="Check In">
+											</div>
+										</div>
+										<div class="col-md-12 col-sm-6 col-xs-12">
+											<div class="form-group">
+												<input type="text" class="btn-default datepicker" placeholder="Check Out">
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<div class="form-group">
+												<select class="selectpicker search-fields form-control-2" name="room">
+													<option>Room</option>
+													<option>Single Room</option>
+													<option>Double Room</option>
+													<option>Deluxe Room</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<div class="form-group">
+												<select class="selectpicker search-fields form-control-2" name="beds">
+													<option>Beds</option>
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+													<option>4</option>
+													<option>5</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<div class="form-group">
+												<select class="selectpicker search-fields form-control-2" name="adults">
+													<option>Adult</option>
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+													<option>4</option>
+													<option>5</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-6 col-xs-12">
+											<div class="form-group">
+												<select class="selectpicker search-fields form-control-2" name="children">
+													<option>Child</option>
+													<option>1</option>
+													<option>2</option>
+													<option>3</option>
+													<option>4</option>
+													<option>5</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-12 col-sm-12 col-xs-12">
+											<div class="form-group">
+												<button class="search-button">Book Now</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!-- Search area box 2 end -->
+					
+					<!-- Inside video start  -->
+					<div class="inside-video sidebar-widget">
+						<div class="main-title-2">
+							<h1>Office Video</h1>
+						</div>
+						<iframe src="https://www.youtube.com/embed/5e0LxrLSzok" allowfullscreen=""></iframe>
+					</div>
+					<!-- Inside video end -->
+					<!-- Social media start -->
+					<div class="social-media sidebar-widget clearfix">
+						<!-- Main Title 2 -->
+						<div class="main-title-2">
+							<h1>Social Media</h1>
+						</div>
+						<!-- Social list -->
+						<ul class="social-list">
+							<li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="#" class="rss"><i class="fa fa-rss"></i></a></li>
+						</ul>
+					</div>
+					<!-- Social media end -->
+					
+			</div>
+			<!-- Sidebar end -->
+		</div>
 	</div>
-}
+	</div>
+</div>

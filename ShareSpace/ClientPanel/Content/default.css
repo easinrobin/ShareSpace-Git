@@ -4,494 +4,495 @@ a:hover {
 }
 
 .navbar-search-input::-webkit-input-placeholder {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
 .navbar-search-input:-moz-placeholder {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
 .dropdown-menu .open > a, .dropdown-menu .open > a:focus, .dropdown-menu .open > a:hover {
-    background-color: #F4A460;
+    background-color: #3AC4FA;
     border-bottom: 1px solid transparent;
     color: #fff;
 }
 
 .navbar-search-input::-moz-placeholder {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
 .navbar-search-input:-ms-input-placeholder {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
 .navbar-search-open .navbar-search-icon {
-    background: #F4A460;
+    background: #3AC4FA;
 }
 
 .navbar-search-open .navbar-search-submit {
-    background: #F4A460;
+    background: #3AC4FA;
 }
 
 #page_scroller {
-    background: #F4A460;
+    background: #3AC4FA;
 }
 
-.setting-button{
-    background: #F4A460;
+.setting-button {
+    background: #3AC4FA;
 }
 
-.option-panel h2{
-    color: #F4A460;
+.option-panel h2 {
+    color: #3AC4FA;
 }
 
-.list-inline-listing .active{
-    background: #F4A460;
+.list-inline-listing .active {
+    background: #3AC4FA;
 }
 
-.list-inline-listing li:hover{
-    background: #F4A460;
+.list-inline-listing li:hover {
+    background: #3AC4FA;
 }
 
-.main-title h1 span{
-    color: #F4A460;
+.main-title h1 span {
+    color: #3AC4FA;
 }
 
 .button-theme {
-    background: #F4A460;
-    border: 2px solid #F4A460;
+    background: #3AC4FA;
+    border: 2px solid #3AC4FA;
 }
 
-.button-theme:hover {
-    background: #e49755;
-    border: 2px solid #e49755;
-}
+    .button-theme:hover {
+        background: #56c4e2;
+        border: 2px solid #56c4e2;
+    }
 
-.search-contents .dropdown-menu>li>a:hover {
+.search-contents .dropdown-menu > li > a:hover {
     color: #fff;
-    background: #F4A460;
+    background: #3AC4FA;
     border: 0;
 }
 
-.border-button-sm:hover{
-    background: #F4A460;
-    border: 2px solid #F4A460;
+.border-button-sm:hover {
+    background: #3AC4FA;
+    border: 2px solid #3AC4FA;
     color: #fff;
 }
 
 .hotel-box-2 .price {
-    color: #e49755;
+    color: #56c4e2;
 }
 
 .error404-content h1 {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
-.our-facilties ul li i{
-    border: solid 2px #F4A460;
-    color: #F4A460;;
+.our-facilties ul li i {
+    border: solid 2px #3AC4FA;
+    color: #3AC4FA;
+    ;
 }
 
 .newsletter form .button-small {
-    border: solid 1px #F4A460;
-    background: #F4A460;
+    border: solid 1px #3AC4FA;
+    background: #3AC4FA;
 }
 
-.fecilities li i{
-    color: #F4A460;
+.fecilities li i {
+    color: #3AC4FA;
 }
 
 .newsletter form .button-small:hover {
-    border: solid 1px #e49755;
-    background: #e49755;
+    border: solid 1px #56c4e2;
+    background: #56c4e2;
 }
 
-.coming-soon-box .social-list li a:hover{
-    border: solid 1px #e49755;
-    background: #e49755;
+.coming-soon-box .social-list li a:hover {
+    border: solid 1px #56c4e2;
+    background: #56c4e2;
 }
 
 .rooms-features ul li i {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
 .coming-soon-box form .button-small {
-    border: solid 1px #F4A460;
-    background: #F4A460;
+    border: solid 1px #3AC4FA;
+    background: #3AC4FA;
 }
 
 .border-button-theme {
-    border: 2px solid #F4A460;
-    color: #F4A460;
+    border: 2px solid #3AC4FA;
+    color: #3AC4FA;
 }
 
-.search-contents h2 span{
-    color: #F4A460;
+.search-contents h2 span {
+    color: #3AC4FA;
 }
 
 .border-button-theme:hover {
-    background: #F4A460;
+    background: #3AC4FA;
     color: #fff;
 }
 
 .theme-tabs .nav-tabs > li > a {
-    background: #F4A460;
+    background: #3AC4FA;
 }
 
-.theme-tabs .nav-tabs > li.active > a,
-.theme-tabs .nav-tabs > li > a:hover {
-    color: #F4A460 !important;
-}
+    .theme-tabs .nav-tabs > li.active > a,
+    .theme-tabs .nav-tabs > li > a:hover {
+        color: #3AC4FA !important;
+    }
 
-.theme-tabs .nav-tabs > li > a::after {
-    background: #F4A460;
-}
+    .theme-tabs .nav-tabs > li > a::after {
+        background: #3AC4FA;
+    }
 
 .theme-tabs .tab-nav > li > a::after {
-    background: #F4A460 none repeat scroll 0% 0%;
+    background: #3AC4FA none repeat scroll 0% 0%;
 }
 
-.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
-    border-color: #F4A460;
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+    border-color: #3AC4FA;
     border-bottom: transparent;
 }
 
 .search-button {
-    background: #F4A460;
+    background: #3AC4FA;
 }
 
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:focus,
 .navbar-default .navbar-nav > .active > a:hover {
-    color: #F4A460 !important;
-    border-bottom: solid 3px #F4A460 !important;
+    color: #3AC4FA !important;
+    border-bottom: solid 3px #3AC4FA !important;
 }
 
-.main-header-4 .navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:focus,
-.navbar-default .navbar-nav > .active > a:hover {
-    color: #F4A460 !important;
-    border-bottom: solid 3px #F4A460;
-}
+    .main-header-4 .navbar-default .navbar-nav > .active > a,
+    .navbar-default .navbar-nav > .active > a:focus,
+    .navbar-default .navbar-nav > .active > a:hover {
+        color: #3AC4FA !important;
+        border-bottom: solid 3px #3AC4FA;
+    }
 
-.main-header .navbar-default .nav > li > a:hover{
-    color: #F4A460;
-    border-bottom: solid 3px #F4A460;
+.main-header .navbar-default .nav > li > a:hover {
+    color: #3AC4FA;
+    border-bottom: solid 3px #3AC4FA;
 }
 
 .main-title-2 h1 a {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
 .intro-section {
-    background: #F4A460;
+    background: #3AC4FA;
 }
 
 .search-button:hover {
     color: #fff;
-    background: #e49755;
+    background: #56c4e2;
 }
 
-.panel-box .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-    background: #F4A460;
+.panel-box .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    background: #3AC4FA;
     border-radius: 0;
 }
 
-.panel-box ul li a:hover{
-    background: #F4A460;
+.panel-box ul li a:hover {
+    background: #3AC4FA;
     color: #fff;
     border-radius: 0;
 }
 
 span.round-tab {
-    border: 2px solid #F4A460;
+    border: 2px solid #3AC4FA;
 }
 
-span.round-tab i{
-    color:#F4A460;
-}
+    span.round-tab i {
+        color: #3AC4FA;
+    }
 
 .wizard li.active span.round-tab {
-    background: #F4A460;
-    border: 2px solid #F4A460;
+    background: #3AC4FA;
+    border: 2px solid #3AC4FA;
 }
 
 .wizard li:after {
-    border-bottom-color: #F4A460;
+    border-bottom-color: #3AC4FA;
 }
 
 .wizard li.active:after {
-    border-bottom-color: #F4A460;
+    border-bottom-color: #3AC4FA;
 }
 
-.booking-flow .panel-box .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-    border: 2px solid #F4A460;
+.booking-flow .panel-box .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    border: 2px solid #3AC4FA;
 }
 
 span.round-tab:hover {
-    border: 2px solid #F4A460;
-    background: #F4A460;
+    border: 2px solid #3AC4FA;
+    background: #3AC4FA;
 }
 
-.course-panel-box .nav-tabs>li>a:hover {
+.course-panel-box .nav-tabs > li > a:hover {
     color: #fff;
-    background: #F4A460;
+    background: #3AC4FA;
     border: none;
 }
 
-.heading-rooms  p i{
-    color: #F4A460;
+.heading-rooms p i {
+    color: #3AC4FA;
     margin-right: 5px;
 }
 
 .panel-box span a {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
-.panel-box .panel-heading .panel-title a i{
-    color: #F4A460;
+.panel-box .panel-heading .panel-title a i {
+    color: #3AC4FA;
 }
 
-.heading-rooms  h3 {
-    color: #F4A460;
+.heading-rooms h3 {
+    color: #3AC4FA;
 }
 
 .bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
 .for-sale {
-    background: #F4A460;
+    background: #3AC4FA;
 }
 
-.advantages ul li span{
-    color: #F4A460;
+.advantages ul li span {
+    color: #3AC4FA;
 }
 
-.footer-info .social-list li a:hover{
-    background: #F4A460;
-    border: solid 1px #F4A460;
+.footer-info .social-list li a:hover {
+    background: #3AC4FA;
+    border: solid 1px #3AC4FA;
     color: #fff;
 }
 
 .category-content .btn, .category-content .pricing-btn {
-    background: #F4A460;
+    background: #3AC4FA;
 }
 
-.our-staff-box .title a{
-    color: #F4A460;
+.our-staff-box .title a {
+    color: #3AC4FA;
 }
 
-.search-area-box-2 h1{
-    color: #F4A460;
+.search-area-box-2 h1 {
+    color: #3AC4FA;
 }
 
-.testimonials .content .author-name{
-    color: #F4A460;
+.testimonials .content .author-name {
+    color: #3AC4FA;
 }
 
-.dropdown-menu>li>a:hover {
+.dropdown-menu > li > a:hover {
     color: #fff;
-    background: #F4A460;
+    background: #3AC4FA;
 }
 
 .plan.featured .price-header {
-    background: #F4A460;
+    background: #3AC4FA;
 }
 
 .listing-properties-box .detail header.title a {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
 .listing-properties-box .detail .title::after {
-    background-color: #F4A460;
+    background-color: #3AC4FA;
 }
 
 .pagination > li > a:hover {
-    background: #F4A460;
-    border-color: #F4A460;
+    background: #3AC4FA;
+    border-color: #3AC4FA;
 }
 
 .pagination > .active > a {
-    background: #F4A460;
-    border-color: #F4A460;
+    background: #3AC4FA;
+    border-color: #3AC4FA;
 }
 
-.pagination > .active > a:hover {
-    background: #F4A460;
-    border-color: #F4A460;
-}
+    .pagination > .active > a:hover {
+        background: #3AC4FA;
+        border-color: #3AC4FA;
+    }
 
 .blog-box .detail .post-meta span a i {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
-.our-staff-box-list .staff-content h1 a{
-    color: #F4A460;
+.our-staff-box-list .staff-content h1 a {
+    color: #3AC4FA;
 }
 
 .form-content-box .footer span a {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
-.our-staff-box-big .staff-content h1 a:hover{
-    color: #F4A460;
+.our-staff-box-big .staff-content h1 a:hover {
+    color: #3AC4FA;
 }
 
-.archives ul li a:hover{
-    color: #F4A460;
+.archives ul li a:hover {
+    color: #3AC4FA;
 }
 
 .category-posts ul li a:hover {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
 .tags-box ul li a:hover {
-    border: 1px solid #F4A460;
-    background: #F4A460;
+    border: 1px solid #3AC4FA;
+    background: #3AC4FA;
 }
 
 .latest-tweet a {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
 .recent-news .media-heading a {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
 .comment-meta-author a {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
 .comment-meta-reply a {
-    background-color: #F4A460;
+    background-color: #3AC4FA;
 }
 
 .contact-details .media .media-left i {
-    background: #F4A460;
+    background: #3AC4FA;
 }
 
 .about-text ul li i {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
 .breadcrumbs li a:hover {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
 .top-header ul li a:hover {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
-.services-box-2 i{
-    background: #F4A460;
+.services-box-2 i {
+    background: #3AC4FA;
 }
 
 .helping-center .icon {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
 .header-contact ul li i {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
-.services-box i{
-    color: #F4A460;
+.services-box i {
+    color: #3AC4FA;
 }
 
-.customers-say-box .detail ul li i{
-    color: #F4A460;
+.customers-say-box .detail ul li i {
+    color: #3AC4FA;
 }
 
-.attachments a:hover{
-    color: #F4A460;
+.attachments a:hover {
+    color: #3AC4FA;
 }
 
 
-.hotel-box .detail h3 a{
-    color: #F4A460;
+.hotel-box .detail h3 a {
+    color: #3AC4FA;
 }
 
-.hotel-box-list .detail h3 a{
-    color: #F4A460;
+.hotel-box-list .detail h3 a {
+    color: #3AC4FA;
 }
 
 .events-box .date-box {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
-.events-box h1 a{
-    color: #F4A460;
+.events-box h1 a {
+    color: #3AC4FA;
 }
 
-.events-box .events-box-content h1 a{
-    color: #F4A460;
+.events-box .events-box-content h1 a {
+    color: #3AC4FA;
 }
 
-.blog-box .date-box{
-    background: #F4A460;
+.blog-box .date-box {
+    background: #3AC4FA;
 }
 
-.events-box .events-box-content ul li i{
-    color: #F4A460;
+.events-box .events-box-content ul li i {
+    color: #3AC4FA;
 }
 
-.events-box-grid .events-content ul li i{
-    color: #F4A460;
+.events-box-grid .events-content ul li i {
+    color: #3AC4FA;
 }
 
-.additional-details-list li a:hover{
-    color: #F4A460;
+.additional-details-list li a:hover {
+    color: #3AC4FA;
 }
 
-table.manage-table td.action a:hover{
-    color: #F4A460;
+table.manage-table td.action a:hover {
+    color: #3AC4FA;
 }
 
 .numbered.color.filled ol > li::before {
-    border: 1px solid #F4A460;
-    background-color: #F4A460;
+    border: 1px solid #3AC4FA;
+    background-color: #3AC4FA;
 }
 
 .numbered.color ol > li::before {
-    border: 1px solid #F4A460;
-    color: #F4A460;
+    border: 1px solid #3AC4FA;
+    color: #3AC4FA;
 }
 
-.map-edu-list li i{
-    color: #F4A460;
+.map-edu-list li i {
+    color: #3AC4FA;
 }
 
 .main-header-4 .navbar-default .nav > li > a:hover {
-    color: #F4A460 !important;
+    color: #3AC4FA !important;
 }
 
 .flatpickr-day.selected, .flatpickr-day.selected:focus, .flatpickr-day.selected:hover {
-    border-color: #F4A460;
-    background: #F4A460;
+    border-color: #3AC4FA;
+    background: #3AC4FA;
     color: #fff;
 }
 
 .flatpickr-current-month {
-    color: #F4A460;
+    color: #3AC4FA;
 }
 
 .flatpickr-month {
-    fill: #F4A460;
+    fill: #3AC4FA;
 }
 
 .flatpickr-next-month svg:hover, .flatpickr-prev-month svg:hover {
-    fill: #F4A460;
+    fill: #3AC4FA;
 }
 
 @media (max-width: 768px) {
 
     .navbar-default .navbar-toggle .icon-bar {
-        background: #F4A460;
+        background: #3AC4FA;
     }
 
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover {
-        background-color: #F4A460;
+        background-color: #3AC4FA;
     }
 
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -499,20 +500,17 @@ table.manage-table td.action a:hover{
     }
 
     .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
-        border-bottom: solid 1px #F4A460;
+        border-bottom: solid 1px #3AC4FA;
     }
 
     .main-header .navbar-default .nav > li > a:hover {
-        border-bottom: solid 1px #F4A460;
+        border-bottom: solid 1px #3AC4FA;
     }
 
     .navbar-default .navbar-nav > .active > a,
     .navbar-default .navbar-nav > .active > a:focus,
     .navbar-default .navbar-nav > .active > a:hover {
-        color: #F4A460 !important;
-        border-bottom: solid 1px #F4A460 !important;
+        color: #3AC4FA !important;
+        border-bottom: solid 1px #3AC4FA !important;
     }
-
 }
-
-

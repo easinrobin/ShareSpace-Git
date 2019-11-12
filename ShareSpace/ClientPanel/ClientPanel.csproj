@@ -136,8 +136,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\default.css" />
-    <Content Include="Content\flaticon.css" />
-    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\ie10-viewport-bug-workaround.css" />
     <Content Include="Content\jquery.mCustomScrollbar.css" />
     <Content Include="Content\style.css" />
@@ -177,6 +175,18 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="img\avatar\avatar-5.png" />
+    <Content Include="img\banner\office1.jpg" />
+    <Content Include="img\banner\office2.jpg" />
+    <Content Include="img\banner\office3.jpg" />
+    <Content Include="img\loader.gif" />
+    <Content Include="img\logo\footer-logo.png" />
+    <Content Include="img\logo\logo-2.png" />
+    <Content Include="img\logo\logo.png" />
+    <Content Include="img\properties\office-room1.jpg" />
+    <Content Include="img\properties\office-room3.jpg" />
+    <Content Include="img\properties\office-room4.jpg" />
+    <Content Include="img\properties\office-room5.jpg" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap-select.min.js" />
