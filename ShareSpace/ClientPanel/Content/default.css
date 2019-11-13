@@ -46,7 +46,7 @@ a:hover {
 }
 
 .list-inline-listing .active {
-    background: #3AC4FA;
+    background: #3AC4FA!important;
 }
 
 .list-inline-listing li:hover {
@@ -172,7 +172,7 @@ a:hover {
     .navbar-default .navbar-nav > .active > a:focus,
     .navbar-default .navbar-nav > .active > a:hover {
         color: #3AC4FA !important;
-        border-bottom: solid 3px #3AC4FA;
+        border-bottom: solid 3px #3AC4FA !important;
     }
 
 .main-header .navbar-default .nav > li > a:hover {
@@ -194,7 +194,7 @@ a:hover {
 }
 
 .panel-box .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
-    background: #3AC4FA;
+    background: #3AC4FA !important;
     border-radius: 0;
 }
 
@@ -213,8 +213,8 @@ span.round-tab {
     }
 
 .wizard li.active span.round-tab {
-    background: #3AC4FA;
-    border: 2px solid #3AC4FA;
+    background: #3AC4FA !important;
+    border: 2px solid #3AC4FA !important;
 }
 
 .wizard li:after {
@@ -222,11 +222,11 @@ span.round-tab {
 }
 
 .wizard li.active:after {
-    border-bottom-color: #3AC4FA;
+    border-bottom-color: #3AC4FA !important;
 }
 
 .booking-flow .panel-box .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
-    border: 2px solid #3AC4FA;
+    border: 2px solid #3AC4FA !important;
 }
 
 span.round-tab:hover {
@@ -314,13 +314,13 @@ span.round-tab:hover {
 }
 
 .pagination > .active > a {
-    background: #3AC4FA;
-    border-color: #3AC4FA;
+    background: #3AC4FA !important;
+    border-color: #3AC4FA !important;
 }
 
     .pagination > .active > a:hover {
-        background: #3AC4FA;
-        border-color: #3AC4FA;
+        background: #3AC4FA !important;
+        border-color: #3AC4FA !important;
     }
 
 .blog-box .detail .post-meta span a i {
@@ -500,7 +500,7 @@ table.manage-table td.action a:hover {
     }
 
     .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
-        border-bottom: solid 1px #3AC4FA;
+        border-bottom: solid 1px #3AC4FA!important;
     }
 
     .main-header .navbar-default .nav > li > a:hover {

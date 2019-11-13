@@ -1264,7 +1264,7 @@ span.flatpickr-weekday {
 }
 
 .content-area {
-    padding: 100px 0 70px;
+    padding: 50px 0 70px;
 }
 
 .content-area-2 {
@@ -3295,7 +3295,6 @@ a:hover {
     color: #fff;
     letter-spacing: 1px;
     margin: 250px 0 150px;
-    text-align: center;
 }
 
 .breadcrumb-area h1 {

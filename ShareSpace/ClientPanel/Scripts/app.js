@@ -2,10 +2,11 @@ $(function () {
     'use strict';
 
     // Showing page loader
-    $(window).load(function () {
-        setTimeout(function () {
-            $(".page_loader").fadeOut("fast");
-        }, 100)
+    $(window).on('load', function () {
+	    setTimeout(function() {
+			    $(".page_loader").fadeOut("fast");
+		    },
+		    100)
     });
 
     // WOW animation library initialization
@@ -73,13 +74,79 @@ $(function () {
     });
 
     //Datepicket
-    $(".datepicker").datepicker({
-        ignoreReadonly: true,
-        allowInputToggle: true,
-        disableTouchKeyboard: true,
-        Readonly: true,
-        autoclose: true
+    //$(".datepicker").datepicker({
+    //    ignoreReadonly: true,
+    //    allowInputToggle: true,
+    //    disableTouchKeyboard: true,
+    //    Readonly: true,
+    //    autoclose: true
+    //});
+	//Datepicker
+    $(function () {
+		$('#checkInDate').datetimepicker({
+			format: "DD-MM-YYYY"
+		});
+		$('#checkOutDate').datetimepicker({
+			format: "DD-MM-YYYY",
+
+		    useCurrent: false 
+	    });
+		$("#checkInDate").on("dp.change", function (e) {
+			$('#checkOutDate').data("DateTimePicker").minDate(e.date);
+	    });
+		$("#checkOutDate").on("dp.change", function (e) {
+			$('#checkInDate').data("DateTimePicker").maxDate(e.date);
+	    });
+	});
+
+    $(function () {
+	    $('#smallCheckInDate').datetimepicker({
+		    format: "DD-MM-YYYY"
+	    });
+		$('#smallCheckOutDate').datetimepicker({
+			format: "DD-MM-YYYY",
+		    useCurrent: false
+	    });
+		$("#smallCheckInDate").on("dp.change", function (e) {
+			$('#smallCheckOutDate').data("DateTimePicker").minDate(e.date);
+	    });
+		$("#smallCheckOutDate").on("dp.change", function (e) {
+			$('#smallCheckInDate').data("DateTimePicker").maxDate(e.date);
+	    });
     });
+
+	//TimePicker
+	$(function () {
+		$('#checkInTime').datetimepicker({
+			format: 'LT'
+		});
+		$('#checkOutTime').datetimepicker({
+			format: 'LT',
+			useCurrent: false
+		});
+		$("#checkInTime").on("dp.change", function (e) {
+			$('#checkOutTime').data("DateTimePicker").minDate(e.date);
+		});
+		$("#checkOutTime").on("dp.change", function (e) {
+			$('#checkInTime').data("DateTimePicker").maxDate(e.date);
+		});
+	});
+
+	$(function () {
+		$('#smallCheckInTime').datetimepicker({
+			format: 'LT'
+		});
+		$('#smallCheckOutTime').datetimepicker({
+			format: 'LT',
+			useCurrent: false
+		});
+		$("#smallCheckInTime").on("dp.change", function (e) {
+			$('#smallCheckOutTime').data("DateTimePicker").minDate(e.date);
+		});
+		$("#smallCheckOutTime").on("dp.change", function (e) {
+			$('#smallCheckInTime').data("DateTimePicker").maxDate(e.date);
+		});
+	});
 
 
     // Counter
@@ -162,9 +229,9 @@ $(function () {
     $('.sidebar-widget iframe').css('height', videoHeight);
 
     // Filterizr initialization
-    $(function () {
-        $('.filtr-container').filterizr();
-    });
+    //$(function () {
+    //    $('.filtr-container').filterizr();
+    //});
 
     $('.filters-listing-navigation li').click(function() {
         $('.filters-listing-navigation .filtr').removeClass('active');

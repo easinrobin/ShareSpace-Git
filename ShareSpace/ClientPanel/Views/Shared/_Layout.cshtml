@@ -25,7 +25,7 @@
 
 </head>
 <body>
-	@*<div class="page_loader"></div>*@
+	<div class="page_loader"></div>
 
 	<!-- Top header start -->
 	<header class="top-header top-header-2 top-header-3 top-header-4 hidden-xs" id="top">
@@ -80,7 +80,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="/Views/Home/Index.cshtml" class="logo">
+					<a href="/Home/Index" class="logo">
 						<img src="/img/logo/logo.png" alt="logo">
 					</a>
 				</div>
@@ -95,10 +95,10 @@
 								Offices<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Whole Office</a></li>
-								<li><a href="#">Shared Office</a></li>
-								<li><a href="#">Meeting Rooms</a></li>
-								<li><a href="#">Auditoriums</a></li>
+								<li>@Html.ActionLink("Whole Office", "About", "Home")</li>
+								<li>@Html.ActionLink("Shared Office", "About", "Home")</li>
+								<li>@Html.ActionLink("Meeting Rooms", "About", "Home")</li>
+								<li>@Html.ActionLink("Auditoriums", "About", "Home")</li>
 							</ul>
 						</li>
 						<li class="dropdown">
@@ -228,7 +228,9 @@
 	@Scripts.Render("~/bundles/easing")
 	@Scripts.Render("~/bundles/scrollUp")
 	@Scripts.Render("~/bundles/customScrollbar")
+	@Scripts.Render("~/bundles/customScrollbarContact")
 	@Scripts.Render("~/bundles/filterizr")
+	@Scripts.Render("~/bundles/momentJs")
 	@Scripts.Render("~/bundles/bootstrapDate")
 	@Scripts.Render("~/bundles/customJs")
 </body>

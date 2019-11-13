@@ -68,28 +68,59 @@
 					<div class="search-your-details">
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 							<div class="form-group">
-								<input type="text" class="btn-default datepicker" placeholder="Check In">
+								<div class="input-group date" id="checkInDate">
+									<input type="text" class="btn-default" placeholder="Check In" />
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
 							</div>
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 							<div class="form-group">
-								<input type="text" class="btn-default datepicker" placeholder="Check Out">
+								<div class="input-group date" id="checkOutDate">
+									<input type="text" class="btn-default" placeholder="Check Out" />
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+							<div class="form-group">
+								<div class="input-group date" id="checkInTime">
+									<input type="text" class="btn-default" placeholder="Check In Time" />
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-time"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+							<div class="form-group">
+								<div class="input-group date" id="checkOutTime">
+									<input type="text" class="btn-default" placeholder="Check Out Time" />
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-time"></span>
+									</span>
+								</div>
 							</div>
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 							<div class="form-group">
 								<select class="selectpicker search-fields form-control-2" name="room">
-									<option>Room</option>
-									<option>Single Room</option>
-									<option>Double Room</option>
-									<option>Deluxe Room</option>
+									<option>Office Type</option>
+									<option>Shared Office</option>
+									<option>Whole Office</option>
+									<option>Meeting Space</option>
+									<option>Auditorium</option>
 								</select>
 							</div>
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 							<div class="form-group">
 								<select class="selectpicker search-fields form-control-2" name="adults">
-									<option>Adult</option>
+									<option>Number of Person</option>
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>
@@ -98,21 +129,10 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="form-group">
-								<select class="selectpicker search-fields form-control-2" name="children">
-									<option>Child</option>
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<div class="form-group">
-								<button class="search-button">Search</button>
+								<button class="search-button">@Html.ActionLink("Search", "About", "Home")</button>
 							</div>
 						</div>
 					</div>
@@ -134,30 +154,41 @@
 							</div>
 						</div>
 						<div class="search-your-details">
-							<div class="col-md-2 col-sm-4 col-xs-6 col-pad">
+							<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
 								<div class="form-group">
-									<input type="text" class="btn-default datepicker" placeholder="Check In">
+									<input type="text" class="btn-default" id="smallCheckInDate" placeholder="Check In Date">
 								</div>
 							</div>
-							<div class="col-md-2 col-sm-4 col-xs-6 col-pad">
+							<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
 								<div class="form-group">
-									<input type="text" class="btn-default datepicker" placeholder="Check Out">
+									<input type="text" class="btn-default" id="smallCheckOutDate" placeholder="Check Out Date">
 								</div>
 							</div>
-							<div class="col-md-1 col-sm-4 col-xs-6 col-pad">
+							<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+								<div class="form-group">
+									<input type="text" class="btn-default" id="smallCheckInTime" placeholder="Check In Time">
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+								<div class="form-group">
+									<input type="text" class="btn-default" id="smallCheckOutTime" placeholder="Check Out Time">
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
 								<div class="form-group">
 									<select class="selectpicker search-fields form-control-2" name="room">
-										<option>Room</option>
-										<option>Single Room</option>
-										<option>Double Room</option>
-										<option>Deluxe Room</option>
+										<option>Office Type</option>
+										<option>Shared Office</option>
+										<option>Whole Office</option>
+										<option>Meeting Space</option>
+										<option>Auditorium</option>
 									</select>
 								</div>
 							</div>
-							<div class="col-md-1 col-sm-4 col-xs-6 col-pad">
+							<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
 								<div class="form-group">
 									<select class="selectpicker search-fields form-control-2" name="adults">
-										<option>Adult</option>
+										<option>Number of Person</option>
 										<option>1</option>
 										<option>2</option>
 										<option>3</option>
@@ -166,19 +197,8 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-md-1 col-sm-4 col-xs-6 col-pad">
-								<div class="form-group">
-									<select class="selectpicker search-fields form-control-2" name="children">
-										<option>Child</option>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-2 col-sm-4 col-xs-6 col-pad">
+							
+							<div class="col-md-12 col-sm-12 col-xs-12 col-pad">
 								<div class="form-group">
 									<button class="search-button">Search</button>
 								</div>
@@ -201,7 +221,7 @@
 			<h1><span>Featured </span>Properties</h1>
 		</div>
 		<div class="row">
-			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 wow fadeInLeft delay-04s">
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 wow fadeInUp delay-04s">
 				<!-- Hotel box start -->
 				<div class="hotel-box">
 					<!--header -->
@@ -281,7 +301,7 @@
 				</div>
 				<!-- Hotel box end -->
 			</div>
-			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 wow fadeInRight delay-04s">
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 wow fadeInUp delay-04s">
 				<!-- Hotel box start -->
 				<div class="hotel-box">
 					<!--header -->
@@ -377,3 +397,4 @@
 	</div>
 </div>
 <!-- Services section end -->
+
