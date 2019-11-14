@@ -26,5 +26,7 @@ namespace AdminPanel.Controllers
 
             return View();
         }
+
+        
     }
 }

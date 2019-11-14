@@ -18,18 +18,17 @@
 	@Styles.Render("~/Content/defaultCss")
 	@Styles.Render("~/Content/ieBug")
 
-	@Scripts.Render("~/bundles/modernizr")
-	@Scripts.Render("~/bundles/ie")
+	
 
 
 
 </head>
 <body>
-<div class="page_loader"></div>
+    <div class="page_loader"></div>
 
 
 
-<div class="container body-content">
+    <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
@@ -39,15 +38,18 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-	@Scripts.Render("~/bundles/bootstrapSubmenu")
-	@Scripts.Render("~/bundles/ytPlayer")
-	@Scripts.Render("~/bundles/wowJs")
-	@Scripts.Render("~/bundles/bootstrapSelect")
-	@Scripts.Render("~/bundles/easing")
-	@Scripts.Render("~/bundles/scrollUp")
-	@Scripts.Render("~/bundles/customScrollbar")
-	@Scripts.Render("~/bundles/filterizr")
-	@Scripts.Render("~/bundles/bootstrapDate")
-	@Scripts.Render("~/bundles/customJs")
+    @Scripts.Render("~/bundles/bootstrapSubmenu")
+    @Scripts.Render("~/bundles/ytPlayer")
+    @Scripts.Render("~/bundles/wowJs")
+    @Scripts.Render("~/bundles/bootstrapSelect")
+    @Scripts.Render("~/bundles/easing")
+    @Scripts.Render("~/bundles/scrollUp")
+    @Scripts.Render("~/bundles/customScrollbar")
+    @Scripts.Render("~/bundles/filterizr")
+    @Scripts.Render("~/bundles/bootstrapDate")
+    @Scripts.Render("~/bundles/customJs")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/ie")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

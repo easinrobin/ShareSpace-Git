@@ -1,17 +1,36 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<header class="content__title">
+    <h1>VENDOR DATA TABLES</h1>
+</header>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Basic example</h4>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+        <div class="table-responsive">
+            <table id="data-table" class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>Email</th>
+                        <th>Country</th>
+                        <th>MobileNo</th>
+                        <th>BirthDate</th>
+                        <th>Password</th>
+                        <!-- <th>VendorPhot</th> -->
+                        <th>CreatedBy</th>
+                        <th>UpdateBy</th>
+                        <th>CreateDate</th>
+                        <th>UpdateDate</th>
+
+                    </tr>
+                </thead>
+
+            </table>
+        </div>
+    </div>
+</div>
