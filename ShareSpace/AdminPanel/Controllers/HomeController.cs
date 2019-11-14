@@ -26,5 +26,19 @@ namespace AdminPanel.Controllers
 
             return View();
         }
+
+        public ActionResult Bookings()
+        {
+            ViewBag.Message = "Bookings";
+
+            return View();
+        }
+
+        public ActionResult BookingConfirmation()
+        {
+            ViewBag.Message = "Booking Confirmation";
+
+            return View();
+        }
     }
 }
