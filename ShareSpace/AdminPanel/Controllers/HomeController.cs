@@ -90,5 +90,5 @@ namespace AdminPanel.Controllers
         }
 
 
-    }
+    } 
 }

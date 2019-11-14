@@ -65,6 +65,10 @@ namespace AdminPanel
             bundles.Add(new ScriptBundle("~/bundles/appmin").Include(
                         "~/Scripts/app.min.js"));
 
+
+
+
+
             bundles.Add(new ScriptBundle("~/bundles/curvedline").Include(
                         "~/Scripts/demo/js/flot-charts/curved-line.js"));
 
@@ -75,7 +79,7 @@ namespace AdminPanel
             bundles.Add(new ScriptBundle("~/bundles/charttooltips").Include(
                         "~/Scripts/demo/js/flot-charts/chart-tooltips.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/other-charts").Include(
+            bundles.Add(new ScriptBundle("~/bundles/othercharts").Include(
                         "~/Scripts/demo/js/other-charts.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqvmap").Include(
@@ -83,8 +87,41 @@ namespace AdminPanel
 
 
 
+               
 
-            
+
+            bundles.Add(new ScriptBundle("~/bundles/salvattoremin").Include(
+                        "~/Scripts/salvattore.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryflot").Include(
+                        "~/Scripts/jquery.flot.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryflotresize").Include(
+                        "~/Scripts/jquery.flot.resize.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/curvedLines").Include(
+                        "~/Scripts/curvedLines.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryvmapmin").Include(
+                        "~/Scripts/jquery.vmap.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryvmapworld").Include(
+                        "~/Scripts/jquery.vmap.world.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryeasypiechartmin").Include(
+                        "~/Scripts/jquery.easypiechart.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jquerypeitymin").Include(
+                        "~/Scripts/jquery.peity.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/momentmin").Include(
+                        "~/Scripts/moment.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/fullcalendarmin").Include(
+                        "~/Scripts/fullcalendar.min.js"));
+
+
+
         }
     }
 }
