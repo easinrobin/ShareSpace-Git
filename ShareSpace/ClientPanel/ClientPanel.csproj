@@ -182,6 +182,7 @@
     <Content Include="img\banner\office1.jpg" />
     <Content Include="img\banner\office2.jpg" />
     <Content Include="img\banner\office3.jpg" />
+    <Content Include="img\dhaka map.jpg" />
     <Content Include="img\loader.gif" />
     <Content Include="img\logo\footer-logo.png" />
     <Content Include="img\logo\logo-2.png" />
@@ -356,6 +357,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Booking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
