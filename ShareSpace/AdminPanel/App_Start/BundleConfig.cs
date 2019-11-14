@@ -8,35 +8,44 @@ namespace AdminPanel
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+            //Style
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate.js"));
+            bundles.Add(new StyleBundle("~/Content/material-font").Include(
+                      "~/Content/material-design-iconic-font/dist/css/material-design-iconic-font.min.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-2.8.3.js"));
+            bundles.Add(new StyleBundle("~/Content/animate-min").Include(
+                      "~/Content/animate.min.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+            bundles.Add(new StyleBundle("~/Content/jquery-scrollbar").Include(
+                      "~/Content/jquery.scrollbar.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/appmin").Include(
-                        "~/Scripts/app.min.js"));
+            bundles.Add(new StyleBundle("~/Content/fullcalendar-min").Include(
+                      "~/Content/fullcalendar.min.css"));
 
+            bundles.Add(new StyleBundle("~/Content/app-min").Include(
+                      "~/Content/app.min.css"));
+
+
+            //Script
+
+
+
+            
             bundles.Add(new ScriptBundle("~/bundles/jquerymin").Include(
                         "~/Scripts/jquery.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/poppermin").Include(
                         "~/Scripts/popper.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrapminjs").Include(
+            bundles.Add(new ScriptBundle("~/bundles/bootstrapmin").Include(
                         "~/Scripts/bootstrap.min.js"));
 
-            bundles.Add(new ScriptBundle(("~/bundles/jqueryscrollbarmin")).Include(
-                       ("~/Scripts/jquery.scrollbar.min.js")));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryscrollbarmin").Include(
+                        "~/Scripts/jquery.scrollbar.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryscrollLockmin").Include(
                         "~/Scripts/jquery-scrollLock.min.js"));
+
 
             bundles.Add(new ScriptBundle("~/bundles/jquerydataTablesmin").Include(
                         "~/Scripts/jquery.dataTables.min.js"));
@@ -53,25 +62,29 @@ namespace AdminPanel
             bundles.Add(new ScriptBundle("~/bundles/buttonshtml5min").Include(
                         "~/Scripts/buttons.html5.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/appmin").Include(
+                        "~/Scripts/app.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/curvedline").Include(
+                        "~/Scripts/demo/js/flot-charts/curved-line.js"));
 
 
-            // Style Bundles
-            bundles.Add(new StyleBundle("~/Content/booststrap").Include(
-          "~/Content/bootstrap.min.css"));
+            bundles.Add(new ScriptBundle("~/bundles/line").Include(
+                        "~/Scripts/demo/js/flot-charts/line.js"));
 
-            bundles.Add(new StyleBundle("~/Content/appmin").Include(
-                      "~/Content/app.min.css"));
-            bundles.Add(new StyleBundle("~/Content/materialdesign").Include(
-                      "~/fonts/dist/css/material-design-iconic-font.min.css"));
+            bundles.Add(new ScriptBundle("~/bundles/charttooltips").Include(
+                        "~/Scripts/demo/js/flot-charts/chart-tooltips.js"));
 
-            bundles.Add(new StyleBundle("~/Content/animatemin").Include(
-                      "~/Content/animate.min.css"));
+            bundles.Add(new ScriptBundle("~/bundles/other-charts").Include(
+                        "~/Scripts/demo/js/other-charts.js"));
 
-            bundles.Add(new StyleBundle("~/fonts/fontAwesome").Include(
-                        "~/fonts/material-design-iconic-font/dist/css/material-design-iconic-font.min.css"));
+            bundles.Add(new ScriptBundle("~/bundles/jqvmap").Include(
+                        "~/Scripts/demo/js/jqvmap.js"));
 
 
 
+
+            
         }
     }
 }
