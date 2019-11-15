@@ -6,10 +6,28 @@
 	<title>@ViewBag.Title - My ASP.NET Application</title>
 
 	@Styles.Render("~/Content/material-font")
+	@Styles.Render("~/Content/font-awesome")
 	@Styles.Render("~/Content/animate-min")
 	@Styles.Render("~/Content/jquery-scrollbar")
 	@Styles.Render("~/Content/fullcalendar-min")
 	@Styles.Render("~/Content/app-min")
+	@Styles.Render("~/Content/demo-css")
+	@Styles.Render("~/Content/rich-text-1")
+	@Styles.Render("~/Content/rich-text-2")
+	@Styles.Render("~/Content/rich-text-3")
+	@Styles.Render("~/Content/rich-text-4")
+	@Styles.Render("~/Content/rich-text-5")
+	@Styles.Render("~/Content/rich-text-6")
+	@Styles.Render("~/Content/rich-text-7")
+	@Styles.Render("~/Content/rich-text-8")
+	@Styles.Render("~/Content/rich-text-9")
+	@Styles.Render("~/Content/rich-text-10")
+	@Styles.Render("~/Content/rich-text-11")
+	@Styles.Render("~/Content/rich-text-12")
+	@Styles.Render("~/Content/rich-text-13")
+	@Styles.Render("~/Content/rich-text-14")
+	@Styles.Render("~/Content/rich-text-15")
+	@Styles.Render("~/Content/rich-text-16")
 
 
 </head>
@@ -181,17 +199,7 @@
 
 					<li><a href="/Home/Client"><i class="zmdi zmdi-clients"></i>Clients</a></li>
 
-					<li><a href="/Home/Property"><i class="zmdi zmdi-property"></i>Propertys</a></li>
-
-					<li><a href="/Home/Property_Address"><i class="zmdi zmdi-propertyaddress"></i>Property Address</a></li>
-
-					<li><a href="/Home/Property_Rating"><i class="zmdi zmdi-propertyrating"></i>Property Rating</a></li>
-
-					<li><a href="/Home/Property_Services"><i class="zmdi zmdi-propertyService"></i>Property Services</a></li>
-
-					<li><a href="/Home/Booking"><i class="zmdi zmdi-booking"></i>Booking</a></li>
-
-					<li><a href="/Home/Services"><i class="zmdi zmdi-services"></i>Services</a></li>
+					<li><a href="/Home/Property"><i class="zmdi zmdi-property"></i>Properties</a></li>
 
 					<li><a href="/Home/Gallerys"><i class="zmdi zmdi-gallery"></i>Gallerys</a></li>
 
@@ -222,25 +230,7 @@
 	</main>
 
 
-	<script>
-        $(document).ready(function () {
-            $('a[data-confirm]').click(function (ev) {
-                var href = $(this).attr('href');
-                if (!$('#dataConfirmModal').length) {
-                    $('body').append('<div id="dataConfirmModal" class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="dataConfirmLabel">Please Confirm</h3></div><div class="modal-body"></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button><a class="btn btn-primary" id="dataConfirmOK">OK</a></div></div>');
-                }
-                $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
-                $('#dataConfirmOK').attr('href', href);
-                $('#dataConfirmModal').modal({
-                    show: true
-                });
-                return false;
-            });
-        });
-        $('#confirm-delete').on('show.bs.modal', function (e) {
-            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-        });
-	</script>
+
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/poppermin")
 	@Scripts.Render("~/bundles/bootstrapmin")
@@ -256,11 +246,43 @@
 
 
 
-	@Scripts.Render("~/bundles/curvedline")
-	@Scripts.Render("~/bundles/line")
-	@Scripts.Render("~/bundles/charttooltips")
-	@Scripts.Render("~/bundles/othercharts")
-	@Scripts.Render("~/bundles/jqvmap")
+	@*@Scripts.Render("~/bundles/curvedline")
+		@Scripts.Render("~/bundles/line")*@
+	@*@Scripts.Render("~/bundles/charttooltips")
+		@Scripts.Render("~/bundles/othercharts")
+		@Scripts.Render("~/bundles/jqvmap")*@
+	@Scripts.Render("~/bundles/rich-textJs-1")
+	@Scripts.Render("~/bundles/rich-textJs-2")
+	@Scripts.Render("~/bundles/rich-textJs-3")
+	@Scripts.Render("~/bundles/rich-textJs-4")
+	@Scripts.Render("~/bundles/rich-textJs-5")
+	@Scripts.Render("~/bundles/rich-textJs-6")
+	@Scripts.Render("~/bundles/rich-textJs-7")
+	@Scripts.Render("~/bundles/rich-textJs-8")
+	@Scripts.Render("~/bundles/rich-textJs-9")
+	@Scripts.Render("~/bundles/rich-textJs-10")
+	@Scripts.Render("~/bundles/rich-textJs-11")
+	@Scripts.Render("~/bundles/rich-textJs-12")
+	@Scripts.Render("~/bundles/rich-textJs-13")
+	@Scripts.Render("~/bundles/rich-textJs-14")
+	@Scripts.Render("~/bundles/rich-textJs-15")
+	@Scripts.Render("~/bundles/rich-textJs-16")
+	@Scripts.Render("~/bundles/rich-textJs-17")
+	@Scripts.Render("~/bundles/rich-textJs-18")
+	@Scripts.Render("~/bundles/rich-textJs-19")
+	@Scripts.Render("~/bundles/rich-textJs-20")
+	@Scripts.Render("~/bundles/rich-textJs-21")
+	@Scripts.Render("~/bundles/rich-textJs-22")
+	@Scripts.Render("~/bundles/rich-textJs-23")
+	@Scripts.Render("~/bundles/rich-textJs-24")
+	@Scripts.Render("~/bundles/rich-textJs-25")
+	@Scripts.Render("~/bundles/rich-textJs-26")
+	@Scripts.Render("~/bundles/rich-textJs-27")
+	@Scripts.Render("~/bundles/rich-textJs-28")
+	@Scripts.Render("~/bundles/rich-textJs-29")
+	@Scripts.Render("~/bundles/rich-textJs-30")
+
+	
 
 	@RenderSection("scripts", required: false)
 
