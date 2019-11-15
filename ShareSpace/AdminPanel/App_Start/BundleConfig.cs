@@ -25,6 +25,9 @@ namespace AdminPanel
             bundles.Add(new StyleBundle("~/Content/app-min").Include(
                       "~/Content/app.min.css"));
 
+            bundles.Add(new StyleBundle("~/Content/dropzone").Include(
+                      "~/Content/dropzone.css"));
+
 
             //Script
 
@@ -119,6 +122,18 @@ namespace AdminPanel
 
             bundles.Add(new ScriptBundle("~/bundles/fullcalendarmin").Include(
                         "~/Scripts/fullcalendar.min.js"));
+
+
+
+
+            bundles.Add(new ScriptBundle("~/bundles/lightgalleryall").Include(
+                        "~/Scripts/lightgallery-all.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/dropzone").Include(
+                       "~/Scripts/dropzone.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/autosizemin").Include(
+                       "~/Scripts/autosize.min.js"));
 
 
 

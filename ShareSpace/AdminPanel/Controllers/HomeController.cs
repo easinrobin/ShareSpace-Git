@@ -54,34 +54,6 @@ namespace AdminPanel.Controllers
             return View();
         }
 
-        public ActionResult Services()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult Property_Services()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult Property_Rating()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult Property_Address()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         public ActionResult New_contact()
         {
             ViewBag.Message = "Your contact page.";

@@ -133,6 +133,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\dropzone.css" />
     <Content Include="Content\fullcalendar.min.css" />
     <Content Include="Content\jquery.scrollbar.css" />
     <Content Include="Content\material-design-iconic-font\dist\css\material-design-iconic-font.min.css" />
@@ -168,6 +169,7 @@
     <Content Include="Content\material-design-iconic-font\dist\fonts\Material-Design-Iconic-Fontd1f1.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\app.min.js" />
+    <Content Include="Scripts\autosize.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\buttons.html5.min.js" />
@@ -293,6 +295,7 @@
     <Content Include="Scripts\demo\js\flot-charts\pie.js" />
     <Content Include="Scripts\demo\js\jqvmap.js" />
     <Content Include="Scripts\demo\js\other-charts.js" />
+    <Content Include="Scripts\dropzone.min.js" />
     <Content Include="Scripts\fullcalendar.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -314,6 +317,7 @@
     <Content Include="Scripts\jquery.vmap.min.js" />
     <Content Include="Scripts\jquery.vmap.world.js" />
     <Content Include="Scripts\jszip.min.js" />
+    <Content Include="Scripts\lightgallery-all.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\popper.min.js" />
@@ -335,11 +339,7 @@
     <Content Include="Views\Home\Client.cshtml" />
     <Content Include="Views\Home\Transactions.cshtml" />
     <Content Include="Views\Home\Gallerys.cshtml" />
-    <Content Include="Views\Home\Services.cshtml" />
     <Content Include="Views\Home\Booking.cshtml" />
-    <Content Include="Views\Home\Property_Services.cshtml" />
-    <Content Include="Views\Home\Property_Rating.cshtml" />
-    <Content Include="Views\Home\Property_Address.cshtml" />
     <Content Include="Views\Home\New_contact.cshtml" />
   </ItemGroup>
   <ItemGroup>

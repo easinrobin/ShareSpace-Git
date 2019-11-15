@@ -4,12 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    
+
     @Styles.Render("~/Content/material-font")
     @Styles.Render("~/Content/animate-min")
     @Styles.Render("~/Content/jquery-scrollbar")
     @Styles.Render("~/Content/fullcalendar-min")
     @Styles.Render("~/Content/app-min")
+    @Styles.Render("~/Content/dropzone")
 
 
 </head>
@@ -181,17 +182,7 @@
 
                     <li><a href="/Home/Property"><i class="zmdi zmdi-property"></i>Propertys</a></li>
 
-                    <li><a href="/Home/Property_Address"><i class="zmdi zmdi-propertyaddress"></i>Property Address</a></li>
-
-                    <li><a href="/Home/Property_Rating"><i class="zmdi zmdi-propertyrating"></i>Property Rating</a></li>
-
-                    <li><a href="/Home/Property_Services"><i class="zmdi zmdi-propertyService"></i>Property Services</a></li>
-
                     <li><a href="/Home/Booking"><i class="zmdi zmdi-booking"></i>Booking</a></li>
-
-                    <li><a href="/Home/Services"><i class="zmdi zmdi-services"></i>Services</a></li>
-
-                    <li><a href="/Home/Gallerys"><i class="zmdi zmdi-gallery"></i>Gallerys</a></li>
 
                     <li><a href="/Home/Transactions"><i class="zmdi zmdi-transaction"></i>Transactions</a></li>
                 </ul>
@@ -274,6 +265,10 @@
     @Scripts.Render("~/bundles/charttooltips")
     @Scripts.Render("~/bundles/othercharts")
     @Scripts.Render("~/bundles/jqvmap")
+
+    @Scripts.Render("~/bundles/lightgalleryall")
+    @Scripts.Render("~/bundles/dropzone")
+    @Scripts.Render("~/bundles/autosizemin")
 
     @RenderSection("scripts", required: false)
 
