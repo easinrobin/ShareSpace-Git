@@ -1,7 +1,409 @@
 ﻿@{
-    ViewBag.Title = "About";
+	ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<div class="banner">
+	<div class="item">
+		<img src="/img/banner/office2.jpg" alt="banner-slider-2">
+
+	</div>
+	<!-- Search area box start -->
+	<div class="search-area-box-3 hidden-xs hidden-sm">
+		<div class="search-contents">
+			<form method="GET" action="../Home/About">
+				<div class="col-lg-12 col-pad col-pad-2">
+					<div class="search-your-rooms">
+						<h3 class="hidden-xs hidden-sm">Search</h3>
+						<h2 class="hidden-xs hidden-sm">Your <span>Rooms</span></h2>
+						<h2 class="hidden-lg hidden-md">Search Your <span>Rooms</span></h2>
+					</div>
+				</div>
+				<div class="search-your-details">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<div class="input-group date" id="checkInDate">
+								<input type="text" class="btn-default" placeholder="Check In" />
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<div class="input-group date" id="checkOutDate">
+								<input type="text" class="btn-default" placeholder="Check Out" />
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<div class="input-group date" id="checkInTime">
+								<input type="text" class="btn-default" placeholder="Check In Time" />
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-time"></span>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<div class="input-group date" id="checkOutTime">
+								<input type="text" class="btn-default" placeholder="Check Out Time" />
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-time"></span>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<select class="selectpicker search-fields form-control-2" name="room">
+								<option>Office Type</option>
+								<option>Shared Office</option>
+								<option>Whole Office</option>
+								<option>Meeting Space</option>
+								<option>Auditorium</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<select class="selectpicker search-fields form-control-2" name="adults">
+								<option>Number of Person</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="form-group">
+							<button class="search-button">@Html.ActionLink("Search", "About", "Home")</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- Search area box end -->
+	<!-- Search area box 2 start -->
+	<div class="search-area-box-2 hidden-lg hidden-md">
+
+		<div class="search-contents">
+			<form method="GET">
+				<div class="row">
+					<div class="col-md-3 col-pad col-pad-2">
+						<div class="search-your-rooms">
+							<h3 class="hidden-xs hidden-sm">Search</h3>
+							<h2 class="hidden-xs hidden-sm">Your <span>Rooms</span></h2>
+							<h2 class="hidden-lg hidden-md">Search Your <span>Rooms</span></h2>
+						</div>
+					</div>
+					<div class="search-your-details">
+						<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+							<div class="form-group">
+								<input type="text" class="btn-default" id="smallCheckInDate" placeholder="Check In Date">
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+							<div class="form-group">
+								<input type="text" class="btn-default" id="smallCheckOutDate" placeholder="Check Out Date">
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+							<div class="form-group">
+								<input type="text" class="btn-default" id="smallCheckInTime" placeholder="Check In Time">
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+							<div class="form-group">
+								<input type="text" class="btn-default" id="smallCheckOutTime" placeholder="Check Out Time">
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+							<div class="form-group">
+								<select class="selectpicker search-fields form-control-2" name="room">
+									<option>Office Type</option>
+									<option>Shared Office</option>
+									<option>Whole Office</option>
+									<option>Meeting Space</option>
+									<option>Auditorium</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+							<div class="form-group">
+								<select class="selectpicker search-fields form-control-2" name="adults">
+									<option>Number of Person</option>
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="col-md-12 col-sm-12 col-xs-12 col-pad">
+							<div class="form-group">
+								<button class="search-button">Search</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- Search area box 2 end -->
+</div>
+
+<!-- Rooms section start -->
+<div class="rooms-section content-area">
+	<div class="container">
+		<!-- Main title -->
+		<div class="main-title" id="searched-offices">
+			<h1><span>Pick </span> Your Best Need</h1>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="hotel-box-list wow fadeInUp delay-02s">
+					<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 col-pad">
+						<img src="/img/properties/office-room1.jpg" alt="img-15" class="img-responsive">
+					</div>
+					<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 detail">
+						<div class="heading">
+							<div class="title pull-left">
+								<h3>
+									<a>@Html.ActionLink("Whole Office", "Contact", "Home")</a>
+								</h3>
+							</div>
+							<div class="price pull-right">
+								৳1000/Hour
+							</div>
+						</div>
+
+						<div class="clearfix"></div>
+
+						<p>
+							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+							industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+						</p>
+						<div class="row">
+							<div class="col-sm-4">
+								<ul class="fecilities">
+									<li>
+										<i class="fa fa-wifi"></i>
+										<span>Free Wifi</span>
+									</li>
+									<li>
+										<i class="fa fa-print"></i>
+										<span>Printer Access</span>
+									</li>
+									<li>
+										<i class="fa fa-car"></i>
+										<span>Car Hire</span>
+									</li>
+								</ul>
+							</div>
+							<div class="col-sm-4">
+								<ul class="fecilities">
+									<li>
+										<i class="flaticon-weightlifting"></i>
+										<span>Gym</span>
+									</li>
+									<li>
+										<i class="flaticon-parking"></i>
+										<span>Free Parking</span>
+									</li>
+									<li>
+										<i class="fa fa-television"></i>
+										<span>Projector</span>
+									</li>
+								</ul>
+							</div>
+							<div class="col-sm-4">
+								<ul class="fecilities">
+									<li>
+										<i class="flaticon-phone-receiver"></i>
+										Telephone
+									</li>
+									<li>
+										<i class="flaticon-wifi-connection-signal-symbol"></i>
+										Wi-fi
+									</li>
+								</ul>
+							</div>
+						</div>
+						<a href="../Home/Contact" class="btn button-sm button-theme">View Details</a>
+					</div>
+				</div>
+
+
+				<div class="hotel-box-list wow fadeInUp delay-02s">
+					<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 col-pad">
+						<img src="/img/properties/office-room3.jpg" alt="img-16" class="img-responsive">
+					</div>
+					<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 detail">
+						<div class="heading">
+							<div class="title pull-left">
+								<h3>
+									<a>@Html.ActionLink("Meeting Space", "Contact", "Home")</a>
+								</h3>
+							</div>
+							<div class="price pull-right">
+								৳2000/Hour
+							</div>
+						</div>
+
+						<div class="clearfix"></div>
+
+						<p>
+							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+							industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+						</p>
+						<div class="row">
+							<div class="col-sm-4">
+								<ul class="fecilities">
+									<li>
+										<i class="fa fa-wifi"></i>
+										<span>Free Wifi</span>
+									</li>
+									<li>
+										<i class="fa fa-print"></i>
+										<span>Printer Access</span>
+									</li>
+									<li>
+										<i class="fa fa-car"></i>
+										<span>Car Hire</span>
+									</li>
+								</ul>
+							</div>
+							<div class="col-sm-4">
+								<ul class="fecilities">
+									<li>
+										<i class="flaticon-weightlifting"></i>
+										<span>Gym</span>
+									</li>
+									<li>
+										<i class="flaticon-parking"></i>
+										<span>Free Parking</span>
+									</li>
+									<li>
+										<i class="fa fa-television"></i>
+										<span>Projector</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<a href="../Home/Contact" class="btn button-sm button-theme">View Details</a>
+					</div>
+				</div>
+				<div class="hotel-box-list wow fadeInUp delay-02s">
+					<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 col-pad">
+						<img src="/img/properties/office-room4.jpg" alt="img-17" class="img-responsive">
+					</div>
+					<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 detail">
+						<div class="heading">
+							<div class="title pull-left">
+								<h3>
+									<a>@Html.ActionLink("Shared Office", "Contact", "Home")</a>
+								</h3>
+							</div>
+							<div class="price pull-right">
+								৳800/Hour
+							</div>
+						</div>
+
+						<div class="clearfix"></div>
+
+						<p>
+							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+							industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+						</p>
+						<div class="row">
+							<div class="col-sm-4">
+								<ul class="fecilities">
+									<li>
+										<i class="fa fa-wifi"></i>
+										<span>Free Wifi</span>
+									</li>
+									<li>
+										<i class="fa fa-print"></i>
+										<span>Printer Access</span>
+									</li>
+									<li>
+										<i class="fa fa-car"></i>
+										<span>Car Hire</span>
+									</li>
+								</ul>
+							</div>
+							<div class="col-sm-4">
+								<ul class="fecilities">
+									<li>
+										<i class="flaticon-weightlifting"></i>
+										<span>Gym</span>
+									</li>
+									<li>
+										<i class="flaticon-parking"></i>
+										<span>Free Parking</span>
+									</li>
+									<li>
+										<i class="fa fa-television"></i>
+										<span>Projector</span>
+									</li>
+								</ul>
+							</div>
+							<div class="col-sm-4">
+								<ul class="fecilities">
+									<li>
+										<i class="flaticon-phone-receiver"></i>
+										Telephone
+									</li>
+									<li>
+										<i class="flaticon-wifi-connection-signal-symbol"></i>
+										Wi-fi
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<a href="../Home/Contact" class="btn button-sm button-theme">View Details</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="text-center">
+			<!-- Page navigation start -->
+			<nav aria-label="Page navigation">
+				<ul class="pagination">
+					<li>
+						<a href="#" aria-label="Previous">
+							<i class="fa fa-angle-left"></i>
+						</a>
+					</li>
+					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li>
+						<a href="#" aria-label="Next">
+							<i class="fa fa-angle-right"></i>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<!-- Page navigation end -->
+		</div>
+	</div>
+</div>

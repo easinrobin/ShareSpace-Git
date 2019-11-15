@@ -27,24 +27,31 @@ namespace ClientPanel.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Index([Bind(Include = "ClientId,FirstName,LastName,Email,Country,MobileNo,BirthDate,Password,CreatedBy,UpdateBy,CreatedDate,UpdateDate")] Client client)
+        public ActionResult Booking()
         {
-            if (ModelState.IsValid)
-            {
-                var id = ClientManager.InsertClient(client);
-                return RedirectToAction("Index");
+            ViewBag.Message = "Booking Page";
 
-            }
-            return View(client);
-        }
-
-        [HttpPost]
-        public ActionResult Contact(long ClientId)
-        {
-            Client client = new Client();
-            ClientId = client.ClientId;
             return View();
         }
+
+        //[HttpPost]
+        //public ActionResult Index([Bind(Include = "ClientId,FirstName,LastName,Email,Country,MobileNo,BirthDate,Password,CreatedBy,UpdateBy,CreatedDate,UpdateDate")] Client client)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var id = ClientManager.InsertClient(client);
+        //        return RedirectToAction("Index");
+
+        //    }
+        //    return View(client);
+        //}
+
+        //[HttpPost]
+        //public ActionResult Contact(long ClientId)
+        //{
+        //    Client client = new Client();
+        //    ClientId = client.ClientId;
+        //    return View();
+        //}
     }
 }

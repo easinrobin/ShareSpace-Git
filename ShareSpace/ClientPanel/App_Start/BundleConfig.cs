@@ -43,14 +43,20 @@ namespace ClientPanel
             bundles.Add(new ScriptBundle("~/bundles/scrollUp").Include(
                         "~/Scripts/jquery.scrollUp.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/customScrollbar").Include(
+            bundles.Add(new ScriptBundle("~/bundles/customScrollbarContact").Include(
                         "~/Scripts/jquery.mCustomScrollbar.concat.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/customScrollbar").Include(
+                        "~/Scripts/jquery.mCustomScrollbar.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/filterizr").Include(
                         "~/Scripts/jquery.filterizr.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrapDate").Include(
-                        "~/Scripts/bootstrap-datepicker.min.js"));
+                        "~/Scripts/bootstrap-datetimepicker.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/momentJs").Include(
+                        "~/Scripts/moment.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/customJs").Include(
                         "~/Scripts/app.js"));
@@ -82,7 +88,7 @@ namespace ClientPanel
                         "~/Content/jquery.mCustomScrollbar.css"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrapDate").Include(
-                        "~/Content/bootstrap-datepicker.min.css"));
+                        "~/Content/bootstrap-datetimepicker.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/customCss").Include(
                         "~/Content/style.css"));
