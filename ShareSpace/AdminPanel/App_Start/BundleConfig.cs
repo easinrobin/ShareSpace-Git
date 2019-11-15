@@ -65,10 +65,6 @@ namespace AdminPanel
             bundles.Add(new ScriptBundle("~/bundles/buttonshtml5min").Include(
                         "~/Scripts/buttons.html5.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/appmin").Include(
-                        "~/Scripts/app.min.js"));
-
-
 
 
 
@@ -136,6 +132,10 @@ namespace AdminPanel
                        "~/Scripts/autosize.min.js"));
 
 
+
+
+            bundles.Add(new ScriptBundle("~/bundles/appmin").Include(
+                       "~/Scripts/app.min.js"));
 
         }
     }
