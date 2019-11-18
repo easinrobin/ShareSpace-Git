@@ -13,21 +13,21 @@ namespace ClientPanel.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult SearchResults()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult OfficeDetails()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
 
-        public ActionResult Booking()
+        public ActionResult ClientDashBoard()
         {
             ViewBag.Message = "Booking Page";
 
