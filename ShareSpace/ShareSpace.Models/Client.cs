@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ShareSpace.Models
 {
-    public class Client
+    public class Client : IEnumerable
     {
         [Key]
         [Display(Name = "ClientId")]
@@ -54,5 +54,10 @@ namespace ShareSpace.Models
 
         [Display(Name = "UpdateDate")]
         public DateTime UpdateDate { get; set; }
+
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

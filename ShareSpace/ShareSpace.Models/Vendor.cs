@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -57,6 +58,8 @@ namespace ShareSpace.Models
 
         [Display(Name = "UpdateDate")]
         public DateTime UpdateDate { get; set; }
-        public int Id { get; set; }
+
+
+        
     }
 }
