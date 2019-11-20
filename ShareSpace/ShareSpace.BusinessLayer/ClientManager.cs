@@ -5,57 +5,49 @@ using ShareSpace.Models;
 
 namespace ShareSpace.BusinessLayer
 {
-    public static class ClientManager
+    public class ClientManager
     {
-        public static SqlClientProvider sqlClientProvider = new SqlClientProvider();
-
-        public static string InsertClient(Client client)
-        {
-            bool isSaved = sqlClientProvider.InsertClient(client);
-            if (isSaved)
-            {
-                return "Saved Successful";
-            }
-            else
-            {
-                return "Failed";
-            }
-        }
-
+        #region Get
         public static List<Client> GetAllClients()
         {
-            return sqlClientProvider.GetAllClients();
+            SqlClientProvider sqlClientProvider = new SqlClientProvider();
+            var allClients = sqlClientProvider.GetAllClients();
+            return allClients;
         }
 
-        public static List<Client> GetClientById(long ID)
+        public static Client GetClientById(long clientId)
         {
-            return sqlClientProvider.GetClientById(ID);
+            SqlClientProvider sqlClientProvider = new SqlClientProvider();
+            return sqlClientProvider.GetClientById(clientId);
         }
 
-        public static string UpdateClient(Client client)
+        public static Client GetClientByEmail(string email)
         {
-            bool isUpdate = sqlClientProvider.UpdateClient(client);
-            if (isUpdate)
-            {
-                return "Update successful";
-            }
-            else
-            {
-                return "failed";
-            }
+            SqlClientProvider sqlClientProvider = new SqlClientProvider();
+            return sqlClientProvider.GetClientByEmail(email);
+        }
+        #endregion
+        #region Set
+        public long InsertClient(Client client)
+        {
+            SqlClientProvider sqlClientProvider = new SqlClientProvider();
+            var id = sqlClientProvider.InsertClient(client);
+            return id;
         }
 
-        public static string DeleteClient(Client client)
+        public static bool UpdateClient(Client client)
         {
-            bool isDeleted = sqlClientProvider.DeleteClient(client);
-            if (isDeleted)
-            {
-                return "Deleted successfully";
-            }
-            else
-            {
-                return "Failed";
-            }
+            SqlClientProvider sqlClientProvider = new SqlClientProvider();
+            var isUpdate = sqlClientProvider.UpdateClient(client);
+            return isUpdate;
         }
+
+        public static bool DeleteClient(long clientId)
+        {
+            SqlClientProvider sqlClientProvider = new SqlClientProvider();
+            var isDelete = sqlClientProvider.DeleteClient(clientId);
+            return isDelete;
+        }
+        #endregion
     }
 }

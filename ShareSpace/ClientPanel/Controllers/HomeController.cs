@@ -27,12 +27,6 @@ namespace ClientPanel.Controllers
             return View();
         }
 
-        public ActionResult ClientDashBoard()
-        {
-            ViewBag.Message = "Booking Page";
-
-            return View();
-        }
 
         //[HttpPost]
         //public ActionResult Index([Bind(Include = "ClientId,FirstName,LastName,Email,Country,MobileNo,BirthDate,Password,CreatedBy,UpdateBy,CreatedDate,UpdateDate")] Client client)

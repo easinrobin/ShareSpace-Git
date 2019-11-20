@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShareSpace.Models
 {
+    [Table("Clients")]
     public class Client
     {
         [Key]
-        [Display(Name = "ClientId")]
-        [Required(ErrorMessage = "{0} is Required")]
-        public Int64 ClientId { get; set; }
+        public long ClientId { get; set; }
 
-        [Display(Name = "FirstName")]
+        [Display(Name = "First Name")]
+        [StringLength(50, ErrorMessage = "Maximum length is {1}")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "First name required")]
         public string FirstName { get; set; }
 
-        [Display(Name = "LastName")]
+        [Display(Name = "Last Name")]
+        [StringLength(50, ErrorMessage = "Maximum length is {1}")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Last name required")]
         public string LastName { get; set; }
 
@@ -27,32 +29,29 @@ namespace ShareSpace.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "Country required")]
         public string Country { get; set; }
 
-        [Display(Name = "MobileNo")]
+        [Display(Name = "Mobile No.")]
         public string MobileNo { get; set; }
 
         [Display(Name = "BirthDate")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "BirthDate required")]
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         [Display(Name = "Password")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Maximum 8digit")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Maximum 8 digit")]
         public string Password { get; set; }
 
-        [Display(Name = "ClientPhoto")]
+        [Display(Name = "Client Photo")]
         public string ClientPhoto { get; set; }
 
-        [Display(Name = "CreatedBy")]
-        //[Required(AllowEmptyStrings = false, ErrorMessage = "Maximum length is {1}")]
+        [Display(Name = "Created By")]
         public string CreatedBy { get; set; }
 
-        [Display(Name = "UpdateBy")]
-        //[Required(AllowEmptyStrings = false, ErrorMessage = "Maximum length is {1}")]
+        [Display(Name = "Update By")]
         public string UpdateBy { get; set; }
 
-        [Display(Name = "CreatedDate")]
-        public DateTime CreatedDate { get; set; }
+        [Display(Name = "Created Date")]
+        public DateTime? CreatedDate { get; set; }
 
-        [Display(Name = "UpdateDate")]
-        public DateTime UpdateDate { get; set; }
+        [Display(Name = "Update Date")]
+        public DateTime? UpdateDate { get; set; }
     }
 }
