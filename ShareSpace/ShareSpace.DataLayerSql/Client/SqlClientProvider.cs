@@ -27,8 +27,8 @@ namespace ShareSpace.DataLayerSql.Client
                     {
                         string name = clients.Name;
                         var value = clients.GetValue(client, null);
-                       
-                        command.Parameters.Add(new SqlParameter("@" + name, value == null? DBNull.Value:value));
+
+                        command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
                     }
                 }
                 try
@@ -81,6 +81,33 @@ namespace ShareSpace.DataLayerSql.Client
                 }
             }
             return isUpdate;
+        }
+
+        public bool DeleteClient(long clientId)
+        {
+            bool isDelete = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.DELETECLIENT);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@ClientID", clientId));
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    isDelete = false;
+                    throw new Exception("Exception Updating Data." + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return isDelete;
         }
 
         public List<Models.Client> GetAllClients()
@@ -141,7 +168,7 @@ namespace ShareSpace.DataLayerSql.Client
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.GETCLIENTBYEMAIL);
+                SqlCommand command = new SqlCommand(StoreProcedure.GETCLIENTBYEMAIL, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add(new SqlParameter("@Email", email));
 
@@ -164,33 +191,6 @@ namespace ShareSpace.DataLayerSql.Client
             }
         }
 
-        public bool DeleteClient(long clientId)
-        {
-            bool isDelete = true;
-            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
-            {
-                SqlCommand command = new SqlCommand(StoreProcedure.DELETECLIENT);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@ClientID", clientId));
-
-                try
-                {
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-                catch (Exception e)
-                {
-                    isDelete = false;
-                    throw new Exception("Exception Updating Data." + e.Message);
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-            return isDelete;
-        }
-        
         #endregion
     }
 }

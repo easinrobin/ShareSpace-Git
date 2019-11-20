@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Net;
 using System.Web.Mvc;
 using ShareSpace.BusinessLayer;
 using ShareSpace.Models;
@@ -28,7 +25,7 @@ namespace ClientPanel.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SignUp([Bind(Include = "ClientId,FirstName,LastName,Email,Country,MobileNo,Password")] Client client)
+        public ActionResult SignUp([Bind(Include = "ClientId,FirstName,LastName,Email,Country,MobileNo,BirthDate,Password")] Client client)
         {
             ClientManager manager = new ClientManager();
             if (ModelState.IsValid)
@@ -42,18 +39,19 @@ namespace ClientPanel.Controllers
 
 
         [HttpPost]
-        public ActionResult Login(FormCollection collection)
+        public ActionResult Login(string email)
         {
-            try
+            if (email == null)
             {
-                return View("Login");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            catch
+
+            Client client = ClientManager.GetClientByEmail(email);
+            if (client == null)
             {
-                return View();
+                return HttpNotFound();
             }
+            return View(client);
         }
-
-
     }
 }
