@@ -2,140 +2,41 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using ShareSpace.DataLayer;
+using ShareSpace.DataLayer.Vendor;
 using ShareSpace.DataLayerSql.Common;
-using ShareSpace.Models;
 using ShareSpace.Utility;
 
-
-namespace ShareSpace.DataLayerSql.Vendors
+namespace ShareSpace.DataLayerSql.Vendor
 {
-    class SqlVendorsProvider : IVendorProvider
+    public class SqlVendorProvider : IVendorProvider
     {
-        public List<Vendor> GetAllVendors()
-        {
-            List<Vendor> vendorList = new List<Vendor>();
-            using (SqlConnection sqlConnection = new SqlConnection(CommonUtility.ConnectionString))
-            {
-                SqlCommand sqlCommand = new SqlCommand(StoreProcedure.GETALLVENDORS, sqlConnection);
-                sqlCommand.CommandType = CommandType.StoredProcedure;
-
-                try
-                {
-                    sqlConnection.Open();
-                    SqlDataReader dataReader = sqlCommand.ExecuteReader();
-
-                    while (dataReader.Read())
-                    {
-                        Models.Vendor vendor = new Models.Vendor();
-                        vendor.Id = (int)dataReader["Id"];
-                        vendor.FirstName = dataReader["FirstName"].ToString();
-                        vendor.LastName = dataReader["LastName"].ToString();
-                        vendor.Email = dataReader["Email"].ToString();
-                        vendor.Country = dataReader["Country"].ToString();
-                        vendor.MobileNo = dataReader["MobileNo"].ToString();
-                        vendor.BirthDate = (DateTime)dataReader["BirthDate"];
-                        vendor.Password = dataReader["Password"].ToString();
-                        vendor.VendorPhoto = dataReader["VendorPhoto"].ToString();
-                        vendor.CreatedBy = dataReader["CreatedBy"].ToString();
-                        vendor.UpdateBy = dataReader["UpdateBy"].ToString();
-                        vendor.CreatedDate = (DateTime)dataReader["CreatedDate"];
-                        vendor.UpdateDate = (DateTime)dataReader["UpdateDate"];
-
-                        vendorList.Add(vendor);
-                    }
-                    dataReader.Close();
-                }
-                catch (Exception e)
-                {
-                    throw new Exception("Exception retrieving reviews. " + e.Message);
-                }
-
-                finally
-                {
-                    sqlConnection.Close();
-                }
-            }
-            
-            return vendorList;
-        }
-
-
-        public List<Models.Vendor> GetVendorById(long Id)
-        {
-
-            using (SqlConnection sqlConnection = new SqlConnection(CommonUtility.ConnectionString))
-            {
-                List<Models.Vendor> vendorList = new List<Models.Vendor>();
-                SqlCommand sqlCommand = new SqlCommand(StoreProcedure.GETVENDORBYID, sqlConnection);
-                sqlCommand.CommandType = CommandType.StoredProcedure;
-                sqlCommand.Parameters.Add(new SqlParameter("@ID", Id));
-
-                try
-                {
-                    sqlConnection.Open();
-                    SqlDataReader reader = sqlCommand.ExecuteReader();
-                    Models.Vendor vendor = new Models.Vendor();
-                    vendor = UtilityManager.DataReaderMap<Models.Vendor>(reader);
-                    vendorList.Add(vendor);
-                    return vendorList;
-
-                    //while (reader.Read())
-                    //{
-                    //    Models.Client client = new Models.Client();
-                    //    client.ClientId = (int)reader["ClientId"];
-                    //    client.FirstName = reader["FirstName"].ToString();
-                    //    client.LastName = reader["LastName"].ToString();
-                    //    client.Email = reader["Email"].ToString();
-                    //    client.Country = reader["Country"].ToString();
-                    //    client.MobileNo = reader["MobileNo"].ToString();
-                    //    client.BirthDate = (DateTime)reader["BirthDate"];
-                    //    client.Password = reader["Password"].ToString();
-                    //    client.ClientPhoto = reader["ClientPhoto"].ToString();
-                    //    client.CreatedBy = reader["CreatedBy"].ToString();
-                    //    client.UpdateBy = reader["UpdateBy"].ToString();
-                    //    client.CreatedDate = (DateTime)reader["CreatedDate"];
-                    //    client.UpdateDate = (DateTime)reader["UpdateDate"];
-
-                    //    clientList.Add(client);
-                    //    return clientList;
-                    //}
-                }
-                catch (Exception e)
-                {
-                    throw new Exception("Exception retrieving reviews. " + e.Message);
-                }
-                finally
-                {
-                    sqlConnection.Close();
-                }
-            }
-
-        }
-
-        public static long Add(Models.Vendor vendor)
+        #region Vendor
+        public long InsertVendor(Models.Vendor vendor)
         {
             long id = 0;
-            using (SqlConnection conn = new SqlConnection(CommonUtility.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand cmd = new SqlCommand(StoreProcedure.INSERTVENDORS, conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                SqlParameter returnValue = new SqlParameter("@" + "Id", SqlDbType.Int);
+                SqlCommand command = new SqlCommand(StoreProcedure.INSERTVENDORS, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlParameter returnValue = new SqlParameter("@" + "ID", SqlDbType.Int);
                 returnValue.Direction = ParameterDirection.Output;
-                cmd.Parameters.Add(returnValue);
-                foreach (var property in vendor.GetType().GetProperties())
+                command.Parameters.Add(returnValue);
+                foreach (var vendors in vendor.GetType().GetProperties())
                 {
-                    if (property.Name != "Id")
+                    if (vendors.Name != "ID")
                     {
-                        string name = property.Name;
-                        var value = property.GetValue(vendor, null);
-                        cmd.Parameters.Add(new SqlParameter("@" + name, value));
+                        string name = vendors.Name;
+                        var value = vendors.GetValue(vendor, null);
+
+                        command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
                     }
                 }
                 try
                 {
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    id = (int)cmd.Parameters["@Id"].Value;
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    id = (int)command.Parameters["@ID"].Value;
                 }
                 catch (Exception ex)
                 {
@@ -143,97 +44,27 @@ namespace ShareSpace.DataLayerSql.Vendors
                 }
                 finally
                 {
-                    conn.Close();
-
+                    connection.Close();
                 }
             }
             return id;
         }
 
-        public bool InsertVendor(Models.Vendor vendor)
+        public bool UpdateVendor(Models.Vendor vendor)
         {
-            using (SqlConnection sqlConnection = new SqlConnection(CommonUtility.ConnectionString))
+            bool isUpdate = true;
+
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand sqlCommand = new SqlCommand(StoreProcedure.INSERTVENDORS, sqlConnection);
-                sqlCommand.CommandType = CommandType.StoredProcedure;
-
-                sqlCommand.Parameters.AddWithValue("FirstName", vendor.FirstName);
-                sqlCommand.Parameters.AddWithValue("LastName", vendor.LastName);
-                sqlCommand.Parameters.AddWithValue("Email", vendor.Email);
-                sqlCommand.Parameters.AddWithValue("Country", vendor.Country);
-                sqlCommand.Parameters.AddWithValue("MobileNo", vendor.MobileNo);
-                sqlCommand.Parameters.AddWithValue("BirthDate", vendor.BirthDate);
-                sqlCommand.Parameters.AddWithValue("Password", vendor.Password);
-                sqlCommand.Parameters.AddWithValue("CreatedBy", vendor.CreatedBy);
-                sqlCommand.Parameters.AddWithValue("UpdateBy", vendor.UpdateBy);
-                sqlCommand.Parameters.AddWithValue("CreatedDate", vendor.CreatedDate);
-                sqlCommand.Parameters.AddWithValue("UpdateDate", vendor.UpdateDate);
-
-                try
-                {
-                    sqlConnection.Open();
-                    int rowEffect = sqlCommand.ExecuteNonQuery();
-                    if (rowEffect > 0)
-                    {
-                        return true;
-                    }
-                }
-                catch (Exception e)
-                {
-                    throw new Exception("Exception retrieving reviews." + e.Message);
-                }
-                finally
-                {
-                    sqlConnection.Close();
-                }
-            }
-            return false;
-        }
-
-        public bool UpdateClient(Models.Vendor vendor)
-        {
-            bool isUpdate = false;
-
-            using (SqlConnection sqlConnection = new SqlConnection(CommonUtility.ConnectionString))
-            {
-                SqlCommand sqlCommand = new SqlCommand(StoreProcedure.UPDATEVENDORS, sqlConnection);
-                sqlCommand.CommandType = CommandType.StoredProcedure;
+                SqlCommand command = new SqlCommand(StoreProcedure.UPDATEVENDORS, connection);
+                command.CommandType = CommandType.StoredProcedure;
 
                 foreach (var vendors in vendor.GetType().GetProperties())
                 {
                     string name = vendors.Name;
                     var value = vendors.GetValue(vendor, null);
-                    sqlCommand.Parameters.Add(new SqlParameter("@Id" + name, value));
+                    command.Parameters.Add(new SqlParameter("@" + name, value));
                 }
-
-                try
-                {
-                    sqlConnection.Open();
-                    sqlCommand.ExecuteNonQuery();
-                }
-                catch (Exception e)
-                {
-                    isUpdate = true;
-                    throw new Exception("Exception Updating Data." + e.Message);
-                }
-                finally
-                {
-                    sqlConnection.Close();
-                }
-            }
-            return isUpdate;
-        }
-
-
-        public bool DeleteVendor(Models.Vendor vendor)
-        {
-            bool isDelete = false;
-            long Id = 0;
-            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
-            {
-                SqlCommand command = new SqlCommand(StoreProcedure.DELETEVENDORS);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@ID", Id));
 
                 try
                 {
@@ -242,7 +73,90 @@ namespace ShareSpace.DataLayerSql.Vendors
                 }
                 catch (Exception e)
                 {
-                    isDelete = true;
+                    isUpdate = false;
+                    throw new Exception("Exception Updating Data." + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return isUpdate;
+        }
+
+        public List<Models.Vendor> GetAllVendors()
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GETALLVENDORS, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    List<Models.Vendor> vendorList = new List<Models.Vendor>();
+                    vendorList = UtilityManager.DataReaderMapToList<Models.Vendor>(dataReader);
+                    return vendorList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public Models.Vendor GetVendorById(long vendorId)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GETVENDORSBYID, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@VendorId", vendorId));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    Models.Vendor vendor = new Models.Vendor();
+                    vendor = UtilityManager.DataReaderMap<Models.Vendor>(reader);
+                    return vendor;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        
+
+        public bool DeleteVendor(long vendorId)
+        {
+            bool isDelete = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.DELETEVENDORS);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@VendorID", vendorId));
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    isDelete = false;
                     throw new Exception("Exception Updating Data." + e.Message);
                 }
                 finally
@@ -253,7 +167,8 @@ namespace ShareSpace.DataLayerSql.Vendors
             return isDelete;
         }
 
-       
+        #endregion
+
+        
     }
 }
-

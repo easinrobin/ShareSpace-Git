@@ -11,9 +11,9 @@ namespace ShareSpace.Models
     public class Vendor
     {
         [Key]
-        [Display(Name = "VendorId")]
+        [Display(Name = "ID")]
         [Required(ErrorMessage = "{0} is Required")]
-        public Int64 VendortId { get; set; }
+        public Int64 ID { get; set; }
 
         [Display(Name = "FirstName")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "First name required")]
@@ -36,7 +36,7 @@ namespace ShareSpace.Models
 
         [Display(Name = "BirthDate")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "BirthDate required")]
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         [Display(Name = "Password")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Maximum 8digit")]
@@ -54,10 +54,10 @@ namespace ShareSpace.Models
         public string UpdateBy { get; set; }
 
         [Display(Name = "CreatedDate")]
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         [Display(Name = "UpdateDate")]
-        public DateTime UpdateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
 
 
         

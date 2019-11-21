@@ -2,31 +2,32 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using ShareSpace.DataLayer.Client;
+using ShareSpace.DataLayer;
+using ShareSpace.DataLayer.Property;
 using ShareSpace.DataLayerSql.Common;
 using ShareSpace.Utility;
 
-namespace ShareSpace.DataLayerSql.Client
+namespace ShareSpace.DataLayerSql.Property
 {
-    public class SqlClientProvider : IClientProvider
+    public class SqlPropertyProvider : IPropertyProvider
     {
-        #region Client
-        public long InsertClient(Models.Client client)
+        #region Property
+        public long InsertProperty(Models.Property property)
         {
             long id = 0;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.INSERTCLIENT, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.INSERTPROPERTYS, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                SqlParameter returnValue = new SqlParameter("@" + "ClientId", SqlDbType.Int);
+                SqlParameter returnValue = new SqlParameter("@" + "ID", SqlDbType.Int);
                 returnValue.Direction = ParameterDirection.Output;
                 command.Parameters.Add(returnValue);
-                foreach (var clients in client.GetType().GetProperties())
+                foreach (var propertys in property.GetType().GetProperties())
                 {
-                    if (clients.Name != "ClientId")
+                    if (propertys.Name != "ID")
                     {
-                        string name = clients.Name;
-                        var value = clients.GetValue(client, null);
+                        string name = propertys.Name;
+                        var value = propertys.GetValue(property, null);
 
                         command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
                     }
@@ -35,7 +36,7 @@ namespace ShareSpace.DataLayerSql.Client
                 {
                     connection.Open();
                     command.ExecuteNonQuery();
-                    id = (int)command.Parameters["@ClientId"].Value;
+                    id = (int)command.Parameters["@ID"].Value;
                 }
                 catch (Exception ex)
                 {
@@ -49,19 +50,19 @@ namespace ShareSpace.DataLayerSql.Client
             return id;
         }
 
-        public bool UpdateClient(Models.Client client)
+        public bool UpdateProperty(Models.Property property)
         {
             bool isUpdate = true;
 
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.UPDATECLIENT, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.UPDATEPROPERTYS, connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                foreach (var clients in client.GetType().GetProperties())
+                foreach (var propertys in property.GetType().GetProperties())
                 {
-                    string name = clients.Name;
-                    var value = clients.GetValue(client, null);
+                    string name = propertys.Name;
+                    var value = propertys.GetValue(property, null);
                     command.Parameters.Add(new SqlParameter("@" + name, value));
                 }
 
@@ -83,20 +84,20 @@ namespace ShareSpace.DataLayerSql.Client
             return isUpdate;
         }
 
-        public List<Models.Client> GetAllClients()
+        public List<Models.Property> GetAllPropertys()
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.GETALLCLIENT, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.GETALLPROPERTYS, connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 try
                 {
                     connection.Open();
                     SqlDataReader dataReader = command.ExecuteReader();
-                    List<Models.Client> clientList = new List<Models.Client>();
-                    clientList = UtilityManager.DataReaderMapToList<Models.Client>(dataReader);
-                    return clientList;
+                    List<Models.Property> propertyList = new List<Models.Property>();
+                    propertyList = UtilityManager.DataReaderMapToList<Models.Property>(dataReader);
+                    return propertyList;
                 }
                 catch (Exception e)
                 {
@@ -110,21 +111,21 @@ namespace ShareSpace.DataLayerSql.Client
             }
         }
 
-        public Models.Client GetClientById(long clientId)
+        public Models.Property GetPropertyById(long propertyId)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.GETCLIENTBYID, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.GETPROPERTYSBYID, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@ClientId", clientId));
+                command.Parameters.Add(new SqlParameter("@PropertyId", propertyId));
 
                 try
                 {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
-                    Models.Client client = new Models.Client();
-                    client = UtilityManager.DataReaderMap<Models.Client>(reader);
-                    return client;
+                    Models.Property property = new Models.Property();
+                    property = UtilityManager.DataReaderMap<Models.Property>(reader);
+                    return property;
                 }
                 catch (Exception e)
                 {
@@ -137,41 +138,16 @@ namespace ShareSpace.DataLayerSql.Client
             }
         }
 
-        //public Models.Client GetClientByEmail(string email)
-        //{
-        //    using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
-        //    {
-        //        SqlCommand command = new SqlCommand(StoreProcedure.GETCLIENTBYEMAIL);
-        //        command.CommandType = CommandType.StoredProcedure;
-        //        command.Parameters.Add(new SqlParameter("@Email", email));
 
-        //        try
-        //        {
-        //            connection.Open();
-        //            SqlDataReader reader = command.ExecuteReader();
-        //            Models.Client client = new Models.Client();
-        //            client = UtilityManager.DataReaderMap<Models.Client>(reader);
-        //            return client;
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            throw new Exception("Exception retrieving reviews. " + e.Message);
-        //        }
-        //        finally
-        //        {
-        //            connection.Close();
-        //        }
-        //    }
-        //}
 
-        public bool DeleteClient(long clientId)
+        public bool DeleteProperty(long propertyId)
         {
             bool isDelete = true;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.DELETECLIENT);
+                SqlCommand command = new SqlCommand(StoreProcedure.DELETEPROPERTYS);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@ClientID", clientId));
+                command.Parameters.Add(new SqlParameter("@PropertyID", propertyId));
 
                 try
                 {
@@ -192,5 +168,7 @@ namespace ShareSpace.DataLayerSql.Client
         }
 
         #endregion
+
+
     }
 }

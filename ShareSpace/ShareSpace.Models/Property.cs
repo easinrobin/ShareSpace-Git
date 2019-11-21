@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,12 +8,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ShareSpace.Models
 {
-    class Property
+    public class Property
     {
         [Key]
         [Display(Name = "PropertyId")]
         [Required(ErrorMessage = "{0} is Required")]
-        public Int64 VendortId { get; set; }
+        public Int64 PropertyId { get; set; }
 
         [Display(Name = "PropertyName")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "PropertyName name required")]
@@ -65,6 +66,9 @@ namespace ShareSpace.Models
         [Display(Name = "PropertyServiceId")]
         public int PropertyServiceId { get; set; }
 
+        [Display(Name = "Gallery")]
+        public char Gallery { get; set; }
+
         [Display(Name = "VendorId")]
         public int VendorId { get; set; }
 
@@ -75,10 +79,10 @@ namespace ShareSpace.Models
         public char UpdateBy { get; set; }
 
         [Display(Name = "CreatedDate")]
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         [Display(Name = "UpdateDate")]
-        public DateTime UpdateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
 
     }
 }

@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShareSpace.BusinessLayer;
+using ShareSpace.Models;
+using System.Data;
+using System.Configuration;
+using System.Data.SqlClient;
+
 
 namespace AdminPanel.Controllers
 {
     public class HomeController : Controller
     {
+
+
         public ActionResult Index()
         {
             return View();
@@ -62,5 +70,14 @@ namespace AdminPanel.Controllers
         }
 
 
+
+        public ActionResult InsertClient(Client client)
+        {
+            return View(client);
+        }
+
+       
+
     } 
+
 }

@@ -129,6 +129,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\propertyController.cs" />
+    <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -351,6 +353,10 @@
     <Content Include="Views\Home\Gallerys.cshtml" />
     <Content Include="Views\Home\Booking.cshtml" />
     <Content Include="Views\Home\New_contact.cshtml" />
+    <Content Include="Views\Home\Contactt.cshtml" />
+    <Content Include="Views\Vendor\InsertVendor.cshtml" />
+    <Content Include="Views\Home\InsertClient.cshtml" />
+    <Content Include="Views\property\InsertProperty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -366,6 +372,14 @@
     <ProjectReference Include="..\ShareSpace.BusinessLayer\ShareSpace.BusinessLayer.csproj">
       <Project>{4bda2f16-e0cd-483e-a581-e0498c516bde}</Project>
       <Name>ShareSpace.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShareSpace.DataLayerSql\ShareSpace.DataLayerSql.csproj">
+      <Project>{9c60bcac-fe3c-4880-ae47-7cc1ab6eb324}</Project>
+      <Name>ShareSpace.DataLayerSql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShareSpace.DataLayer\ShareSpace.DataLayer.csproj">
+      <Project>{56486fb8-7b82-47fc-875e-2213407f40fc}</Project>
+      <Name>ShareSpace.DataLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShareSpace.Models\ShareSpace.Models.csproj">
       <Project>{b5657d5d-a922-45f8-8758-35557589bbaf}</Project>

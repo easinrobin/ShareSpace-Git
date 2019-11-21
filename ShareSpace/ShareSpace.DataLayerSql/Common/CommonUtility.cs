@@ -38,6 +38,17 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string DELETEVENDORS = "sp_vendor_deletevendors";
 
-        public static string GETVENDORBYID { get; internal set; }
+
+        public static string GETALLPROPERTYS = "sp_property_getallpropertys";
+
+        public static string GETPROPERTYSBYID = "sp_property_getpropertybyid";
+
+        public static string INSERTPROPERTYS = "sp_property_insertpropertys";
+
+        public static string UPDATEPROPERTYS = "sp_property_updatepropertys";
+
+        public static string DELETEPROPERTYS = "sp_property_deletepropertys";
+
+
     }
 }
