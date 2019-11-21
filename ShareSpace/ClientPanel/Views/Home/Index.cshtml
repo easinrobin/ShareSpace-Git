@@ -1,4 +1,4 @@
-﻿
+﻿@model List<ShareSpace.Models.Property.FeatureProperty>
 @{
 	ViewBag.Title = "Home Page";
 }
@@ -221,124 +221,48 @@
 			<h1><span>Featured </span>Properties</h1>
 		</div>
 		<div class="row">
-			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 wow fadeInUp delay-04s">
-				<!-- Hotel box start -->
-				<div class="hotel-box">
-					<!--header -->
-					<div class="header clearfix">
-						<img src="/img/properties/office-room1.jpg" alt="img-6" class="img-responsive">
-					</div>
-					<!-- Detail -->
-					<div class="detail clearfix">
-						<div class="price">
-							৳1000<sub>/Hour</sub>
+			@foreach (var property in Model)
+			{
+				var propertyLink  = "Home/OfficeDetails/" + property.PropertyId;
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 wow fadeInUp delay-04s">
+					<!-- Hotel box start -->
+					<div class="hotel-box">
+						<!--header -->
+						<div class="header clearfix">
+							<img src="@property.FeatureImage" alt="img-6" class="img-responsive">
 						</div>
-						<h3>
-							<a href="Home/OfficeDetails">Whole Office</a>
-						</h3>
-						<ul class="rating">
-							<li>
-								<i class="fa fa-star"></i>
-							</li>
-							<li>
-								<i class="fa fa-star"></i>
-							</li>
-							<li>
-								<i class="fa fa-star"></i>
-							</li>
-							<li>
-								<i class="fa fa-star"></i>
-							</li>
-							<li>
-								<i class="fa fa-star-half-full"></i>
-							</li>
-						</ul>
-
-
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						<a href="Home/OfficeDetails" class="btn button-sm button-theme">View Details</a>
-					</div>
-				</div>
-				<!-- Hotel box end -->
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 hidden-sm wow fadeInUp delay-04s">
-				<!-- Hotel box start -->
-				<div class="hotel-box">
-					<!--header -->
-					<div class="header clearfix">
-						<img src="/img/properties/office-room4.jpg" alt="img-2" class="img-responsive">
-					</div>
-					<!-- Detail -->
-					<div class="detail clearfix">
-						<div class="price">
-							৳2000<sub>/Hour</sub>
+						<!-- Detail -->
+						<div class="detail clearfix">
+							<div class="price">
+								৳@property.RetailPrice<sub>/Hour</sub>
+							</div>
+							<h3>
+								<a href="@propertyLink">@property.PropertyName</a>
+							</h3>
+							<ul class="rating">
+								<li>
+									<i class="fa fa-star"></i>
+								</li>
+								<li>
+									<i class="fa fa-star"></i>
+								</li>
+								<li>
+									<i class="fa fa-star"></i>
+								</li>
+								<li>
+									<i class="fa fa-star"></i>
+								</li>
+								<li>
+									<i class="fa fa-star-half-full"></i>
+								</li>
+							</ul>
+							<p>@property.ShortDescription</p>
+							<a href="@propertyLink" class="btn button-sm button-theme">View Details</a>
 						</div>
-						<h3>
-							<a href="Home/OfficeDetails">Meeting Space</a>
-						</h3>
-						<ul class="rating">
-							<li>
-								<i class="fa fa-star"></i>
-							</li>
-							<li>
-								<i class="fa fa-star"></i>
-							</li>
-							<li>
-								<i class="fa fa-star"></i>
-							</li>
-							<li>
-								<i class="fa fa-star"></i>
-							</li>
-							<li>
-								<i class="fa fa-star-half-full"></i>
-							</li>
-						</ul>
-
-
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						<a href="Home/OfficeDetails" class="btn button-sm button-theme">View Details</a>
 					</div>
+					<!-- Hotel box end -->
 				</div>
-				<!-- Hotel box end -->
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 wow fadeInUp delay-04s">
-				<!-- Hotel box start -->
-				<div class="hotel-box">
-					<!--header -->
-					<div class="header clearfix">
-						<img src="/img/properties/office-room5.jpg" alt="img-4" class="img-responsive">
-					</div>
-					<!-- Detail -->
-					<div class="detail clearfix">
-						<div class="price">
-							৳800<sub>/Hour</sub>
-						</div>
-						<h3>
-							<a href="Home/OfficeDetails">Shared Office</a>
-						</h3>
-						<ul class="rating">
-							<li>
-								<i class="fa fa-star"></i>
-							</li>
-							<li>
-								<i class="fa fa-star"></i>
-							</li>
-							<li>
-								<i class="fa fa-star"></i>
-							</li>
-							<li>
-								<i class="fa fa-star"></i>
-							</li>
-							<li>
-								<i class="fa fa-star-half-full"></i>
-							</li>
-						</ul>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						<a href="Home/OfficeDetails" class="btn button-sm button-theme">View Details</a>
-					</div>
-				</div>
-				<!-- Hotel box end -->
-			</div>
+			}
 		</div>
 	</div>
 </div>

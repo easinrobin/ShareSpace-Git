@@ -25,5 +25,7 @@ namespace ShareSpace.DataLayerSql.Common
         public static string DELETECLIENT = "sp_client_deleteclients";
 
         public static string GETCLIENTBYEMAIL = "sp_client_getclientbyemail";
+
+        public static string GETFEATUREDPROPERTIES = "sp_view_featureproperties";
     }
 }
