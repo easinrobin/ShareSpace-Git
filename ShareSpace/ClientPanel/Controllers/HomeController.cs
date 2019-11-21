@@ -9,7 +9,7 @@ namespace ClientPanel.Controllers
     {
         public ActionResult Index()
         {
-            List<FeatureProperty> featureProperties = PropertyManager.GetFeaturedProperties(3);
+            List<FeatureProperty> featureProperties = PropertyManager.GetFeaturedProperties(4);
             return View("~/Views/Home/Index.cshtml",featureProperties);
         }
 
@@ -26,26 +26,5 @@ namespace ClientPanel.Controllers
 
             return View();
         }
-
-
-        //[HttpPost]
-        //public ActionResult Index([Bind(Include = "ClientId,FirstName,LastName,Email,Country,MobileNo,BirthDate,Password,CreatedBy,UpdateBy,CreatedDate,UpdateDate")] Client client)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var id = ClientManager.InsertClient(client);
-        //        return RedirectToAction("Index");
-
-        //    }
-        //    return View(client);
-        //}
-
-        //[HttpPost]
-        //public ActionResult Contact(long ClientId)
-        //{
-        //    Client client = new Client();
-        //    ClientId = client.ClientId;
-        //    return View();
-        //}
     }
 }
