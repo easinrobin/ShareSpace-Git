@@ -11,7 +11,7 @@ namespace ShareSpace.DataLayerSql.Client
     public class SqlClientProvider : IClientProvider
     {
         #region Client
-        public long InsertClient(Models.Client client)
+        public long InsertClient(Models.Client.Client client)
         {
             long id = 0;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
@@ -49,7 +49,7 @@ namespace ShareSpace.DataLayerSql.Client
             return id;
         }
 
-        public bool UpdateClient(Models.Client client)
+        public bool UpdateClient(Models.Client.Client client)
         {
             bool isUpdate = true;
 
@@ -110,7 +110,7 @@ namespace ShareSpace.DataLayerSql.Client
             return isDelete;
         }
 
-        public List<Models.Client> GetAllClients()
+        public List<Models.Client.Client> GetAllClients()
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
@@ -121,8 +121,8 @@ namespace ShareSpace.DataLayerSql.Client
                 {
                     connection.Open();
                     SqlDataReader dataReader = command.ExecuteReader();
-                    List<Models.Client> clientList = new List<Models.Client>();
-                    clientList = UtilityManager.DataReaderMapToList<Models.Client>(dataReader);
+                    List<Models.Client.Client> clientList = new List<Models.Client.Client>();
+                    clientList = UtilityManager.DataReaderMapToList<Models.Client.Client>(dataReader);
                     return clientList;
                 }
                 catch (Exception e)
@@ -137,7 +137,7 @@ namespace ShareSpace.DataLayerSql.Client
             }
         }
 
-        public Models.Client GetClientById(long clientId)
+        public Models.Client.Client GetClientById(long clientId)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
@@ -149,8 +149,8 @@ namespace ShareSpace.DataLayerSql.Client
                 {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
-                    Models.Client client = new Models.Client();
-                    client = UtilityManager.DataReaderMap<Models.Client>(reader);
+                    Models.Client.Client client = new Models.Client.Client();
+                    client = UtilityManager.DataReaderMap<Models.Client.Client>(reader);
                     return client;
                 }
                 catch (Exception e)
@@ -164,7 +164,7 @@ namespace ShareSpace.DataLayerSql.Client
             }
         }
 
-        public Models.Client GetClientByEmail(string email)
+        public Models.Client.Client GetClientByEmail(string email)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
@@ -176,8 +176,8 @@ namespace ShareSpace.DataLayerSql.Client
                 {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
-                    Models.Client client = new Models.Client();
-                    client = UtilityManager.DataReaderMap<Models.Client>(reader);
+                    Models.Client.Client client = new Models.Client.Client();
+                    client = UtilityManager.DataReaderMap<Models.Client.Client>(reader);
                     return client;
                 }
                 catch (Exception e)

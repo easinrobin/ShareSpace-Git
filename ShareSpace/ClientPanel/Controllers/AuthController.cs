@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using ShareSpace.BusinessLayer;
 using ShareSpace.Models;
+using ShareSpace.Models.Client;
 
 namespace ClientPanel.Controllers
 {

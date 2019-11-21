@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ShareSpace.DataLayerSql.Client;
 using ShareSpace.Models;
+using ShareSpace.Models.Client;
 
 namespace ShareSpace.BusinessLayer
 {
