@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using ShareSpace.BusinessLayer;
-using ShareSpace.Models;
+using ShareSpace.Models.Property;
 
 namespace ClientPanel.Controllers
 {
@@ -10,7 +9,8 @@ namespace ClientPanel.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            List<FeatureProperty> featureProperties = PropertyManager.GetFeaturedProperties(2);
+            return View("~/Views/Home/Index.cshtml",featureProperties);
         }
 
         public ActionResult SearchResults()

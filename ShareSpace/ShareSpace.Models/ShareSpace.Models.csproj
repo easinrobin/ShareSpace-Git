@@ -52,8 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client\Client.cs" />
+    <Compile Include="Gallery\Gallery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property\FeatureProperty.cs" />
+    <Compile Include="Property\Property.cs" />
+    <Compile Include="Property\PropertyAddress.cs" />
+    <Compile Include="Property\PropertyRating.cs" />
+    <Compile Include="Property\PropertyService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
