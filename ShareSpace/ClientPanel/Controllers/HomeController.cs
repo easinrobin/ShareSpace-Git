@@ -9,7 +9,7 @@ namespace ClientPanel.Controllers
     {
         public ActionResult Index()
         {
-            List<FeatureProperty> featureProperties = PropertyManager.GetFeaturedProperties(2);
+            List<FeatureProperty> featureProperties = PropertyManager.GetFeaturedProperties(3);
             return View("~/Views/Home/Index.cshtml",featureProperties);
         }
 
