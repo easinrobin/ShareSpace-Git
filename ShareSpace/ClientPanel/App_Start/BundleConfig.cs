@@ -61,6 +61,15 @@ namespace ClientPanel
             bundles.Add(new ScriptBundle("~/bundles/customJs").Include(
                         "~/Scripts/app.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/loginJs").Include(
+                        "~/Scripts/login.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/clientDashboardJs").Include(
+                "~/Scripts/clientDashboard.min.js"));
+
+
+
+
 
             // Style Bundles
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -95,6 +104,12 @@ namespace ClientPanel
 
             bundles.Add(new StyleBundle("~/Content/defaultCss").Include(
                         "~/Content/default.css"));
+
+            bundles.Add(new StyleBundle("~/Content/loginCss").Include(
+                        "~/Content/login.css"));
+
+            bundles.Add(new StyleBundle("~/Content/clientDashboardCss").Include(
+                "~/Content/clientDashboard.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/ieBug").Include(
                         "~/Content/ie10-viewport-bug-workaround.css"));

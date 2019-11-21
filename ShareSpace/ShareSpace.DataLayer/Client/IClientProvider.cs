@@ -4,6 +4,6 @@ namespace ShareSpace.DataLayer.Client
 {
     public interface IClientProvider
     {
-        List<Models.Client> GetAllClients();
+        List<Models.Client.Client> GetAllClients();
     }
 }
