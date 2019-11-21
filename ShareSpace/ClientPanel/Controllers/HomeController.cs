@@ -13,26 +13,20 @@ namespace ClientPanel.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult SearchResults()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult OfficeDetails()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
 
-        public ActionResult Booking()
-        {
-            ViewBag.Message = "Booking Page";
-
-            return View();
-        }
 
         //[HttpPost]
         //public ActionResult Index([Bind(Include = "ClientId,FirstName,LastName,Email,Country,MobileNo,BirthDate,Password,CreatedBy,UpdateBy,CreatedDate,UpdateDate")] Client client)
