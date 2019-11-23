@@ -146,6 +146,7 @@
     <Content Include="Content\default.css" />
     <Content Include="Content\ie10-viewport-bug-workaround.css" />
     <Content Include="Content\jquery.mCustomScrollbar.css" />
+    <Content Include="Content\jquery.rateyo.min.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
@@ -340,6 +341,7 @@
     <Content Include="Scripts\jquery.mb.YTPlayer.js" />
     <Content Include="Scripts\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="Scripts\jquery.mCustomScrollbar.js" />
+    <Content Include="Scripts\jquery.rateyo.min.js" />
     <Content Include="Scripts\jquery.scrollUp.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />

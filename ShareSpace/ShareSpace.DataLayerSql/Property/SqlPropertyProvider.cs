@@ -18,8 +18,6 @@ namespace ShareSpace.DataLayerSql.Property
                 SqlCommand command = new SqlCommand(StoreProcedure.GETFEATUREDPROPERTIES, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add(new SqlParameter("@NumberOfProperty", maxRow));
-                //returnValue.Direction = ParameterDirection.Output;
-                //command.Parameters.Add(returnValue);
 
                 try
                 {

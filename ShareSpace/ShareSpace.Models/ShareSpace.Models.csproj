@@ -59,6 +59,8 @@
     <Compile Include="Property\PropertyAddress.cs" />
     <Compile Include="Property\PropertyRating.cs" />
     <Compile Include="Property\PropertyService.cs" />
+    <Compile Include="Service\FeaturedServices.cs" />
+    <Compile Include="Service\Services.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
