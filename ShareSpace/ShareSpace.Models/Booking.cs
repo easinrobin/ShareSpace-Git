@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ShareSpace.Models
 {
-    class Booking
+    public class Booking
     {
         [Key]
         [Display(Name = "BookingId")]
@@ -16,11 +16,11 @@ namespace ShareSpace.Models
 
         [Display(Name = "FromDate")]
         //[Required(AllowEmptyStrings = false, ErrorMessage = "FromDate required")]
-        public DateTime FromDate { get; set; }
+        public DateTime? FromDate { get; set; }
 
         [Display(Name = "ToDate")]
         //[Required(AllowEmptyStrings = false, ErrorMessage = "ToDate required")]
-        public DateTime ToDate { get; set; }
+        public DateTime? ToDate { get; set; }
 
         [Display(Name = "MaximumPerson")]
         //[Required(AllowEmptyStrings = false, ErrorMessage = "MaximumPerson required")]
@@ -28,19 +28,19 @@ namespace ShareSpace.Models
 
         [Display(Name = "FromHour")]
         //[Required(AllowEmptyStrings = false, ErrorMessage = "FromHour required")]
-        public DateTime FromHour { get; set; }
+        public DateTime? FromHour { get; set; }
 
         [Display(Name = "ToHour")]
         //[Required(AllowEmptyStrings = false, ErrorMessage = "ToHour required")]
-        public DateTime ToHour { get; set; }
+        public DateTime? ToHour { get; set; }
 
         [Display(Name = "ClientId")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "ClientId required")]
+        //[Required(AllowEmptyStrings = false, ErrorMessage = "ClientId required")]
         public int ClientId { get; set; }
 
 
         [Display(Name = "PropertyId")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "PropertyId required")]
+        //[Required(AllowEmptyStrings = false, ErrorMessage = "PropertyId required")]
         public int PropertyId { get; set; }
 
         [Display(Name = "CreatedBy")]
@@ -52,10 +52,10 @@ namespace ShareSpace.Models
         public string UpdateBy { get; set; }
 
         [Display(Name = "CreatedDate")]
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         [Display(Name = "UpdateDate")]
-        public DateTime UpdateDate { get; set; }
-        public int Id { get; set; }
+        public DateTime? UpdateDate { get; set; }
+
     }
 }

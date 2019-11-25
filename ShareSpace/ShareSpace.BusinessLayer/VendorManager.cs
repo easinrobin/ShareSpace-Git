@@ -8,7 +8,7 @@ namespace ShareSpace.BusinessLayer
     public class VendorManager
     {
         #region Get
-        public static List<Vendor> GetAllVendors()
+        public static List<Vendor> GetAllVendors(int i)
         {
             SqlVendorProvider sqlVendorProvider = new SqlVendorProvider();
             var allVendors = sqlVendorProvider.GetAllVendors();

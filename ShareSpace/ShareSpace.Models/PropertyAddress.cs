@@ -16,19 +16,19 @@ namespace ShareSpace.Models
 
         [Display(Name = "Country")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Country required")]
-        public char Country { get; set; }
+        public string Country { get; set; }
 
         [Display(Name = "City")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "City required")]
-        public char City { get; set; }
+        public string City { get; set; }
 
         [Display(Name = "Area")]
         //[Required(AllowEmptyStrings = false, ErrorMessage = "Area required")]
-        public char Area { get; set; }
+        public string Area { get; set; }
 
         [Display(Name = "Address")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Address required")]
-        public char Address { get; set; }
+        public string Address { get; set; }
 
         [Display(Name = "ZipCode")]
         //[Required(AllowEmptyStrings = false, ErrorMessage = "Email required")]

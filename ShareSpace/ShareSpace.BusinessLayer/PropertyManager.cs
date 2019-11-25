@@ -8,7 +8,7 @@ namespace ShareSpace.BusinessLayer
     public class PropertyManager
     {
         #region Get
-        public static List<Property> GetAllPropertys()
+        public static List<Property> GetAllPropertys(int i)
         {
             SqlPropertyProvider sqlPropertyProvider = new SqlPropertyProvider();
             var allPropertys = sqlPropertyProvider.GetAllPropertys();

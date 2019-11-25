@@ -11,9 +11,9 @@ namespace ShareSpace.Models
     public class Vendor
     {
         [Key]
-        [Display(Name = "ID")]
+        [Display(Name = "VendorId")]
         [Required(ErrorMessage = "{0} is Required")]
-        public Int64 ID { get; set; }
+        public Int64 VendorId { get; set; }
 
         [Display(Name = "FirstName")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "First name required")]

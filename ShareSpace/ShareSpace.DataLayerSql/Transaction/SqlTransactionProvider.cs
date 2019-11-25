@@ -3,31 +3,31 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using ShareSpace.DataLayer;
-using ShareSpace.DataLayer.Vendor;
+using ShareSpace.DataLayer.Transaction;
 using ShareSpace.DataLayerSql.Common;
 using ShareSpace.Utility;
 
-namespace ShareSpace.DataLayerSql.Vendor
+namespace ShareSpace.DataLayerSql.Transaction
 {
-    public class SqlVendorProvider : IVendorProvider
+    public class SqlTransactionProvider : ITransactionProvider
     {
-        #region Vendor
-        public long InsertVendor(Models.Vendor vendor)
+        #region Transaction
+        public long InsertTransaction(Models.Transaction transaction)
         {
             long id = 0;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.INSERTVENDORS, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.INSERTTRANSACTIONS, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                SqlParameter returnValue = new SqlParameter("@" + "VendorId", SqlDbType.Int);
+                SqlParameter returnValue = new SqlParameter("@" + "TransactionId", SqlDbType.Int);
                 returnValue.Direction = ParameterDirection.Output;
                 command.Parameters.Add(returnValue);
-                foreach (var vendors in vendor.GetType().GetProperties())
+                foreach (var transactions in transaction.GetType().GetProperties())
                 {
-                    if (vendors.Name != "VendorId")
+                    if (transactions.Name != "TransactionId")
                     {
-                        string name = vendors.Name;
-                        var value = vendors.GetValue(vendor, null);
+                        string name = transactions.Name;
+                        var value = transactions.GetValue(transaction, null);
 
                         command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
                     }
@@ -36,7 +36,7 @@ namespace ShareSpace.DataLayerSql.Vendor
                 {
                     connection.Open();
                     command.ExecuteNonQuery();
-                    id = (int)command.Parameters["@VendorId"].Value;
+                    id = (int)command.Parameters["@TransactionId"].Value;
                 }
                 catch (Exception ex)
                 {
@@ -50,19 +50,19 @@ namespace ShareSpace.DataLayerSql.Vendor
             return id;
         }
 
-        public bool UpdateVendor(Models.Vendor vendor)
+        public bool UpdateTransaction(Models.Transaction transaction)
         {
             bool isUpdate = true;
 
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.UPDATEVENDORS, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.UPDATETRANSACTIONS, connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                foreach (var vendors in vendor.GetType().GetProperties())
+                foreach (var transactions in transaction.GetType().GetProperties())
                 {
-                    string name = vendors.Name;
-                    var value = vendors.GetValue(vendor, null);
+                    string name = transactions.Name;
+                    var value = transactions.GetValue(transaction, null);
                     command.Parameters.Add(new SqlParameter("@" + name, value));
                 }
 
@@ -84,20 +84,20 @@ namespace ShareSpace.DataLayerSql.Vendor
             return isUpdate;
         }
 
-        public List<Models.Vendor> GetAllVendors()
+        public List<Models.Transaction> GetAllTransactions()
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.GETALLVENDORS, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.GETALLTRANSACTIONS, connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 try
                 {
                     connection.Open();
                     SqlDataReader dataReader = command.ExecuteReader();
-                    List<Models.Vendor> vendorList = new List<Models.Vendor>();
-                    vendorList = UtilityManager.DataReaderMapToList<Models.Vendor>(dataReader);
-                    return vendorList;
+                    List<Models.Transaction> transactionList = new List<Models.Transaction>();
+                    transactionList = UtilityManager.DataReaderMapToList<Models.Transaction>(dataReader);
+                    return transactionList;
                 }
                 catch (Exception e)
                 {
@@ -111,21 +111,21 @@ namespace ShareSpace.DataLayerSql.Vendor
             }
         }
 
-        public Models.Vendor GetVendorById(long vendorId)
+        public Models.Transaction GetTransactionById(long transactionId)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.GETVENDORSBYID, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.GETTRANSACTIONSBYID, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@VendorId", vendorId));
+                command.Parameters.Add(new SqlParameter("@TransactionId", transactionId));
 
                 try
                 {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
-                    Models.Vendor vendor = new Models.Vendor();
-                    vendor = UtilityManager.DataReaderMap<Models.Vendor>(reader);
-                    return vendor;
+                    Models.Transaction transaction = new Models.Transaction();
+                    transaction = UtilityManager.DataReaderMap<Models.Transaction>(reader);
+                    return transaction;
                 }
                 catch (Exception e)
                 {
@@ -138,16 +138,16 @@ namespace ShareSpace.DataLayerSql.Vendor
             }
         }
 
-        
 
-        public bool DeleteVendor(long vendorId)
+
+        public bool DeleteTransaction(long transactionId)
         {
             bool isDelete = true;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.DELETEVENDORS);
+                SqlCommand command = new SqlCommand(StoreProcedure.DELETETRANSACTIONS);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@VendorID", vendorId));
+                command.Parameters.Add(new SqlParameter("@TransactionID", transactionId));
 
                 try
                 {
@@ -169,6 +169,6 @@ namespace ShareSpace.DataLayerSql.Vendor
 
         #endregion
 
-        
+
     }
 }

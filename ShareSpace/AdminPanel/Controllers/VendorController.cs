@@ -29,7 +29,13 @@ namespace AdminPanel.Controllers
             //}
             return View(vendor);
         }
-        
 
+        public ActionResult AdminVendors()
+        {
+            List<Vendor> allVendors = VendorManager.GetAllVendors(1);
+            return View("~/Views/Vendor/AdminVendors.cshtml", allVendors);
+        }
+
+       
     }
 }

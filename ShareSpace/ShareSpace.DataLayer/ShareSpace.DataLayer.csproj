@@ -45,7 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client\IClientProvider.cs" />
+    <Compile Include="IBookingProvider.cs" />
     <Compile Include="IPropertyProvider.cs" />
+    <Compile Include="ITransactionProvider.cs" />
     <Compile Include="IVendorProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

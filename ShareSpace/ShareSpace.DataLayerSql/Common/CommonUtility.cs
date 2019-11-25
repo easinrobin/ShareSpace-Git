@@ -39,15 +39,40 @@ namespace ShareSpace.DataLayerSql.Common
         public static string DELETEVENDORS = "sp_vendor_deletevendors";
 
 
-        public static string GETALLPROPERTYS = "sp_property_getallpropertys";
+        public static string GETALLPROPERTYS = "sp_property_getallproperty";
 
         public static string GETPROPERTYSBYID = "sp_property_getpropertybyid";
 
-        public static string INSERTPROPERTYS = "sp_property_insertpropertys";
+        public static string INSERTPROPERTYS = "sp_property_insertproperty";
 
-        public static string UPDATEPROPERTYS = "sp_property_updatepropertys";
+        public static string UPDATEPROPERTYS = "sp_property_updateproperty";
 
-        public static string DELETEPROPERTYS = "sp_property_deletepropertys";
+        public static string DELETEPROPERTYS = "sp_property_deleteproperty";
+
+
+        public static string GETALLBOOKINGS = "sp_booking_getallbooking";
+
+        public static string GETBOOKINGSBYID = "sp_booking_getbookingbyid";
+
+        public static string INSERTBOOKINGS = "sp_booking_insertbooking";
+
+        public static string UPDATEBOOKINGS = "sp_booking_updatebooking";
+
+        public static string DELETEBOOKINGS = "sp_booking_deletebooking";
+
+
+        public static string GETALLTRANSACTIONS = "sp_transaction_getalltransaction";
+
+        public static string GETTRANSACTIONSBYID = "sp_transaction_gettransactionbyid";
+
+        public static string INSERTTRANSACTIONS = "sp_transaction_inserttransaction";
+
+        public static string UPDATETRANSACTIONS = "sp_transaction_updatetransaction";
+
+        public static string DELETETRANSACTIONS = "sp_transaction_deletetransaction";
+
+
+
 
 
     }

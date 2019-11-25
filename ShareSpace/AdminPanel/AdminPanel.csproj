@@ -128,8 +128,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\propertyController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -357,6 +359,12 @@
     <Content Include="Views\Vendor\InsertVendor.cshtml" />
     <Content Include="Views\Home\InsertClient.cshtml" />
     <Content Include="Views\property\InsertProperty.cshtml" />
+    <Content Include="Views\property\AdminPropertys.cshtml" />
+    <Content Include="Views\Vendor\AdminVendors.cshtml" />
+    <Content Include="Views\Booking\AdminBookings.cshtml" />
+    <Content Include="Views\Booking\InsertBooking.cshtml" />
+    <Content Include="Views\Transaction\InsertTransaction.cshtml" />
+    <Content Include="Views\Transaction\AdminTransactions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -384,6 +392,10 @@
     <ProjectReference Include="..\ShareSpace.Models\ShareSpace.Models.csproj">
       <Project>{b5657d5d-a922-45f8-8758-35557589bbaf}</Project>
       <Name>ShareSpace.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShareSpace.Utility\ShareSpace.Utility.csproj">
+      <Project>{f426f871-eed8-4c69-b840-56c36986142b}</Project>
+      <Name>ShareSpace.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ShareSpace.Models
 {
-    class Transaction
+    public class Transaction
     {
         [Key]
         [Display(Name = "TransactionId")]

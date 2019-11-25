@@ -18,7 +18,7 @@ namespace AdminPanel.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult InsertProperty([Bind(Include = "PropertyId,MaximumPerson,Rent/Hour,Location,Services,Gallery")] Property property)
+        public ActionResult InsertProperty([Bind(Include = "PropertyId,PropertyName,MaximumPerson,Price,PropertyAddressId,PropertyServiceId,VendorId")] Property property)
         {
             PropertyManager manager = new PropertyManager();
             //if (ModelState.IsValid)
@@ -28,6 +28,13 @@ namespace AdminPanel.Controllers
             //return RedirectToAction("InsertVendor");
             //}
             return View(property);
+        }
+
+
+        public ActionResult AdminPropertys()
+        {
+            List<Property> allPropertys = PropertyManager.GetAllPropertys(1);
+            return View("~/Views/Property/AdminPropertys.cshtml", allPropertys);
         }
     }
 }

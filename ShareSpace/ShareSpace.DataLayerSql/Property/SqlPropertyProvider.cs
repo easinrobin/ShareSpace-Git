@@ -19,12 +19,12 @@ namespace ShareSpace.DataLayerSql.Property
             {
                 SqlCommand command = new SqlCommand(StoreProcedure.INSERTPROPERTYS, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                SqlParameter returnValue = new SqlParameter("@" + "ID", SqlDbType.Int);
+                SqlParameter returnValue = new SqlParameter("@" + "PropertyId", SqlDbType.Int);
                 returnValue.Direction = ParameterDirection.Output;
                 command.Parameters.Add(returnValue);
                 foreach (var propertys in property.GetType().GetProperties())
                 {
-                    if (propertys.Name != "ID")
+                    if (propertys.Name != "PropertyId")
                     {
                         string name = propertys.Name;
                         var value = propertys.GetValue(property, null);
@@ -36,7 +36,7 @@ namespace ShareSpace.DataLayerSql.Property
                 {
                     connection.Open();
                     command.ExecuteNonQuery();
-                    id = (int)command.Parameters["@ID"].Value;
+                    id = (int)command.Parameters["@PropertyId"].Value;
                 }
                 catch (Exception ex)
                 {

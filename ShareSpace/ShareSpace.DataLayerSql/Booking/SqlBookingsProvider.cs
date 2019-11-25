@@ -3,31 +3,31 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using ShareSpace.DataLayer;
-using ShareSpace.DataLayer.Vendor;
+using ShareSpace.DataLayer.Booking;
 using ShareSpace.DataLayerSql.Common;
 using ShareSpace.Utility;
 
-namespace ShareSpace.DataLayerSql.Vendor
+namespace ShareSpace.DataLayerSql.Booking
 {
-    public class SqlVendorProvider : IVendorProvider
+    public class SqlBookingProvider : IBookingProvider
     {
-        #region Vendor
-        public long InsertVendor(Models.Vendor vendor)
+        #region Booking
+        public long InsertBooking(Models.Booking booking)
         {
             long id = 0;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.INSERTVENDORS, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.INSERTBOOKINGS, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                SqlParameter returnValue = new SqlParameter("@" + "VendorId", SqlDbType.Int);
+                SqlParameter returnValue = new SqlParameter("@" + "BookingId", SqlDbType.Int);
                 returnValue.Direction = ParameterDirection.Output;
                 command.Parameters.Add(returnValue);
-                foreach (var vendors in vendor.GetType().GetProperties())
+                foreach (var bookings in booking.GetType().GetProperties())
                 {
-                    if (vendors.Name != "VendorId")
+                    if (bookings.Name != "BookingId")
                     {
-                        string name = vendors.Name;
-                        var value = vendors.GetValue(vendor, null);
+                        string name = bookings.Name;
+                        var value = bookings.GetValue(booking, null);
 
                         command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
                     }
@@ -36,7 +36,7 @@ namespace ShareSpace.DataLayerSql.Vendor
                 {
                     connection.Open();
                     command.ExecuteNonQuery();
-                    id = (int)command.Parameters["@VendorId"].Value;
+                    id = (int)command.Parameters["@BookingId"].Value;
                 }
                 catch (Exception ex)
                 {
@@ -50,19 +50,19 @@ namespace ShareSpace.DataLayerSql.Vendor
             return id;
         }
 
-        public bool UpdateVendor(Models.Vendor vendor)
+        public bool UpdateBooking(Models.Booking booking)
         {
             bool isUpdate = true;
 
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.UPDATEVENDORS, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.UPDATEBOOKINGS, connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                foreach (var vendors in vendor.GetType().GetProperties())
+                foreach (var bookings in booking.GetType().GetProperties())
                 {
-                    string name = vendors.Name;
-                    var value = vendors.GetValue(vendor, null);
+                    string name = bookings.Name;
+                    var value = bookings.GetValue(booking, null);
                     command.Parameters.Add(new SqlParameter("@" + name, value));
                 }
 
@@ -84,20 +84,20 @@ namespace ShareSpace.DataLayerSql.Vendor
             return isUpdate;
         }
 
-        public List<Models.Vendor> GetAllVendors()
+        public List<Models.Booking> GetAllBookings()
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.GETALLVENDORS, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.GETALLBOOKINGS, connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 try
                 {
                     connection.Open();
                     SqlDataReader dataReader = command.ExecuteReader();
-                    List<Models.Vendor> vendorList = new List<Models.Vendor>();
-                    vendorList = UtilityManager.DataReaderMapToList<Models.Vendor>(dataReader);
-                    return vendorList;
+                    List<Models.Booking> bookingList = new List<Models.Booking>();
+                    bookingList = UtilityManager.DataReaderMapToList<Models.Booking>(dataReader);
+                    return bookingList;
                 }
                 catch (Exception e)
                 {
@@ -111,21 +111,21 @@ namespace ShareSpace.DataLayerSql.Vendor
             }
         }
 
-        public Models.Vendor GetVendorById(long vendorId)
+        public Models.Booking GetBookingById(long bookingId)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.GETVENDORSBYID, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.GETBOOKINGSBYID, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@VendorId", vendorId));
+                command.Parameters.Add(new SqlParameter("@BookingId", bookingId));
 
                 try
                 {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
-                    Models.Vendor vendor = new Models.Vendor();
-                    vendor = UtilityManager.DataReaderMap<Models.Vendor>(reader);
-                    return vendor;
+                    Models.Booking booking = new Models.Booking();
+                    booking = UtilityManager.DataReaderMap<Models.Booking>(reader);
+                    return booking;
                 }
                 catch (Exception e)
                 {
@@ -138,16 +138,16 @@ namespace ShareSpace.DataLayerSql.Vendor
             }
         }
 
-        
 
-        public bool DeleteVendor(long vendorId)
+
+        public bool DeleteBooking(long bookingId)
         {
             bool isDelete = true;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.DELETEVENDORS);
+                SqlCommand command = new SqlCommand(StoreProcedure.DELETEBOOKINGS);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@VendorID", vendorId));
+                command.Parameters.Add(new SqlParameter("@BookingID", bookingId));
 
                 try
                 {
@@ -169,6 +169,8 @@ namespace ShareSpace.DataLayerSql.Vendor
 
         #endregion
 
-        
+
     }
+
+    
 }
