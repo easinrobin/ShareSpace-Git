@@ -200,6 +200,8 @@
     <Content Include="img\properties\office-room5.jpg" />
     <Content Include="img\properties\office-room6.jpg" />
     <Content Include="img\properties\office-room7.jpg" />
+    <Content Include="img\properties\office-room8.jpg" />
+    <Content Include="img\properties\office-room9.jpg" />
     <Content Include="img\Registration\signin-image.jpg" />
     <Content Include="img\Registration\signup-image.jpg" />
     <Content Include="Scripts\app.js" />
