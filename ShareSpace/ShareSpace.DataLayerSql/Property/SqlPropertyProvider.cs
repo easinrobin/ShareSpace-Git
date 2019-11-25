@@ -37,5 +37,32 @@ namespace ShareSpace.DataLayerSql.Property
                 }
             }
         }
+
+        public List<Models.Property.Property> GetShareType(string type)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GETSHARETYPE, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@ShareType", type));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    List<Models.Property.Property> shareTypeList = new List<Models.Property.Property>();
+                    shareTypeList = UtilityManager.DataReaderMapToList<Models.Property.Property>(reader);
+                    return shareTypeList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }

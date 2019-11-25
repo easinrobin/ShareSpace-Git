@@ -380,6 +380,7 @@
     <Content Include="Views\Dashboard\EditProfile.cshtml" />
     <Content Include="Views\Dashboard\History.cshtml" />
     <Content Include="Views\Auth\SignUp.cshtml" />
+    <Content Include="Views\Home\Office.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

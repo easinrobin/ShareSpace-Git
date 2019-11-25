@@ -1,5 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Net;
+using System.Web.Mvc;
 using ShareSpace.BusinessLayer;
+using ShareSpace.Models.Property;
 
 namespace ClientPanel.Controllers
 {
@@ -25,6 +28,17 @@ namespace ClientPanel.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public ActionResult Office(string type)
+        {
+            if (type == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            List<Property> propertyList = new List<Property>();
+            propertyList = PropertyManager.GetShareType(type);
+            return View("~/Views/Home/Office.cshtml",propertyList);
         }
     }
 }

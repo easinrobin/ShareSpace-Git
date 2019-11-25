@@ -12,15 +12,15 @@ namespace ShareSpace.Models.Property
 
         [Display(Name = "PropertyName")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "PropertyName name required")]
-        public char PropertyName { get; set; }
+        public string PropertyName { get; set; }
 
         [Display(Name = "ShareType")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "ShareType required")]
-        public char ShareType { get; set; }
+        public string ShareType { get; set; }
 
         [Display(Name = "PropertyType")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "PropertyType required")]
-        public char PropertyType { get; set; }
+        public string PropertyType { get; set; }
 
         [Display(Name = "MaximumPerson")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "MaximumPerson required")]
@@ -31,11 +31,11 @@ namespace ShareSpace.Models.Property
         public string FeatureImage { get; set; }
 
         [Display(Name = "Description")]
-        public char Description { get; set; }
+        public string Description { get; set; }
 
         [Display(Name = "ShortDescription")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "ShortDescription required")]
-        public char ShortDescription { get; set; }
+        public string ShortDescription { get; set; }
 
         [Display(Name = "Price")]
         public int Price { get; set; }
@@ -50,13 +50,13 @@ namespace ShareSpace.Models.Property
         public float Longitude { get; set; }
 
         [Display(Name = "IsFeatured")]
-        public string IsFeatured { get; set; }
+        public bool IsFeatured { get; set; }
 
         [Display(Name = "IsHidden")]
-        public string IsHidden { get; set; }
+        public bool IsHidden { get; set; }
 
         [Display(Name = "IsSearchable")]
-        public string IsSearchable { get; set; }
+        public bool IsSearchable { get; set; }
 
         [Display(Name = "PropertyAddressId")]
         public int PropertyAddressId { get; set; }
@@ -68,10 +68,10 @@ namespace ShareSpace.Models.Property
         public int VendorId { get; set; }
 
         [Display(Name = "CreatedBy")]
-        public char CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
 
         [Display(Name = "UpdateBy")]
-        public char UpdateBy { get; set; }
+        public string UpdateBy { get; set; }
 
         [Display(Name = "CreatedDate")]
         public DateTime? CreatedDate { get; set; }

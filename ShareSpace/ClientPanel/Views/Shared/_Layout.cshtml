@@ -96,10 +96,10 @@
 								Offices<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li>@Html.ActionLink("Whole Office", "SearchResults", "Home")</li>
-								<li>@Html.ActionLink("Shared Office", "SearchResults", "Home")</li>
-								<li>@Html.ActionLink("Meeting Rooms", "SearchResults", "Home")</li>
-								<li>@Html.ActionLink("Auditoriums", "SearchResults", "Home")</li>
+								<li>@Html.ActionLink("Whole Office", "Office", "Home", new { type = "Whole Office" }, null)</li>
+								<li>@Html.ActionLink("Shared Office", "Office", "Home", new { type = "Shared Office" }, null)</li>
+								<li>@Html.ActionLink("Meeting Rooms", "Office", "Home", new { type = "Meeting Space" }, null)</li>
+								<li>@Html.ActionLink("Auditoriums", "Office", "Home", new { type = "Auditorium" }, null)</li>
 							</ul>
 						</li>
 						<li class="dropdown">
