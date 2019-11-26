@@ -177,6 +177,7 @@
 
 				@foreach (var property in Model)
 				{
+					var propertyLink = "/Home/OfficeDetails/" + property.PropertyId;
 					<div class="hotel-box-list wow fadeInUp delay-02s">
 						<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 col-pad">
 							<img src="@property.FeatureImage" alt="img-15" class="img-responsive">
@@ -185,7 +186,7 @@
 							<div class="heading">
 								<div class="title pull-left">
 									<h3>
-										@Html.ActionLink(@property.PropertyName, "OfficeDetails", "Home")
+										@Html.ActionLink(@property.PropertyName, @propertyLink, "Home")
 									</h3>
 									<h4>@property.ShareType</h4>
 									<div class="rating" data-rateyo-star-width="20px" data-rateyo-rating="@property.Rating">
@@ -248,7 +249,7 @@
 									</ul>
 								</div>
 							</div>
-							<a href="../Home/OfficeDetails" class="btn button-sm button-theme">View Details</a>
+							<a href="@propertyLink" class="btn button-sm button-theme">View Details</a>
 						</div>
 					</div>
 				}
