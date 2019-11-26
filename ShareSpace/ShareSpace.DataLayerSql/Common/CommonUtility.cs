@@ -31,6 +31,8 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string GETALLPROPERTYFROMVIEW = "sp_view_getallproperties";
 
+        public static string GETPROPERTYDETAILSBYID = "sp_view_getpropertydetailsbyid";
+
         
 
         //Services

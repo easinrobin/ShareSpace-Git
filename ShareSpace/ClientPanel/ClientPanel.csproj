@@ -186,6 +186,10 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="img\avatar\2.jpg" />
     <Content Include="img\avatar\avatar-5.png" />
+    <Content Include="img\avatar\avatar1.jpg" />
+    <Content Include="img\avatar\avatar2.jpg" />
+    <Content Include="img\avatar\avatar3.png" />
+    <Content Include="img\avatar\avatar4.png" />
     <Content Include="img\banner\office1.jpg" />
     <Content Include="img\banner\office2.jpg" />
     <Content Include="img\banner\office3.jpg" />

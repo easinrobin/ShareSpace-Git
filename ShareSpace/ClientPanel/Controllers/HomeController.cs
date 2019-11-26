@@ -28,12 +28,20 @@ namespace ClientPanel.Controllers
             return View();
         }
 
-        public ActionResult OfficeDetails()
+        public ActionResult OfficeDetails(int id)
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            if (ModelState.IsValid)
+            {
+                PropertyDetails propertyDetails = new PropertyDetails();
+                propertyDetails = PropertyManager.GetPropertyDetailsById(id);
+                return View("~/Views/Home/OfficeDetails.cshtml", propertyDetails);
+            }
+            else
+            {
+                return View("~/Views/Home/OfficeDetails.cshtml");
+            }
         }
+
         public ActionResult Office(string type)
         {
             if (type == null)

@@ -92,5 +92,32 @@ namespace ShareSpace.DataLayerSql.Property
                 }
             }
         }
+
+        public PropertyDetails GetPropertyDetailsById(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GETPROPERTYDETAILSBYID, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@PropertyId", id));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    PropertyDetails propertyDetails = new PropertyDetails();
+                    propertyDetails = UtilityManager.DataReaderMap<PropertyDetails>(reader);
+                    return propertyDetails;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }
