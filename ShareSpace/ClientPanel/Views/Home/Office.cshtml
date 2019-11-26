@@ -1,6 +1,7 @@
 ﻿@model List<ShareSpace.Models.Property.PropertySearchResult>
 @{
-	ViewBag.Title = "Search Results";
+	ViewBag.Title = "Office";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="banner">
@@ -165,7 +166,6 @@
 	<!-- Search area box 2 end -->
 </div>
 
-<!-- Rooms section start -->
 <div class="rooms-section content-area">
 	<div class="container">
 		<!-- Main title -->
@@ -174,17 +174,18 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
 				@foreach (var property in Model)
 				{
 					<div class="hotel-box-list wow fadeInUp delay-02s">
 						<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 col-pad">
-							<img src=@property.FeatureImage alt="img-15" class="img-responsive">
+							<img src="@property.FeatureImage" alt="img-15" class="img-responsive">
 						</div>
 						<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 detail">
 							<div class="heading">
 								<div class="title pull-left">
 									<h3>
-										<a>@Html.ActionLink(@property.PropertyName, "OfficeDetails", "Home")</a>
+										@Html.ActionLink(@property.PropertyName, "OfficeDetails", "Home")
 									</h3>
 									<h4>@property.ShareType</h4>
 									<div class="rating" data-rateyo-star-width="20px" data-rateyo-rating="@property.Rating">

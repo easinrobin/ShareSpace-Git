@@ -49,6 +49,9 @@ namespace ClientPanel
             bundles.Add(new ScriptBundle("~/bundles/customScrollbar").Include(
                         "~/Scripts/jquery.mCustomScrollbar.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/rateYo").Include(
+                        "~/Scripts/jquery.rateyo.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/filterizr").Include(
                         "~/Scripts/jquery.filterizr.js"));
 
@@ -83,6 +86,9 @@ namespace ClientPanel
 
             bundles.Add(new StyleBundle("~/Content/bootstrapSelect").Include(
                         "~/Content/bootstrap-select.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/rateYo").Include(
+                        "~/Content/jquery.rateyo.min.css"));
 
             bundles.Add(new StyleBundle("~/fonts/fontAwesome").Include(
                         "~/fonts/font-awesome/css/font-awesome.min.css"));

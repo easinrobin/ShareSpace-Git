@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 using System.Web.Mvc;
 using ShareSpace.BusinessLayer;
 using ShareSpace.Models.Property;
@@ -9,13 +10,20 @@ namespace ClientPanel.Controllers
     {
         public ActionResult Index()
         {
-            List<FeatureProperty> featureProperties = PropertyManager.GetFeaturedProperties(3);
-            return View("~/Views/Home/Index.cshtml",featureProperties);
+            ViewBag.featuredProperties = PropertyManager.GetFeaturedProperties(6);
+            ViewBag.featuredService = ServiceManager.GetFeaturedServices(6);
+
+            return View("~/Views/Home/Index.cshtml");
         }
 
         public ActionResult SearchResults()
         {
-            ViewBag.Message = "Your application description page.";
+            if (ModelState.IsValid)
+            {
+                List<PropertySearchResult> allPropertyList = new List<PropertySearchResult>();
+                allPropertyList = PropertyManager.GetAllProperties();
+                return View("~/Views/Home/SearchResults.cshtml", allPropertyList);
+            }
 
             return View();
         }
@@ -26,26 +34,16 @@ namespace ClientPanel.Controllers
 
             return View();
         }
+        public ActionResult Office(string type)
+        {
+            if (type == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-
-        //[HttpPost]
-        //public ActionResult Index([Bind(Include = "ClientId,FirstName,LastName,Email,Country,MobileNo,BirthDate,Password,CreatedBy,UpdateBy,CreatedDate,UpdateDate")] Client client)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var id = ClientManager.InsertClient(client);
-        //        return RedirectToAction("Index");
-
-        //    }
-        //    return View(client);
-        //}
-
-        //[HttpPost]
-        //public ActionResult Contact(long ClientId)
-        //{
-        //    Client client = new Client();
-        //    ClientId = client.ClientId;
-        //    return View();
-        //}
+            List<PropertySearchResult> propertyList = new List<PropertySearchResult>();
+            propertyList = PropertyManager.GetShareType(type);
+            return View("~/Views/Home/Office.cshtml",propertyList);
+        }
     }
 }

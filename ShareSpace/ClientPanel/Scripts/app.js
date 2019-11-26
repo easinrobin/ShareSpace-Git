@@ -73,7 +73,7 @@ $(function () {
         zIndex: 2147483647
     });
 
-    //Datepicket
+    //Datepicker
     //$(".datepicker").datepicker({
     //    ignoreReadonly: true,
     //    allowInputToggle: true,
@@ -148,6 +148,16 @@ $(function () {
 		});
 	});
 
+	//RateYo
+	$(function () {
+
+		$(".rating").rateYo({
+			rating: 0,
+			readOnly: true,
+			halfStar: true
+		});
+
+	});
 
     // Counter
     function isCounterElementVisible($elementToBeChecked) {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 
 namespace ShareSpace.DataLayerSql.Common
 {
@@ -14,6 +9,7 @@ namespace ShareSpace.DataLayerSql.Common
 
     public static class StoreProcedure
     {
+        //Clients
         public static string GETALLCLIENT = "sp_client_getallclients";
 
         public static string GETCLIENTBYID = "sp_client_getclientbyid";
@@ -26,6 +22,18 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string GETCLIENTBYEMAIL = "sp_client_getclientbyemail";
 
+        //Properties
         public static string GETFEATUREDPROPERTIES = "sp_view_featureproperties";
+
+        public static string GETSHARETYPE = "sp_property_getsharetype";
+
+        public static string GETSHARETYPEFROMVIEW = "sp_view_getsharetype";
+
+        public static string GETALLPROPERTYFROMVIEW = "sp_view_getallproperties";
+
+        
+
+        //Services
+        public static string GETFEATUREDSERVICE = "sp_service_getfeaturedservices";
     }
 }

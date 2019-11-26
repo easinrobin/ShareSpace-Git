@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using ShareSpace.DataLayerSql.Property;
 using ShareSpace.Models.Property;
 
@@ -14,6 +10,18 @@ namespace ShareSpace.BusinessLayer
         {
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
             return propertyProvider.GetFeatureProperties(maxRow);
+        }
+
+        public static List<PropertySearchResult> GetShareType(string type)
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetShareType(type);
+        }
+
+        public static List<PropertySearchResult> GetAllProperties()
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetAllProperties();
         }
     }
 }

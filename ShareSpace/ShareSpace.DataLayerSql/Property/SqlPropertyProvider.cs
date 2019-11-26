@@ -18,8 +18,6 @@ namespace ShareSpace.DataLayerSql.Property
                 SqlCommand command = new SqlCommand(StoreProcedure.GETFEATUREDPROPERTIES, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add(new SqlParameter("@NumberOfProperty", maxRow));
-                //returnValue.Direction = ParameterDirection.Output;
-                //command.Parameters.Add(returnValue);
 
                 try
                 {
@@ -33,6 +31,61 @@ namespace ShareSpace.DataLayerSql.Property
                 {
                     throw new Exception("Exception retrieving reviews " + e.Message);
                 }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public List<PropertySearchResult> GetShareType(string type)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GETSHARETYPEFROMVIEW, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@ShareType", type));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    List<PropertySearchResult> shareTypeList = new List<PropertySearchResult>();
+                    shareTypeList = UtilityManager.DataReaderMapToList<PropertySearchResult>(reader);
+                    return shareTypeList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public List<PropertySearchResult> GetAllProperties()
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GETALLPROPERTYFROMVIEW, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    List<PropertySearchResult> propertyList = new List<PropertySearchResult>();
+                    propertyList = UtilityManager.DataReaderMapToList<PropertySearchResult>(reader);
+                    
+                    return propertyList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+
                 finally
                 {
                     connection.Close();
