@@ -12,10 +12,16 @@ namespace ShareSpace.BusinessLayer
             return propertyProvider.GetFeatureProperties(maxRow);
         }
 
-        public static List<Property> GetShareType(string type)
+        public static List<PropertySearchResult> GetShareType(string type)
         {
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
             return propertyProvider.GetShareType(type);
+        }
+
+        public static List<PropertySearchResult> GetAllProperties()
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetAllProperties();
         }
     }
 }

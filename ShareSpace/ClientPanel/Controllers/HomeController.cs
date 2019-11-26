@@ -18,7 +18,12 @@ namespace ClientPanel.Controllers
 
         public ActionResult SearchResults()
         {
-            ViewBag.Message = "Your application description page.";
+            if (ModelState.IsValid)
+            {
+                List<PropertySearchResult> allPropertyList = new List<PropertySearchResult>();
+                allPropertyList = PropertyManager.GetAllProperties();
+                return View("~/Views/Home/SearchResults.cshtml", allPropertyList);
+            }
 
             return View();
         }
@@ -36,7 +41,7 @@ namespace ClientPanel.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            List<Property> propertyList = new List<Property>();
+            List<PropertySearchResult> propertyList = new List<PropertySearchResult>();
             propertyList = PropertyManager.GetShareType(type);
             return View("~/Views/Home/Office.cshtml",propertyList);
         }

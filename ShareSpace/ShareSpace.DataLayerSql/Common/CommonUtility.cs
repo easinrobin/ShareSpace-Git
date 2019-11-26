@@ -27,6 +27,12 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string GETSHARETYPE = "sp_property_getsharetype";
 
+        public static string GETSHARETYPEFROMVIEW = "sp_view_getsharetype";
+
+        public static string GETALLPROPERTYFROMVIEW = "sp_view_getallproperties";
+
+        
+
         //Services
         public static string GETFEATUREDSERVICE = "sp_service_getfeaturedservices";
     }

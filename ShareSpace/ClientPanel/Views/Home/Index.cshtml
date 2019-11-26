@@ -57,7 +57,7 @@
 		<!-- Search area box start -->
 		<div class="search-area-box-3 hidden-xs hidden-sm">
 			<div class="search-contents">
-				<form method="GET" action="../Home/OfficeDetails">
+				<form method="GET" action="../Home/SearchResults">
 					<div class="col-lg-12 col-pad col-pad-2">
 						<div class="search-your-rooms">
 							<h3 class="hidden-xs hidden-sm">Search</h3>
@@ -223,7 +223,7 @@
 		<div class="row">
 			@foreach (var property in ViewBag.featuredProperties)
 			{
-				var propertyLink = "Home/OfficeDetails/" + property.PropertyId;
+				var propertyLink = "/Home/OfficeDetails/" + property.PropertyId;
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 wow fadeInUp delay-04s">
 					<!-- Hotel box start -->
 					<div class="hotel-box">

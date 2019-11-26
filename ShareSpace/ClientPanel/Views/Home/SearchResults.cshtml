@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<ShareSpace.Models.Property.PropertySearchResult>
+@{
 	ViewBag.Title = "Search Results";
 }
 
@@ -10,7 +11,7 @@
 	<!-- Search area box start -->
 	<div class="search-area-box-3 hidden-xs hidden-sm">
 		<div class="search-contents">
-			<form method="GET" action="../Home/About">
+			<form method="GET" action="../Home/SearchResults">
 				<div class="col-lg-12 col-pad col-pad-2">
 					<div class="search-your-rooms">
 						<h3 class="hidden-xs hidden-sm">Search</h3>
@@ -173,219 +174,83 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-				@*@foreach (var property in Model)
+				@foreach (var property in Model)
 				{
-					if (property.Sharetype == "Whole Office")
-					{
-
-					}
-				}*@
-				<div class="hotel-box-list wow fadeInUp delay-02s">
-					<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 col-pad">
-						<img src="/img/properties/office-room1.jpg" alt="img-15" class="img-responsive">
-					</div>
-					<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 detail">
-						<div class="heading">
-							<div class="title pull-left">
-								<h3>
-									<a>@Html.ActionLink("Whole Office", "OfficeDetails", "Home")</a>
-								</h3>
-							</div>
-							<div class="price pull-right">
-								৳1000/Hour
-							</div>
+					<div class="hotel-box-list wow fadeInUp delay-02s">
+						<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 col-pad">
+							<img src=@property.FeatureImage alt="img-15" class="img-responsive">
 						</div>
+						<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 detail">
+							<div class="heading">
+								<div class="title pull-left">
+									<h3>
+										<a>@Html.ActionLink(@property.PropertyName, "OfficeDetails", "Home")</a>
+									</h3>
+									<h4>@property.ShareType</h4>
+									<div class="rating" data-rateyo-star-width="20px" data-rateyo-rating="@property.Rating">
 
-						<div class="clearfix"></div>
+									</div>
+								</div>
+								<div class="price pull-right">
+									৳@property.RetailPrice<sub>/Hour</sub>
+								</div>
+							</div>
 
-						<p>
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-							industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-						</p>
-						<div class="row">
-							<div class="col-sm-4">
-								<ul class="fecilities">
-									<li>
-										<i class="fa fa-wifi"></i>
-										<span>Free Wifi</span>
-									</li>
-									<li>
-										<i class="fa fa-print"></i>
-										<span>Printer Access</span>
-									</li>
-									<li>
-										<i class="fa fa-car"></i>
-										<span>Car Hire</span>
-									</li>
-								</ul>
+							<div class="clearfix"></div>
+
+							<p>
+								@property.ShortDescription
+							</p>
+							<div class="row">
+								<div class="col-sm-4">
+									<ul class="fecilities">
+										<li>
+											<i class="fa fa-wifi"></i>
+											<span>Free Wifi</span>
+										</li>
+										<li>
+											<i class="fa fa-print"></i>
+											<span>Printer Access</span>
+										</li>
+										<li>
+											<i class="fa fa-car"></i>
+											<span>Car Hire</span>
+										</li>
+									</ul>
+								</div>
+								<div class="col-sm-4">
+									<ul class="fecilities">
+										<li>
+											<i class="flaticon-weightlifting"></i>
+											<span>Gym</span>
+										</li>
+										<li>
+											<i class="flaticon-parking"></i>
+											<span>Free Parking</span>
+										</li>
+										<li>
+											<i class="fa fa-television"></i>
+											<span>Projector</span>
+										</li>
+									</ul>
+								</div>
+								<div class="col-sm-4">
+									<ul class="fecilities">
+										<li>
+											<i class="flaticon-phone-receiver"></i>
+											Telephone
+										</li>
+										<li>
+											<i class="flaticon-wifi-connection-signal-symbol"></i>
+											Wi-fi
+										</li>
+									</ul>
+								</div>
 							</div>
-							<div class="col-sm-4">
-								<ul class="fecilities">
-									<li>
-										<i class="flaticon-weightlifting"></i>
-										<span>Gym</span>
-									</li>
-									<li>
-										<i class="flaticon-parking"></i>
-										<span>Free Parking</span>
-									</li>
-									<li>
-										<i class="fa fa-television"></i>
-										<span>Projector</span>
-									</li>
-								</ul>
-							</div>
-							<div class="col-sm-4">
-								<ul class="fecilities">
-									<li>
-										<i class="flaticon-phone-receiver"></i>
-										Telephone
-									</li>
-									<li>
-										<i class="flaticon-wifi-connection-signal-symbol"></i>
-										Wi-fi
-									</li>
-								</ul>
-							</div>
+							<a href="../Home/OfficeDetails" class="btn button-sm button-theme">View Details</a>
 						</div>
-						<a href="../Home/Contact" class="btn button-sm button-theme">View Details</a>
 					</div>
-				</div>
-
-
-				<div class="hotel-box-list wow fadeInUp delay-02s">
-					<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 col-pad">
-						<img src="/img/properties/office-room3.jpg" alt="img-16" class="img-responsive">
-					</div>
-					<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 detail">
-						<div class="heading">
-							<div class="title pull-left">
-								<h3>
-									<a>@Html.ActionLink("Meeting Space", "OfficeDetails", "Home")</a>
-								</h3>
-							</div>
-							<div class="price pull-right">
-								৳2000/Hour
-							</div>
-						</div>
-
-						<div class="clearfix"></div>
-
-						<p>
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-							industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-						</p>
-						<div class="row">
-							<div class="col-sm-4">
-								<ul class="fecilities">
-									<li>
-										<i class="fa fa-wifi"></i>
-										<span>Free Wifi</span>
-									</li>
-									<li>
-										<i class="fa fa-print"></i>
-										<span>Printer Access</span>
-									</li>
-									<li>
-										<i class="fa fa-car"></i>
-										<span>Car Hire</span>
-									</li>
-								</ul>
-							</div>
-							<div class="col-sm-4">
-								<ul class="fecilities">
-									<li>
-										<i class="flaticon-weightlifting"></i>
-										<span>Gym</span>
-									</li>
-									<li>
-										<i class="flaticon-parking"></i>
-										<span>Free Parking</span>
-									</li>
-									<li>
-										<i class="fa fa-television"></i>
-										<span>Projector</span>
-									</li>
-								</ul>
-							</div>
-						</div>
-
-						<a href="../Home/Contact" class="btn button-sm button-theme">View Details</a>
-					</div>
-				</div>
-				<div class="hotel-box-list wow fadeInUp delay-02s">
-					<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 col-pad">
-						<img src="/img/properties/office-room4.jpg" alt="img-17" class="img-responsive">
-					</div>
-					<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 detail">
-						<div class="heading">
-							<div class="title pull-left">
-								<h3>
-									<a>@Html.ActionLink("Shared Office", "OfficeDetails", "Home")</a>
-								</h3>
-							</div>
-							<div class="price pull-right">
-								৳800/Hour
-							</div>
-						</div>
-
-						<div class="clearfix"></div>
-
-						<p>
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-							industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-						</p>
-						<div class="row">
-							<div class="col-sm-4">
-								<ul class="fecilities">
-									<li>
-										<i class="fa fa-wifi"></i>
-										<span>Free Wifi</span>
-									</li>
-									<li>
-										<i class="fa fa-print"></i>
-										<span>Printer Access</span>
-									</li>
-									<li>
-										<i class="fa fa-car"></i>
-										<span>Car Hire</span>
-									</li>
-								</ul>
-							</div>
-							<div class="col-sm-4">
-								<ul class="fecilities">
-									<li>
-										<i class="flaticon-weightlifting"></i>
-										<span>Gym</span>
-									</li>
-									<li>
-										<i class="flaticon-parking"></i>
-										<span>Free Parking</span>
-									</li>
-									<li>
-										<i class="fa fa-television"></i>
-										<span>Projector</span>
-									</li>
-								</ul>
-							</div>
-							<div class="col-sm-4">
-								<ul class="fecilities">
-									<li>
-										<i class="flaticon-phone-receiver"></i>
-										Telephone
-									</li>
-									<li>
-										<i class="flaticon-wifi-connection-signal-symbol"></i>
-										Wi-fi
-									</li>
-								</ul>
-							</div>
-						</div>
-
-						<a href="../Home/Contact" class="btn button-sm button-theme">View Details</a>
-					</div>
-				</div>
+				}
 
 			</div>
 		</div>
