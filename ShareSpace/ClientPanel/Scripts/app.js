@@ -157,7 +157,16 @@ $(function () {
 			halfStar: true
 		});
 
-	});
+    });
+
+    $(function () {
+
+        $("#client-rating").rateYo({
+            rating: 0,
+            halfStar: true
+        });
+
+    });
 
     // Counter
     function isCounterElementVisible($elementToBeChecked) {

@@ -57,6 +57,7 @@
     <Compile Include="Property\FeatureProperty.cs" />
     <Compile Include="Property\Property.cs" />
     <Compile Include="Property\PropertyAddress.cs" />
+    <Compile Include="Property\PropertyDetails.cs" />
     <Compile Include="Property\PropertyRating.cs" />
     <Compile Include="Property\PropertyService.cs" />
     <Compile Include="Property\PropertySearchResult.cs" />
