@@ -29,5 +29,11 @@ namespace ShareSpace.BusinessLayer
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
             return propertyProvider.GetPropertyDetailsById(id);
         }
+
+        public static List<ClientPropertyRating> PropertyRatings(int Id)
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetClientPropertyRatings(Id);
+        }
     }
 }

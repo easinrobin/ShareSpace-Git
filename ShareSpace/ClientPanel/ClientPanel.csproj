@@ -195,9 +195,11 @@
     <Content Include="img\banner\office3.jpg" />
     <Content Include="img\dhaka map.jpg" />
     <Content Include="img\loader.gif" />
-    <Content Include="img\logo\footer-logo.png" />
-    <Content Include="img\logo\logo-2.png" />
-    <Content Include="img\logo\logo.png" />
+    <Content Include="img\logo\ShareSpaceLogo-Footer.svg" />
+    <Content Include="img\logo\ShareSpaceLogo-Header.svg" />
+    <Content Include="img\logo\ShareSpaceLogo.png" />
+    <Content Include="img\logo\ss-footer.png" />
+    <Content Include="img\logo\ss-header.png" />
     <Content Include="img\properties\office-room1.jpg" />
     <Content Include="img\properties\office-room3.jpg" />
     <Content Include="img\properties\office-room4.jpg" />

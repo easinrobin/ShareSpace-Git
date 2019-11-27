@@ -105,7 +105,7 @@ namespace ShareSpace.Utility
                 obj = Activator.CreateInstance<T>();
                 foreach (PropertyInfo prop in obj.GetType().GetProperties())
                 {
-                    if (!object.Equals(dr[prop.Name], DBNull.Value))
+                    if (!prop.CustomAttributes.Any(x => x.AttributeType.Name == "NotMappedAttribute") && !object.Equals(dr[prop.Name], DBNull.Value))
                     {
                         prop.SetValue(obj, dr[prop.Name], null);
                     }

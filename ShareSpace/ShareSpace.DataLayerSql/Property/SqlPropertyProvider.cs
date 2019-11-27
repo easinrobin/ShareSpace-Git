@@ -119,5 +119,32 @@ namespace ShareSpace.DataLayerSql.Property
                 }
             }
         }
+
+        public List<ClientPropertyRating> GetClientPropertyRatings(int Id)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GETCLIENTPROPERTYRATING, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@PropertyId", Id));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    List<ClientPropertyRating> ratingList = new List<ClientPropertyRating>();
+                    ratingList = UtilityManager.DataReaderMapToList<ClientPropertyRating>(reader);
+                    return ratingList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }

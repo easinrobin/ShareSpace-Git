@@ -1,8 +1,8 @@
-﻿@using System.Web.UI.WebControls
-@model ShareSpace.Models.Property.PropertyDetails
+﻿@model ShareSpace.Models.Property.PropertyDetails
 @{
     ViewBag.Title = "Office Details";
 }
+
 
 <div class="clear">
 
@@ -21,25 +21,25 @@
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner">
                                 <div class="item">
-                                    <img src="/img/properties/office-room1.jpg" class="thumb-preview" alt="Chevrolet Impala">
+                                    <img src="@Model.ImageUrl" class="thumb-preview" alt="Chevrolet Impala">
                                 </div>
                                 <div class="item">
-                                    <img src="/img/properties/office-room3.jpg" class="thumb-preview" alt="Chevrolet Impala">
+                                    <img src="@Model.Image1" class="thumb-preview" alt="Chevrolet Impala">
                                 </div>
                                 <div class="item">
-                                    <img src="/img/properties/office-room4.jpg" class="thumb-preview" alt="Chevrolet Impala">
+                                    <img src="@Model.Image2" class="thumb-preview" alt="Chevrolet Impala">
                                 </div>
                                 <div class="item">
-                                    <img src="/img/properties/office-room5.jpg" class="thumb-preview" alt="Chevrolet Impala">
+                                    <img src="@Model.Image3" class="thumb-preview" alt="Chevrolet Impala">
                                 </div>
                                 <div class="item">
-                                    <img src="/img/properties/office-room1.jpg" class="thumb-preview" alt="Chevrolet Impala">
+                                    <img src="@Model.Image4" class="thumb-preview" alt="Chevrolet Impala">
                                 </div>
                                 <div class="item">
-                                    <img src="/img/properties/office-room3.jpg" class="thumb-preview" alt="Chevrolet Impala">
+                                    <img src="@Model.Image5" class="thumb-preview" alt="Chevrolet Impala">
                                 </div>
                                 <div class="item active">
-                                    <img src="/img/properties/office-room4.jpg" class="thumb-preview" alt="Chevrolet Impala">
+                                    <img src="@Model.Image6" class="thumb-preview" alt="Chevrolet Impala">
                                 </div>
                             </div>
                             <!-- Controls -->
@@ -59,31 +59,31 @@
                         <!-- Indicators -->
                         <ol class="carousel-indicators thumbs visible-lg visible-md">
                             <li data-target="#carousel-custom" data-slide-to="0" class="">
-                                <img src="/img/properties/office-room1.jpg"
+                                <img src="@Model.ImageUrl"
                                      alt="Chevrolet Impala">
                             </li>
                             <li data-target="#carousel-custom" data-slide-to="1" class="">
-                                <img src="/img/properties/office-room3.jpg"
+                                <img src="@Model.Image1"
                                      alt="Chevrolet Impala">
                             </li>
                             <li data-target="#carousel-custom" data-slide-to="2" class="">
-                                <img src="/img/properties/office-room4.jpg"
+                                <img src="@Model.Image2"
                                      alt="Chevrolet Impala">
                             </li>
                             <li data-target="#carousel-custom" data-slide-to="3" class="">
-                                <img src="/img/properties/office-room5.jpg"
+                                <img src="@Model.Image3"
                                      alt="Chevrolet Impala">
                             </li>
                             <li data-target="#carousel-custom" data-slide-to="4" class="">
-                                <img src="/img/properties/office-room1.jpg"
+                                <img src="@Model.Image4"
                                      alt="Chevrolet Impala">
                             </li>
                             <li data-target="#carousel-custom" data-slide-to="5" class="">
-                                <img src="/img/properties/office-room3.jpg"
+                                <img src="@Model.Image5"
                                      alt="Chevrolet Impala">
                             </li>
                             <li data-target="#carousel-custom" data-slide-to="6" class="">
-                                <img src="/img/properties/office-room4.jpg"
+                                <img src="@Model.Image6"
                                      alt="Chevrolet Impala">
                             </li>
                         </ol>
@@ -179,7 +179,7 @@
 
                     <div class="mrg-btm-30">
                         <!-- Title -->
-                        <h3>Rooms Description</h3>
+                        <h3>Office Description</h3>
                         <!-- paragraph -->
                         <p>
                             @Model.Description
@@ -188,7 +188,7 @@
 
                     <!-- Rooms features start -->
                     <div class="rooms-features mrg-btm-30">
-                        <h3>Rooms Features</h3>
+                        <h3>Office Amenities</h3>
                         <div class="row">
                             <div class="col-md-4 col-sm-4 col-xs-12">
                                 <ul class="condition">
@@ -259,37 +259,41 @@
                         </div>
 
                         <ul class="comments">
-                            <li>
-                                <div class="comment">
-                                    <div class="comment-author">
-                                        <a href="#">
-                                            <img src="@Model.ClientPhoto" alt="avatar-5">
-                                        </a>
-                                    </div>
-                                    <div class="comment-content">
-                                        <div class="comment-meta">
-                                            <div class="comment-meta-author">
-                                                @Model.FirstName @Model.LastName
-                                            </div>
-
-                                            <div class="comment-meta-date">
-                                                <span class="hidden-xs">8:42 PM 3/3/2017</span>
-                                            </div>
+                            @foreach (var comments in Model.ClientPropertyRatings)
+                            {
+                                <li>
+                                    <div class="comment">
+                                        <div class="comment-author">
+                                            <a href="#">
+                                                <img src="@Model.ClientPhoto" alt="avatar-5">
+                                            </a>
                                         </div>
-                                        <div class="clearfix"></div>
-                                        <div class="comment-body">
-                                            <div class="comment-rating">
-                                                <div class="rating" data-rateyo-star-width="20px" data-rateyo-rating="@Model.Rating">
+                                        <div class="comment-content">
+                                            <div class="comment-meta">
+                                                <div class="comment-meta-author">
+                                                    @Model.FirstName @comments.LastName
+                                                </div>
+
+                                                <div class="comment-meta-date">
+                                                    <span class="hidden-xs">8:42 PM 3/3/2017</span>
                                                 </div>
                                             </div>
-                                            <p>
-                                                @Model.Review
-                                            </p>
+                                            <div class="clearfix"></div>
+                                            <div class="comment-body">
+                                                <div class="comment-rating">
+                                                    <div class="rating" data-rateyo-star-width="20px" data-rateyo-rating="@Model.Rating">
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                    @Model.Review
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </li>
+                                </li>
+                            }
+
                         </ul>
                     </div>
                     <!-- Comments section end -->
