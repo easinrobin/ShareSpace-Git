@@ -387,7 +387,8 @@ span.round-tab:hover {
 }
 
 .top-header ul li a:hover {
-    color: #1AD69C;
+    /*color: #1AD69C;*/
+    color: #777;
 }
 
 .services-box-2 i {

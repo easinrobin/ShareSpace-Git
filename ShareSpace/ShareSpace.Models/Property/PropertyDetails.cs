@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShareSpace.Models.Property
 {
@@ -83,6 +85,9 @@ namespace ShareSpace.Models.Property
         [Display(Name = "Image Type")]
         public string ImageType { get; set; }
 
+        [Display(Name = "Image Url")]
+        public string ImageUrl { get; set; }
+
         [Display(Name = "Image1")]
         public string Image1 { get; set; }
 
@@ -127,5 +132,9 @@ namespace ShareSpace.Models.Property
 
         [Display(Name = "ImagePath")]
         public string ImagePath { get; set; }
+
+        [NotMapped]
+        public List<ClientPropertyRating> ClientPropertyRatings { get; set; }
+
     }
 }

@@ -34,11 +34,12 @@ namespace ClientPanel.Controllers
             {
                 PropertyDetails propertyDetails = new PropertyDetails();
                 propertyDetails = PropertyManager.GetPropertyDetailsById(id);
+                propertyDetails.ClientPropertyRatings = PropertyManager.PropertyRatings(id);
                 return View("~/Views/Home/OfficeDetails.cshtml", propertyDetails);
             }
             else
             {
-                return View("~/Views/Home/OfficeDetails.cshtml");
+                return View("~/Views/Home/Index.cshtml");
             }
         }
 

@@ -33,6 +33,8 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string GETPROPERTYDETAILSBYID = "sp_view_getpropertydetailsbyid";
 
+        public static string GETCLIENTPROPERTYRATING = "sp_view_clientpropertyrating";
+
         
 
         //Services
