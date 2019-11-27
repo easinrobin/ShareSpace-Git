@@ -1,9 +1,10 @@
 ﻿@model ShareSpace.Models.Transaction
+@using (Html.BeginForm("InsertTransaction", "Transaction", FormMethod.Post))
 
-@using (Html.BeginForm()) 
 {
+    @Html.HiddenFor(x => x.TransactionId)
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Transaction</h4>
         <hr />
@@ -49,5 +50,5 @@
 }
 
 <div>
-   
+
 </div>

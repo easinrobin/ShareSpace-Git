@@ -24,7 +24,7 @@ namespace ShareSpace.BusinessLayer
        
         #endregion
         #region Set
-        public long InsertTransaction(Transaction transaction)
+        public static long InsertTransaction(Transaction transaction)
         {
             SqlTransactionProvider sqlTransactionProvider = new SqlTransactionProvider();
             var id = sqlTransactionProvider.InsertTransaction(transaction);

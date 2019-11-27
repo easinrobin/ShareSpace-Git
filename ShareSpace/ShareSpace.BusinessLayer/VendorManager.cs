@@ -24,7 +24,7 @@ namespace ShareSpace.BusinessLayer
        
         #endregion
         #region Set
-        public long InsertVendor(Vendor vendor)
+        public static long InsertVendor(Vendor vendor)
         {
             SqlVendorProvider sqlVendorProvider = new SqlVendorProvider();
             var id = sqlVendorProvider.InsertVendor(vendor);

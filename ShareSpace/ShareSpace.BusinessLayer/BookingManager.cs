@@ -24,7 +24,7 @@ namespace ShareSpace.BusinessLayer
 
         #endregion
         #region Set
-        public long InsertBooking(Booking booking)
+        public static long InsertBooking(Booking booking)
         {
             SqlBookingProvider sqlBookingProvider = new SqlBookingProvider();
             var id = sqlBookingProvider.InsertBooking(booking);

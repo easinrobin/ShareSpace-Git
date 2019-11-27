@@ -63,7 +63,7 @@ namespace ShareSpace.DataLayerSql.Vendor
                 {
                     string name = vendors.Name;
                     var value = vendors.GetValue(vendor, null);
-                    command.Parameters.Add(new SqlParameter("@" + name, value));
+                    command.Parameters.Add(new SqlParameter("@" + name, value==null?DBNull.Value:value));
                 }
 
                 try
@@ -145,7 +145,7 @@ namespace ShareSpace.DataLayerSql.Vendor
             bool isDelete = true;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.DELETEVENDORS);
+                SqlCommand command = new SqlCommand(StoreProcedure.DELETEVENDORS,connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add(new SqlParameter("@VendorID", vendorId));
 

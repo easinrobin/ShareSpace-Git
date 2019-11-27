@@ -28,7 +28,7 @@ namespace ShareSpace.Models
         public string PropertyType { get; set; }
 
         [Display(Name = "MaximumPerson")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "MaximumPerson required")]
+        //[Required(AllowEmptyStrings = false, ErrorMessage = "MaximumPerson required")]
         public int MaximumPerson { get; set; }
 
         [Display(Name = "Description")]
@@ -39,7 +39,7 @@ namespace ShareSpace.Models
         public string ShortDescription { get; set; }
 
         [Display(Name = "FeatureImage")]
-        [Required(AllowEmptyStrings = false)]
+        //[Required(AllowEmptyStrings = false)]
         public string FeatureImage { get; set; }
 
         [Display(Name = "Price")]
@@ -49,10 +49,10 @@ namespace ShareSpace.Models
         public int RetaingPrice { get; set; }
 
         [Display(Name = "Latitude")]
-        public float Latitude { get; set; }
+        public int Latitude { get; set; }
 
         [Display(Name = "Longitude")]
-        public float Longitude { get; set; }
+        public int Longitude { get; set; }
 
         [Display(Name = "IsFeatured")]
         public string IsFeatured { get; set; }
@@ -83,6 +83,8 @@ namespace ShareSpace.Models
 
         [Display(Name = "UpdateDate")]
         public DateTime? UpdateDate { get; set; }
+
+        
 
     }
 }

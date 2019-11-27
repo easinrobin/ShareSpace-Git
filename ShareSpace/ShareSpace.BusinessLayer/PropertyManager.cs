@@ -24,7 +24,7 @@ namespace ShareSpace.BusinessLayer
 
         #endregion
         #region Set
-        public long InsertProperty(Property property)
+        public static long InsertProperty(Property property)
         {
             SqlPropertyProvider sqlPropertyProvider = new SqlPropertyProvider();
             var id = sqlPropertyProvider.InsertProperty(property);

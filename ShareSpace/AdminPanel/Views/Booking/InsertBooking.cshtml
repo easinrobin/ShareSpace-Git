@@ -1,7 +1,7 @@
 ﻿@model ShareSpace.Models.Booking
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("InsertBooking", "Booking", FormMethod.Post))
 {
+    @Html.HiddenFor(x => x.BookingId)
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">

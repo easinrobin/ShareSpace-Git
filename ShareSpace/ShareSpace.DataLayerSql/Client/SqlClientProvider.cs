@@ -62,7 +62,7 @@ namespace ShareSpace.DataLayerSql.Client
                 {
                     string name = clients.Name;
                     var value = clients.GetValue(client, null);
-                    command.Parameters.Add(new SqlParameter("@" + name, value));
+                    command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
                 }
 
                 try
@@ -169,7 +169,7 @@ namespace ShareSpace.DataLayerSql.Client
             bool isDelete = true;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.DELETECLIENT);
+                SqlCommand command = new SqlCommand(StoreProcedure.DELETECLIENT, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add(new SqlParameter("@ClientID", clientId));
 

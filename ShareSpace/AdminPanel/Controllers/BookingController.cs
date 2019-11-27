@@ -18,17 +18,29 @@ namespace AdminPanel.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult InsertBooking([Bind(Include = "FromDate,ToDate,MaximumPerson,FromHour,ToHour,PropertyId,ClientId")] Booking booking)
+        public ActionResult InsertBooking(Booking booking)
         {
             BookingManager manager = new BookingManager();
             //if (ModelState.IsValid)
             //{
+            if (booking != null && booking.BookingId > 0)
+            {
+                BookingManager.UpdateBooking(booking);
+            }
+            else
+            {
+                BookingManager.InsertBooking(booking);
+            }
 
-            var id = manager.InsertBooking(booking);
-            //return RedirectToAction("InsertBooking");
-            //}
             return View(booking);
         }
+
+        public ActionResult UpdateBooking(int bookingId)
+        {
+            Booking booking = BookingManager.GetBookingById(bookingId);
+            return View("~/Views/Booking/InsertBooking.cshtml", booking);
+        }
+
 
         public ActionResult AdminBookings()
         {
@@ -37,25 +49,10 @@ namespace AdminPanel.Controllers
         }
 
 
-
-
-     
-
-
-    //    [HttpPost]
-    //    [ValidateAntiForgeryToken]
-    //    public ActionResult EditBooking([Bind(Include = "FromDate,ToDate,MaximumPerson,FromHour,ToHour")] Booking booking)
-    //    {
-    //        if (ModelState.IsValid)
-    //        {
-    //            BookingManager. manager = new BookingManager();
-    //            var id = manager.EditBooking(booking);
-
-                
-    //        }
-    //        return View("~/Views/Booking/InsertBookings.cshtml", manager);
-    //    }
-
-
+        public ActionResult DeleteBooking(long bookingId)
+        {
+            BookingManager.DeleteBooking(bookingId);
+            return RedirectToAction("AdminBookings");
+        }
     }
 }

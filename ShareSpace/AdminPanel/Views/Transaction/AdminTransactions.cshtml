@@ -17,9 +17,9 @@
 
     <div class="card">
         <div class="card-body">
-            <a href="/Home/New_contact" class="btn btn-light">New Contact</a>
+            <a href="Views/Transaction/InsertTransaction" class="btn btn-light">New Contact</a>
 
-            <Style>
+            @*<Style>
                 .table td {
                     color: #ccb68ad9;
                 }
@@ -27,7 +27,7 @@
                     .table td a {
                         color: #ccb68ad9;
                     }
-            </Style>
+            </Style>*@
             <div class="table-responsive">
                 <table id="data-table" class="table">
                     <thead style="color: #ffaa00"> 
@@ -43,39 +43,44 @@
                 <tbody>
                 @foreach (var transaction in Model)
                 {
-                    <tr>
-                        <td>@transaction.TotalPrice</td>
-                        <td>@transaction.VendorId</td>
-                        <td>@transaction.PropertyId</td>
-                        <td>@transaction.PropertyRatingId</td>
-                        
-                        <td>
-                            <a href="new-contact.html">
-                                <i class="zmdi zmdi-edit"></i>
-                            </a>
-                            <a href="#" data-toggle="modal" data-target="#confirm-delete" class="btn btn-default">
-                                <i class="zmdi zmdi-delete"></i>
-                            </a>
-                            <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
+                    using (Html.BeginForm("DeleteTransaction", "Transaction", new { transactionId = transaction.TransactionId }))
+                    {
+                        <tr>
+                            <td>@transaction.TotalPrice</td>
+                            <td>@transaction.VendorId</td>
+                            <td>@transaction.PropertyId</td>
+                            <td>@transaction.PropertyRatingId</td>
+                            <td>@Html.ActionLink("Edit", "UpdateTransaction", new { transactionId = transaction.TransactionId }) |
+                                @Html.ActionLink("Delete", "DeleteTransaction", new{transactionId = transaction.TransactionId} )
+                            </td>
 
-                                        </div>
-                                        <div class="modal-body" style="align-self: center;">
-                                            Are you sure you want to delete this element?
-                                        </div>
-                                        <div class="modal-footer" style="align-self: center;">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                            <a class="btn btn-danger btn-ok">Delete</a>
+                            @*<td>
+                                <a href="new-contact.html">
+                                    <i class="zmdi zmdi-edit"></i>
+                                </a>
+                                <a href="#" data-toggle="modal" data-target="#confirm-delete" class="btn btn-default">
+                                    <i class="zmdi zmdi-delete"></i>
+                                </a>
+                                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+
+                                            </div>
+                                            <div class="modal-body" style="align-self: center;">
+                                                Are you sure you want to delete this element?
+                                            </div>
+                                            <div class="modal-footer" style="align-self: center;">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                <a class="btn btn-danger btn-ok">Delete</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                } 
-
+                            </td>*@
+                        </tr>
+                    }
+                }
                 </tbody>
                 </table>
             </div>

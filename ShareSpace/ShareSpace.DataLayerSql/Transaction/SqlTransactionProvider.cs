@@ -63,7 +63,7 @@ namespace ShareSpace.DataLayerSql.Transaction
                 {
                     string name = transactions.Name;
                     var value = transactions.GetValue(transaction, null);
-                    command.Parameters.Add(new SqlParameter("@" + name, value));
+                    command.Parameters.Add(new SqlParameter("@" + name, value==null?DBNull.Value:value));
                 }
 
                 try
@@ -145,7 +145,7 @@ namespace ShareSpace.DataLayerSql.Transaction
             bool isDelete = true;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.DELETETRANSACTIONS);
+                SqlCommand command = new SqlCommand(StoreProcedure.DELETETRANSACTIONS,connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add(new SqlParameter("@TransactionID", transactionId));
 
