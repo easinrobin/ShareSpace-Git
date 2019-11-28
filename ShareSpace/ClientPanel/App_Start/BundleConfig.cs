@@ -58,6 +58,9 @@ namespace ClientPanel
             bundles.Add(new ScriptBundle("~/bundles/bootstrapDate").Include(
                         "~/Scripts/bootstrap-datetimepicker.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/tiltJs").Include(
+                        "~/Scripts/tilt.jquery.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/momentJs").Include(
                         "~/Scripts/moment.min.js"));
 
@@ -68,7 +71,10 @@ namespace ClientPanel
                         "~/Scripts/login.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/clientDashboardJs").Include(
-                "~/Scripts/clientDashboard.min.js"));
+                        "~/Scripts/clientDashboard.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/contact-us").Include(
+                        "~/Scripts/contact-us.js"));
 
 
 
@@ -115,7 +121,10 @@ namespace ClientPanel
                         "~/Content/login.css"));
 
             bundles.Add(new StyleBundle("~/Content/clientDashboardCss").Include(
-                "~/Content/clientDashboard.min.css"));
+                        "~/Content/clientDashboard.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/contact-us").Include(
+                        "~/Content/contact-us.css"));
 
             bundles.Add(new StyleBundle("~/Content/ieBug").Include(
                         "~/Content/ie10-viewport-bug-workaround.css"));

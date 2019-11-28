@@ -2,8 +2,6 @@
 @{
     ViewBag.Title = "Office Details";
 }
-
-
 <div class="clear">
 
 </div>
@@ -111,7 +109,8 @@
                     <div class="search-area-box-2 hidden-lg hidden-md mrg-btm-30">
 
                         <div class="search-contents">
-                            <form method="GET">
+                            @using (Html.BeginForm("OfficeDetails", "Home", FormMethod.Post))
+                            {
                                 <div class="row">
                                     <div class="col-md-3 col-pad col-pad-2">
                                         <div class="search-your-rooms">
@@ -123,56 +122,60 @@
                                     <div class="search-your-details">
                                         <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
                                             <div class="form-group">
-                                                <input type="text" class="btn-default" id="smallCheckInDate" placeholder="Check In Date">
+                                                @Html.EditorFor(m => m.BookingEmail.FromDate, new { htmlAttributes = new { @class = "btn-default", id = string.Format("smallCheckInDate"), type = "text", name = "CheckInDate", placeholder = "Check In Date" } })
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
                                             <div class="form-group">
-                                                <input type="text" class="btn-default" id="smallCheckOutDate" placeholder="Check Out Date">
+                                                @Html.EditorFor(m => m.BookingEmail.ToDate, new { htmlAttributes = new { @class = "btn-default", id = string.Format("smallCheckOutDate"), type = "text", name = "CheckOutDate", placeholder = "Check Out Date" } })
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
                                             <div class="form-group">
-                                                <input type="text" class="btn-default" id="smallCheckInTime" placeholder="Check In Time">
+                                                @Html.EditorFor(m => m.BookingEmail.FromHour, new { htmlAttributes = new { @class = "btn-default", id = string.Format("smallCheckInTime"), type = "text", name = "CheckInTime", placeholder = "Check In Time" } })
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
                                             <div class="form-group">
-                                                <input type="text" class="btn-default" id="smallCheckOutTime" placeholder="Check Out Time">
+                                                @Html.EditorFor(m => m.BookingEmail.ToHour, new { htmlAttributes = new { @class = "btn-default", id = string.Format("smallCheckOutTime"), type = "text", name = "CheckOutTime", placeholder = "Check Out Time" } })
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
                                             <div class="form-group">
-                                                <select class="selectpicker search-fields form-control-2" name="room">
-                                                    <option>Office Type</option>
-                                                    <option>Shared Office</option>
-                                                    <option>Whole Office</option>
-                                                    <option>Meeting Space</option>
-                                                    <option>Auditorium</option>
-                                                </select>
+                                                @Html.EditorFor(m => m.BookingEmail.Email, new { htmlAttributes = new { @class = "btn-default", id = string.Format("email"), type = "email", name = "email", placeholder = "Your Email Address" } })
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
                                             <div class="form-group">
-                                                <select class="selectpicker search-fields form-control-2" name="adults">
-                                                    <option>Number of Person</option>
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
+                                                @*<select class="selectpicker search-fields form-control-2" name="Person">
+                                                        <option>Number of Person</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>*@
+                                                @Html.DropDownListFor(m => m.BookingEmail.MaximumPerson, new List<SelectListItem>
+                                                {
+                                                    new SelectListItem { Text = "1", Value = "1" },
+                                                    new SelectListItem { Text = "2", Value = "2" },
+                                                    new SelectListItem { Text = "3", Value = "3" },
+                                                    new SelectListItem { Text = "4", Value = "4" },
+                                                    new SelectListItem { Text = "5", Value = "5" }},
+                                                    "Number of Person", new
+                                                    { htmlAttributes = new { @class="selectpicker search-fields form-control-2", name = "Person" } }
+                                                )
                                             </div>
                                         </div>
 
                                         <div class="col-md-12 col-sm-12 col-xs-12 col-pad">
                                             <div class="form-group">
-                                                <button class="search-button">Book Now</button>
+                                                <button type="submit" class="search-button">Book Now</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            }
                         </div>
                     </div>
                     <!-- Search area box 2 end -->
@@ -265,13 +268,13 @@
                                     <div class="comment">
                                         <div class="comment-author">
                                             <a href="#">
-                                                <img src="@Model.ClientPhoto" alt="avatar-5">
+                                                <img src="@comments.ClientPhoto" alt="avatar-5">
                                             </a>
                                         </div>
                                         <div class="comment-content">
                                             <div class="comment-meta">
                                                 <div class="comment-meta-author">
-                                                    @Model.FirstName @comments.LastName
+                                                    @comments.FirstName @comments.LastName
                                                 </div>
 
                                                 <div class="comment-meta-date">
@@ -281,11 +284,11 @@
                                             <div class="clearfix"></div>
                                             <div class="comment-body">
                                                 <div class="comment-rating">
-                                                    <div class="rating" data-rateyo-star-width="20px" data-rateyo-rating="@Model.Rating">
+                                                    <div class="rating" data-rateyo-star-width="20px" data-rateyo-rating="@comments.Rating">
                                                     </div>
                                                 </div>
                                                 <p>
-                                                    @Model.Review
+                                                    @comments.Review
                                                 </p>
                                             </div>
                                         </div>
@@ -345,7 +348,8 @@
                     <!-- Search area box start -->
                     <div class="search-area-box-6 hidden-xs hidden-sm">
                         <div class="search-contents">
-                            <form method="GET" action="../Home/SearchResults">
+                            @using (Html.BeginForm("OfficeDetails", "Home", FormMethod.Post))
+                            {
                                 <div class="col-lg-12 col-pad col-pad-2">
                                     <div class="search-your-rooms">
                                         <h3 class="hidden-xs hidden-sm">Reserve Your</h3>
@@ -356,65 +360,53 @@
                                 <div class="search-your-details">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <div class="input-group date" id="checkInDate">
-                                                <input type="text" class="btn-default" placeholder="Check In" />
-                                                <span class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-calendar"></span>
-                                                </span>
-                                            </div>
+                                            @*<input type="text" id="checkInDate" class="btn-default" placeholder="Check In" />*@
+                                            @Html.EditorFor(m => m.BookingEmail.FromDate, new { htmlAttributes = new { @class = "btn-default", id = string.Format("checkInDate"), type = "text", name = "CheckInDate", placeholder = "Check In Date" } })
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <div class="input-group date" id="checkOutDate">
-                                                <input type="text" class="btn-default" placeholder="Check Out" />
-                                                <span class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-calendar"></span>
-                                                </span>
-                                            </div>
+                                            @*<input type="text" id="checkOutDate" class="btn-default" placeholder="Check Out" />*@
+                                            @Html.EditorFor(m => m.BookingEmail.ToDate, new { htmlAttributes = new { @class = "btn-default", id = string.Format("checkOutDate"), type = "text", name = "CheckOutDate", placeholder = "Check Out Date" } })
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <div class="input-group date" id="checkInTime">
-                                                <input type="text" class="btn-default" placeholder="Check In Time" />
-                                                <span class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-time"></span>
-                                                </span>
-                                            </div>
+                                            @*<input type="text" id="checkInTime" class="btn-default" placeholder="Check In Time" />*@
+                                            @Html.EditorFor(m => m.BookingEmail.FromHour, new { htmlAttributes = new { @class = "btn-default", id = string.Format("checkInTime"), type = "text", name = "CheckInTime", placeholder = "Check In Time" } })
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <div class="input-group date" id="checkOutTime">
-                                                <input type="text" class="btn-default" placeholder="Check Out Time" />
-                                                <span class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-time"></span>
-                                                </span>
-                                            </div>
+                                            @*<input type="text" id="checkOutTime" class="btn-default" placeholder="Check Out Time" />*@
+                                            @Html.EditorFor(m => m.BookingEmail.ToHour, new { htmlAttributes = new { @class = "btn-default", id = string.Format("checkOutTime"), type = "text", name = "CheckOutTime", placeholder = "Check Out Time" } })
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <select class="selectpicker search-fields form-control-2" name="room">
-                                                <option>Office Type</option>
-                                                <option>Shared Office</option>
-                                                <option>Whole Office</option>
-                                                <option>Meeting Space</option>
-                                                <option>Auditorium</option>
-                                            </select>
+                                            @*<input type="email" class="btn-default" id="email" placeholder="Your email address">*@
+                                            @Html.EditorFor(m => m.BookingEmail.Email, new { htmlAttributes = new { @class = "btn-default", id = string.Format("email"), type = "email", name = "email", placeholder = "Your Email Address" } })
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <select class="selectpicker search-fields form-control-2" name="adults">
-                                                <option>Number of Person</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
+                                            @*<select class="selectpicker search-fields form-control-2" name="adults">
+                                                    <option>Number of Person</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>*@
+                                            @Html.DropDownListFor(m => m.BookingEmail.MaximumPerson, new List<SelectListItem>
+                                            {
+                                                new SelectListItem { Text = "1", Value = "1" },
+                                                new SelectListItem { Text = "2", Value = "2" },
+                                                new SelectListItem { Text = "3", Value = "3" },
+                                                new SelectListItem { Text = "4", Value = "4" },
+                                                new SelectListItem { Text = "5", Value = "5" }},
+                                                "Number of Person", new
+                                                { htmlAttributes = new { @class="selectpicker search-fields form-control-2", name = "Person" } } )
                                         </div>
                                     </div>
 
@@ -424,7 +416,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            }
                         </div>
                     </div>
                     <!-- Search area box end -->

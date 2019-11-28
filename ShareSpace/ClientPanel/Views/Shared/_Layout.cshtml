@@ -1,239 +1,294 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
 
-	@Styles.Render("~/Content/css")
-	@Styles.Render("~/Content/animateCss")
-	@Styles.Render("~/Content/bootstrapSubmenu")
-	@Styles.Render("~/Content/bootstrapSelect")
-	@Styles.Render("~/Content/rateYo")
-	@Styles.Render("~/fonts/fontAwesome")
-	@Styles.Render("~/fonts/flatIcon")
-	@Styles.Render("~/fonts/linearIcon")
-	@Styles.Render("~/Content/jQueryCustomScroll")
-	@Styles.Render("~/Content/bootstrapDate")
-	@Styles.Render("~/Content/customCss")
-	@Styles.Render("~/Content/defaultCss")
-	@Styles.Render("~/Content/ieBug")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/animateCss")
+    @Styles.Render("~/Content/bootstrapSubmenu")
+    @Styles.Render("~/Content/bootstrapSelect")
+    @Styles.Render("~/Content/rateYo")
+    @Styles.Render("~/fonts/fontAwesome")
+    @Styles.Render("~/fonts/flatIcon")
+    @Styles.Render("~/fonts/linearIcon")
+    @Styles.Render("~/Content/jQueryCustomScroll")
+    @Styles.Render("~/Content/bootstrapDate")
+    @Styles.Render("~/Content/customCss")
+    @Styles.Render("~/Content/defaultCss")
+    @Styles.Render("~/Content/contact-us")
+    @Styles.Render("~/Content/ieBug")
 
-	@Scripts.Render("~/bundles/modernizr")
-	@Scripts.Render("~/bundles/ie")
-
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/ie")
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0N5pbJN10Y1oYFRd0MJ_v2g8W2QT74JE"></script>
 
 
 </head>
 <body>
-	<div class="page_loader"></div>
+    <div class="page_loader"></div>
 
-	<!-- Top header start -->
-	<header class="top-header top-header-2 top-header-3 top-header-4 hidden-xs" id="top">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
-					<div class="list-inline">
-						<a href="tel:+880 1XXXXXXXXX"><i class="fa fa-phone"></i>Need Support? +880 1XXXXXXXXX</a>
-						<a href="tel:info@bh.com"><i class="fa fa-envelope"></i>info@bh.com</a>
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
-					<ul class="social-list clearfix pull-right">
-						<li>
-							<a href="https://www.facebook.com/">
-								<i class="fa fa-facebook"></i>
-							</a>
-						</li>
-						<li>
-							<a href="https://twitter.com/">
-								<i class="fa fa-twitter"></i>
-							</a>
-						</li>
-						<li>
-							<a href="https://www.linkedin.com/">
-								<i class="fa fa-linkedin"></i>
-							</a>
-						</li>
-						<li>
-							<a href="https://www.instagram.com/">
-								<i class="fa fa-instagram"></i>
-							</a>
-						</li>
-						<li>
-							<a href="/Auth/Login" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</header>
+    <!-- Top header start -->
+    <header class="top-header top-header-2 top-header-3 top-header-4 hidden-xs" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
+                    <div class="list-inline">
+                        <a href="tel:+880 1XXXXXXXXX"><i class="fa fa-phone"></i>Need Support? +880 1XXXXXXXXX</a>
+                        <a href="tel:info@bh.com"><i class="fa fa-envelope"></i>info@bh.com</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+                    <ul class="social-list clearfix pull-right">
+                        <li>
+                            <a href="https://www.facebook.com/">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Auth/Login" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
 
-	<!-- Main header start -->
-	<header class="main-header main-header-2 main-header-3 sticky-top">
-		<div class="container">
-			<nav class="navbar navbar-default">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navigation"
-							aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a href="/Home/Index" class="logo">
-						<img src="/img/logo/ss-header.png" alt="logo">
-					</a>
-				</div>
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
-					<ul class="nav navbar-nav">
-						<li class="dropdown active">
-							@Html.ActionLink("Home", "Index", "Home")
-						</li>
-						<li class="dropdown">
-							<a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
-								Offices<span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li>@Html.ActionLink("Whole Office", "Office", "Home", new { type = "Whole Office" }, null)</li>
-								<li>@Html.ActionLink("Shared Office", "Office", "Home", new { type = "Shared Office" }, null)</li>
-								<li>@Html.ActionLink("Meeting Rooms", "Office", "Home", new { type = "Meeting Space" }, null)</li>
-								<li>@Html.ActionLink("Auditoriums", "Office", "Home", new { type = "Auditorium" }, null)</li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false" href="#">Contact</a>
-						</li>
-						<li class="dropdown">
-							<a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false" href="#">About</a>
-						</li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right hidden-sm hidden-xs">
-						<li>
-							<div class="navbar-search-box">
-								<form class="navbar-search" method="GET">
-									<input type="search" placeholder="Search......" name="search" class="navbar-search-input"
-										   onkeyup="buttonUp();" required>
-									<button type="submit" class="navbar-search-submit">Go</button>
-									<span class="navbar-search-icon">
-										<i class="fa fa-search"></i>
-									</span>
-								</form>
-							</div>
-						</li>
-					</ul>
-				</div>
+    <!-- Main header start -->
+    <header class="main-header main-header-2 main-header-3 sticky-top">
+        <div class="container">
+            <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navigation"
+                            aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/Home/Index" class="logo">
+                        <img src="/img/logo/ss-header.png" alt="logo">
+                    </a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown active">
+                            @Html.ActionLink("Home", "Index", "Home")
+                        </li>
+                        <li class="dropdown">
+                            <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+                                Offices<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Whole Office", "Office", "Home", new { type = "Whole Office" }, null)</li>
+                                <li>@Html.ActionLink("Shared Office", "Office", "Home", new { type = "Shared Office" }, null)</li>
+                                <li>@Html.ActionLink("Meeting Rooms", "Office", "Home", new { type = "Meeting Space" }, null)</li>
+                                <li>@Html.ActionLink("Auditoriums", "Office", "Home", new { type = "Auditorium" }, null)</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            @*<a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false" href="#">Contact</a>*@
+                            @Html.ActionLink("Contact", "Contact", "Home", null, null)
+                        </li>
+                        <li class="dropdown">
+                            <a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false" href="#">About</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right hidden-sm hidden-xs">
+                        <li>
+                            <div class="navbar-search-box">
+                                <form class="navbar-search" method="GET">
+                                    <input type="search" placeholder="Search......" name="search" class="navbar-search-input"
+                                           onkeyup="buttonUp();" required>
+                                    <button type="submit" class="navbar-search-submit">Go</button>
+                                    <span class="navbar-search-icon">
+                                        <i class="fa fa-search"></i>
+                                    </span>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
 
-				<!-- /.navbar-collapse -->
-				<!-- /.container -->
-			</nav>
-		</div>
-	</header>
+                <!-- /.navbar-collapse -->
+                <!-- /.container -->
+            </nav>
+        </div>
+    </header>
 
-	@RenderBody()
-	<!-- Footer start -->
-	<footer class="main-footer clearfix">
-		<div class="container">
-			<!-- Footer info-->
-			<div class="footer-info">
-				<div class="row">
-					<!-- About us -->
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-						<div class="footer-item">
-							<div class="footer-logo">
-								<a href="/Home/Index">
-									<img src="/img/logo/ss-footer.png" alt="footer-logo">
-								</a>
-							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam.</p>
-						</div>
-					</div>
-					<!-- Contact Us -->
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-						<div class="footer-item">
-							<div class="main-title-2">
-								<h1>Contact Us</h1>
-							</div>
-							<ul class="personal-info">
-								<li>
-									<i class="fa fa-map-marker"></i>
-									Address: Dhaka, Bangladesh.
-								</li>
-								<li>
-									<i class="fa fa-envelope"></i>
-									Email:<a href="mailto:sales@bh.com">info@bh.com</a>
-								</li>
-								<li>
-									<i class="fa fa-phone"></i>
-									Phone: <a href="tel:+880 1XXXXXXXXX">+880 1XXXXXXXXX</a>
-								</li>
-								<li>
-									<i class="fa fa-fax"></i>
-									Fax: +04XX 85X6 XXX
-								</li>
-							</ul>
-							<div class="clearfix"></div>
-							<ul class="social-list">
-								<li><a href="#"><i class="fa fa-rss"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							</ul>
-						</div>
-					</div>
-					<!-- Gallery -->
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    @RenderBody()
+    <!-- Footer start -->
+    <footer class="main-footer clearfix">
+        <div class="container">
+            <!-- Footer info-->
+            <div class="footer-info">
+                <div class="row">
+                    <!-- About us -->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="footer-item">
+                            <div class="footer-logo">
+                                <a href="/Home/Index">
+                                    <img src="/img/logo/ss-footer.png" alt="footer-logo">
+                                </a>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam.</p>
+                        </div>
+                    </div>
+                    <!-- Contact Us -->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="footer-item">
+                            <div class="main-title-2">
+                                <h1>Contact Us</h1>
+                            </div>
+                            <ul class="personal-info">
+                                <li>
+                                    <i class="fa fa-map-marker"></i>
+                                    Address: Dhaka, Bangladesh.
+                                </li>
+                                <li>
+                                    <i class="fa fa-envelope"></i>
+                                    Email:<a href="mailto:sales@bh.com">info@bh.com</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone"></i>
+                                    Phone: <a href="tel:+880 1XXXXXXXXX">+880 1XXXXXXXXX</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-fax"></i>
+                                    Fax: +04XX 85X6 XXX
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                            <ul class="social-list">
+                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Gallery -->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 
-					</div>
-					<!-- Newsletter -->
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-						<div class="footer-item newsletter">
-							<div class="main-title-2">
-								<h1>Newsletter</h1>
-							</div>
-							<div class="newsletter-inner">
-								<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-								<form action="#" method="GET">
-									<p><input type="text" class="form-contact" name="email" placeholder="Enter your email"></p>
-									<p>
-										<button type="submit" name="submitNewsletter" class="btn button-small">
-											Signup
-										</button>
-									</p>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- Footer end -->
-	<!-- Copy right start -->
-	<div class="copy-right">
-		<div class="container">
-			&copy; @DateTime.Now.Year <a href="http://byteheart.com/" target="_blank">ByteHeart</a>. Trademarks and brands are the property of their respective owners.
-		</div>
-	</div>
-	<!-- Copy end right-->
+                    </div>
+                    <!-- Newsletter -->
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="footer-item newsletter">
+                            <div class="main-title-2">
+                                <h1>Newsletter</h1>
+                            </div>
+                            <div class="newsletter-inner">
+                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <form action="#" method="GET">
+                                    <p><input type="text" class="form-contact" name="email" placeholder="Enter your email"></p>
+                                    <p>
+                                        <button type="submit" name="submitNewsletter" class="btn button-small">
+                                            Signup
+                                        </button>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer end -->
+    <!-- Copy right start -->
+    <div class="copy-right">
+        <div class="container">
+            &copy; @DateTime.Now.Year <a href="http://byteheart.com/" target="_blank">ByteHeart</a>. Trademarks and brands are the property of their respective owners.
+        </div>
+    </div>
+    <!-- Copy end right-->
 
 
-	@Scripts.Render("~/bundles/jquery")
-	@Scripts.Render("~/bundles/bootstrap")
-	@Scripts.Render("~/bundles/bootstrapSubmenu")
-	@Scripts.Render("~/bundles/ytPlayer")
-	@Scripts.Render("~/bundles/wowJs")
-	@Scripts.Render("~/bundles/bootstrapSelect")
-	@Scripts.Render("~/bundles/easing")
-	@Scripts.Render("~/bundles/scrollUp")
-	@Scripts.Render("~/bundles/customScrollbar")
-	@Scripts.Render("~/bundles/customScrollbarContact")
-	@Scripts.Render("~/bundles/filterizr")
-	@Scripts.Render("~/bundles/momentJs")
-	@Scripts.Render("~/bundles/bootstrapDate")
-	@Scripts.Render("~/bundles/customJs")
-	@Scripts.Render("~/bundles/rateYo")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/bootstrapSubmenu")
+    @Scripts.Render("~/bundles/ytPlayer")
+    @Scripts.Render("~/bundles/wowJs")
+    @Scripts.Render("~/bundles/bootstrapSelect")
+    @Scripts.Render("~/bundles/easing")
+    @Scripts.Render("~/bundles/scrollUp")
+    @Scripts.Render("~/bundles/customScrollbar")
+    @Scripts.Render("~/bundles/customScrollbarContact")
+    @Scripts.Render("~/bundles/filterizr")
+    @Scripts.Render("~/bundles/momentJs")
+    @Scripts.Render("~/bundles/bootstrapDate")
+    @Scripts.Render("~/bundles/customJs")
+    @Scripts.Render("~/bundles/rateYo")
+    @Scripts.Render("~/bundles/contact-us")
+    @Scripts.Render("~/bundles/tiltJs")
+    <script>
+        function LoadMap(propertes) {
+            var defaultLat = 23.868287;
+            var defaultLng = 90.410178;
+            var mapOptions = {
+                center: new google.maps.LatLng(defaultLat, defaultLng),
+                zoom: 15,
+                scrollwheel: false,
+                styles: [
+                    {
+                        featureType: "administrative",
+                        elementType: "labels",
+                        stylers: [
+                            { visibility: "off" }
+                        ]
+                    },
+                    {
+                        featureType: "water",
+                        elementType: "labels",
+                        stylers: [
+                            { visibility: "off" }
+                        ]
+                    },
+                    {
+                        featureType: 'poi.business',
+                        stylers: [{ visibility: 'off' }]
+                    },
+                    {
+                        featureType: 'transit',
+                        elementType: 'labels.icon',
+                        stylers: [{ visibility: 'off' }]
+                    },
+                ]
+            };
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            var infoWindow = new google.maps.InfoWindow();
+            var myLatlng = new google.maps.LatLng(23.868287, 90.410178);
+
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map
+            });
+            (function (marker) {
+                google.maps.event.addListener(marker, "click", function (e) {
+                    infoWindow.setContent();
+                    infoWindow.open(map, marker);
+                });
+            })(marker);
+        }
+        LoadMap();
+    </script>
 </body>
 </html>
