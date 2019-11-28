@@ -4,7 +4,7 @@ html, body {
 
 body {
     font-family: 'Open Sans', sans-serif;
-    background: #fbfbfb;
+    background: #fff;
 }
 
 a {
@@ -540,7 +540,7 @@ a:hover {
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
-    background-color: #fbfbfb;
+    background-color: #fff;
 }
 
 .navbar-nav > li {
@@ -556,7 +556,7 @@ a:hover {
     color: #5a5959;
     font-size: 12px;
     white-space: nowrap;
-    background: #fbfbfb;
+    background: #fff;
     cursor: pointer !important;
     outline: none;
 }
@@ -807,6 +807,10 @@ a:hover {
     border: 0;
 }
 
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:focus, .dropdown-menu > .active > a:hover {
+    background-color: #1ad69c!important;
+}
+
 .search-contents-3 {
     background-color: #fff;
     padding: 20px 22px 5px 15px;
@@ -835,7 +839,7 @@ a:hover {
 .search-contents .btn-default {
     background: transparent !important;
     border: solid 1px #b0b0b0 !important;
-    color: #b0b0b0;
+    color: #777777;
     padding: 9px 15px;
     width: 100%;
 }
@@ -892,12 +896,12 @@ a:hover {
 }
 
 .search-contents .btn-default.active, .btn-default:active, .open > .dropdown-toggle.btn-default {
-    color: #969696;
+    color: #fff;
 }
 
 .search-contents .btn-default:hover {
     background-color: transparent;
-    color: #757575 !important;
+    color: #fff !important;
 }
 
 .search-contents .search-button {
@@ -3947,7 +3951,7 @@ a:hover {
 
 .wizard {
     margin: 20px auto;
-    background: #fbfbfb;
+    background: #fff;
 }
 
 .wizard .nav-tabs {

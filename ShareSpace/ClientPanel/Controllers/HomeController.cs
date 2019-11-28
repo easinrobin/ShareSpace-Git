@@ -2,7 +2,9 @@
 using System.Net;
 using System.Web.Mvc;
 using ShareSpace.BusinessLayer;
+using ShareSpace.Models.Booking;
 using ShareSpace.Models.Property;
+using System.Net.Mail;
 
 namespace ClientPanel.Controllers
 {
@@ -10,8 +12,8 @@ namespace ClientPanel.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.featuredProperties = PropertyManager.GetFeaturedProperties(6);
-            ViewBag.featuredService = ServiceManager.GetFeaturedServices(6);
+            ViewBag.featuredProperties = PropertyManager.GetFeaturedProperties(9);
+            ViewBag.featuredService = ServiceManager.GetFeaturedServices(9);
 
             return View("~/Views/Home/Index.cshtml");
         }
@@ -35,6 +37,7 @@ namespace ClientPanel.Controllers
                 PropertyDetails propertyDetails = new PropertyDetails();
                 propertyDetails = PropertyManager.GetPropertyDetailsById(id);
                 propertyDetails.ClientPropertyRatings = PropertyManager.PropertyRatings(id);
+                
                 return View("~/Views/Home/OfficeDetails.cshtml", propertyDetails);
             }
             else
@@ -53,6 +56,57 @@ namespace ClientPanel.Controllers
             List<PropertySearchResult> propertyList = new List<PropertySearchResult>();
             propertyList = PropertyManager.GetShareType(type);
             return View("~/Views/Home/Office.cshtml",propertyList);
+        }
+
+        public ActionResult BookingConfirmed()
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult OfficeDetails(BookingEmail bookingEmail)
+        {
+            string checkInDate = bookingEmail.FromDate;
+            string checkOutDate = bookingEmail.ToDate;
+            string checkInTime = bookingEmail.FromHour;
+            string checkOutTime = bookingEmail.ToHour;
+            string email = bookingEmail.Email;
+            int person = bookingEmail.MaximumPerson;
+            
+            var fromAddress = new MailAddress("sharespace.bh@gmail.com", "ShareSpace");
+            var toAddress = new MailAddress(email, "To Name");
+            const string fromPassword = "ss@bh#1230";
+            const string subject = "Booking Confirmation";
+            string body = "Hello Dear Customer,\n" +
+                          "Your booking request from " + checkInDate + " at " + checkInTime + " to " + checkOutDate +
+                          " at " + checkOutTime + " Has been confirmed\n" +
+                          "You are allowed to bring maximum " + person + " with you";
+                               
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
+                Timeout = 20000
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
+            return RedirectToAction("BookingConfirmed");
         }
     }
 }

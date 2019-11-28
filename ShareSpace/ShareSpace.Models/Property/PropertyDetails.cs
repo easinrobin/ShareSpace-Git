@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ShareSpace.Models.Booking;
 
 namespace ShareSpace.Models.Property
 {
@@ -135,6 +136,7 @@ namespace ShareSpace.Models.Property
 
         [NotMapped]
         public List<ClientPropertyRating> ClientPropertyRatings { get; set; }
-
+        [NotMapped]
+        public BookingEmail BookingEmail { get; set; }
     }
 }
