@@ -1,10 +1,7 @@
-
 (function ($) {
     "use strict";
 
-    
-    /*==================================================================
-    [ Validate ]*/
+    /*[ Validate ]*/
     var input = $('.validate-input .input100');
 
     $('.validate-form').on('submit',function(){
@@ -16,11 +13,9 @@
                 check=false;
             }
         }
-
         return check;
     });
-
-
+    
     $('.validate-form .input100').each(function(){
         $(this).focus(function(){
            hideValidate(this);
@@ -51,7 +46,5 @@
 
         $(thisAlert).removeClass('alert-validate');
     }
-    
-    
 
 })(jQuery);

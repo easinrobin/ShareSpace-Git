@@ -5,6 +5,8 @@ using ShareSpace.BusinessLayer;
 using ShareSpace.Models.Booking;
 using ShareSpace.Models.Property;
 using System.Net.Mail;
+using Antlr.Runtime.Misc;
+using ShareSpace.Models;
 
 namespace ClientPanel.Controllers
 {
@@ -58,7 +60,7 @@ namespace ClientPanel.Controllers
             return View("~/Views/Home/Office.cshtml",propertyList);
         }
 
-        public ActionResult BookingConfirmed()
+        public ActionResult About()
         {
             return View();
         }
@@ -106,7 +108,43 @@ namespace ClientPanel.Controllers
             {
                 smtp.Send(message);
             }
-            return RedirectToAction("BookingConfirmed");
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Contact(ContactForm contactForm)
+        {
+            string name = contactForm.Name;
+            string email = contactForm.Email;
+            string mobile = contactForm.MobileNo;
+            string feedbackMessage = contactForm.Message;
+
+            var fromAddress = new MailAddress(email, name);
+            var toAddress = new MailAddress("sharespace.bh@gmail.com", "ShareSpace");
+            //const string fromPassword = "ss@bh#1230";
+            const string subject = "Feedback";
+            string body = feedbackMessage + mobile;
+
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Timeout = 20000
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
+
+            return View();
         }
     }
 }
