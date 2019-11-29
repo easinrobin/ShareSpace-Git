@@ -1,0 +1,74 @@
+.succeed {
+    position: absolute;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.succeed:hover {
+    opacity: 0.9;
+}
+.success-modal {
+    position: fixed;
+    display: none;
+    width: 500px;
+    height: 360px;
+    background-color: #fff;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+    overflow: hidden;
+    z-index: 99999;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.success-modal.visible {
+    display: block;
+}
+.success-modal .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.success-modal svg {
+    transform: scale(0.4);
+}
+.success-modal > div {
+    height: 180px;
+    text-align: center
+}
+.success-modal .anim {
+    background-color: #1AD69C;
+    position: relative;
+}
+.success-modal .info {
+    padding: 30px;
+    color: #4b4b4b;
+}
+.success-modal .info .title {
+    font-weight: 800;
+}
+.success-modal .info .text {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.success-modal .info .continue {
+    margin-top: 20px;
+    padding: 10px 30px;
+    border-radius: 50px;
+    border: none;
+    font-size: 13px;
+    color: #fff;
+    background: #1AD69C; /* Old browsers */
+    background: -moz-linear-gradient(left,  #1AD69C 0%, #7de8cd 100%, #7de8c8 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  #1AD69C 0%,#7de8cd 100%,#7de8cd 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  #1AD69C 0%,#7de8cd 100%,#7de8cd 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1AD69C', endColorstr='#7de8cd',GradientType=1 ); /* IE6-9 */
+    cursor: pointer;
+}
