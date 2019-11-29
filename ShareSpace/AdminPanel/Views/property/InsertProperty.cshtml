@@ -38,18 +38,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PropertyAddressId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PropertyAddress, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PropertyAddressId, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Location" } })
-                @Html.ValidationMessageFor(model => model.PropertyAddressId, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.PropertyAddress, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Location" } })
+                @Html.ValidationMessageFor(model => model.PropertyAddress, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PropertyServiceId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PropertyService, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PropertyServiceId, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Service" } })
-                @Html.ValidationMessageFor(model => model.PropertyServiceId, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.PropertyService, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Service" } })
+                @Html.ValidationMessageFor(model => model.PropertyService, "", new { @class = "text-danger" })
             </div>
         </div>
 

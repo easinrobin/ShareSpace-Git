@@ -44,6 +44,8 @@ namespace ShareSpace.BusinessLayer
             var isDelete = sqlPropertyProvider.DeleteProperty(PropertyId);
             return isDelete;
         }
+
+
         #endregion
     }
 }

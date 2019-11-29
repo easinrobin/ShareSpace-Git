@@ -44,6 +44,9 @@ namespace ShareSpace.BusinessLayer
             var isDelete = sqlClientProvider.DeleteClient(clientId);
             return isDelete;
         }
+
+
+       
         #endregion
 
 

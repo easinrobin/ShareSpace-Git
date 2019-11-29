@@ -338,7 +338,6 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\salvattore.min.js" />
-    <Content Include="Views\property\img-1.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -376,7 +375,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

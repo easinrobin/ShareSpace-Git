@@ -16,6 +16,7 @@ namespace ShareSpace.Models
 
         [Display(Name = "FromDate")]
         //[Required(AllowEmptyStrings = false, ErrorMessage = "FromDate required")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "dd/mm/yyyy")]
         public DateTime? FromDate { get; set; }
 
         [Display(Name = "ToDate")]

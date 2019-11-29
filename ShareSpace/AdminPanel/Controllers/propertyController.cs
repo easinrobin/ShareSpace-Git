@@ -52,6 +52,10 @@ namespace AdminPanel.Controllers
             PropertyManager.DeleteProperty(propertyId);
             return RedirectToAction("Adminpropertys");
         }
+
+
+
+
         
     }
 }

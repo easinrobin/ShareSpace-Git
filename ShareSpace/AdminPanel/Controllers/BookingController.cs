@@ -45,6 +45,8 @@ namespace AdminPanel.Controllers
         public ActionResult AdminBookings()
         {
             List<Booking> allBookings = BookingManager.GetAllBookings(1);
+
+            
             return View("~/Views/Booking/AdminBookings.cshtml", allBookings);
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using ShareSpace.DataLayer;
@@ -167,8 +168,13 @@ namespace ShareSpace.DataLayerSql.Property
             return isDelete;
         }
 
+        
+
+
         #endregion
 
 
     }
+
+    
 }

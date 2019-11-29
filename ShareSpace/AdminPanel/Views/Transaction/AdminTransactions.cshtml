@@ -1,63 +1,57 @@
 ﻿@model List<ShareSpace.Models.Transaction>
 
 
-    <header class="content__title">
-        <h1>TRANSACTIONS</h1>
+<header class="content__title">
+    <h1>TRANSACTIONS</h1>
 
-        <div class="actions">
-            <div class="dropdown actions__item">
-                <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a href="#" class="dropdown-item">Refresh</a>
-                </div>
+    <div class="actions">
+        <div class="dropdown actions__item">
+            <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a href="#" class="dropdown-item">Refresh</a>
             </div>
         </div>
+    </div>
 
-    </header>
+</header>
 
-    <div class="card">
-        <div class="card-body">
-            <a href="Views/Transaction/InsertTransaction" class="btn btn-light">New Contact</a>
+<div class="card">
+    <div class="card-body">
+        <a href="Views/Transaction/InsertTransaction" class="btn btn-light">New Contact</a>
+        <Style>
+            .table td {
+                color: #ccb68ad9;
+            }
 
-            @*<Style>
-                .table td {
-                    color: #ccb68ad9;
-                }
+            .table td a {
+                color: #ccb68ad9;
+            }
+        </Style>
+        
+        <div class="table-responsive">
+            <table id="data-table" class="table">
+                <thead style="color: #ffaa00">
+                    <tr>
+                        <th>TotalPrice</th>
+                        <th>VendorId</th>
+                        <th>PropertyId</th>
+                        <th>PropertyRatingId</th>
 
-                    .table td a {
-                        color: #ccb68ad9;
-                    }
-            </Style>*@
-            <div class="table-responsive">
-                <table id="data-table" class="table">
-                    <thead style="color: #ffaa00"> 
-                        <tr>
-                            <th>TotalPrice</th>
-                            <th>VendorId</th>
-                            <th>PropertyId</th>
-                            <th>PropertyRatingId</th>
-                            
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+                        <th>Action</th>
+                    </tr>
+                </thead>
                 <tbody>
-                @foreach (var transaction in Model)
-                {
-                    using (Html.BeginForm("DeleteTransaction", "Transaction", new { transactionId = transaction.TransactionId }))
+                    @foreach (var transaction in Model)
                     {
-                        <tr>
-                            <td>@transaction.TotalPrice</td>
-                            <td>@transaction.VendorId</td>
-                            <td>@transaction.PropertyId</td>
-                            <td>@transaction.PropertyRatingId</td>
-                            <td>@Html.ActionLink("Edit", "UpdateTransaction", new { transactionId = transaction.TransactionId }) |
-                                @Html.ActionLink("Delete", "DeleteTransaction", new{transactionId = transaction.TransactionId} )
-                            </td>
-
-                            @*<td>
-                                <a href="new-contact.html">
-                                    <i class="zmdi zmdi-edit"></i>
-                                </a>
+                        using (Html.BeginForm("DeleteTransaction", "Transaction", new { transactionId = transaction.TransactionId }))
+                        {
+                            <tr>
+                                <td>@transaction.TotalPrice</td>
+                                <td>@transaction.VendorId</td>
+                                <td>@transaction.PropertyId</td>
+                                <td>@transaction.PropertyRatingId</td>
+                                <td>
+                                    @Html.ActionLink(" ", "UpdateTransaction", new { transactionId = transaction.TransactionId }, new { @class = "zmdi zmdi-edit" })
                                 <a href="#" data-toggle="modal" data-target="#confirm-delete" class="btn btn-default">
                                     <i class="zmdi zmdi-delete"></i>
                                 </a>
@@ -72,18 +66,18 @@
                                             </div>
                                             <div class="modal-footer" style="align-self: center;">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                <a class="btn btn-danger btn-ok">Delete</a>
+                                                @Html.ActionLink("Delete", "DeleteTransaction", new { transactionId = transaction.TransactionId }, new { @class = "btn btn-danger btn-ok" })
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </td>*@
+                            </td>
                         </tr>
                     }
                 }
                 </tbody>
-                </table>
-            </div>
+            </table>
         </div>
     </div>
-
+</div>

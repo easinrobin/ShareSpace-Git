@@ -64,11 +64,11 @@ namespace ShareSpace.Models
         [Display(Name = "IsSearchable")]
         public string IsSearchable { get; set; }
 
-        [Display(Name = "PropertyAddressId")]
-        public int PropertyAddressId { get; set; }
+        [Display(Name = "PropertyAddress")]
+        public string PropertyAddress { get; set; }
 
-        [Display(Name = "PropertyServiceId")]
-        public int PropertyServiceId { get; set; }
+        [Display(Name = "PropertyService")]
+        public string PropertyService { get; set; }
 
         [Display(Name = "VendorId")]
         public int VendorId { get; set; }
