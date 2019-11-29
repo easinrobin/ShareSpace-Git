@@ -2,7 +2,7 @@
 
 
     <header class="content__title">
-        <h1>VENDORS</h1>
+        <h1>PROPERTYS</h1>
 
         <div class="actions">
             <div class="dropdown actions__item">
@@ -38,6 +38,7 @@
                             <th>Location</th>
                             <th>Services</th>
                             <th>VendorID</th>
+                            <th>Image</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -53,11 +54,12 @@
                         <td>@property.PropertyAddressId</td>
                         <td>@property.PropertyServiceId</td>
                         <td>@property.VendorId</td>
+                        <td><img src="@property.Image" alt="Image" class="img-responsive" /></td>
                         <td>
                             @Html.ActionLink("Edit", "UpdateProperty", new { propertyId = property.PropertyId }) |
                             @Html.ActionLink("Delete", "DeleteProperty", new { propertyId = property.PropertyId })
                         </td>
-                        
+
 
                         @*<td>
             <a href="new-contact.html">

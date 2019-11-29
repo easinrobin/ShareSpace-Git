@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 namespace ShareSpace.Models
 {
-    public class Client : IEnumerable
+    public class Client
     {
         [Key]
         [Display(Name = "ClientId")]
@@ -32,7 +36,7 @@ namespace ShareSpace.Models
 
         [Display(Name = "BirthDate")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "BirthDate required")]
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         [Display(Name = "Password")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Maximum 8digit")]
@@ -50,14 +54,11 @@ namespace ShareSpace.Models
         public string UpdateBy { get; set; }
 
         [Display(Name = "CreatedDate")]
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         [Display(Name = "UpdateDate")]
-        public DateTime UpdateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
 
-        public IEnumerator GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

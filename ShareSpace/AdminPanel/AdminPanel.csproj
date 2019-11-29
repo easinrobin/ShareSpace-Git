@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BookingController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\propertyController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
@@ -180,6 +181,9 @@
     <Content Include="Content\material-design-iconic-font\dist\fonts\Material-Design-Iconic-Fontd1f1.woff" />
     <Content Include="Content\material-design-iconic-font\dist\fonts\Material-Design-Iconic-Fontd1f1.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Image\1.jpg" />
+    <Content Include="Image\banner-slider-2.jpg" />
+    <Content Include="Image\banner-slider-3.jpg" />
     <Content Include="Scripts\app.min.js" />
     <Content Include="Scripts\autosize.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -334,6 +338,7 @@
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\salvattore.min.js" />
+    <Content Include="Views\property\img-1.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -365,10 +370,13 @@
     <Content Include="Views\Booking\InsertBooking.cshtml" />
     <Content Include="Views\Transaction\InsertTransaction.cshtml" />
     <Content Include="Views\Transaction\AdminTransactions.cshtml" />
+    <Content Include="Views\Client\AdminClients.cshtml" />
+    <Content Include="Views\Client\InsertClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

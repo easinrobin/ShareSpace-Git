@@ -32,7 +32,7 @@ namespace AdminPanel.Controllers
                 BookingManager.InsertBooking(booking);
             }
 
-            return View(booking);
+            return RedirectToAction("AdminBookings");
         }
 
         public ActionResult UpdateBooking(int bookingId)

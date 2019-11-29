@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using ShareSpace.DataLayer;
 using ShareSpace.DataLayer.Client;
 using ShareSpace.DataLayerSql.Common;
 using ShareSpace.Utility;
@@ -16,7 +17,7 @@ namespace ShareSpace.DataLayerSql.Client
             long id = 0;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.INSERTCLIENT, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.INSERTCLIENTS, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 SqlParameter returnValue = new SqlParameter("@" + "ClientId", SqlDbType.Int);
                 returnValue.Direction = ParameterDirection.Output;
@@ -55,7 +56,7 @@ namespace ShareSpace.DataLayerSql.Client
 
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.UPDATECLIENT, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.UPDATECLIENTS, connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 foreach (var clients in client.GetType().GetProperties())
@@ -87,7 +88,7 @@ namespace ShareSpace.DataLayerSql.Client
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.GETALLCLIENT, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.GETALLCLIENTS, connection);
                 command.CommandType = CommandType.StoredProcedure;
 
                 try
@@ -169,7 +170,7 @@ namespace ShareSpace.DataLayerSql.Client
             bool isDelete = true;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.DELETECLIENT, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.DELETECLIENTS, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add(new SqlParameter("@ClientID", clientId));
 

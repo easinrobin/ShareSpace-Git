@@ -16,15 +16,15 @@ namespace ShareSpace.DataLayerSql.Common
     {
         
 
-        public static string GETALLCLIENT = "sp_client_getallclients";
+        public static string GETALLCLIENTS = "sp_client_getallclients";
 
         public static string GETCLIENTBYID = "sp_client_getclientbyid";
 
-        public static string INSERTCLIENT = "sp_client_insertclients";
+        public static string INSERTCLIENTS = "sp_client_insertclients";
 
-        public static string UPDATECLIENT = "sp_client_updateclients";
+        public static string UPDATECLIENTS = "sp_client_updateclients";
 
-        public static string DELETECLIENT = "sp_client_deleteclients";
+        public static string DELETECLIENTS = "sp_client_deleteclients";
 
 
         

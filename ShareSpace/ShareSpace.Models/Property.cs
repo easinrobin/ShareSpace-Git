@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace ShareSpace.Models
 {
@@ -38,9 +39,9 @@ namespace ShareSpace.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "ShortDescription required")]
         public string ShortDescription { get; set; }
 
-        [Display(Name = "FeatureImage")]
+        [Display(Name = "Image")]
         //[Required(AllowEmptyStrings = false)]
-        public string FeatureImage { get; set; }
+        public string Image { get; set; }
 
         [Display(Name = "Price")]
         public int Price { get; set; }
@@ -85,6 +86,5 @@ namespace ShareSpace.Models
         public DateTime? UpdateDate { get; set; }
 
         
-
     }
 }

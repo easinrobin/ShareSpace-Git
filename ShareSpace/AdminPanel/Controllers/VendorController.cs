@@ -36,7 +36,7 @@ namespace AdminPanel.Controllers
 
             //return RedirectToAction("InsertVendor");
             //}
-            return View(vendor);
+            return RedirectToAction("AdminVendors");
         }
 
         public ActionResult UpdateVendor(int vendorId)

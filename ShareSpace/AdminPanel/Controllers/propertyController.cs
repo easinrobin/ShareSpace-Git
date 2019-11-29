@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ShareSpace.BusinessLayer;
 using ShareSpace.Models;
+using System.IO;
 
 namespace AdminPanel.Controllers
 {
@@ -28,7 +29,10 @@ namespace AdminPanel.Controllers
             {
                 PropertyManager.InsertProperty(property);
             }
-            return View(property);
+
+           
+
+                return RedirectToAction("AdminPropertys");
         }
 
         public ActionResult UpdateProperty(int propertyId)

@@ -34,7 +34,7 @@ namespace AdminPanel.Controllers
 
             //return RedirectToAction("InsertVendor");
             //}
-            return View(transaction);
+            return RedirectToAction("AdminTransactions");
         }
 
         public ActionResult UpdateTransaction(int transactionId)

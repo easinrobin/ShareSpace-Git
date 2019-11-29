@@ -44,8 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client\IClientProvider.cs" />
     <Compile Include="IBookingProvider.cs" />
+    <Compile Include="IClientProvider.cs" />
     <Compile Include="IPropertyProvider.cs" />
     <Compile Include="ITransactionProvider.cs" />
     <Compile Include="IVendorProvider.cs" />
