@@ -27,13 +27,15 @@ namespace AdminPanel
 
             bundles.Add(new StyleBundle("~/Content/dropzone").Include(
                       "~/Content/dropzone.css"));
+            bundles.Add(new StyleBundle("~/Content/validation").Include(
+                "~/Content/validation.css"));
 
 
             //Script
 
 
 
-            
+
             bundles.Add(new ScriptBundle("~/bundles/jquerymin").Include(
                         "~/Scripts/jquery.min.js"));
 
@@ -130,6 +132,9 @@ namespace AdminPanel
 
             bundles.Add(new ScriptBundle("~/bundles/autosizemin").Include(
                        "~/Scripts/autosize.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/validation").Include(
+                "~/Scripts/validation.js"));
 
 
 

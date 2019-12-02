@@ -17,6 +17,8 @@ namespace AdminPanel.Controllers
             return View();
         }
 
+       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult InsertVendor(Vendor vendor)
@@ -37,7 +39,10 @@ namespace AdminPanel.Controllers
             //return RedirectToAction("InsertVendor");
             //}
             return RedirectToAction("AdminVendors");
+            
         }
+
+        
 
         public ActionResult UpdateVendor(int vendorId)
         {
