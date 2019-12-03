@@ -25,7 +25,7 @@ namespace ClientPanel.Controllers
             if (ModelState.IsValid)
             {
                 List<PropertySearchResult> allPropertyList = new List<PropertySearchResult>();
-                allPropertyList = PropertyManager.GetAllProperties();
+                allPropertyList = PropertyManager.GetAllPropertySearchResults();
                 return View("~/Views/Home/SearchResults.cshtml", allPropertyList);
             }
 

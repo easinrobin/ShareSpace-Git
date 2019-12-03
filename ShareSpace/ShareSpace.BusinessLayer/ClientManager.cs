@@ -26,8 +26,10 @@ namespace ShareSpace.BusinessLayer
             return sqlClientProvider.GetClientByEmail(email);
         }
         #endregion
+
+
         #region Set
-        public long InsertClient(Client client)
+        public static long InsertClient(Client client)
         {
             SqlClientProvider sqlClientProvider = new SqlClientProvider();
             var id = sqlClientProvider.InsertClient(client);

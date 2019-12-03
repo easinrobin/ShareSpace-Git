@@ -10,7 +10,7 @@ namespace ShareSpace.DataLayerSql.Client
 {
     public class SqlClientProvider : IClientProvider
     {
-        #region Client
+        #region SetClient
         public long InsertClient(Models.Client.Client client)
         {
             long id = 0;
@@ -110,6 +110,10 @@ namespace ShareSpace.DataLayerSql.Client
             return isDelete;
         }
 
+        #endregion
+
+        #region GetClients
+
         public List<Models.Client.Client> GetAllClients()
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
@@ -191,8 +195,8 @@ namespace ShareSpace.DataLayerSql.Client
             }
         }
 
-
-
         #endregion
+
+
     }
 }

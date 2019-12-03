@@ -58,6 +58,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property\SqlPropertyProvider.cs" />
     <Compile Include="Service\SqlServiceProvider.cs" />
+    <Compile Include="Transaction\SqlTransactionProvider.cs" />
+    <Compile Include="Vendor\SqlVendorsProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

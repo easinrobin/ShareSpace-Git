@@ -21,8 +21,15 @@ namespace ShareSpace.BusinessLayer
             return sqlBookingProvider.GetBookingById(bookingId);
         }
 
+        public static List<ClientsBookingHistory> ClientsBookingHistory(int clientId)
+        {
+            SqlBookingProvider sqlBookingProvider = new SqlBookingProvider();
+            return sqlBookingProvider.GetClientBookingHistory(clientId);
+        }
 
         #endregion
+
+
         #region Set
         public static long InsertBooking(Booking booking)
         {
@@ -44,13 +51,7 @@ namespace ShareSpace.BusinessLayer
             var isDelete = sqlBookingProvider.DeleteBooking(bookingId);
             return isDelete;
         }
-
-        public static List<ClientsBookingHistory> ClientsBookingHistory(int clientId)
-        {
-            SqlBookingProvider sqlBookingProvider = new SqlBookingProvider();
-            return sqlBookingProvider.GetClientBookingHistory(clientId);
-        }
-
+        
         #endregion
         
     }

@@ -1,0 +1,87 @@
+﻿@model List<ShareSpace.Models.Property.Property>
+
+
+<header class="content__title">
+    <h1>PROPERTYS</h1>
+
+    <div class="actions">
+        <div class="dropdown actions__item">
+            <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a href="#" class="dropdown-item">Refresh</a>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+<div class="card">
+    <div class="card-body">
+        <a href="/Property/InsertProperty" class="btn btn-light">New Contact</a>
+
+        <Style>
+                .table td {
+                    color: rgba(182, 138, 217, 0.8);
+                }
+
+                .table td a {
+                    color: rgba(182, 138, 217, 0.8);
+                }
+            </Style>
+        <div class="table-responsive">
+            <table id="data-table" class="table">
+                <thead style="color: #ffaa00">
+                    <tr>
+                        <th>PropertyName</th>
+                        <th>MaximumPerson</th>
+                        <th>Rent/Hour</th>
+                        <th>Location</th>
+                        <th>Services</th>
+                        <th>VendorID</th>
+                        @*<th>Image</th>*@
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var property in Model)
+                    {
+                        using (Html.BeginForm("DeleteProperty", "Property", new { propertyId = property.PropertyId }))
+                        {
+                            <tr>
+                                <td>@property.PropertyName</td>
+                                <td>@property.MaximumPerson</td>
+                                <td>@property.Price</td>
+                                <td>@property.VendorId</td>
+                                @*<td><img src="@property.Image" alt="Image" class="img-responsive" /></td>*@
+                                <td>
+                                    @Html.ActionLink(" ", "UpdateProperty", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-edit" })
+                                    <a href="#" data-toggle="modal" data-target="#confirm-delete" class="btn btn-default">
+                                        <i class="zmdi zmdi-delete"></i>
+                                    </a>
+                                    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                </div>
+                                                <div class="modal-body" style="align-self: center;">
+                                                    Are you sure you want to delete this element?
+                                                </div>
+                                                <div class="modal-footer" style="align-self: center;">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                    @Html.ActionLink("Delete", "DeleteProperty", new { propertyId = property.PropertyId }, new { @class = "btn btn-danger btn-ok" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
