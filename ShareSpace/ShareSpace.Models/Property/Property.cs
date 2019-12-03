@@ -35,6 +35,7 @@ namespace ShareSpace.Models.Property
 
         [Display(Name = "ShortDescription")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "ShortDescription required")]
+        [DataType(DataType.MultilineText)]
         public string ShortDescription { get; set; }
 
         [Display(Name = "Price")]

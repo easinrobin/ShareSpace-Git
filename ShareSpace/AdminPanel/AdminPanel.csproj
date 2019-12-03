@@ -359,14 +359,7 @@
     <Content Include="Views\Client\AdminClients.cshtml" />
     <Content Include="Views\Client\InsertClient.cshtml" />
     <Content Include="Views\property\AdminPropertys.cshtml" />
-    <Content Include="Views\property\Create.cshtml" />
     <Content Include="Views\property\InsertProperty.cshtml" />
-    <Content Include="Views\property\Partial\_Address.cshtml" />
-    <Content Include="Views\property\Partial\_FacilityList.cshtml" />
-    <Content Include="Views\property\Partial\_Gallery.cshtml" />
-    <Content Include="Views\property\Partial\_Policy.cshtml" />
-    <Content Include="Views\property\Partial\_Property.cshtml" />
-    <Content Include="Views\property\Partial\_Review.cshtml" />
     <Content Include="Views\PropertyDetails\Create.cshtml" />
     <Content Include="Views\PropertyDetails\Partial\_Address.cshtml" />
     <Content Include="Views\PropertyDetails\Partial\_FacilityList.cshtml" />
@@ -378,6 +371,7 @@
     <Content Include="Views\Transaction\InsertTransaction.cshtml" />
     <Content Include="Views\Vendor\AdminVendors.cshtml" />
     <Content Include="Views\Vendor\InsertVendor.cshtml" />
+    <Content Include="Views\PropertyDetails\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
