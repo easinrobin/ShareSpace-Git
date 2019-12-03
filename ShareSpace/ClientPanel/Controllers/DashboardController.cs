@@ -1,6 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using ShareSpace.BusinessLayer;
 using ShareSpace.Models;
+using ShareSpace.Models.Client;
 
 namespace ClientPanel.Controllers
 {
@@ -22,9 +24,15 @@ namespace ClientPanel.Controllers
             return View();
         }
 
-        public ActionResult History()
+        public ActionResult History(int clientId = 13)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                List<ClientsBookingHistory> bookingHistoryList = new List<ClientsBookingHistory>();
+                bookingHistoryList = BookingManager.ClientsBookingHistory(clientId);
+                return View("~/Views/Dashboard/History.cshtml", bookingHistoryList);
+            }
+            return View("~/Views/Error");
         }
     }
 }

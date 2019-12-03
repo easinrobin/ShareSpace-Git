@@ -51,8 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Booking\Booking.cs" />
     <Compile Include="Booking\BookingEmail.cs" />
     <Compile Include="Client\Client.cs" />
+    <Compile Include="Client\ClientsBookingHistory.cs" />
     <Compile Include="ContactForm.cs" />
     <Compile Include="Gallery\Gallery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

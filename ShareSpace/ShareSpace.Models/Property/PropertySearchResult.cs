@@ -20,10 +20,10 @@ namespace ShareSpace.Models.Property
         public string ShortDescription { get; set; }
 
         [Display(Name = "Retail Price")]
-        public int RetailPrice { get; set; }
+        public decimal RetailPrice { get; set; }
 
         [Display(Name = "Price")]
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         [Display(Name = "IsFeatured")]
         public bool IsFeatured { get; set; }

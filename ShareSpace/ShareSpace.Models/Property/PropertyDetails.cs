@@ -51,10 +51,10 @@ namespace ShareSpace.Models.Property
         public string Description { get; set; }
 
         [Display(Name = "Price")]
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         [Display(Name = "Retail Price")]
-        public int RetailPrice { get; set; }
+        public decimal RetailPrice { get; set; }
 
         [Display(Name = "Latitude")]
         public float Latitude { get; set; }

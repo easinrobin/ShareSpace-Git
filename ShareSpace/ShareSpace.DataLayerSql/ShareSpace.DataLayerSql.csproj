@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Booking\SqlBookingProvider.cs" />
     <Compile Include="Client\SqlClientProvider.cs" />
     <Compile Include="Common\CommonUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

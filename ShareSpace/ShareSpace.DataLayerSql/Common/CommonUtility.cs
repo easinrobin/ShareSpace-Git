@@ -34,10 +34,21 @@ namespace ShareSpace.DataLayerSql.Common
         public static string GETPROPERTYDETAILSBYID = "sp_view_getpropertydetailsbyid";
 
         public static string GETCLIENTPROPERTYRATING = "sp_view_clientpropertyrating";
-
         
-
         //Services
         public static string GETFEATUREDSERVICE = "sp_service_getfeaturedservices";
+
+        //Booking
+        public static string INSERTBOOKINGS = "sp_booking_insertbooking";
+
+        public static string UPDATEBOOKINGS = "sp_booking_updatebooking";
+
+        public static string GETALLBOOKINGS = "sp_booking_getallbooking";
+
+        public static string GETBOOKINGSBYID = "sp_Booking_getBookingbyid";
+
+        public static string DELETEBOOKINGS = "sp_booking_deletebooking";
+
+        public static string GETCLIENTSBOOKINGHISTORY = "sp_view_getClientBookingHistory";
     }
 }

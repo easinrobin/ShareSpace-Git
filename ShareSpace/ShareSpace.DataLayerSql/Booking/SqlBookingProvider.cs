@@ -2,31 +2,32 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using ShareSpace.DataLayer.Client;
+using ShareSpace.DataLayer.Booking;
 using ShareSpace.DataLayerSql.Common;
+using ShareSpace.Models.Client;
 using ShareSpace.Utility;
 
-namespace ShareSpace.DataLayerSql.Client
+namespace ShareSpace.DataLayerSql.Booking
 {
-    public class SqlClientProvider : IClientProvider
+    public class SqlBookingProvider : IBookingProvider
     {
-        #region Client
-        public long InsertClient(Models.Client.Client client)
+        #region Booking
+        public long InsertBooking(Models.Booking.Booking booking)
         {
             long id = 0;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.INSERTCLIENT, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.INSERTBOOKINGS, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                SqlParameter returnValue = new SqlParameter("@" + "ClientId", SqlDbType.Int);
+                SqlParameter returnValue = new SqlParameter("@" + "BookingId", SqlDbType.Int);
                 returnValue.Direction = ParameterDirection.Output;
                 command.Parameters.Add(returnValue);
-                foreach (var clients in client.GetType().GetProperties())
+                foreach (var bookings in booking.GetType().GetProperties())
                 {
-                    if (clients.Name != "ClientId")
+                    if (bookings.Name != "BookingId")
                     {
-                        string name = clients.Name;
-                        var value = clients.GetValue(client, null);
+                        string name = bookings.Name;
+                        var value = bookings.GetValue(booking, null);
 
                         command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
                     }
@@ -35,7 +36,7 @@ namespace ShareSpace.DataLayerSql.Client
                 {
                     connection.Open();
                     command.ExecuteNonQuery();
-                    id = (int)command.Parameters["@ClientId"].Value;
+                    id = (int)command.Parameters["@BookingId"].Value;
                 }
                 catch (Exception ex)
                 {
@@ -49,20 +50,20 @@ namespace ShareSpace.DataLayerSql.Client
             return id;
         }
 
-        public bool UpdateClient(Models.Client.Client client)
+        public bool UpdateBooking(Models.Booking.Booking booking)
         {
             bool isUpdate = true;
 
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.UPDATECLIENT, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.UPDATEBOOKINGS, connection);
                 command.CommandType = CommandType.StoredProcedure;
 
-                foreach (var clients in client.GetType().GetProperties())
+                foreach (var bookings in booking.GetType().GetProperties())
                 {
-                    string name = clients.Name;
-                    var value = clients.GetValue(client, null);
-                    command.Parameters.Add(new SqlParameter("@" + name, value));
+                    string name = bookings.Name;
+                    var value = bookings.GetValue(booking, null);
+                    command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
                 }
 
                 try
@@ -83,14 +84,70 @@ namespace ShareSpace.DataLayerSql.Client
             return isUpdate;
         }
 
-        public bool DeleteClient(long clientId)
+        public List<Models.Booking.Booking> GetAllBookings()
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GETALLBOOKINGS, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    List<Models.Booking.Booking> bookingList = new List<Models.Booking.Booking>();
+                    bookingList = UtilityManager.DataReaderMapToList<Models.Booking.Booking>(dataReader);
+                    return bookingList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public Models.Booking.Booking GetBookingById(long bookingId)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GETBOOKINGSBYID, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@BookingId", bookingId));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    Models.Booking.Booking booking = new Models.Booking.Booking();
+                    booking = UtilityManager.DataReaderMap<Models.Booking.Booking>(reader);
+                    return booking;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+
+
+        public bool DeleteBooking(long bookingId)
         {
             bool isDelete = true;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.DELETECLIENT);
+                SqlCommand command = new SqlCommand(StoreProcedure.DELETEBOOKINGS, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@ClientID", clientId));
+                command.Parameters.Add(new SqlParameter("@BookingID", bookingId));
 
                 try
                 {
@@ -110,52 +167,25 @@ namespace ShareSpace.DataLayerSql.Client
             return isDelete;
         }
 
-        public List<Models.Client.Client> GetAllClients()
+        public List<ClientsBookingHistory> GetClientBookingHistory(int clientId)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.GETALLCLIENT, connection);
+                SqlCommand command = new SqlCommand(StoreProcedure.GETCLIENTSBOOKINGHISTORY, connection);
                 command.CommandType = CommandType.StoredProcedure;
-
-                try
-                {
-                    connection.Open();
-                    SqlDataReader dataReader = command.ExecuteReader();
-                    List<Models.Client.Client> clientList = new List<Models.Client.Client>();
-                    clientList = UtilityManager.DataReaderMapToList<Models.Client.Client>(dataReader);
-                    return clientList;
-                }
-                catch (Exception e)
-                {
-                    throw new Exception("Exception retrieving reviews. " + e.Message);
-                }
-
-                finally
-                {
-                    connection.Close();
-                }
-            }
-        }
-
-        public Models.Client.Client GetClientById(long clientId)
-        {
-            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
-            {
-                SqlCommand command = new SqlCommand(StoreProcedure.GETCLIENTBYID, connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@ClientId", clientId));
+                command.Parameters.Add(new SqlParameter("@ClientId", +clientId));
 
                 try
                 {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
-                    Models.Client.Client client = new Models.Client.Client();
-                    client = UtilityManager.DataReaderMap<Models.Client.Client>(reader);
-                    return client;
+                    List<ClientsBookingHistory> bookingList = new List<ClientsBookingHistory>();
+                    bookingList = UtilityManager.DataReaderMapToList<ClientsBookingHistory>(reader);
+                    return bookingList;
                 }
                 catch (Exception e)
                 {
-                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                    throw new Exception("Exception retrieving reviews." + e.Message);
                 }
                 finally
                 {
@@ -163,35 +193,6 @@ namespace ShareSpace.DataLayerSql.Client
                 }
             }
         }
-
-        public Models.Client.Client GetClientByEmail(string email)
-        {
-            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
-            {
-                SqlCommand command = new SqlCommand(StoreProcedure.GETCLIENTBYEMAIL, connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@Email", email));
-
-                try
-                {
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    Models.Client.Client client = new Models.Client.Client();
-                    client = UtilityManager.DataReaderMap<Models.Client.Client>(reader);
-                    return client;
-                }
-                catch (Exception e)
-                {
-                    throw new Exception("Exception retrieving reviews. " + e.Message);
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-        }
-
-
 
         #endregion
     }
