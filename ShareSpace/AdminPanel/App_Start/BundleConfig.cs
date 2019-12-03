@@ -70,21 +70,21 @@ namespace AdminPanel
 
 
 
-            bundles.Add(new ScriptBundle("~/bundles/curvedline").Include(
-                        "~/Scripts/demo/js/flot-charts/curved-line.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/curvedline").Include(
+            //            "~/Scripts/demo/js/flot-charts/curved-line.js"));
 
 
-            bundles.Add(new ScriptBundle("~/bundles/line").Include(
-                        "~/Scripts/demo/js/flot-charts/line.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/line").Include(
+            //            "~/Scripts/demo/js/flot-charts/line.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/charttooltips").Include(
-                        "~/Scripts/demo/js/flot-charts/chart-tooltips.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/charttooltips").Include(
+            //            "~/Scripts/demo/js/flot-charts/chart-tooltips.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/othercharts").Include(
-                        "~/Scripts/demo/js/other-charts.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/othercharts").Include(
+            //            "~/Scripts/demo/js/other-charts.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqvmap").Include(
-                        "~/Scripts/demo/js/jqvmap.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/jqvmap").Include(
+            //            "~/Scripts/demo/js/jqvmap.js"));
 
 
 

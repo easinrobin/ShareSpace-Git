@@ -40,9 +40,9 @@ namespace ShareSpace.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "ShortDescription required")]
         public string ShortDescription { get; set; }
 
-        [Display(Name = "Image")]
+        [Display(Name = "FeatureImage")]
         //[Required(AllowEmptyStrings = false)]
-        public string Image { get; set; }
+        public string FeatureImage { get; set; }
 
         [Display(Name = "Price")]
         public int Price { get; set; }

@@ -10,7 +10,7 @@ using ShareSpace.Models;
 
 namespace AdminPanel.Models
 {
-    public class AdminVWModel
+    public class AdminVWModel : IEnumerable
     {
         public Property Property { get; set; }
         //public PropertyDetails PropertyDetails { get; set; }
@@ -26,6 +26,10 @@ namespace AdminPanel.Models
         //public List<FeatureDetails> Features { get; set; }
         //public List<FacilityDetails> Facilities { get; set; }
         //public List<Gallery> Galleries { get; set; }
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     
