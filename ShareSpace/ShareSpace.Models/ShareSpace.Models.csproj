@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AdminVWModel.cs" />
     <Compile Include="Booking\Booking.cs" />
     <Compile Include="Booking\BookingEmail.cs" />
     <Compile Include="Client\Client.cs" />
@@ -68,6 +70,8 @@
     <Compile Include="Property\PropertySearchResult.cs" />
     <Compile Include="Service\FeaturedServices.cs" />
     <Compile Include="Service\Services.cs" />
+    <Compile Include="Transaction\Transaction.cs" />
+    <Compile Include="Vendor\Vendor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -28,11 +28,9 @@ namespace ClientPanel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SignUp([Bind(Include = "ClientId,FirstName,LastName,Email,Country,MobileNo,BirthDate,Password")] Client client)
         {
-            ClientManager manager = new ClientManager();
             if (ModelState.IsValid)
             {
-
-                var id = manager.InsertClient(client);
+                var id = ClientManager.InsertClient(client);
                 return RedirectToAction("Login");
             }
             return View(client);

@@ -6,6 +6,8 @@ namespace ShareSpace.BusinessLayer
 {
     public class PropertyManager
     {
+        #region Get
+
         public static List<FeatureProperty> GetFeaturedProperties(int maxRow)
         {
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
@@ -18,7 +20,13 @@ namespace ShareSpace.BusinessLayer
             return propertyProvider.GetShareType(type);
         }
 
-        public static List<PropertySearchResult> GetAllProperties()
+        public static List<PropertySearchResult> GetAllPropertySearchResults()
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetAllPropertySearchResults();
+        }
+
+        public static List<Property> GetAllProperties()
         {
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
             return propertyProvider.GetAllProperties();
@@ -35,5 +43,39 @@ namespace ShareSpace.BusinessLayer
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
             return propertyProvider.GetClientPropertyRatings(Id);
         }
+
+        public static Property GetPropertyById(long propertyId)
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetPropertyById(propertyId);
+        }
+
+        #endregion
+
+
+        #region Set
+
+        public static long InsertProperty(Property property)
+        {
+            SqlPropertyProvider sqlPropertyProvider = new SqlPropertyProvider();
+            var id = sqlPropertyProvider.InsertProperty(property);
+            return id;
+        }
+
+        public static bool UpdateProperty(Property property)
+        {
+            SqlPropertyProvider sqlPropertyProvider = new SqlPropertyProvider();
+            var isUpdate = sqlPropertyProvider.UpdateProperty(property);
+            return isUpdate;
+        }
+
+        public static bool DeleteProperty(long PropertyId)
+        {
+            SqlPropertyProvider sqlPropertyProvider = new SqlPropertyProvider();
+            var isDelete = sqlPropertyProvider.DeleteProperty(PropertyId);
+            return isDelete;
+        }
+
+        #endregion
     }
 }

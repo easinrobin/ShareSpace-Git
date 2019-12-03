@@ -25,6 +25,15 @@ namespace ShareSpace.Models.Gallery
         [Display(Name = "Image3")]
         public string Image3 { get; set; }
 
+        [Display(Name = "Image4")]
+        public string Image4 { get; set; }
+
+        [Display(Name = "Image5")]
+        public string Image5 { get; set; }
+
+        [Display(Name = "Image6")]
+        public string Image6 { get; set; }
+
         [Display(Name = "PropertyId")]
         public int PropertyId { get; set; }
 

@@ -7,7 +7,8 @@ namespace ShareSpace.DataLayer.Property
     {
         List<FeatureProperty> GetFeatureProperties(int maxRow);
         List<PropertySearchResult> GetShareType(string type);
-        List<PropertySearchResult> GetAllProperties();
+        List<Models.Property.Property> GetAllProperties();
         PropertyDetails GetPropertyDetailsById(int id);
+        List<PropertySearchResult> GetAllPropertySearchResults();
     }
 }
