@@ -44,10 +44,10 @@ namespace ShareSpace.Models.Property
         public int RetailPrice { get; set; }
 
         [Display(Name = "Latitude")]
-        public float Latitude { get; set; }
+        public decimal Latitude { get; set; }
 
         [Display(Name = "Longitude")]
-        public float Longitude { get; set; }
+        public decimal Longitude { get; set; }
 
         [Display(Name = "IsFeatured")]
         public bool IsFeatured { get; set; }

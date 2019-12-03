@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Booking\IBookingProvider.cs" />
     <Compile Include="Client\IClientProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property\IPropertyProvider.cs" />

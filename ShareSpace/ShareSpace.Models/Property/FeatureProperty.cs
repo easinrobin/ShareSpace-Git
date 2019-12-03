@@ -9,7 +9,7 @@ namespace ShareSpace.Models.Property
         [Display(Name = "Feature Image")]
         public string FeatureImage { get; set; }
         [Display(Name = "Retail Price")]
-        public int RetailPrice { get; set; }
+        public decimal RetailPrice { get; set; }
         [Display(Name = "Rating")]
         public int Rating { get; set; }
         [Display(Name = "Property Name")]
