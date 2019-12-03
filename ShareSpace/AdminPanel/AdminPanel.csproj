@@ -132,6 +132,7 @@
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\propertyController.cs" />
+    <Compile Include="Controllers\PropertyDetailsController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
@@ -374,6 +375,13 @@
     <Content Include="Views\Transaction\AdminTransactions.cshtml" />
     <Content Include="Views\Client\AdminClients.cshtml" />
     <Content Include="Views\Client\InsertClient.cshtml" />
+    <Content Include="Views\PropertyDetails\Create.cshtml" />
+    <Content Include="Views\PropertyDetails\Partial\_Address.cshtml" />
+    <Content Include="Views\PropertyDetails\Partial\_FacilityList.cshtml" />
+    <Content Include="Views\PropertyDetails\Partial\_Gallery.cshtml" />
+    <Content Include="Views\PropertyDetails\Partial\_Policy.cshtml" />
+    <Content Include="Views\PropertyDetails\Partial\_Property.cshtml" />
+    <Content Include="Views\PropertyDetails\Partial\_Review.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

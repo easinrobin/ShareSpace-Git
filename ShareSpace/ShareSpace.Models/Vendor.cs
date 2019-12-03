@@ -23,16 +23,18 @@ namespace ShareSpace.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "Last name required")]
         public string LastName { get; set; }
 
+
+
         [Display(Name = "Email")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Email required")]
-        public string Email { get; set; }
+        public  string Email { get; set; }
 
         [Display(Name = "Country")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Country required")]
         public string Country { get; set; }
 
         [Display(Name = "MobileNo")]
-        public string MobileNo { get; set; }
+        public  string MobileNo { get; set; }
 
         [Display(Name = "BirthDate")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "BirthDate required")]

@@ -1,0 +1,50 @@
+﻿@model AdminPanel.Models.AdminVWModel
+@using System.Web.Mvc;
+
+<div class="form-horizontal">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PropertyAddress.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PropertyAddress.Address, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Address" } })
+            @Html.ValidationMessageFor(model => model.PropertyAddress.Address, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PropertyAddress.City, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PropertyAddress.City, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "City" } })
+            @Html.ValidationMessageFor(model => model.PropertyAddress.City, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PropertyAddress.Area, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PropertyAddress.Area, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Area" } })
+            @Html.ValidationMessageFor(model => model.PropertyAddress.Area, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PropertyAddress.ZipCode, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PropertyAddress.ZipCode, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "ZipCode" } })
+            @Html.ValidationMessageFor(model => model.PropertyAddress.ZipCode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PropertyAddress.Country, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PropertyAddress.Country, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Country" } })
+            @Html.ValidationMessageFor(model => model.PropertyAddress.Country, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+</div>

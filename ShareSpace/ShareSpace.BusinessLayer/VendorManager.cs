@@ -44,8 +44,18 @@ namespace ShareSpace.BusinessLayer
             var isDelete = sqlVendorProvider.DeleteVendor(vendorId);
             return isDelete;
         }
+
+
+
+        public static List<Vendor> GetAllVendorsByEmailNPhone( string email, string mobileNo)
+        {
+            SqlVendorProvider sqlVendorProvider = new SqlVendorProvider();
+            var allVendors = sqlVendorProvider.GetAllVendorsByEmailNPhone(email, mobileNo);
+            return allVendors;
+        }
         #endregion
 
 
+        
     }
 }

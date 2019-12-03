@@ -167,8 +167,36 @@ namespace ShareSpace.DataLayerSql.Vendor
             return isDelete;
         }
 
-        #endregion
 
-        
+
+        #endregion
+        public List<Models.Vendor> GetAllVendorsByEmailNPhone(string email, string mobileNo)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GETALLVENDORSBYEMAIL_MOBILE, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@Email", email));
+                command.Parameters.Add(new SqlParameter("@Mobileno", mobileNo));
+                try
+                {
+                    connection.Open();
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    List<Models.Vendor> vendorList = new List<Models.Vendor>();
+                    vendorList = UtilityManager.DataReaderMapToList<Models.Vendor>(dataReader);
+                    return vendorList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
     }
 }

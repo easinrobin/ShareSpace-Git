@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ShareSpace.Models
 {
-    class PropertyService
+    public class PropertyService
     {
         [Key]
         [Display(Name = "PropertyServiceId")]

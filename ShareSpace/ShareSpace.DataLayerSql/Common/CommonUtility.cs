@@ -38,6 +38,9 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string DELETEVENDORS = "sp_vendor_deletevendors";
 
+        public static string GETALLVENDORSBYEMAIL_MOBILE = "sp_vendor_getallvendorbyemailandmobile";
+
+
 
         public static string GETALLPROPERTYS = "sp_property_getallproperty";
 

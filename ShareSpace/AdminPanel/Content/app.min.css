@@ -12490,6 +12490,7 @@ textarea {
     font-size: 0;
     position: relative;
     appearance: none
+    background:red;
 }
 
 .dataTables_filter:after,
@@ -12499,14 +12500,18 @@ textarea {
     left: 1px;
     bottom: 6px;
     font-size: 1.3rem;
-    color: #fff
-}
+    color: #fff;
 
-.dataTables_filter > label,
-.dataTables_length > label {
-    margin: 0;
-    width: 100%
 }
+    .dataTables_length .option {
+        background: red;
+    }
+
+    .dataTables_filter > label,
+    .dataTables_length > label {
+        margin: 0;
+        width: 100%
+    }
 
 .dataTables_filter > label input[type=search],
 .dataTables_filter > label select,

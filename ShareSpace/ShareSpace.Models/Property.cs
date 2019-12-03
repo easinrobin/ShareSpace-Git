@@ -36,6 +36,7 @@ namespace ShareSpace.Models
         public string Description { get; set; }
 
         [Display(Name = "ShortDescription")]
+        [DataType(DataType.MultilineText)]
         [Required(AllowEmptyStrings = false, ErrorMessage = "ShortDescription required")]
         public string ShortDescription { get; set; }
 
@@ -50,16 +51,16 @@ namespace ShareSpace.Models
         public int RetaingPrice { get; set; }
 
         [Display(Name = "Latitude")]
-        public int Latitude { get; set; }
+        public float Latitude { get; set; }
 
         [Display(Name = "Longitude")]
-        public int Longitude { get; set; }
+        public float Longitude { get; set; }
 
         [Display(Name = "IsFeatured")]
-        public string IsFeatured { get; set; }
+        public bool IsFeatured { get; set; }
 
         [Display(Name = "IsHidden")]
-        public string IsHidden { get; set; }
+        public bool IsHidden { get; set; }
 
         [Display(Name = "IsSearchable")]
         public string IsSearchable { get; set; }
