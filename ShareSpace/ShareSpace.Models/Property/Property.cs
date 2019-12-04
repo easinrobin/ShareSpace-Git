@@ -14,6 +14,10 @@ namespace ShareSpace.Models.Property
         [Required(AllowEmptyStrings = false, ErrorMessage = "PropertyName name required")]
         public string PropertyName { get; set; }
 
+        [Display(Name = "VendorName")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "VendorName name required")]
+        public string VendorName { get; set; }
+
         [Display(Name = "ShareType")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "ShareType required")]
         public string ShareType { get; set; }
@@ -64,6 +68,12 @@ namespace ShareSpace.Models.Property
 
         [Display(Name = "PropertyServiceId")]
         public int PropertyServiceId { get; set; }
+
+        [Display(Name = "PropertyAddress")]
+        public string PropertyAddress { get; set; }
+
+        [Display(Name = "PropertyService")]
+        public string PropertyService { get; set; }
 
         [Display(Name = "VendorId")]
         public int VendorId { get; set; }

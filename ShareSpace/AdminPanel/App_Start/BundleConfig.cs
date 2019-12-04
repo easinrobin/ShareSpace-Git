@@ -50,7 +50,7 @@ namespace AdminPanel
             //new
 
             bundles.Add(new ScriptBundle("~/bundles/curvedline").Include(
-                        "~/Scripts/ThirdPartyJs/curved-line.js"));
+                        "~/Scripts/ThirdPartyJs/curvedLines.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/autosize").Include(
                 "~/Scripts/ThirdPartyJs/autosize.min.js"));
@@ -78,6 +78,18 @@ namespace AdminPanel
 
             bundles.Add(new ScriptBundle("~/bundles/salvattore").Include(
                 "~/Scripts/ThirdPartyJs/salvattore.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jquerymin").Include(
+                "~/Scripts/ThirdPartyJs/jquery.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/momentmin").Include(
+                "~/Scripts/ThirdPartyJs/moment.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryvmapworld").Include(
+                "~/Scripts/ThirdPartyJs/jquery.vmap.world.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryvmapmin").Include(
+                "~/Scripts/ThirdPartyJs/jquery.vmap.min.js"));
 
 
 

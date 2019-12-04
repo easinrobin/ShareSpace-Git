@@ -294,6 +294,7 @@
     <Content Include="Scripts\ThirdPartyJs\jquery.easypiechart.min.js" />
     <Content Include="Scripts\ThirdPartyJs\jquery.flot.js" />
     <Content Include="Scripts\ThirdPartyJs\jquery.flot.resize.js" />
+    <Content Include="Scripts\ThirdPartyJs\jquery.min.js" />
     <Content Include="Scripts\ThirdPartyJs\jquery.peity.min.js" />
     <Content Include="Scripts\ThirdPartyJs\jquery.scrollbar.min.js" />
     <Content Include="Scripts\ThirdPartyJs\jquery.validate.js" />
@@ -301,9 +302,11 @@
     <Content Include="Scripts\ThirdPartyJs\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\ThirdPartyJs\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\ThirdPartyJs\jquery.vmap.min.js" />
+    <Content Include="Scripts\ThirdPartyJs\jquery.vmap.world.js" />
     <Content Include="Scripts\ThirdPartyJs\jszip.min.js" />
     <Content Include="Scripts\ThirdPartyJs\lightgallery-all.min.js" />
     <Content Include="Scripts\ThirdPartyJs\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ThirdPartyJs\moment.min.js" />
     <Content Include="Scripts\ThirdPartyJs\popper.min.js" />
     <Content Include="Scripts\rich-textJs\code_beautifier.min.js" />
     <Content Include="Scripts\rich-textJs\code_view.min.js" />

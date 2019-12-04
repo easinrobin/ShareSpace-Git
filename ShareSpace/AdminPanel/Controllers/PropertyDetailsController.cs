@@ -14,6 +14,11 @@ namespace AdminPanel.Controllers
             return View(model);
         }
 
+        public ActionResult UpdateProperty(int propertyId)
+        {
+             PropertyManager.GetPropertyById(propertyId);
+            return View("~/Views/PropertyDetails/Create.cshtml");
+        }
         // GET: PropertyDetails/Details/5
         public ActionResult Details(int id)
         {
