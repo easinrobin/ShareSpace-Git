@@ -1,7 +1,7 @@
-﻿@*@model List<ShareSpace.Models.Property.Property>
+﻿@model List<ShareSpace.Models.Property>
 @{
     ViewBag.Title = "Properties";
-    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <header class="content__title">
@@ -15,60 +15,61 @@
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">
-            <a href="/Admin/PropertyDetails/Create" class="btn btn-light btn--icon-text" title="Create"><i class="zmdi  zmdi-plus-circle-o zmdi-hc-fw"></i> Create New</a>
+            <a href="~/Views/PropertyDetails/Create" class="btn btn-light btn--icon-text" title="Create"><i class="zmdi  zmdi-plus-circle-o zmdi-hc-fw"></i> Create New</a>
         </h4>
         <div class="table-responsive">
             <table id="data-table" class="table">
                 <thead>
                     <tr>
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            Website
-                        </th>
-                        <th>
-                            Total Room
-                        </th>
-                        <th>
-                            Type
-                        </th>
-                        <th>
-                            Address
-                        </th>
-                        <th>Actions</th>
+                        <th>PropertyName</th>
+                        <th>PropertyType</th>
+                        <th>MaximumPerson</th>
+                        <th>Rent/Hour</th>
+                        <th>FeatureImage</th>
+                        <th>ShortDescription</th>
+                        <th>Description</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
-                @foreach (var item in Model)
+                @foreach (var property in Model)
                 {
                     <tbody>
                         <tr>
+                            <td>@property.PropertyName</td>
+                            <td>@property.MaximumPerson</td>
+                            <td>@property.Price</td>
+                            <td>@property.PropertyService</td>
+                            <td>@property.PropertyAddress</td>
+                            <td>@property.FeatureImage</td>
+                            @*
+                                <td><img src="@property.Image" alt="Image" class="img-responsive" /></td>*@
                             <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
+                                @*@Html.ActionLink(" ", "UpdateProperty", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-edit" })
+                                    <a href="#" data-toggle="modal" data-target="#confirm-delete" class="btn btn-default">
+                                        <i class="zmdi zmdi-delete"></i>
+                                    </a>
+                                    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+
+                                                </div>
+                                                <div class="modal-body" style="align-self: center;">
+                                                    Are you sure you want to delete this element?
+                                                </div>
+                                                <div class="modal-footer" style="align-self: center;">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                    @Html.ActionLink("Delete", "DeleteProperty", new { propertyId = property.PropertyId }, new { @class = "btn btn-danger btn-ok" })
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>*@
                             <td>
-                                @Html.DisplayFor(modelItem => item.Website)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TotalRoom)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Type)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Address1),
-                                @Html.DisplayFor(modelItem => item.City),
-                                @Html.DisplayFor(modelItem => item.CountryName)
-                            </td>
-                            <td>
-                                <a href="/Admin/PropertyDetails/Edit/@item.Id" title="Edit"><span class="actions__item zmdi zmdi-edit zmdi-hc-fw"></span></a>|
-                                <a href="/Admin/PropertyDetails/EditAddress/@item.Id" title="Address"><span class="actions__item zmdi zmdi-pin zmdi-hc-fw"></span></a>|
-                                <a href="/Admin/PropertyDetails/GalleryList/@item.Id" title="Galleries"><span class="actions__item zmdi zmdi-image-o zmdi-hc-fw"></span></a>|
-                                <a href="/Admin/PropertyDetails/FeatureList/@item.Id" title="Features"><span class="actions__item zmdi zmdi-assignment zmdi-hc-fw"></span></a>|
-                                <a href="/Admin/PropertyDetails/PolicyList/@item.Id" title="Policies"><span class="actions__item zmdi zmdi-collection-text zmdi-hc-fw"></span></a>|
-                                <a href="/Admin/PropertyDetails/ReviewList/@item.Id" title="Reviews"><span class="actions__item zmdi zmdi zmdi-comment-list zmdi-hc-fw"></span></a>|
-                                <a href="/Admin/RoomDetails/Index/@item.Id" title="Rooms"><span class="actions__item zmdi zmdi-hotel zmdi-hc-fw"></span></a>|
-                                <a href="/Admin/PropertyDetails/Delete/@item.Id" onclick="return confirm('Are you sure you want to delete this item?')" title="Delete"><i class="actions__item zmdi zmdi-delete zmdi-hc-fw"></i></a>
+                                <a href="/Admin/PropertyDetails/Edit/@property.PropertyId" title="Edit"><span class="actions__item zmdi zmdi-edit zmdi-hc-fw"></span></a>|
+                                <a href="/Admin/PropertyDetails/GalleryList/@property.PropertyId" title="Galleries"><span class="actions__item zmdi zmdi-image-o zmdi-hc-fw"></span></a>|
+                                <a href="/Admin/PropertyDetails/FeatureList/@property.PropertyId" title="Features"><span class="actions__item zmdi zmdi-assignment zmdi-hc-fw"></span></a>|
+                                <a href="/Admin/PropertyDetails/Delete/@property.PropertyId" onclick="return confirm('Are you sure you want to delete this item?')" title="Delete"><i class="actions__item zmdi zmdi-delete zmdi-hc-fw"></i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -77,4 +78,4 @@
             </table>
         </div>
     </div>
-</div>*@
+</div>

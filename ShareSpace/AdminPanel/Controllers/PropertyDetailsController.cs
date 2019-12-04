@@ -7,6 +7,19 @@ namespace AdminPanel.Controllers
 {
     public class PropertyDetailsController : Controller
     {
+        // GET: PropertyDetails
+        public ActionResult Index()
+        {
+            var model = PropertyManager.GetAllProperties();
+            return View(model);
+        }
+
+        // GET: PropertyDetails/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
         // GET: PropertyDetails/Create
         public ActionResult Create()
         {
