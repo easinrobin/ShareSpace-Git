@@ -129,5 +129,7 @@ namespace ShareSpace.Models.Property
         public List<ClientPropertyRating> ClientPropertyRatings { get; set; }
         [NotMapped]
         public BookingEmail BookingEmail { get; set; }
+        [NotMapped]
+        public List<PropertyServiceViewModel> PropertyServiceOnClient { get; set; }
     }
 }

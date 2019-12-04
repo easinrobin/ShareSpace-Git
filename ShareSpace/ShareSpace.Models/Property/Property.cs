@@ -38,10 +38,10 @@ namespace ShareSpace.Models.Property
         public string ShortDescription { get; set; }
 
         [Display(Name = "Price")]
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         [Display(Name = "RetailPrice")]
-        public int RetailPrice { get; set; }
+        public decimal RetailPrice { get; set; }
 
         [Display(Name = "Latitude")]
         public decimal Latitude { get; set; }
@@ -57,12 +57,6 @@ namespace ShareSpace.Models.Property
 
         [Display(Name = "IsSearchable")]
         public bool IsSearchable { get; set; }
-
-        [Display(Name = "PropertyAddressId")]
-        public int PropertyAddressId { get; set; }
-
-        [Display(Name = "PropertyServiceId")]
-        public int PropertyServiceId { get; set; }
 
         [Display(Name = "VendorId")]
         public int VendorId { get; set; }

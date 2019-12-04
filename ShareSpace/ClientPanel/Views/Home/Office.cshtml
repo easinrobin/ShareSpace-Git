@@ -1,4 +1,4 @@
-﻿@model List<ShareSpace.Models.Property.PropertySearchResult>
+﻿@model ShareSpace.Models.Client.ClientViewModel
 @{
     ViewBag.Title = "Office";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -156,7 +156,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                @foreach (var property in Model)
+                @foreach (var property in Model.PropertySearchResultList.ToList())
                 {
                     var propertyLink = "/Home/OfficeDetails/" + property.PropertyId;
                     <div class="hotel-box-list wow fadeInUp delay-02s">
@@ -185,50 +185,15 @@
                                 @property.ShortDescription
                             </p>
                             <div class="row">
-                                <div class="col-sm-4">
-                                    <ul class="fecilities">
-                                        <li>
-                                            <i class="fa fa-wifi"></i>
-                                            <span>Free Wifi</span>
+                                <ul class="fecilities">
+                                    @foreach (var propertyServices in Model.PropertyServiceList.Where(x=>x.PropertyId == property.PropertyId).ToList())
+                                    {
+                                        <li class="col-sm-4">
+                                            <i class="@propertyServices.ImagePath"></i>
+                                            <span>@propertyServices.PropertyServiceName</span>
                                         </li>
-                                        <li>
-                                            <i class="fa fa-print"></i>
-                                            <span>Printer Access</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-car"></i>
-                                            <span>Car Hire</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-4">
-                                    <ul class="fecilities">
-                                        <li>
-                                            <i class="flaticon-weightlifting"></i>
-                                            <span>Gym</span>
-                                        </li>
-                                        <li>
-                                            <i class="flaticon-parking"></i>
-                                            <span>Free Parking</span>
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-television"></i>
-                                            <span>Projector</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-4">
-                                    <ul class="fecilities">
-                                        <li>
-                                            <i class="flaticon-phone-receiver"></i>
-                                            Telephone
-                                        </li>
-                                        <li>
-                                            <i class="flaticon-wifi-connection-signal-symbol"></i>
-                                            Wi-fi
-                                        </li>
-                                    </ul>
-                                </div>
+                                    }
+                                </ul>
                             </div>
                             <a href="@propertyLink" class="btn button-sm button-theme">View Details</a>
                         </div>

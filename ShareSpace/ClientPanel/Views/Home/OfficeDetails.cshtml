@@ -229,64 +229,14 @@
                     <div class="rooms-features mrg-btm-30">
                         <h3>Office Amenities</h3>
                         <div class="row">
-                            <div class="col-md-4 col-sm-4 col-xs-12">
-                                <ul class="condition">
-                                    <li>
-                                        <i class="flaticon-air-conditioner"></i>Air conditioning
+                            <ul class="condition">
+                                @foreach (var services in Model.PropertyServiceOnClient)
+                                {
+                                    <li class="col-md-4 col-sm-4 col-xs-12">
+                                        <i class="@services.ImagePath"></i>@services.ServiceName
                                     </li>
-                                    <li>
-                                        <i class="flaticon-balcony-and-door"></i>Balcony
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-weightlifting"></i>Gym
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-parking"></i>Parking
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-sunbed"></i>Beach View
-                                    </li>
-
-                                </ul>
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-12">
-                                <ul class="condition">
-                                    <li>
-                                        <i class="flaticon-bed"></i>2 Bedroom
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-person-learning-by-reading"></i>Free Newspaper
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-swimming-silhouette"></i>Use of pool
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-monitor"></i>TV
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-no-smoking-sign"></i>No Smoking
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-12">
-                                <ul class="condition">
-                                    <li>
-                                        <i class="flaticon-room-service"></i>Room Service
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-breakfast"></i>Breakfast
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-phone-receiver"></i>Telephone
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-bed"></i>2 Bedroom
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-wifi-connection-signal-symbol"></i>Free Wi-Fi
-                                    </li>
-                                </ul>
-                            </div>
+                                }
+                            </ul>
                         </div>
                     </div>
                     <!-- Rooms features end -->

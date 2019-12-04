@@ -57,6 +57,7 @@
     <Compile Include="Booking\BookingEmail.cs" />
     <Compile Include="Client\Client.cs" />
     <Compile Include="Client\ClientsBookingHistory.cs" />
+    <Compile Include="Client\ClientViewModel.cs" />
     <Compile Include="ContactForm.cs" />
     <Compile Include="Gallery\Gallery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,8 +67,10 @@
     <Compile Include="Property\PropertyDetails.cs" />
     <Compile Include="Property\ClientPropertyRating.cs" />
     <Compile Include="Property\PropertyRating.cs" />
+    <Compile Include="Property\PropertySearchResultNew.cs" />
     <Compile Include="Property\PropertyService.cs" />
     <Compile Include="Property\PropertySearchResult.cs" />
+    <Compile Include="Property\PropertyServiceViewModel.cs" />
     <Compile Include="Service\FeaturedServices.cs" />
     <Compile Include="Service\Services.cs" />
     <Compile Include="Transaction\Transaction.cs" />

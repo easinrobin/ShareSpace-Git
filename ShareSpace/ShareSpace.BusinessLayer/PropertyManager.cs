@@ -14,7 +14,7 @@ namespace ShareSpace.BusinessLayer
             return propertyProvider.GetFeatureProperties(maxRow);
         }
 
-        public static List<PropertySearchResult> GetShareType(string type)
+        public static List<PropertySearchResultNew> GetShareType(string type)
         {
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
             return propertyProvider.GetShareType(type);
@@ -30,6 +30,12 @@ namespace ShareSpace.BusinessLayer
         {
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
             return propertyProvider.GetAllProperties();
+        }
+        
+        public static List<PropertySearchResultNew> GetPropertiesAndPropertyRating()
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetPropertiesAndPropertyRating();
         }
 
         public static PropertyDetails GetPropertyDetailsById(int id)
@@ -50,6 +56,17 @@ namespace ShareSpace.BusinessLayer
             return propertyProvider.GetPropertyById(propertyId);
         }
 
+        public static List<PropertyServiceViewModel> GetPropertyServicesOnClient(long propertyId)
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetPropertyServicesOnClient(propertyId);
+        }
+
+        public static List<PropertyServiceViewModel> GetPropertyServiceByPropertyIds(string ids)
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetPropertyServiceByPropertyIds(ids);
+        }
         #endregion
 
 
