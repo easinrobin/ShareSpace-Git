@@ -382,6 +382,7 @@
     <Content Include="Views\PropertyDetails\Partial\_Policy.cshtml" />
     <Content Include="Views\PropertyDetails\Partial\_Property.cshtml" />
     <Content Include="Views\PropertyDetails\Partial\_Review.cshtml" />
+    <Content Include="Views\PropertyDetails\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

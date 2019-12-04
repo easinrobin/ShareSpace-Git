@@ -51,10 +51,10 @@ namespace ShareSpace.Models
         public int RetaingPrice { get; set; }
 
         [Display(Name = "Latitude")]
-        public float Latitude { get; set; }
+        public int Latitude { get; set; }
 
         [Display(Name = "Longitude")]
-        public float Longitude { get; set; }
+        public int Longitude { get; set; }
 
         [Display(Name = "IsFeatured")]
         public bool IsFeatured { get; set; }

@@ -16,8 +16,8 @@ namespace AdminPanel.Controllers
         // GET: PropertyDetails
         public ActionResult Index()
         {
-            var model = PropertyManager.GetAllPropertys(1);
-            return View();
+            var model = PropertyManager.GetAllPropertys();
+            return View(model);
         }
 
         // GET: PropertyDetails/Details/5

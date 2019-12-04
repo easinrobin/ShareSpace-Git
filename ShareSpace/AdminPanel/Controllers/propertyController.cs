@@ -43,7 +43,7 @@ namespace AdminPanel.Controllers
 
         public ActionResult AdminPropertys()
         {
-            List<Property> allPropertys = PropertyManager.GetAllPropertys(1);
+            List<Property> allPropertys = PropertyManager.GetAllPropertys();
             return View("~/Views/Property/AdminPropertys.cshtml", allPropertys);
         }
 
