@@ -71,6 +71,7 @@
     <Compile Include="Property\PropertyService.cs" />
     <Compile Include="Property\PropertySearchResult.cs" />
     <Compile Include="Property\PropertyServiceViewModel.cs" />
+    <Compile Include="Search\OfficeSearch.cs" />
     <Compile Include="Service\FeaturedServices.cs" />
     <Compile Include="Service\Services.cs" />
     <Compile Include="Transaction\Transaction.cs" />

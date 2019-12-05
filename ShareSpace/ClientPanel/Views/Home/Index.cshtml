@@ -1,4 +1,4 @@
-﻿
+﻿@model ShareSpace.Models.Client.ClientViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -11,19 +11,19 @@
             <div class="item active">
                 <img src="/img/banner/office1.jpg" alt="banner-slider-1">
                 <div class="carousel-caption banner-slider-inner banner-top-align">
-                    
+
                 </div>
             </div>
             <div class="item">
                 <img src="/img/banner/office2.jpg" alt="banner-slider-2">
                 <div class="carousel-caption banner-slider-inner banner-top-align">
-                    
+
                 </div>
             </div>
             <div class="item">
                 <img src="/img/banner/office3.jpg" alt="banner-slider-3">
                 <div class="carousel-caption banner-slider-inner banner-top-align">
-                    
+
                 </div>
             </div>
         </div>
@@ -45,7 +45,8 @@
         <!-- Search area box start -->
         <div class="home-search search-area-box-3 hidden-xs hidden-sm">
             <div class="search-contents banner-search-contents">
-                <form method="GET" action="../Home/SearchResults">
+                @using (Html.BeginForm("SearchResults", "Home", FormMethod.Get))
+                {
                     <div class="col-lg-12 col-pad col-pad-2">
                         <div class="search-your-rooms">
                             <h3 class="hidden-xs hidden-sm">Search</h3>
@@ -56,56 +57,59 @@
                     <div class="search-your-details">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <div class="form-group">
-                                <input type="text" id="checkInDate" class="btn-default" placeholder="Check In" />
+                                @Html.EditorFor(m => m.OfficeSearch.FromDate, new { htmlAttributes = new { @class = "btn-default", @id = "checkInDate", placeholder = "Check In" } })
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                @Html.EditorFor(m => m.OfficeSearch.ToDate, new { htmlAttributes = new { @class = "btn-default", @id = "checkOutDate", placeholder = "Check Out" } })
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                @Html.EditorFor(m => m.OfficeSearch.FromHour, new { htmlAttributes = new { @class = "btn-default", @id = "checkInTime", placeholder = "Check In Time" } })
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                @Html.EditorFor(m => m.OfficeSearch.ToHour, new { htmlAttributes = new { @class = "btn-default", @id = "checkOutTime", placeholder = "Check Out Time" } })
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                @Html.DropDownListFor(m => m.OfficeSearch.ShareType, new List<SelectListItem>
+                                {
+                                    new SelectListItem {Text = "Office Type", Value = "Office Type"},
+                                    new SelectListItem {Text = "Shared Office", Value = "Shared Office"},
+                                    new SelectListItem {Text = "Whole Office", Value = "Whole Office"},
+                                    new SelectListItem {Text = "Meeting Space", Value = "Meeting Space"},
+                                    new SelectListItem {Text = "Auditorium", Value = "Auditorium"}
+                                },
+                                    "Office Type", new
+                                    {@class = "selectpicker search-fields form-control-2", name = "Person"}
+                                    )
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <select class="selectpicker search-fields form-control-2" name="adults">
+                                    <option>Number of Person</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="form-group">
-                            <input type="text" id="checkOutDate" class="btn-default" placeholder="Check Out" />
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="form-group">
-                            <input type="text" id="checkInTime" class="btn-default" placeholder="Check In Time" />
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="form-group">
-                            <input type="text" id="checkOutTime" class="btn-default" placeholder="Check Out Time" />
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="form-group">
-                            <select class="selectpicker search-fields form-control-2" name="room">
-                                <option>Office Type</option>
-                                <option>Shared Office</option>
-                                <option>Whole Office</option>
-                                <option>Meeting Space</option>
-                                <option>Auditorium</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="form-group">
-                            <select class="selectpicker search-fields form-control-2" name="adults">
-                                <option>Number of Person</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                    </div>
-
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group">
                             <button class="search-button">@Html.ActionLink("Search", "SearchResults", "Home")</button>
                         </div>
                     </div>
-
-                </form>
+                }
             </div>
         </div>
         <!-- Search area box end -->
@@ -113,7 +117,8 @@
         <div class="search-area-box-2 hidden-lg hidden-md">
 
             <div class="search-contents">
-                <form method="GET">
+                @using (Html.BeginForm("SearchResults", "Home", FormMethod.Get))
+                {
                     <div class="row">
                         <div class="col-md-3 col-pad col-pad-2">
                             <div class="search-your-rooms">
@@ -125,33 +130,37 @@
                         <div class="search-your-details">
                             <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
                                 <div class="form-group">
-                                    <input type="text" class="btn-default" id="smallCheckInDate" placeholder="Check In Date">
+                                    @Html.EditorFor(m => m.OfficeSearch.FromDate, new { htmlAttributes = new { @class = "btn-default", @id = "smallCheckInDate", placeholder = "Check In" } })
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
                                 <div class="form-group">
-                                    <input type="text" class="btn-default" id="smallCheckOutDate" placeholder="Check Out Date">
+                                    @Html.EditorFor(m => m.OfficeSearch.ToDate, new { htmlAttributes = new { @class = "btn-default", @id = "smallCheckOutDate", placeholder = "Check Out" } })
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
                                 <div class="form-group">
-                                    <input type="text" class="btn-default" id="smallCheckInTime" placeholder="Check In Time">
+                                    @Html.EditorFor(m => m.OfficeSearch.FromHour, new { htmlAttributes = new { @class = "btn-default", @id = "smallCheckInTime", placeholder = "Check In Time" } })
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
                                 <div class="form-group">
-                                    <input type="text" class="btn-default" id="smallCheckOutTime" placeholder="Check Out Time">
+                                    @Html.EditorFor(m => m.OfficeSearch.ToHour, new { htmlAttributes = new { @class = "btn-default", @id = "smallCheckOutTime", placeholder = "Check Out Time" } })
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
                                 <div class="form-group">
-                                    <select class="selectpicker search-fields form-control-2" name="room">
-                                        <option>Office Type</option>
-                                        <option>Shared Office</option>
-                                        <option>Whole Office</option>
-                                        <option>Meeting Space</option>
-                                        <option>Auditorium</option>
-                                    </select>
+                                    @Html.DropDownListFor(m => m.OfficeSearch.ShareType, new List<SelectListItem>
+                                    {
+                                        new SelectListItem {Text = "Office Type", Value = "Office Type"},
+                                        new SelectListItem {Text = "Shared Office", Value = "Shared Office"},
+                                        new SelectListItem {Text = "Whole Office", Value = "Whole Office"},
+                                        new SelectListItem {Text = "Meeting Space", Value = "Meeting Space"},
+                                        new SelectListItem {Text = "Auditorium", Value = "Auditorium"}
+                                    },
+                                        "Office Type", new
+                                        {@class = "selectpicker search-fields form-control-2", name = "Person"}
+                                        )
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
@@ -174,7 +183,7 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                }
             </div>
         </div>
     </div>

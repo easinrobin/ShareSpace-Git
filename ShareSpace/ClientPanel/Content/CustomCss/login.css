@@ -191,7 +191,7 @@ figure {
 
 .form-submit {
     display: inline-block;
-    background: #6dabe4;
+    background: #1AD69C;
     color: #fff;
     border-bottom: none;
     width: auto;
@@ -206,7 +206,7 @@ figure {
 }
 
     .form-submit:hover {
-        background: #4292dc;
+        background: #19c38e;
     }
 
 #signin {
