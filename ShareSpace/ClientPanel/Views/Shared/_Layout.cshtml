@@ -91,7 +91,40 @@
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
+
+                    <div class="container hidden-lg hidden-md hidden-sm">
+                        <div class="col-xs-6 social-list hidden-lg hidden-md hidden-sm pull-left">
+                            <ul>
+                                <li>
+                                    <a href="/Auth/Login" class="sign-in">
+                                        <i class="fa fa-user"> Log In / Register</i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Dashboard/Index" class="sign-in user-profile-icon"><i class="fa fa-user"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-6 hidden-lg hidden-md hidden-sm pull-right">
+                            <ul style="list-style:none">
+                                <li>
+                                    <div class="navbar-search-box">
+                                        <form class="navbar-search" method="GET">
+                                            <input type="search" placeholder="Search......" name="search" class="navbar-search-input"
+                                                   onkeyup="buttonUp();" required>
+                                            <button type="submit" class="navbar-search-submit">Go</button>
+                                            <span class="navbar-search-icon">
+                                                <i class="fa fa-search"></i>
+                                            </span>
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <ul class="nav navbar-nav">
+
                         <li class="dropdown active">
                             @Html.ActionLink("Home", "Index", "Home")
                         </li>
@@ -242,7 +275,7 @@
     @Scripts.Render("~/bundles/contact-us")
     @Scripts.Render("~/bundles/tiltJs")
     @Scripts.Render("~/bundles/moveitJs")
-    @Scripts.Render("~/bundles/succeedJs")
+    @*@Scripts.Render("~/bundles/succeedJs")*@
     @Scripts.Render("~/bundles/booking-validationJs")
 
     <script>

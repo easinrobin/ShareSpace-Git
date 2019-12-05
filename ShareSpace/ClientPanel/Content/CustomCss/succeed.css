@@ -1,74 +1,406 @@
-.succeed {
-    position: absolute;
-    cursor: pointer;
-    padding: 10px;
-    border: none;
-    color: #fff;
-    font-size: 14px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+
+.modal-body {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.succeed:hover {
-    opacity: 0.9;
-}
-.success-modal {
-    position: fixed;
-    display: none;
-    width: 500px;
-    height: 360px;
-    background-color: #fff;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 2px;
+
+.modal-body {
     overflow: hidden;
-    z-index: 99999;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-.success-modal.visible {
-    display: block;
-}
-.success-modal .container {
+
+.background {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.5)), url("https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-size: cover;
+    background-position: center;
 }
-.success-modal svg {
-    transform: scale(0.4);
+
+.modalbox.success,
+.modalbox.error {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: #fff;
+    padding: 25px 25px 15px;
+    text-align: center;
 }
-.success-modal > div {
-    height: 180px;
-    text-align: center
+
+    .modalbox.success.animate .icon,
+    .modalbox.error.animate .icon {
+        -webkit-animation: fall-in 0.75s;
+        -moz-animation: fall-in 0.75s;
+        -o-animation: fall-in 0.75s;
+        animation: fall-in 0.75s;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    }
+
+    .modalbox.success h1,
+    .modalbox.error h1 {
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .modalbox.success p,
+    .modalbox.error p {
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .modalbox.success button,
+    .modalbox.error button,
+    .modalbox.success button:active,
+    .modalbox.error button:active,
+    .modalbox.success button:focus,
+    .modalbox.error button:focus {
+        -webkit-transition: all 0.1s ease-in-out;
+        transition: all 0.1s ease-in-out;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        border-radius: 30px;
+        margin: 15px 0;
+        width: 80%;
+        background: transparent;
+        color: #1AD69C;
+        border-color: #1AD69C;
+        outline: none;
+    }
+
+        .modalbox.success button:hover,
+        .modalbox.error button:hover,
+        .modalbox.success button:active:hover,
+        .modalbox.error button:active:hover,
+        .modalbox.success button:focus:hover,
+        .modalbox.error button:focus:hover {
+            color: #fff;
+            background: #1AD69C;
+            border-color: transparent;
+        }
+
+    .modalbox.success .icon,
+    .modalbox.error .icon {
+        position: relative;
+        margin: 0 auto;
+        margin-top: -75px;
+        background: #1AD69C;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+    }
+
+        .modalbox.success .icon span,
+        .modalbox.error .icon span {
+            /*position: absolute;*/
+            font-size: 4em;
+            color: #fff;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+    .modalbox.error button,
+    .modalbox.error button:active,
+    .modalbox.error button:focus {
+        color: #f44336;
+        border-color: #f44336;
+    }
+
+        .modalbox.error button:hover,
+        .modalbox.error button:active:hover,
+        .modalbox.error button:focus:hover {
+            color: #fff;
+            background: #f44336;
+        }
+
+    .modalbox.error .icon {
+        background: #f44336;
+    }
+
+        .modalbox.error .icon span {
+            padding-top: 25px;
+        }
+
+.center {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    /* stupid browser compat. smh */
 }
-.success-modal .anim {
-    background-color: #1AD69C;
-    position: relative;
+
+    .center .change {
+        clear: both;
+        display: block;
+        font-size: 10px;
+        color: #ccc;
+        margin-top: 10px;
+    }
+
+@-webkit-keyframes fall-in {
+    0% {
+        -ms-transform: scale(3, 3);
+        -webkit-transform: scale(3, 3);
+        transform: scale(3, 3);
+        opacity: 0;
+    }
+
+    50% {
+        -ms-transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+
+    60% {
+        -ms-transform: scale(1.1, 1.1);
+        -webkit-transform: scale(1.1, 1.1);
+        transform: scale(1.1, 1.1);
+    }
+
+    100% {
+        -ms-transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
 }
-.success-modal .info {
-    padding: 30px;
-    color: #4b4b4b;
+
+@-moz-keyframes fall-in {
+    0% {
+        -ms-transform: scale(3, 3);
+        -webkit-transform: scale(3, 3);
+        transform: scale(3, 3);
+        opacity: 0;
+    }
+
+    50% {
+        -ms-transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+
+    60% {
+        -ms-transform: scale(1.1, 1.1);
+        -webkit-transform: scale(1.1, 1.1);
+        transform: scale(1.1, 1.1);
+    }
+
+    100% {
+        -ms-transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
 }
-.success-modal .info .title {
-    font-weight: 800;
+
+@-o-keyframes fall-in {
+    0% {
+        -ms-transform: scale(3, 3);
+        -webkit-transform: scale(3, 3);
+        transform: scale(3, 3);
+        opacity: 0;
+    }
+
+    50% {
+        -ms-transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+
+    60% {
+        -ms-transform: scale(1.1, 1.1);
+        -webkit-transform: scale(1.1, 1.1);
+        transform: scale(1.1, 1.1);
+    }
+
+    100% {
+        -ms-transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
 }
-.success-modal .info .text {
-    margin-top: 20px;
-    font-size: 14px;
-    font-weight: 400;
+
+@-webkit-keyframes plunge {
+    0% {
+        margin-top: -100%;
+    }
+
+    100% {
+        margin-top: 25%;
+    }
 }
-.success-modal .info .continue {
-    margin-top: 20px;
-    padding: 10px 30px;
-    border-radius: 50px;
-    border: none;
-    font-size: 13px;
-    color: #fff;
-    background: #1AD69C; /* Old browsers */
-    background: -moz-linear-gradient(left,  #1AD69C 0%, #7de8cd 100%, #7de8c8 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left,  #1AD69C 0%,#7de8cd 100%,#7de8cd 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right,  #1AD69C 0%,#7de8cd 100%,#7de8cd 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1AD69C', endColorstr='#7de8cd',GradientType=1 ); /* IE6-9 */
-    cursor: pointer;
+
+@-moz-keyframes plunge {
+    0% {
+        margin-top: -100%;
+    }
+
+    100% {
+        margin-top: 25%;
+    }
+}
+
+@-o-keyframes plunge {
+    0% {
+        margin-top: -100%;
+    }
+
+    100% {
+        margin-top: 25%;
+    }
+}
+
+@-moz-keyframes fall-in {
+    0% {
+        -ms-transform: scale(3, 3);
+        -webkit-transform: scale(3, 3);
+        transform: scale(3, 3);
+        opacity: 0;
+    }
+
+    50% {
+        -ms-transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+
+    60% {
+        -ms-transform: scale(1.1, 1.1);
+        -webkit-transform: scale(1.1, 1.1);
+        transform: scale(1.1, 1.1);
+    }
+
+    100% {
+        -ms-transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
+}
+
+@-webkit-keyframes fall-in {
+    0% {
+        -ms-transform: scale(3, 3);
+        -webkit-transform: scale(3, 3);
+        transform: scale(3, 3);
+        opacity: 0;
+    }
+
+    50% {
+        -ms-transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+
+    60% {
+        -ms-transform: scale(1.1, 1.1);
+        -webkit-transform: scale(1.1, 1.1);
+        transform: scale(1.1, 1.1);
+    }
+
+    100% {
+        -ms-transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
+}
+
+@-o-keyframes fall-in {
+    0% {
+        -ms-transform: scale(3, 3);
+        -webkit-transform: scale(3, 3);
+        transform: scale(3, 3);
+        opacity: 0;
+    }
+
+    50% {
+        -ms-transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+
+    60% {
+        -ms-transform: scale(1.1, 1.1);
+        -webkit-transform: scale(1.1, 1.1);
+        transform: scale(1.1, 1.1);
+    }
+
+    100% {
+        -ms-transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes fall-in {
+    0% {
+        -ms-transform: scale(3, 3);
+        -webkit-transform: scale(3, 3);
+        transform: scale(3, 3);
+        opacity: 0;
+    }
+
+    50% {
+        -ms-transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+
+    60% {
+        -ms-transform: scale(1.1, 1.1);
+        -webkit-transform: scale(1.1, 1.1);
+        transform: scale(1.1, 1.1);
+    }
+
+    100% {
+        -ms-transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1);
+    }
+}
+
+@-moz-keyframes plunge {
+    0% {
+        margin-top: -100%;
+    }
+
+    100% {
+        margin-top: 15%;
+    }
+}
+
+@-webkit-keyframes plunge {
+    0% {
+        margin-top: -100%;
+    }
+
+    100% {
+        margin-top: 15%;
+    }
+}
+
+@-o-keyframes plunge {
+    0% {
+        margin-top: -100%;
+    }
+
+    100% {
+        margin-top: 15%;
+    }
+}
+
+@keyframes plunge {
+    0% {
+        margin-top: -100%;
+    }
+
+    100% {
+        margin-top: 15%;
+    }
 }

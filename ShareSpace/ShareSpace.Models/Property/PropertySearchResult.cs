@@ -45,5 +45,6 @@ namespace ShareSpace.Models.Property
 
         [Display(Name = "IsSearchable")]
         public bool IsSearchable { get; set; }
+        
     }
 }

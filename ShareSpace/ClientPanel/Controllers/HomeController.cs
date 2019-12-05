@@ -5,8 +5,12 @@ using ShareSpace.BusinessLayer;
 using ShareSpace.Models.Booking;
 using ShareSpace.Models.Property;
 using System.Net.Mail;
+using System.Data;
+using System.IO;
+using System.Linq;
 using Antlr.Runtime.Misc;
 using ShareSpace.Models;
+using ShareSpace.Models.Client;
 
 namespace ClientPanel.Controllers
 {
@@ -22,14 +26,17 @@ namespace ClientPanel.Controllers
 
         public ActionResult SearchResults()
         {
-            if (ModelState.IsValid)
-            {
-                List<PropertySearchResult> allPropertyList = new List<PropertySearchResult>();
-                allPropertyList = PropertyManager.GetAllPropertySearchResults();
-                return View("~/Views/Home/SearchResults.cshtml", allPropertyList);
-            }
+            ClientViewModel cvModel = new ClientViewModel();
+            List<PropertySearchResultNew> allPropertyList = new List<PropertySearchResultNew>();
 
-            return View();
+            allPropertyList = PropertyManager.GetPropertiesAndPropertyRating();
+
+            cvModel.PropertySearchResultList = allPropertyList;
+
+            string ids = string.Join(",", allPropertyList.Select(x => x.PropertyId));
+            cvModel.PropertyServiceList = PropertyManager.GetPropertyServiceByPropertyIds(ids);
+
+            return View("~/Views/Home/SearchResults.cshtml", cvModel);
         }
 
         public ActionResult OfficeDetails(int id)
@@ -39,7 +46,8 @@ namespace ClientPanel.Controllers
                 PropertyDetails propertyDetails = new PropertyDetails();
                 propertyDetails = PropertyManager.GetPropertyDetailsById(id);
                 propertyDetails.ClientPropertyRatings = PropertyManager.PropertyRatings(id);
-                
+                propertyDetails.PropertyServiceOnClient = PropertyManager.GetPropertyServicesOnClient(id);
+
                 return View("~/Views/Home/OfficeDetails.cshtml", propertyDetails);
             }
             else
@@ -54,10 +62,13 @@ namespace ClientPanel.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            List<PropertySearchResult> propertyList = new List<PropertySearchResult>();
+            ClientViewModel cvModel = new ClientViewModel();
+            List<PropertySearchResultNew> propertyList = new List<PropertySearchResultNew>();
             propertyList = PropertyManager.GetShareType(type);
-            return View("~/Views/Home/Office.cshtml",propertyList);
+            cvModel.PropertySearchResultList = propertyList;
+            string ids = string.Join(",", propertyList.Select(x => x.PropertyId));
+            cvModel.PropertyServiceList = PropertyManager.GetPropertyServiceByPropertyIds(ids);
+            return View("~/Views/Home/Office.cshtml", cvModel);
         }
 
         public ActionResult About()
@@ -66,6 +77,11 @@ namespace ClientPanel.Controllers
         }
 
         public ActionResult Contact()
+        {
+            return View();
+        }
+
+        public ActionResult BookingConfirmed()
         {
             return View();
         }
@@ -79,7 +95,7 @@ namespace ClientPanel.Controllers
             string checkOutTime = bookingEmail.ToHour;
             string email = bookingEmail.Email;
             int person = bookingEmail.MaximumPerson;
-            
+
             var fromAddress = new MailAddress("sharespace.bh@gmail.com", "ShareSpace");
             var toAddress = new MailAddress(email, "To Name");
             const string fromPassword = "ss@bh#1230";
@@ -88,7 +104,7 @@ namespace ClientPanel.Controllers
                           "Your booking request from " + checkInDate + " at " + checkInTime + " to " + checkOutDate +
                           " at " + checkOutTime + " Has been confirmed\n" +
                           "You are allowed to bring maximum " + person + " with you";
-                               
+
 
             var smtp = new SmtpClient
             {
@@ -108,7 +124,7 @@ namespace ClientPanel.Controllers
             {
                 smtp.Send(message);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("BookingConfirmed");
         }
 
         [HttpPost]

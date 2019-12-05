@@ -35,7 +35,7 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string GETCLIENTPROPERTYRATING = "sp_view_clientpropertyrating";
 
-        public static string GETALLPROPERTYS = "sp_property_getallproperty";
+        public static string GETALLPROPERTYS = "sp_property_getproperty";
 
         public static string GETPROPERTYSBYID = "sp_property_getpropertybyid";
 
@@ -45,9 +45,13 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string DELETEPROPERTYS = "sp_property_deleteproperty";
 
+        public static string Get_Property_PropertyRating = "sp_property_getPropertyAndPropertyRating";
+
         //Services
         public static string GETFEATUREDSERVICE = "sp_service_getfeaturedservices";
 
+        public static string GETPROPERTYSERVICEONCLIENT= "sp_view_getPropertyServiceOnUI";
+        public static string PROPERTY_PROPERTYSERVICE_GETBYPROPERTYIDS = "sp_property_propertyService_getByPropertyIds";
         //Booking
         public static string INSERTBOOKINGS = "sp_booking_insertbooking";
 

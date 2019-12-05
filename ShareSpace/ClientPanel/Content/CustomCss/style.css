@@ -15,7 +15,9 @@ a {
 a:hover {
     text-decoration: none;
 }
-
+.ul {
+    list-style: none;
+}
 .delay-02s {
     animation-delay: 0.2s;
     -webkit-animation-delay: 0.2s
@@ -766,9 +768,8 @@ a:hover {
     background-color: rgba(0, 0, 0, 0.6);
     padding: 30px 15px 10px;
     max-width: 500px;
-    top: 35%;
+    top: 30%;
     right: 8%;
-    z-index: 999;
 }
 
 .search-area-box-4 {
@@ -3352,6 +3353,7 @@ a:hover {
     height: 80px;
 }
 
+
 .breadcrumb-area h1 {
     margin: 0 0 15px;
     font-weight: 700;
@@ -5013,7 +5015,7 @@ a:focus {
     }
 
     .banner .item img {
-        height: 250px;
+        height: 300px;
     }
 
     .logo-2 {
@@ -5060,6 +5062,43 @@ a:focus {
     .newsletter .social-list li {
         float: none;
         display: inline-block;
+    }
+
+    .social-list {
+        margin: 15px 0;
+    }
+
+        .social-list ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        .social-list li a {
+            font-size: 13px;
+            display: inline;
+            text-align: center;
+            line-height: 30px;
+            color: #000;
+            margin: 0px 10px;
+        }
+
+    .navbar-search-box {
+        padding: 0;
+        margin-top: 10px;
+        display: inline-block;
+    }
+    .user-profile-icon {
+        border: 1px solid #000;
+        padding: 5px;
+    }
+
+    .sign-in:hover {
+        border-color: #1ad69c;
+        color: #1ad69c;
+    }
+
+    .clear {
+        height: 60px;
     }
 
     .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
