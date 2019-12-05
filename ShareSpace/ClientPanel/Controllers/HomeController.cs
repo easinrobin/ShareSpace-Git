@@ -81,6 +81,11 @@ namespace ClientPanel.Controllers
             return View();
         }
 
+        public ActionResult BookingConfirmed()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult OfficeDetails(BookingEmail bookingEmail)
         {
@@ -119,7 +124,7 @@ namespace ClientPanel.Controllers
             {
                 smtp.Send(message);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("BookingConfirmed");
         }
 
         [HttpPost]

@@ -272,6 +272,10 @@ textarea.input100 {
   position: relative;
 }
 
+.validate-big-input {
+    position: relative;
+}
+
 .alert-validate::before {
   content: attr(data-validate);
   position: absolute;
