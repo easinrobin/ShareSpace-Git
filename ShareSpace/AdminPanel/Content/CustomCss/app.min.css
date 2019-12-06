@@ -131,7 +131,7 @@ html {
 
 body {
     margin: 0;
-    font-family: Nunito,sans-serif;
+    font-family: sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -3279,7 +3279,7 @@ tbody.collapse.show {
 }
 
 .popover, .tooltip {
-    font-family: Nunito,sans-serif;
+    font-family: sans-serif;
     font-style: normal;
     text-transform: none;
     letter-spacing: normal;
@@ -7740,34 +7740,6 @@ select::-ms-expand {
     cursor: default
 }
 
-@font-face {
-    font-family: Nunito;
-    src: url(../fonts/nunito/nunito-regular.eot);
-    src: url(../fonts/nunito/nunito-regulard41d.html?#iefix) format("embedded-opentype"),url(../fonts/nunito/nunito-regular.woff2) format("woff2"),url(../fonts/nunito/nunito-regular.woff) format("woff"),url("../fonts/nunito/nunito-regular.svg#Nunito Regular") format("svg");
-    font-weight: 400;
-    font-style: normal;
-    font-stretch: normal
-}
-
-@font-face {
-    font-family: Nunito;
-    src: url(../fonts/nunito/nunito-semibold.eot);
-    src: url(../fonts/nunito/nunito-semiboldd41d.eot?#iefix) format("embedded-opentype"),url(../fonts/nunito/nunito-semibold.woff2) format("woff2"),url(../fonts/nunito/nunito-semibold.woff) format("woff"),url("../fonts/nunito/nunito-semibold.svg#Nunito SemiBold") format("svg");
-    font-weight: 600;
-    font-style: normal;
-    font-stretch: normal;
-    unicode-range: U+0020-2212
-}
-
-@font-face {
-    font-family: Nunito;
-    src: url(../fonts/nunito/nunito-bold.eot);
-    src: url(../fonts/nunito/nunito-boldd41d.eot?#iefix) format("embedded-opentype"),url(../fonts/nunito/nunito-bold.woff2) format("woff2"),url(../fonts/nunito/nunito-bold.woff) format("woff"),url("../fonts/nunito/nunito-bold.svg#Nunito Bold") format("svg");
-    font-weight: 700;
-    font-style: normal;
-    font-stretch: normal;
-    unicode-range: U+0020-2212
-}
 
 .bg-blue {
     background-color: #007bff !important
@@ -7921,7 +7893,7 @@ pre {
 }
 
 button, input, optgroup, select, textarea {
-    font-family: Nunito,sans-serif
+    font-family: sans-serif
 }
 
 .list {
@@ -10402,43 +10374,11 @@ button, input, optgroup, select, textarea {
 
 @media (min-width:576px) {
     [data-sa-theme="1"] {
-        background-image: url(../img/bg/1.jpg)
+        background-image: url(/img/bg/1.jpg)
     }
 
     [data-sa-theme="2"] {
-        background-image: url(../img/bg/2.jpg)
-    }
-
-    [data-sa-theme="3"] {
-        background-image: url(../img/bg/3.jpg)
-    }
-
-    [data-sa-theme="4"] {
-        background-image: url(../img/bg/4.jpg)
-    }
-
-    [data-sa-theme="5"] {
-        background-image: url(../img/bg/5.jpg)
-    }
-
-    [data-sa-theme="6"] {
-        background-image: url(../img/bg/6.jpg)
-    }
-
-    [data-sa-theme="7"] {
-        background-image: url(../img/bg/7.jpg)
-    }
-
-    [data-sa-theme="8"] {
-        background-image: url(../img/bg/8.jpg)
-    }
-
-    [data-sa-theme="9"] {
-        background-image: url(../img/bg/9.jpg)
-    }
-
-    [data-sa-theme="10"] {
-        background-image: url(../img/bg/10.jpg)
+        background-image: url(/img/bg/2.jpg)
     }
 }
 
@@ -12124,7 +12064,7 @@ span.flatpickr-weekday {
 .swal2-modal {
     border-radius: 2px;
     padding: 2.5rem !important;
-    font-family: Nunito,sans-serif;
+    font-family: sans-serif;
     box-shadow: 0 4px 18px rgba(0,0,0,.5)
 }
 

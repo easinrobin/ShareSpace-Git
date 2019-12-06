@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -244,6 +245,17 @@
     <Content Include="Content\ThirdPartyCss\bootstrap.css.map" />
     <Content Include="Content\ThirdPartyCss\bootstrap-theme.min.css.map" />
     <Content Include="Content\ThirdPartyCss\bootstrap-theme.css.map" />
+    <Content Include="img\bg\1.jpg" />
+    <Content Include="img\bg\10.jpg" />
+    <Content Include="img\bg\2.jpg" />
+    <Content Include="img\bg\3.jpg" />
+    <Content Include="img\bg\4.jpg" />
+    <Content Include="img\bg\5.jpg" />
+    <Content Include="img\bg\6.jpg" />
+    <Content Include="img\bg\7.jpg" />
+    <Content Include="img\bg\8.jpg" />
+    <Content Include="img\bg\9.jpg" />
+    <Content Include="img\profile-pics\8.jpg" />
     <Content Include="Scripts\CustomJs\app.min.js" />
     <Content Include="Scripts\ThirdPartyJs\autosize.min.js" />
     <Content Include="Scripts\ThirdPartyJs\bootstrap.js" />
@@ -378,6 +390,7 @@
     <Content Include="Views\Transaction\InsertTransaction.cshtml" />
     <Content Include="Views\Vendor\AdminVendors.cshtml" />
     <Content Include="Views\Vendor\InsertVendor.cshtml" />
+    <Content Include="Views\Auth\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
