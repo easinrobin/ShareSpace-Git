@@ -115,6 +115,12 @@ $(function () {
 	    });
     });
 
+    $(function () {
+        $('#birthDate').datetimepicker({
+            format: "DD-MM-YYYY"
+        });
+    });
+
 	//TimePicker
 	$(function () {
 		$('#checkInTime').datetimepicker({

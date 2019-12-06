@@ -169,7 +169,7 @@ namespace ShareSpace.DataLayerSql.Booking
             }
         }
 
-        public List<ClientsBookingHistory> GetClientBookingHistory(int clientId)
+        public List<ClientsBookingHistory> GetClientBookingHistory(long clientId)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
