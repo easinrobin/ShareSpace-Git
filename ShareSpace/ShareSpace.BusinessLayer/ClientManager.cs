@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ShareSpace.DataLayerSql.Client;
+using ShareSpace.Models.Auth;
 using ShareSpace.Models.Client;
 
 namespace ShareSpace.BusinessLayer
@@ -24,6 +25,12 @@ namespace ShareSpace.BusinessLayer
         {
             SqlClientProvider sqlClientProvider = new SqlClientProvider();
             return sqlClientProvider.GetClientByEmail(email);
+        }
+
+        public static Client GetClientByEmailAndPassword(string email, string password)
+        {
+            SqlClientProvider clientProvider = new SqlClientProvider();
+            return clientProvider.GetClientByEmailAndPassword(email, password);
         }
         #endregion
 

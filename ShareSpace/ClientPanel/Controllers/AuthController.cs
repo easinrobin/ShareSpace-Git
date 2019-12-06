@@ -1,7 +1,9 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Web.Mvc;
 using ShareSpace.BusinessLayer;
 using ShareSpace.Models;
+using ShareSpace.Models.Auth;
 using ShareSpace.Models.Client;
 
 namespace ClientPanel.Controllers
@@ -24,6 +26,12 @@ namespace ClientPanel.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SignUp([Bind(Include = "ClientId,FirstName,LastName,Email,Country,MobileNo,BirthDate,Password")] Client client)
@@ -38,19 +46,29 @@ namespace ClientPanel.Controllers
 
 
         [HttpPost]
-        public ActionResult Login(string email)
+        public ActionResult Login(Client client)
         {
-            if (email == null)
+            if (!String.IsNullOrEmpty(client.Email) && !String.IsNullOrEmpty(client.Password))
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+                string email = client.Email;
+                string password = client.Password;
+                client = ClientManager.GetClientByEmailAndPassword(email, password);
 
-            Client client = ClientManager.GetClientByEmail(email);
-            if (client == null)
-            {
-                return HttpNotFound();
+                //email = Session["UserName"] != null ? Session["UserName"].ToString() : string.Empty;
+
+                Session["UserName"] = client.Email;
+                Session["ClientId"] = client.ClientId;
+                Session["FirstName"] = client.FirstName;
+                Session["LastName"] = client.LastName;
+                Session["ClientPhoto"] = client.ClientPhoto;
+                Session["MobileNo"] = client.MobileNo;
+                Session["Country"] = client.Country;
+                return View("~/Views/Dashboard/Index.cshtml", client);
             }
-            return View(client);
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
     }
 }

@@ -22,6 +22,8 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string GETCLIENTBYEMAIL = "sp_client_getclientbyemail";
 
+        public static string Get_Client_By_Email_And_Password = "sp_client_GetClientByEmailAndPassword";
+
         //Properties
         public static string GETFEATUREDPROPERTIES = "sp_view_featureproperties";
 

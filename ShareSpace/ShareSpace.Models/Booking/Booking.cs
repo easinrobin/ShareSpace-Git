@@ -25,16 +25,15 @@ namespace ShareSpace.Models.Booking
 
         [Display(Name = "FromHour")]
         //[Required(AllowEmptyStrings = false, ErrorMessage = "FromHour required")]
-        public DateTime? FromHour { get; set; }
+        public TimeSpan? FromHour { get; set; }
 
         [Display(Name = "ToHour")]
         //[Required(AllowEmptyStrings = false, ErrorMessage = "ToHour required")]
-        public DateTime? ToHour { get; set; }
+        public TimeSpan? ToHour { get; set; }
 
         [Display(Name = "ClientId")]
         //[Required(AllowEmptyStrings = false, ErrorMessage = "ClientId required")]
         public int ClientId { get; set; }
-
 
         [Display(Name = "PropertyId")]
         //[Required(AllowEmptyStrings = false, ErrorMessage = "PropertyId required")]

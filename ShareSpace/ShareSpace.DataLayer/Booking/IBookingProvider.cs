@@ -14,6 +14,6 @@ namespace ShareSpace.DataLayer.Booking
         bool UpdateBooking(Models.Booking.Booking booking);
         Models.Booking.Booking GetBookingById(long bookingId);
         bool DeleteBooking(long bookingId);
-        List<ClientsBookingHistory> GetClientBookingHistory(int clientId);
+        List<ClientsBookingHistory> GetClientBookingHistory(long clientId);
     }
 }

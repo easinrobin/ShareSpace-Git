@@ -1,4 +1,5 @@
 ﻿@model List<ShareSpace.Models.Client.ClientsBookingHistory>
+
 @{
     ViewBag.Title = "History";
     Layout = "~/Views/Shared/_ClientDashboardLayout.cshtml";
@@ -10,7 +11,7 @@
     </header>
 
     <div class="contacts row">
-        @foreach (var booking in Model)
+        @foreach (var booking in Model.ToList())
         {
 
             <div class="col-md-6 col-sm-6 col-6">

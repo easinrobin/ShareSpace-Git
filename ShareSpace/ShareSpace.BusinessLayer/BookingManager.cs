@@ -21,7 +21,7 @@ namespace ShareSpace.BusinessLayer
             return sqlBookingProvider.GetBookingById(bookingId);
         }
 
-        public static List<ClientsBookingHistory> ClientsBookingHistory(int clientId)
+        public static List<ClientsBookingHistory> ClientsBookingHistory(long clientId)
         {
             SqlBookingProvider sqlBookingProvider = new SqlBookingProvider();
             return sqlBookingProvider.GetClientBookingHistory(clientId);
