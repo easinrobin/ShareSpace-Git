@@ -80,7 +80,7 @@
     <div class="search-area-box-2 hidden-lg hidden-md">
 
         <div class="search-contents">
-            <form method="GET">
+            <form method="GET" action="../Home/SearchResults">
                 <div class="row">
                     <div class="col-md-3 col-pad col-pad-2">
                         <div class="search-your-rooms">
@@ -175,7 +175,7 @@
                                     </div>
                                 </div>
                                 <div class="price pull-right">
-                                    ৳@property.RetailPrice<sub>/Hour</sub>
+                                    ৳@property.RetailPrice.ToString("0.00")<sub>/Hour</sub>
                                 </div>
                             </div>
 
@@ -204,7 +204,7 @@
 
         <div class="text-center">
             <!-- Page navigation start -->
-            <nav aria-label="Page navigation">
+            @*<nav aria-label="Page navigation">
                 <ul class="pagination">
                     <li>
                         <a href="#" aria-label="Previous">
@@ -222,7 +222,7 @@
                         </a>
                     </li>
                 </ul>
-            </nav>
+            </nav>*@
             <!-- Page navigation end -->
         </div>
     </div>
