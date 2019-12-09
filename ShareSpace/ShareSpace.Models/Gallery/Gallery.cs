@@ -35,7 +35,7 @@ namespace ShareSpace.Models.Gallery
         public string Image6 { get; set; }
 
         [Display(Name = "PropertyId")]
-        public int PropertyId { get; set; }
+        public long PropertyId { get; set; }
 
         [Display(Name = "CreatedBy")]
         public string CreatedBy { get; set; }

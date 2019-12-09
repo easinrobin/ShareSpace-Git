@@ -388,6 +388,44 @@ namespace ShareSpace.DataLayerSql.Property
             return isDelete;
         }
 
+        public long InsertPropertyService(PropertyService propertyService)
+        {
+            long id = 0;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Insert_Property_Service, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlParameter returnValue = new SqlParameter("@" + "PropertyServiceId", SqlDbType.Int);
+                returnValue.Direction = ParameterDirection.Output;
+                command.Parameters.Add(returnValue);
+                foreach (var service in propertyService.GetType().GetProperties())
+                {
+                    if (service.Name != "PropertyId")
+                    {
+                        string name = service.Name;
+                        var value = service.GetValue(service, null);
+
+                        command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                    }
+                }
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    id = (int)command.Parameters["@PropertyServiceId"].Value;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return id;
+        }
+
         #endregion
 
     }

@@ -2,6 +2,11 @@
 @{
     ViewBag.Title = "Office Details";
 }
+@{
+    var maploc = Model.Address + "," + Model.Area + "," + Model.City + "," + Model.ZipCode;
+
+    var mapurl = "https://maps.google.com/maps?q=" + @maploc + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
+}
 <div class="clear">
 
 </div>
@@ -111,6 +116,12 @@
                         <div class="search-contents">
                             @using (Html.BeginForm("OfficeDetails", "Home", FormMethod.Post, new { @class = "validate-form" }))
                             {
+                                @Html.HiddenFor(m => m.PropertyName)
+                                @Html.HiddenFor(m => m.Address)
+                                @Html.HiddenFor(m => m.Area)
+                                @Html.HiddenFor(m => m.City)
+                                @Html.HiddenFor(m => m.ZipCode)
+
                                 <div class="row">
                                     <div class="col-md-3 col-pad col-pad-2">
                                         <div class="search-your-rooms">
@@ -304,6 +315,11 @@
                         <div class="search-contents">
                             @using (Html.BeginForm("OfficeDetails", "Home", FormMethod.Post, new { @class = "validate-big-form" }))
                             {
+                                @Html.HiddenFor(m => m.PropertyName)
+                                @Html.HiddenFor(m => m.Address)
+                                @Html.HiddenFor(m => m.Area)
+                                @Html.HiddenFor(m => m.City)
+                                @Html.HiddenFor(m => m.ZipCode)
                                 <div class="col-lg-12 col-pad col-pad-2">
                                     <div class="search-your-rooms">
                                         <h3 class="hidden-xs hidden-sm">Reserve Your</h3>
@@ -377,7 +393,7 @@
                         <div class="main-title-2">
                             <h1>Office Video</h1>
                         </div>
-                        <iframe src="https://www.youtube.com/embed/5e0LxrLSzok" allowfullscreen=""></iframe>
+                        <iframe src="https://www.youtube.com/embed/azJ-WlU3UPs" allowfullscreen=""></iframe>
                     </div>
                     <!-- Inside video end -->
                     <!-- Social media start -->
@@ -397,9 +413,13 @@
                             <div class="main-title-2">
                                 <h1>Location</h1>
                             </div>
-                            <div id="map" class="contact-map" style="height: 662px; background-color: crimson">
-                                
-                            </div>
+
+                            <iframe class="contact-map" style="height: 662px; background-color: crimson" id="gmap_canvas"
+                                    src="@mapurl" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                            @*<div id="map" class="contact-map" style="height: 662px; background-color: crimson">
+
+                                </div>*@
+
                         </div>
                     </div>
                     <!-- Location end -->

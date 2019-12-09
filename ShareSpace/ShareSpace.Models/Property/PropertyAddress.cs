@@ -34,6 +34,9 @@ namespace ShareSpace.Models.Property
         [Required(AllowEmptyStrings = false, ErrorMessage = "Zip code required")]
         public int ZipCode { get; set; }
 
+        [Display(Name = "Property Id")]
+        public long PropertyId { get; set; }
+
         [Display(Name = "CreatedBy")]
         public string CreatedBy { get; set; }
 

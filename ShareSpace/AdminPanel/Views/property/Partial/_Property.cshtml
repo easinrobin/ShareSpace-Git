@@ -1,44 +1,82 @@
-﻿@model AdminPanel.Models.AdminVWModel
+﻿@using ShareSpace.Models.Vendor
+@model ShareSpace.Models.Admin.AdminVWModel
 
 <div class="form-horizontal">
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(model => model.Property.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Property.VendorId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Property.Name, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Property.Name, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(model => model.Property.VendorId, (SelectList)ViewBag.VendorList, string.Empty, new { @class = "form-control" })
+
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.PropertyName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Property.PropertyName, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Property Name" } })
+            @Html.ValidationMessageFor(model => model.Property.PropertyName, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Property.Website, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Property.PropertyType, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Property.Website, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Property.Website, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Property.PropertyType, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "E.g. Office, Auditorium" } })
+            @Html.ValidationMessageFor(model => model.Property.PropertyType, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Property.TotalRoom, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Property.ShareType, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Property.TotalRoom, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Property.TotalRoom, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Property.ShareType, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "E.g. Whole Office" } })
+            @Html.ValidationMessageFor(model => model.Property.ShareType, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Property.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Property.MaximumPerson, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Property.Type, (SelectList)ViewBag.PropertyTypeList, string.Empty)
-            @Html.ValidationMessageFor(model => model.Property.Type, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Property.AnOverview, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Property.AnOverview, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Property.AnOverview, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Property.MaximumPerson, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Maximum Person" } })
+            @Html.ValidationMessageFor(model => model.Property.MaximumPerson, "", new { @class = "text-danger" })
         </div>
     </div>
 
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Property.Price, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Price" } })
+            @Html.ValidationMessageFor(model => model.Property.Price, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.FeatureImage, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group">
+            <div class="col-md-10">
+                <span class="control-label col-md-2">Upload Images:</span>
+                <div class="col-md-10">
+                    <input type="file" name="files" id="files" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.ShortDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Property.ShortDescription, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Short Description" } })
+            @Html.ValidationMessageFor(model => model.Property.ShortDescription, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Property.Description, new { htmlAttributes = new { @class = "form-control textarea-autosize", PlaceHolder = "Description" } })
+            @Html.ValidationMessageFor(model => model.Property.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
 </div>

@@ -49,11 +49,16 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string Get_Property_PropertyRating = "sp_property_getPropertyAndPropertyRating";
 
+
+
         //Services
         public static string GETFEATUREDSERVICE = "sp_service_getfeaturedservices";
 
         public static string GETPROPERTYSERVICEONCLIENT= "sp_view_getPropertyServiceOnUI";
+
         public static string PROPERTY_PROPERTYSERVICE_GETBYPROPERTYIDS = "sp_property_propertyService_getByPropertyIds";
+
+        public static string Insert_Property_Service = "sp_propertyservice_insertpropertyservice";
         //Booking
         public static string INSERTBOOKINGS = "sp_booking_insertbooking";
 
@@ -90,5 +95,27 @@ namespace ShareSpace.DataLayerSql.Common
         public static string UPDATETRANSACTIONS = "sp_transaction_updatetransaction";
 
         public static string DELETETRANSACTIONS = "sp_transaction_deletetransaction";
+
+        //Address
+        public static string GETALLADDRESSS = "sp_propertyaddress_getallpropertyaddress";
+
+        public static string GETADDRESSSBYID = "sp_propertyaddress_getpropertyaddressbyid";
+
+        public static string INSERTADDRESSS = "sp_propertyaddress_insertpropertyaddress";
+
+        public static string UPDATEADDRESSS = "sp_propertyaddress_updatepropertyaddress";
+
+        public static string DELETEADDRESSS = "sp_propertyaddress_deletepropertyaddress";
+
+        //Gallery
+        public static string GETALLGALLERYS = "sp_gallery_getallgallery";
+
+        public static string GETGALLERYSBYID = "sp_gallery_getgallerybyid";
+
+        public static string INSERTGALLERYS = "sp_gallery_insertgallery";
+
+        public static string UPDATEGALLERYS = "sp_gallery_updategallery";
+
+        public static string DELETEGALLERYS = "sp_gallery_deletegallery";
     }
 }

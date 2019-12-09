@@ -124,8 +124,7 @@
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\propertyController.cs" />
-    <Compile Include="Controllers\PropertyDetailsController.cs" />
+    <Compile Include="Controllers\PropertyController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
@@ -370,27 +369,17 @@
     <Content Include="Views\Booking\InsertBooking.cshtml" />
     <Content Include="Views\Client\AdminClients.cshtml" />
     <Content Include="Views\Client\InsertClient.cshtml" />
-    <Content Include="Views\property\AdminPropertys.cshtml" />
-    <Content Include="Views\property\Create.cshtml" />
-    <Content Include="Views\property\InsertProperty.cshtml" />
-    <Content Include="Views\property\Partial\_Address.cshtml" />
-    <Content Include="Views\property\Partial\_FacilityList.cshtml" />
-    <Content Include="Views\property\Partial\_Gallery.cshtml" />
-    <Content Include="Views\property\Partial\_Policy.cshtml" />
-    <Content Include="Views\property\Partial\_Property.cshtml" />
-    <Content Include="Views\property\Partial\_Review.cshtml" />
-    <Content Include="Views\PropertyDetails\Create.cshtml" />
-    <Content Include="Views\PropertyDetails\Partial\_Address.cshtml" />
-    <Content Include="Views\PropertyDetails\Partial\_FacilityList.cshtml" />
-    <Content Include="Views\PropertyDetails\Partial\_Gallery.cshtml" />
-    <Content Include="Views\PropertyDetails\Partial\_Policy.cshtml" />
-    <Content Include="Views\PropertyDetails\Partial\_Property.cshtml" />
-    <Content Include="Views\PropertyDetails\Partial\_Review.cshtml" />
     <Content Include="Views\Transaction\AdminTransactions.cshtml" />
     <Content Include="Views\Transaction\InsertTransaction.cshtml" />
     <Content Include="Views\Vendor\AdminVendors.cshtml" />
     <Content Include="Views\Vendor\InsertVendor.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Property\Index.cshtml" />
+    <Content Include="Views\Property\Create.cshtml" />
+    <Content Include="Views\Property\Partial\_Address.cshtml" />
+    <Content Include="Views\Property\Partial\_ServiceList.cshtml" />
+    <Content Include="Views\Property\Partial\_Gallery.cshtml" />
+    <Content Include="Views\Property\Partial\_Property.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
