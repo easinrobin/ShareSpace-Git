@@ -7,6 +7,9 @@
 
     var mapurl = "https://maps.google.com/maps?q=" + @maploc + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
 }
+<link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
 <div class="clear">
 
 </div>
@@ -131,42 +134,42 @@
                                         </div>
                                     </div>
                                     <div class="search-your-details">
-                                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
                                             <div class="form-group">
                                                 <div class="validate-input" data-validate="Date is required">
                                                     @Html.EditorFor(m => m.BookingEmail.FromDate, new { htmlAttributes = new { @class = "btn-default validate-field", id = string.Format("smallCheckInDate"), type = "text", name = "CheckInDate", placeholder = "Check In Date" } })
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
                                             <div class="form-group">
                                                 <div class="validate-input" data-validate="Date is required">
                                                     @Html.EditorFor(m => m.BookingEmail.ToDate, new { htmlAttributes = new { @class = "btn-default validate-field", id = string.Format("smallCheckOutDate"), type = "text", name = "CheckOutDate", placeholder = "Check Out Date" } })
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
                                             <div class="form-group">
-                                                <div class="validate-input" data-validate="Time is required">
-                                                    @Html.EditorFor(m => m.BookingEmail.FromHour, new { htmlAttributes = new { @class = "btn-default validate-field", id = string.Format("smallCheckInTime"), type = "text", name = "CheckInTime", placeholder = "Check In Time" } })
+                                                <div class="validate-input" data-validate="Time is required" id="rangestart">
+                                                    @Html.EditorFor(m => m.BookingEmail.FromHour, new { htmlAttributes = new { @class = "btn-default validate-field", type = "text", name = "CheckInTime", placeholder = "Check In Time" } })
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
                                             <div class="form-group">
-                                                <div class="validate-input" data-validate="Time is required">
-                                                    @Html.EditorFor(m => m.BookingEmail.ToHour, new { htmlAttributes = new { @class = "btn-default validate-field", id = string.Format("smallCheckOutTime"), type = "text", name = "CheckOutTime", placeholder = "Check Out Time" } })
+                                                <div class="validate-input" data-validate="Time is required" id="rangeend">
+                                                    @Html.EditorFor(m => m.BookingEmail.ToHour, new { htmlAttributes = new { @class = "btn-default validate-field", type = "text", name = "CheckOutTime", placeholder = "Check Out Time" } })
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
                                             <div class="form-group">
                                                 <div class="validate-input" data-validate="Email is required">
                                                     @Html.EditorFor(m => m.BookingEmail.Email, new { htmlAttributes = new { @class = "btn-default validate-field", id = string.Format("email"), type = "email", name = "email", placeholder = "Your Email Address" } })
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
                                             <div class="form-group">
                                                 <div class="validate-input" data-validate="Number of Person is required">
                                                     @Html.DropDownListFor(m => m.BookingEmail.MaximumPerson, new List<SelectListItem>
@@ -175,7 +178,12 @@
                                                         new SelectListItem {Text = "2", Value = "2"},
                                                         new SelectListItem {Text = "3", Value = "3"},
                                                         new SelectListItem {Text = "4", Value = "4"},
-                                                        new SelectListItem {Text = "5", Value = "5"}
+                                                        new SelectListItem {Text = "5", Value = "5"},
+                                                        new SelectListItem {Text = "6", Value = "6"},
+                                                        new SelectListItem {Text = "7", Value = "7"},
+                                                        new SelectListItem {Text = "8", Value = "8"},
+                                                        new SelectListItem {Text = "9", Value = "9"},
+                                                        new SelectListItem {Text = "10", Value = "10"}
                                                     },
                                                         "Number of Person", new
                                                         {@class = "selectpicker search-fields form-control-2", name = "Person"}
@@ -344,15 +352,15 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <div class="validate-big-input" data-validate="Time is required">
-                                                @Html.EditorFor(m => m.BookingEmail.FromHour, new { htmlAttributes = new { @class = "btn-default validate-big-field", id = string.Format("checkInTime"), type = "text", name = "CheckInTime", placeholder = "Check In Time" } })
+                                            <div class="validate-big-input" data-validate="Time is required" id="rangestartsm">
+                                                @Html.EditorFor(m => m.BookingEmail.FromHour, new { htmlAttributes = new { @class = "btn-default validate-big-field", type = "text", name = "CheckInTime", placeholder = "Check In Time" } })
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <div class="validate-big-input" data-validate="Time is required">
-                                                @Html.EditorFor(m => m.BookingEmail.ToHour, new { htmlAttributes = new { @class = "btn-default validate-big-field", id = string.Format("checkOutTime"), type = "text", name = "CheckOutTime", placeholder = "Check Out Time" } })
+                                            <div class="validate-big-input" data-validate="Time is required" id="rangeendsm">
+                                                @Html.EditorFor(m => m.BookingEmail.ToHour, new { htmlAttributes = new { @class = "btn-default validate-big-field",  type = "text", name = "CheckOutTime", placeholder = "Check Out Time" } })
                                             </div>
                                         </div>
                                     </div>
@@ -372,7 +380,12 @@
                                                     new SelectListItem {Text = "2", Value = "2"},
                                                     new SelectListItem {Text = "3", Value = "3"},
                                                     new SelectListItem {Text = "4", Value = "4"},
-                                                    new SelectListItem {Text = "5", Value = "5"}
+                                                    new SelectListItem {Text = "5", Value = "5"},
+                                                    new SelectListItem {Text = "6", Value = "6"},
+                                                    new SelectListItem {Text = "7", Value = "7"},
+                                                    new SelectListItem {Text = "8", Value = "8"},
+                                                    new SelectListItem {Text = "9", Value = "9"},
+                                                    new SelectListItem {Text = "10", Value = "10"}
                                                 }, "Number of Person", new {@class = "selectpicker search-fields form-control-2", name = "Person"})
                                             </div>
                                         </div>
@@ -430,3 +443,22 @@
         </div>
     </div>
 </div>
+<script>
+    $('#rangestart').calendar({
+        type: 'time',
+        endCalendar: $('#rangeend')
+    });
+    $('#rangeend').calendar({
+        type: 'time',
+        startCalendar: $('#rangestart')
+    });
+
+    $('#rangestartsm').calendar({
+        type: 'time',
+        endCalendar: $('#rangeendsm')
+    });
+    $('#rangeendsm').calendar({
+        type: 'time',
+        startCalendar: $('#rangestartsm')
+    });
+</script>

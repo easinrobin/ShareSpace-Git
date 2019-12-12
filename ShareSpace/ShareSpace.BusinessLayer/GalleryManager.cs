@@ -19,6 +19,12 @@ namespace ShareSpace.BusinessLayer
             SqlGalleryProvider sqlGalleryProvider = new SqlGalleryProvider();
             return sqlGalleryProvider.GetGalleryById(galleryId);
         }
+
+        public static Gallery GetGalleryByPropertyId(long propertyId)
+        {
+            SqlGalleryProvider sqlGalleryProvider = new SqlGalleryProvider();
+            return sqlGalleryProvider.GetGalleryByPropertyId(propertyId);
+        }
         #endregion
 
 

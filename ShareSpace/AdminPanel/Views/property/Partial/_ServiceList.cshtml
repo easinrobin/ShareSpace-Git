@@ -1,125 +1,29 @@
-﻿
-@model ShareSpace.Models.Admin.AdminVWModel
+﻿@model ShareSpace.Models.Admin.AdminVWModel
 
-
-
-<div class="row">
-    <div class="card">
+<div class="form-horizontal">
+    <div class="row">
         <div class="card-body">
             <h4 class="card-title">Services</h4>
             <h6 class="card-subtitle">Add Your Service Item.</h6>
-        </div>
+            <div class="listview">
+                @for (int idx = 0; idx < Model.ServiceList.Count; idx++)
+                {
+                    <div class="listview__item float-right col-sm-6">
+                        <label class="custom-control custom-checkbox align-self-start">
+                            @Html.HiddenFor(x => Model.ServiceList[idx].ServiceId)
+                            @Html.CheckBoxFor(x => x.ServiceList[idx].IsSelected, new { @class = "custom-control-input" })
 
-        <div class="listview">
-            
-            @*@foreach (var service in Model.ServiceList)
-            {
-                <div class="listview__item float-right col-sm-6">
-                    <label class="custom-control custom-checkbox align-self-start">
-                        <input type="checkbox" class="custom-control-input">
-                        <span class="custom-control-indicator"></span>
-                    </label>
-                    <i class="@service.ImagePath"></i>
 
-                    <div class="listview__content">
-                        <div class="listview__heading">@service.ServiceName</div>
+                            <span class="custom-control-indicator"></span>
+                        </label>
+                        <i class="@Model.ServiceList[idx].ImagePath"></i>
+
+                        <div class="listview__content">
+                            <div class="listview__heading">&nbsp;&nbsp;@Model.ServiceList[idx].ServiceName</div>
+                        </div>
                     </div>
-                </div>
-            }*@
-            
-            <div class="listview__item float-left col-sm-6">
-                <label class="custom-control custom-checkbox align-self-start">
-                    <input type="checkbox" class="custom-control-input">
-                    <span class="custom-control-indicator"></span>
-                </label>
-
-                <i class="avatar-char">CP</i>
-
-                <div class="listview__content">
-                    <div class="listview__heading">Car Parking</div>
-
-                </div>
+                }
             </div>
-
-            <div class="listview__item float-right col-sm-6">
-                <label class="custom-control custom-checkbox align-self-start">
-                    <input type="checkbox" class="custom-control-input">
-                    <span class="custom-control-indicator"></span>
-                </label>
-
-                <i class="avatar-char">MB</i>
-
-                <div class="listview__content">
-                    <div class="listview__heading">Meeting/Boardroom</div>
-
-                </div>
-            </div>
-
-            <div class="listview__item float-left col-sm-6">
-                <label class="custom-control custom-checkbox align-self-start">
-                    <input type="checkbox" class="custom-control-input">
-                    <span class="custom-control-indicator"></span>
-                </label>
-                <i class="avatar-char">AC</i>
-
-                <div class="listview__content">
-                    <div class="listview__heading">Air Conditioning</div>
-
-                </div>
-            </div>
-
-            <div class="listview__item float-right col-sm-6">
-                <label class="custom-control custom-checkbox align-self-start">
-                    <input type="checkbox" class="custom-control-input">
-                    <span class="custom-control-indicator"></span>
-                </label>
-                <i class="avatar-char">S</i>
-
-                <div class="listview__content">
-                    <div class="listview__heading">24 x 7 security</div>
-
-                </div>
-            </div>
-            <div class="listview__item float-left col-sm-6">
-                <label class="custom-control custom-checkbox align-self-start">
-                    <input type="checkbox" class="custom-control-input">
-                    <span class="custom-control-indicator"></span>
-                </label>
-                <i class="avatar-char">C</i>
-
-                <div class="listview__content">
-                    <div class="listview__heading">Cafe</div>
-
-                </div>
-            </div>
-            <div class="listview__item float-right col-sm-6">
-                <label class="custom-control custom-checkbox align-self-start">
-                    <input type="checkbox" class="custom-control-input">
-                    <span class="custom-control-indicator"></span>
-                </label>
-                <i class="avatar-char">E</i>
-
-                <div class="listview__content">
-                    <div class="listview__heading">24 x 7 Electricity </div>
-
-                </div>
-            </div>
-            <div class="listview__item float-left col-sm-6">
-                <label class="custom-control custom-checkbox align-self-start">
-                    <input type="checkbox" class="custom-control-input">
-                    <span class="custom-control-indicator"></span>
-                </label>
-                <i class="avatar-char">L</i>
-
-                <div class="listview__content">
-                    <div class="listview__heading">Lift</div>
-
-                </div>
-            </div>
-
-
         </div>
     </div>
-
-
 </div>

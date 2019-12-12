@@ -15,10 +15,10 @@ namespace ShareSpace.Models.Service
         public string ServiceName { get; set; }
 
         [Display(Name = "IsHidden")]
-        public string IsHidden { get; set; }
+        public bool IsHidden { get; set; }
 
         [Display(Name = "IsFeatured")]
-        public string IsFeatured { get; set; }
+        public bool IsFeatured { get; set; }
 
         [Display(Name = "Image Path")]
         public string ImagePath { get; set; }
@@ -38,5 +38,14 @@ namespace ShareSpace.Models.Service
 
         [Display(Name = "Update Date")]
         public DateTime? UpdateDate { get; set; }
+
+        [NotMapped]
+        public bool IsSelected { get; set; }
     }
+    //[NotMapped]
+    //public class PropertyServiceDetails : Services
+    //{
+    //    [NotMapped]
+    //    public bool IsSelected { get; set; }
+    //}
 }

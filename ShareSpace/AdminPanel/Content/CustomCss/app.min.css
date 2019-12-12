@@ -12400,3 +12400,10 @@ ul.jqtree-tree {
 .error-text-min {
     float: right
 }
+
+
+.validation-text {
+    color: #E32636;
+    font-style: italic;
+    font-size: 15px;
+}

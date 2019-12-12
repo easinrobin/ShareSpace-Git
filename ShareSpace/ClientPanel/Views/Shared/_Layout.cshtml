@@ -127,7 +127,7 @@
 
                     <ul class="nav navbar-nav">
 
-                        <li class="dropdown active">
+                        <li class="dropdown">
                             @Html.ActionLink("Home", "Index", "Home")
                         </li>
                         <li class="dropdown">
@@ -142,11 +142,12 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            @Html.ActionLink("Contact", "Contact", "Home", null, null)
-                        </li>
-                        <li class="dropdown">
                             @Html.ActionLink("About", "About", "Home", null, null)
                         </li>
+                        <li class="dropdown">
+                            @Html.ActionLink("Contact", "Contact", "Home", null, null)
+                        </li>
+                       
                     </ul>
                     <ul class="nav navbar-nav navbar-right hidden-sm hidden-xs">
                         <li>
@@ -274,8 +275,17 @@
     @Scripts.Render("~/bundles/moveitJs")
     @*@Scripts.Render("~/bundles/succeedJs")*@
     @Scripts.Render("~/bundles/booking-validationJs")
+    
+    <script type="text/javascript">
 
-    <script>
+        $(function () {
+            $('.navbar-nav li').click(function () {
+                $(this).addClass('active').removeClass('active');
+            });
+        });
+
+    </script>
+<script>
         function LoadMap(propertes) {
             var defaultLat = 23.868287;
             var defaultLng = 90.410178;

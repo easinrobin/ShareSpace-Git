@@ -1,45 +1,61 @@
 ﻿@model ShareSpace.Models.Admin.AdminVWModel
 @using System.Web.Mvc;
 
-<div class="form-horizontal">
+<div class="form-horizontal" id="address">
     @Html.AntiForgeryToken()
     <div class="form-group">
-        @Html.LabelFor(model => model.PropertyAddress.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.PropertyAddress.Address, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Address" } })
-            @Html.ValidationMessageFor(model => model.PropertyAddress.Address, "", new { @class = "text-danger" })
-        </div>
+        @Html.LabelFor(model => model.PropertyAddress.HouseNo, new { @class = "card-body__title" })
+
+        @Html.EditorFor(model => model.PropertyAddress.HouseNo, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "House No." } })
+        @Html.ValidationMessageFor(model => model.PropertyAddress.HouseNo, "", new { @class = "validation-text" })
+
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.PropertyAddress.City, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.PropertyAddress.City, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "City" } })
-            @Html.ValidationMessageFor(model => model.PropertyAddress.City, "", new { @class = "text-danger" })
-        </div>
+        @Html.LabelFor(model => model.PropertyAddress.FlatNo, new { @class = "card-body__title" })
+
+        @Html.EditorFor(model => model.PropertyAddress.FlatNo, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "City" } })
+        @Html.ValidationMessageFor(model => model.PropertyAddress.FlatNo, "", new { @class = "validation-text" })
+
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.PropertyAddress.Area, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.PropertyAddress.Area, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Area" } })
-            @Html.ValidationMessageFor(model => model.PropertyAddress.Area, "", new { @class = "text-danger" })
-        </div>
+        @Html.LabelFor(model => model.PropertyAddress.RoadNo, new { @class = "card-body__title" })
+
+        @Html.EditorFor(model => model.PropertyAddress.RoadNo, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "City" } })
+        @Html.ValidationMessageFor(model => model.PropertyAddress.RoadNo, "", new { @class = "validation-text" })
+
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.PropertyAddress.ZipCode, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.PropertyAddress.ZipCode, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "ZipCode" } })
-            @Html.ValidationMessageFor(model => model.PropertyAddress.ZipCode, "", new { @class = "text-danger" })
-        </div>
+        @Html.LabelFor(model => model.PropertyAddress.Area, new { @class = "card-body__title" })
+
+        @Html.EditorFor(model => model.PropertyAddress.Area, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Area" } })
+        @Html.ValidationMessageFor(model => model.PropertyAddress.Area, "", new { @class = "validation-text" })
+
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.PropertyAddress.Country, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.PropertyAddress.Country, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Country" } })
-            @Html.ValidationMessageFor(model => model.PropertyAddress.Country, "", new { @class = "text-danger" })
-        </div>
+        @Html.LabelFor(model => model.PropertyAddress.City, new { @class = "card-body__title" })
+
+        @Html.EditorFor(model => model.PropertyAddress.City, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Area" } })
+        @Html.ValidationMessageFor(model => model.PropertyAddress.City, "", new { @class = "validation-text" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PropertyAddress.ZipCode, new { @class = "card-body__title" })
+
+        @Html.EditorFor(model => model.PropertyAddress.ZipCode, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "ZipCode" } })
+        @Html.ValidationMessageFor(model => model.PropertyAddress.ZipCode, "", new { @class = "validation-text" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PropertyAddress.Country, new { @class = "card-body__title" })
+
+        @Html.EditorFor(model => model.PropertyAddress.Country, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Country" } })
+        @Html.ValidationMessageFor(model => model.PropertyAddress.Country, "", new { @class = "validation-text" })
+
     </div>
 </div>

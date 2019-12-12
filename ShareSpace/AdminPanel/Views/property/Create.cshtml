@@ -7,7 +7,7 @@
 
 <nav aria-label="breadcrumb" role="navigation">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="~/PropertyDetails/Index">Properties</a></li>
+        <li class="breadcrumb-item"><a href="~/Property/Index">Properties</a></li>
         <li class="breadcrumb-item active" aria-current="page">New Property</li>
     </ol>
 </nav>
@@ -15,24 +15,19 @@
 
 <header class="content__title">
     <h1>Property</h1>
-
     <div class="actions">
         <a href="~/Property/Index" class="actions__item zmdi zmdi-view-list zmdi-hc-fw" title="Back to List"></a>
         <a href="~/Property/Create" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
     </div>
 </header>
 
-
-
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title"></h4>
-        <h6 class="card-subtitle"></h6>
 
         <div class="tab-container">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#property" role="tab">Property</a>
+                    <a class="nav-link" data-toggle="tab" href="#property" role="tab">Property</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#address" role="tab">Address</a>
@@ -50,36 +45,21 @@
                 @Html.AntiForgeryToken()
                 <div class="tab-content">
                     <div class="tab-pane active fade show" id="property" role="tabpanel">
-                        <h5>Property</h5>
-                        <br />
-                        <br />
                         @Html.Partial("~/Views/Property/Partial/_Property.cshtml", Model)
                     </div>
                     <div class="tab-pane" id="address" role="tabpanel">
-                        <h5>Address</h5>
-                        <br />
-                        <br />
                         @Html.Partial("~/Views/Property/Partial/_Address.cshtml", Model)
                     </div>
                     <div class="tab-pane " id="feature" role="tabpanel">
-                        <h5>Services</h5>
-                        <br />
-                        <br />
                         @Html.Partial("~/Views/Property/Partial/_ServiceList.cshtml", Model)
                     </div>
                     <div class="tab-pane " id="gallery" role="tabpanel">
-                        <h5>Gallery</h5>
-                        <br />
-                        <br />
                         @Html.Partial("~/Views/Property/Partial/_Gallery.cshtml", Model)
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-success" />
-                    </div>
+                    <input type="submit" value="Create" class="btn btn-success" />
                 </div>
-
             }
         </div>
     </div>

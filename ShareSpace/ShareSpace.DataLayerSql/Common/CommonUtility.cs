@@ -39,16 +39,25 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string GETALLPROPERTYS = "sp_property_getproperty";
 
+        public static string Get_Admin_PropertyList = "sp_view_adminPanelPropertyList";
+
+        public static string Get_Admin_PropertyListById = "sp_property_getAdminPropertyById";
+
         public static string GETPROPERTYSBYID = "sp_property_getpropertybyid";
 
         public static string INSERTPROPERTYS = "sp_property_insertproperty";
 
         public static string UPDATEPROPERTYS = "sp_property_updateproperty";
 
+        public static string Update_Admin_PropertyList = "sp_property_view_updateAdminPropertyList";
+
         public static string DELETEPROPERTYS = "sp_property_deleteproperty";
+
+        public static string Hide_Property = "sp_property_hideProperty";
 
         public static string Get_Property_PropertyRating = "sp_property_getPropertyAndPropertyRating";
 
+        public static string GET_PROPERTY_BY_SEARCH = "sp_property_getPropertyBySearch";
 
 
         //Services
@@ -59,6 +68,8 @@ namespace ShareSpace.DataLayerSql.Common
         public static string PROPERTY_PROPERTYSERVICE_GETBYPROPERTYIDS = "sp_property_propertyService_getByPropertyIds";
 
         public static string Insert_Property_Service = "sp_propertyservice_insertpropertyservice";
+
+        public static string Get_All_Services = "sp_service_getallservice";
         //Booking
         public static string INSERTBOOKINGS = "sp_booking_insertbooking";
 
@@ -101,6 +112,8 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string GETADDRESSSBYID = "sp_propertyaddress_getpropertyaddressbyid";
 
+        public static string GETADDRESSSBYPROPERTYID = "sp_propertyaddress_getpropertyaddressbypropertyid";
+
         public static string INSERTADDRESSS = "sp_propertyaddress_insertpropertyaddress";
 
         public static string UPDATEADDRESSS = "sp_propertyaddress_updatepropertyaddress";
@@ -111,6 +124,8 @@ namespace ShareSpace.DataLayerSql.Common
         public static string GETALLGALLERYS = "sp_gallery_getallgallery";
 
         public static string GETGALLERYSBYID = "sp_gallery_getgallerybyid";
+
+        public static string Get_Gallery_By_PropertyId = "sp_gallery_getgallerybypropertyid";
 
         public static string INSERTGALLERYS = "sp_gallery_insertgallery";
 

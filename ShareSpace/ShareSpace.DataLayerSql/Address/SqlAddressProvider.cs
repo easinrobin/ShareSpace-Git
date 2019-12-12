@@ -139,6 +139,33 @@ namespace ShareSpace.DataLayerSql.Address
             }
         }
 
+        public Models.Property.PropertyAddress GetAddressByPropertyId(long propertyId)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GETADDRESSSBYPROPERTYID, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@PropertyId", propertyId));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    Models.Property.PropertyAddress address = new Models.Property.PropertyAddress();
+                    address = UtilityManager.DataReaderMap<Models.Property.PropertyAddress>(reader);
+                    return address;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
 
 
         public bool DeleteAddress(long addressId)

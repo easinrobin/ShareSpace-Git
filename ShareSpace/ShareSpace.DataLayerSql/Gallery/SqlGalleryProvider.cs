@@ -139,6 +139,33 @@ namespace ShareSpace.DataLayerSql.Gallery
             }
         }
 
+        public Models.Gallery.Gallery GetGalleryByPropertyId(long propertyId)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Get_Gallery_By_PropertyId, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@PropertyId", propertyId));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    Models.Gallery.Gallery gallery = new Models.Gallery.Gallery();
+                    gallery = UtilityManager.DataReaderMap<Models.Gallery.Gallery>(reader);
+                    return gallery;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
 
 
         public bool DeleteGallery(long galleryId)

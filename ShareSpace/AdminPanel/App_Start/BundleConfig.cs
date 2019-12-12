@@ -17,6 +17,9 @@ namespace AdminPanel
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/ThirdPartyJs/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jquery.validate.unobtrusive").Include(
+                        "~/Scripts/ThirdPartyJs/jquery.validate.unobtrusive.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/poppermin").Include(
                         "~/Scripts/ThirdPartyJs/popper.min.js"));
 
@@ -46,6 +49,9 @@ namespace AdminPanel
 
             bundles.Add(new ScriptBundle("~/bundles/appmin").Include(
                         "~/Scripts/CustomJs/app.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/sweetAlert2").Include(
+                        "~/Scripts/ThirdPartyJs/sweetalert2.min.js"));
 
             //new
 
@@ -78,6 +84,9 @@ namespace AdminPanel
 
             bundles.Add(new ScriptBundle("~/bundles/salvattore").Include(
                 "~/Scripts/ThirdPartyJs/salvattore.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/select").Include(
+                "~/Scripts/ThirdPartyJs/bootstrap-select.min.js"));
 
 
 
@@ -257,6 +266,12 @@ namespace AdminPanel
 
             bundles.Add(new StyleBundle("~/Content/fullcalendar").Include(
                 "~/Content/ThirdPartyCss/fullcalendar.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/select").Include(
+                        "~/Content/ThirdPartyCss/bootstrap-select.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/sweetAlert2").Include(
+                        "~/Content/ThirdPartyCss/sweetalert2.min.css"));
 
             #endregion
         }

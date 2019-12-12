@@ -13,6 +13,8 @@
     @Styles.Render("~/Content/demo-css")
     @Styles.Render("~/Content/dropzone")
     @Styles.Render("~/Content/fullcalendar")
+    @Styles.Render("~/Content/select")
+    @Styles.Render("~/Content/sweetAlert2")
     @Styles.Render("~/Content/rich-text-1")
     @Styles.Render("~/Content/rich-text-2")
     @Styles.Render("~/Content/rich-text-3")
@@ -121,6 +123,8 @@
     </main>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery.validate.unobtrusive")
     @Scripts.Render("~/bundles/poppermin")
     @Scripts.Render("~/bundles/bootstrapmin")
     @Scripts.Render("~/bundles/jqueryscrollbarmin")
@@ -142,6 +146,8 @@
     @Scripts.Render("~/bundles/peity")
     @Scripts.Render("~/bundles/lightgallery")
     @Scripts.Render("~/bundles/salvattore")
+    @Scripts.Render("~/bundles/select")
+    @Scripts.Render("~/bundles/sweetAlert2")
 
 
     @Scripts.Render("~/bundles/rich-textJs-1")
@@ -174,38 +180,40 @@
     @Scripts.Render("~/bundles/rich-textJs-28")
     @Scripts.Render("~/bundles/rich-textJs-29")
     @Scripts.Render("~/bundles/rich-textJs-30")
+    
+    <script src="~/Scripts/SweetAlert2/sweetalert2.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $('a[data-confirm]').click(function (ev) {
-                var href = $(this).attr('href');
+<script>
+    $(document).ready(function () {
+        $('a[data-confirm]').click(function (ev) {
+            var href = $(this).attr('href');
 
-                if (!$('#dataConfirmModal').length) {
-                    $('body').append('<div id="dataConfirmModal" class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="dataConfirmLabel">Please Confirm</h3></div><div class="modal-body"></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button><a class="btn btn-primary" id="dataConfirmOK">OK</a></div></div>');
-                }
-                $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
-                $('#dataConfirmOK').attr('href', href);
-                $('#dataConfirmModal').modal({
-                    show: true
-                });
-                return false;
+            if (!$('#dataConfirmModal').length) {
+                $('body').append('<div id="dataConfirmModal" class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="dataConfirmLabel">Please Confirm</h3></div><div class="modal-body"></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button><a class="btn btn-primary" id="dataConfirmOK">OK</a></div></div>');
+            }
+            $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
+            $('#dataConfirmOK').attr('href', href);
+            $('#dataConfirmModal').modal({
+                show: true
             });
+            return false;
         });
+    });
 
-        $('#confirm-delete').on('show.bs.modal', function (e) {
-            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-        });
+    $('#confirm-delete').on('show.bs.modal', function (e) {
+        $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    });
 
 
-        (function () {
-            new FroalaEditor("#edit",
-                {
-                    theme: 'dark'
-                })
-        })()
-    </script>
+    (function () {
+        new FroalaEditor("#edit",
+            {
+                theme: 'dark'
+            })
+    })()
+</script>
 
-    @RenderSection("scripts", required: false)
+@RenderSection("scripts", required: false)
 
 </body>
 </html>

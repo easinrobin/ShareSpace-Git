@@ -19,5 +19,6 @@ namespace ShareSpace.Models.Property
         public bool IsHidden { get; set; }
         public bool IsSearchable { get; set; }
         public int Rating { get; set; }
+        public int MaximumPerson { get; set; }
     }
 }

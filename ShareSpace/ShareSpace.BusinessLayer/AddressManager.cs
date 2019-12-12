@@ -23,6 +23,12 @@ namespace ShareSpace.BusinessLayer
             SqlAddressProvider sqlAddressProvider = new SqlAddressProvider();
             return sqlAddressProvider.GetAddressById(addressId);
         }
+
+        public static PropertyAddress GetAddressByPropertyId(long propertyId)
+        {
+            SqlAddressProvider sqlAddressProvider = new SqlAddressProvider();
+            return sqlAddressProvider.GetAddressByPropertyId(propertyId);
+        }
         #endregion
 
 

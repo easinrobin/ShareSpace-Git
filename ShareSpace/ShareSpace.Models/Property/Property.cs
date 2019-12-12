@@ -12,7 +12,7 @@ namespace ShareSpace.Models.Property
         public long PropertyId { get; set; }
 
         [Display(Name = "Property Name")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Property Name name required")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Property Name required")]
         public string PropertyName { get; set; }
 
         [Display(Name = "Share Type")]
@@ -35,15 +35,14 @@ namespace ShareSpace.Models.Property
         public string ShortDescription { get; set; }
 
         [Display(Name = "Feature Image")]
-        [Required(AllowEmptyStrings = false)]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Property Image Required")]
         public string FeatureImage { get; set; }
-
-
 
         [Display(Name = "Price")]
         public decimal Price { get; set; }
 
         [Display(Name = "Retail Price")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Property Retail Required")]
         public decimal RetailPrice { get; set; }
 
         [Display(Name = "Latitude")]

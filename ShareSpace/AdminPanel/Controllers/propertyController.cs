@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Services.Description;
 using ShareSpace.BusinessLayer;
 using ShareSpace.Models.Admin;
 using ShareSpace.Models.Gallery;
@@ -19,20 +18,97 @@ namespace AdminPanel.Controllers
         // GET: Property
         public ActionResult Index()
         {
-            var model = PropertyManager.GetAllProperties();
+            var model = PropertyManager.GetAdminPropertyList();
             return View(model);
         }
+
 
         public ActionResult Create()
         {
             AdminVWModel adminVWModel = new AdminVWModel();
             _loadVendors();
-            
+            _loadServices(adminVWModel);
+
             return View(adminVWModel);
+        }
+
+        //Update
+        public ActionResult UpdateProperty(int propertyId)
+        {
+            _loadVendors();
+            AdminVWModel adminVwModel = new AdminVWModel();
+            adminVwModel.Property = PropertyManager.GetPropertyById(propertyId);
+            adminVwModel.PropertyAddress = AddressManager.GetAddressByPropertyId(propertyId);
+            return View("~/Views/Property/UpdateProperty.cshtml", adminVwModel);
+        }
+
+        public ActionResult GalleryList(long propertyId)
+        {
+            ViewBag.PropertyId = propertyId;
+            AdminVWModel adminVwModel = new AdminVWModel();
+            adminVwModel.Gallery = GalleryManager.GetGalleryByPropertyId(propertyId);
+
+            return View(adminVwModel);
         }
 
         [HttpPost]
         public ActionResult Create(AdminVWModel adminVWModel, HttpPostedFileBase images)
+        {
+            _Property(adminVWModel, images);
+            var propertyId = PropertyManager.InsertProperty(adminVWModel.Property);
+
+            if (propertyId > 0)
+            {
+                adminVWModel.PropertyAddress.PropertyId = propertyId;
+                _Address(adminVWModel);
+                var propertyAddressId = AddressManager.InsertAddress(adminVWModel.PropertyAddress);
+
+                _ServiceList(propertyId, adminVWModel, adminVWModel.ServiceList?.FindAll((x => x.IsSelected)));
+
+                _Gallery(propertyId, adminVWModel);
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult UpdateProperty(AdminVWModel adminVwModel, HttpPostedFileBase images)
+        {
+            const string createdBy = "Admin";
+            const string updatedBy = "Admin";
+            var createdOn = DateTime.Now;
+            var updatedOn = DateTime.Now;
+            adminVwModel.Property.CreatedBy = createdBy;
+            adminVwModel.Property.CreatedDate = createdOn;
+            adminVwModel.Property.UpdateBy = updatedBy;
+            adminVwModel.Property.UpdateDate = updatedOn;
+
+
+            foreach (var file in adminVwModel.Files.Take(1))
+            {
+                string pathUrl = "";
+
+                if (file.ContentLength > 0)
+                {
+                    string savepath, savefile;
+                    var filename = Path.GetFileName(Guid.NewGuid() + file.FileName);
+                    savepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img/Offices/");
+                    if (!Directory.Exists(savepath))
+                        Directory.CreateDirectory(savepath);
+                    savefile = Path.Combine(savepath, filename);
+                    file.SaveAs(savefile);
+                    pathUrl = "/img/Offices/" + filename;
+                    adminVwModel.Property.FeatureImage = pathUrl;
+                }
+            }
+
+
+            bool isUpdateProperty = PropertyManager.UpdateProperty(adminVwModel.Property);
+            bool isUpdatePropertyAddress = AddressManager.UpdateAddress(adminVwModel.PropertyAddress);
+
+            return RedirectToAction("Index");
+        }
+
+        public void _Property(AdminVWModel adminVWModel, HttpPostedFileBase images)
         {
             string createdBy = "Admin";
             string updatedBy = "Admin";
@@ -43,74 +119,25 @@ namespace AdminPanel.Controllers
             adminVWModel.Property.UpdateBy = updatedBy;
             adminVWModel.Property.UpdateDate = updatedOn;
 
-
-            var propertyId = PropertyManager.InsertProperty(adminVWModel.Property);
-
-
-            if (propertyId > 0)
+            foreach (var file in adminVWModel.Files.Take(1))
             {
-                adminVWModel.PropertyAddress.PropertyId = propertyId;
-                _Address(adminVWModel);
-                var PropertyAddressId = AddressManager.InsertAddress(adminVWModel.PropertyAddress);
-                
-                if (PropertyAddressId > 0)
+                string pathUrl = "";
+
+                if (file.ContentLength > 0)
                 {
-                    adminVWModel.PropertyService.PropertyId = propertyId;
-
-                    var propertyServiceId = PropertyServiceManager.InsertPropertyService(adminVWModel.PropertyService);
-                }
-                //_saveFeatures (propertyId,  adminVWModel);
-                //_saveGallery (propertyId, adminVWModel);
-                //    adminVWModel.Policy.PropertyId = propertyId;
-                //    var policyId = PolicyManager.Add(adminVWModel.Policy);
-            }
-            return RedirectToAction("Index");
-        }
-
-        private void _Gallery(long propertyId, AdminVWModel adminVWModel)
-        {
-            if (adminVWModel != null)
-            {
-                foreach (var file in adminVWModel.Files)
-                {
-                    string pathUrl = "";
-
-                    if (file.ContentLength > 0)
-                    {
-                        string savepath, savefile;
-                        var filename = Path.GetFileName(Guid.NewGuid() + file.FileName);
-                        savepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Upload/Images/Properties");
-                        if (!Directory.Exists(savepath))
-                            Directory.CreateDirectory(savepath);
-                        savefile = Path.Combine(savepath, filename);
-                        file.SaveAs(savefile);
-                        pathUrl = "/Upload/Images/Properties/" + filename;
-                    }
-
-                    var gallery = new Gallery
-                    {
-                        ImageUrl = pathUrl,
-                        ImageType = "Feature Image",
-                        PropertyId = propertyId,
-                        CreatedBy = "Admin",
-                        UpdateBy = "Admin",
-                        CreatedDate = DateTime.Now,
-                        UpdateDate = DateTime.Now
-                    };
-                    var id = GalleryManager.InsertGallery(gallery);
+                    string savepath, savefile;
+                    var filename = Path.GetFileName(Guid.NewGuid() + file.FileName);
+                    savepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img/Offices/");
+                    if (!Directory.Exists(savepath))
+                        Directory.CreateDirectory(savepath);
+                    savefile = Path.Combine(savepath, filename);
+                    file.SaveAs(savefile);
+                    pathUrl = "/img/Offices/" + filename;
+                    adminVWModel.Property.FeatureImage = pathUrl;
                 }
             }
-        }
 
-        //public ActionResult _Property([Bind(Include = "PropertyId,PropertyName,ShareType,PropertyType,MaximumPerson,ShortDescription,Description,Price")] Property property)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var id = PropertyManager.InsertProperty(property);
-        //        return RedirectToAction("_Address");
-        //    }
-        //    return View("~/Views/Property/Partial/_Property.cshtml");
-        //}
+        }
 
         public void _Address(AdminVWModel adminVWModel)
         {
@@ -122,14 +149,89 @@ namespace AdminPanel.Controllers
             adminVWModel.PropertyAddress.CreatedDate = createdOn;
             adminVWModel.PropertyAddress.UpdateBy = updatedBy;
             adminVWModel.PropertyAddress.UpdateDate = updatedOn;
+
         }
 
-
-
-        public ActionResult UpdateProperty(int propertyId)
+        public void _ServiceList(long propertyId, AdminVWModel adminVwModel, List<Services> serviceList)
         {
-            PropertyManager.GetPropertyById(propertyId);
-            return View("~/Views/Property/Create.cshtml");
+            //_loadServices(adminVwModel);
+
+            foreach (var service in serviceList)
+            {
+                var services = new PropertyService
+                {
+                    PropertyId = propertyId,
+                    ServiceId = service.ServiceId,
+                    ServiceName = service.ServiceName,
+                    IsHidden = 0
+                };
+
+                var serviceId = PropertyServiceManager.InsertPropertyService(services);
+            }
+        }
+
+        private void _Gallery(long propertyId, AdminVWModel adminVWModel)
+        {
+            if (adminVWModel != null)
+            {
+                string imageUrl = "";
+                string imageUrl1 = "";
+                string imageUrl2 = "";
+                string imageUrl3 = "";
+                string imageUrl4 = "";
+                string imageUrl5 = "";
+                string imageUrl6 = "";
+
+                foreach (var file in adminVWModel.Files)
+                {
+                    string pathUrl = "";
+
+                    if (file.ContentLength > 0)
+                    {
+                        string savepath, savefile;
+                        var filename = Path.GetFileName(Guid.NewGuid() + file.FileName);
+                        savepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img/Offices/");
+                        if (!Directory.Exists(savepath))
+                            Directory.CreateDirectory(savepath);
+                        savefile = Path.Combine(savepath, filename);
+                        file.SaveAs(savefile);
+                        pathUrl = "/img/Offices/" + filename;
+
+                        if (string.IsNullOrEmpty(imageUrl))
+                            imageUrl = pathUrl;
+                        else if (string.IsNullOrEmpty(imageUrl1))
+                            imageUrl1 = pathUrl;
+                        else if (string.IsNullOrEmpty(imageUrl2))
+                            imageUrl2 = pathUrl;
+                        else if (string.IsNullOrEmpty(imageUrl3))
+                            imageUrl3 = pathUrl;
+                        else if (string.IsNullOrEmpty(imageUrl3))
+                            imageUrl4 = pathUrl;
+                        else if (string.IsNullOrEmpty(imageUrl3))
+                            imageUrl5 = pathUrl;
+                        else if (string.IsNullOrEmpty(imageUrl3))
+                            imageUrl6 = pathUrl;
+                    }
+                }
+
+                var gallery = new Gallery
+                {
+                    ImageUrl = imageUrl,
+                    Image1 = imageUrl1,
+                    Image2 = imageUrl2,
+                    Image3 = imageUrl3,
+                    Image4 = imageUrl4,
+                    Image5 = imageUrl5,
+                    Image6 = imageUrl6,
+                    ImageType = "Feature Image",
+                    PropertyId = propertyId,
+                    CreatedBy = "Admin",
+                    UpdateBy = "Admin",
+                    CreatedDate = DateTime.Now,
+                    UpdateDate = DateTime.Now
+                };
+                var galleryId = GalleryManager.InsertGallery(gallery);
+            }
         }
 
 
@@ -140,23 +242,24 @@ namespace AdminPanel.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult FeatureList(int propertyId)
+        public ActionResult HideProperty(long propertyId)
         {
-            PropertyManager.GetPropertyById(propertyId);
-            return View("~/Views/Property/Partial/_ServiceList.cshtml");
+            PropertyManager.HideProperty(propertyId);
+            return RedirectToAction("Index");
         }
 
 
-        public ActionResult GalleryList(int propertyId)
-        {
-            PropertyManager.GetPropertyById(propertyId);
-            return View("~/Views/Property/Partial/_Gallery.cshtml");
-        }
 
         private void _loadVendors()
         {
             List<Vendor> dataList = VendorManager.GetAllVendors();
             ViewBag.VendorList = new SelectList(dataList, "VendorId", "FirstName");
+        }
+
+        private List<Services> _loadServices(AdminVWModel adminVWModel)
+        {
+            List<Services> serviceList = ServiceManager.GetAllServices();
+            return adminVWModel.ServiceList = serviceList;
         }
     }
 }

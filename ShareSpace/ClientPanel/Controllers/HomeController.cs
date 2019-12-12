@@ -26,19 +26,96 @@ namespace ClientPanel.Controllers
             return View("~/Views/Home/Index.cshtml");
         }
 
-        public ActionResult SearchResults()
+        public ActionResult SearchResults(ClientViewModel cvModel)
         {
-            ClientViewModel cvModel = new ClientViewModel();
             List<PropertySearchResultNew> allPropertyList = new List<PropertySearchResultNew>();
+            if (cvModel.OfficeSearch != null)
+            {
+                string fromDate = "";
+                if (!string.IsNullOrEmpty(cvModel.OfficeSearch.FromDate))
+                    fromDate = cvModel.OfficeSearch.FromDate;
+                string toDate = "";
+                if (!string.IsNullOrEmpty(cvModel.OfficeSearch.ToDate))
+                    toDate = cvModel.OfficeSearch.ToDate;
+                string fromHour = "";
+                if (!string.IsNullOrEmpty(cvModel.OfficeSearch.FromHour))
+                    fromHour = cvModel.OfficeSearch.FromHour;
+                string toHour = "";
+                if (!string.IsNullOrEmpty(cvModel.OfficeSearch.ToHour))
+                    toHour = cvModel.OfficeSearch.ToHour;
 
-            allPropertyList = PropertyManager.GetPropertiesAndPropertyRating();
+                
+                allPropertyList = PropertyManager.GetPropertiesBySearch(fromDate,
+                    toDate, fromHour, toHour);
 
+                if (allPropertyList != null)
+                {
+                    if (!string.IsNullOrEmpty(cvModel.OfficeSearch.ShareType))
+                    {
+                        if (cvModel.OfficeSearch.ShareType != "All")
+                            allPropertyList = allPropertyList.Where(x => x.ShareType == cvModel.OfficeSearch.ShareType).ToList();
+                    }
+
+
+                    if (cvModel.OfficeSearch.NoPerson > 0)
+                        allPropertyList = allPropertyList.Where(x => x.MaximumPerson == cvModel.OfficeSearch.NoPerson).ToList();
+
+                    if ((!string.IsNullOrEmpty(cvModel.OfficeSearch.ShareType)) && (cvModel.OfficeSearch.NoPerson > 0))
+                    {
+                        allPropertyList = allPropertyList.Where(x => x.ShareType == cvModel.OfficeSearch.ShareType && x.MaximumPerson == cvModel.OfficeSearch.NoPerson).ToList();
+                    }
+
+                   
+                    if (allPropertyList.Count > 0)
+                    {
+                        _loadServices(allPropertyList, cvModel);
+                    }
+                    else
+                    {
+                        ViewBag.Message = "0";
+                    }
+
+                }
+                else
+                {
+                    cvModel.PropertySearchResultList = new List<PropertySearchResultNew>();
+                    ViewBag.Message = "0";
+                }
+            }
+            else if (!string.IsNullOrEmpty(Request.QueryString["search"]))
+            {
+                allPropertyList = PropertyManager.GetPropertiesBySearch(string.Empty,
+                    string.Empty, string.Empty, string.Empty);
+                if (allPropertyList != null)
+                {
+                    
+                    string text = Request.QueryString["search"].ToString();
+                    allPropertyList = allPropertyList.Where(x => x.PropertyName.ToLower().Contains(text.ToLower()) || x.ShareType.ToLower().Contains(text.ToLower())).ToList();
+                    if (allPropertyList.Count > 0)
+                    {
+                        _loadServices(allPropertyList, cvModel);
+                    }
+                    else
+                    {
+                        ViewBag.Message = "0";
+                    }
+                }
+            }
+            else
+            {
+                cvModel.PropertySearchResultList = new List<PropertySearchResultNew>();
+                ViewBag.Message = "0";
+            }
+
+            return View("~/Views/Home/SearchResults.cshtml", cvModel);
+        }
+
+        private void _loadServices(List<PropertySearchResultNew> allPropertyList, ClientViewModel cvModel)
+        {
             cvModel.PropertySearchResultList = allPropertyList;
 
             string ids = string.Join(",", allPropertyList.Select(x => x.PropertyId));
             cvModel.PropertyServiceList = PropertyManager.GetPropertyServiceByPropertyIds(ids);
-
-            return View("~/Views/Home/SearchResults.cshtml", cvModel);
         }
 
         public ActionResult OfficeDetails(int id)
@@ -137,6 +214,7 @@ namespace ClientPanel.Controllers
         [HttpPost]
         public ActionResult Contact(ContactForm contactForm)
         {
+            Console.WriteLine("Error: Mehedi " + "Mehedi");
             try
             {
                 StringBuilder sb = new StringBuilder();
@@ -150,7 +228,9 @@ namespace ClientPanel.Controllers
                 // SmtpClient client = new SmtpClient("smtp.office365.com", 587);
                 SmtpClient client = new SmtpClient("relay-hosting.secureserver.net", 25);
                 client.EnableSsl = true;
+                client.Host = "smtp.office365.com";
                 client.Credentials = new System.Net.NetworkCredential("info@thebyteheart.com", "SlimGuy@12");
+                client.UseDefaultCredentials = true;
                 MailAddress from = new MailAddress("info@thebyteheart.com", "Sharespace", System.Text.Encoding.UTF8);
                 MailAddress to = new MailAddress("sharespace.bh@gmail.com");
                 MailMessage message = new MailMessage(from, to);
@@ -164,6 +244,7 @@ namespace ClientPanel.Controllers
             }
             catch (Exception e)
             {
+                Console.WriteLine("Error: " + e.Message);
                 return Redirect(Request.UrlReferrer.PathAndQuery);
             }
 
