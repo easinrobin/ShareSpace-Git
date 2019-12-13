@@ -95,6 +95,33 @@ namespace ShareSpace.DataLayerSql.Property
             }
         }
 
+        public List<AdminPropertyList> GetAdminPropertyList()
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Get_Admin_PropertyList, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    List<AdminPropertyList> propertyList = new List<AdminPropertyList>();
+                    propertyList = UtilityManager.DataReaderMapToList<AdminPropertyList>(dataReader);
+                    return propertyList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
         public List<PropertySearchResultNew> GetPropertiesAndPropertyRating()
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
@@ -177,6 +204,33 @@ namespace ShareSpace.DataLayerSql.Property
             }
         }
 
+        public PropertyView GetPropertyViewById(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GETPROPERTYDETAILSBYID, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@PropertyId", id));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    PropertyView propertyDetails = new PropertyView();
+                    propertyDetails = UtilityManager.DataReaderMap<PropertyView>(reader);
+                    return propertyDetails;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
         public List<ClientPropertyRating> GetClientPropertyRatings(int Id)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
@@ -218,6 +272,33 @@ namespace ShareSpace.DataLayerSql.Property
                     SqlDataReader reader = command.ExecuteReader();
                     Models.Property.Property property = new Models.Property.Property();
                     property = UtilityManager.DataReaderMap<Models.Property.Property>(reader);
+                    return property;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public AdminPropertyList GetAdminPropertyListById(long propertyId)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Get_Admin_PropertyListById, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@PropertyId", propertyId));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    AdminPropertyList property = new AdminPropertyList();
+                    property = UtilityManager.DataReaderMap<AdminPropertyList>(reader);
                     return property;
                 }
                 catch (Exception e)
@@ -388,7 +469,129 @@ namespace ShareSpace.DataLayerSql.Property
             return isDelete;
         }
 
+        public bool HideProperty(long propertyId)
+        {
+            bool isHidden = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Hide_Property, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@PropertyID", propertyId));
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    isHidden = false;
+                    throw new Exception("Exception Updating Data." + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return isHidden;
+        }
+
+        public long InsertPropertyService(PropertyService propertyService)
+        {
+            long id = 0;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Insert_Property_Service, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlParameter returnValue = new SqlParameter("@" + "PropertyServiceId", SqlDbType.Int);
+                returnValue.Direction = ParameterDirection.Output;
+                command.Parameters.Add(returnValue);
+                foreach (var service in propertyService.GetType().GetProperties())
+                {
+                    if (service.Name != "PropertyServiceId")
+                    {
+                        string name = service.Name;
+                        var value = service.GetValue(propertyService, null);
+
+                        command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                    }
+                }
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    id = (int)command.Parameters["@PropertyServiceId"].Value;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return id;
+        }
+
         #endregion
+        public List<PropertySearchResultNew> GetPropertiesBySearch(string fromDate, string toDate, string fromHour, string toHour)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GET_PROPERTY_BY_SEARCH, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@fromDate", fromDate));
+                command.Parameters.Add(new SqlParameter("@toDate", toDate));
+                command.Parameters.Add(new SqlParameter("@fromHour", fromHour));
+                command.Parameters.Add(new SqlParameter("@toHour", toHour));
+                try
+                {
+                    connection.Open();
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    List<PropertySearchResultNew> propertyList = new List<PropertySearchResultNew>();
+                    propertyList = UtilityManager.DataReaderMapToList<PropertySearchResultNew>(dataReader);
+                    return propertyList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+        public PropertyView GetPropertyViewByPropertyIdnBookingId(long propertyId, long bookingId)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GET_PROPERTY_BY_PROPERTYID_BOOKINGID, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@propertyId", propertyId));
+                command.Parameters.Add(new SqlParameter("@bookingId", bookingId));
+                try
+                {
+                    connection.Open();
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    PropertyView propertyList = new PropertyView();
+                    propertyList = UtilityManager.DataReaderMap<PropertyView>(dataReader);
+                    return propertyList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
 
     }
 }

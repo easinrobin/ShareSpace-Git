@@ -53,10 +53,13 @@
   <ItemGroup>
     <Compile Include="Booking\IBookingProvider.cs" />
     <Compile Include="Client\IClientProvider.cs" />
+    <Compile Include="NewsLetter\INewsLetterProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property\IPropertyProvider.cs" />
     <Compile Include="Service\IShareSpaceServiceProvider.cs" />
+    <Compile Include="Testimonial\ITestimonialProvider.cs" />
     <Compile Include="Transaction\ITransactionProvider.cs" />
+    <Compile Include="User\IUserProvider.cs" />
     <Compile Include="Vendor\IVendorProvider.cs" />
   </ItemGroup>
   <ItemGroup>

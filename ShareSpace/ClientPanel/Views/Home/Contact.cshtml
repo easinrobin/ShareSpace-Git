@@ -75,7 +75,14 @@
                     <!-- Google map start -->
                     <div class="section">
                         <div class="map">
-                            <div id="map" class="contact-map"></div>
+                            @{
+                                var maploc = "Plot: 1, Update Tower, Shahajalal Ave, Dhaka 1230";
+
+                                var mapurl = "https://maps.google.com/maps?q=" + @maploc + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
+                            }
+                            <iframe class="contact-map" style="width:100%; height: 662px; background-color: crimson" id="gmap_canvas"
+                                    src="@mapurl" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                            @*<div id="map" class="contact-map"></div>*@
                         </div>
                     </div>
                     <!-- Google map end -->

@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group">
                                 <label><i class="fa fa-lock"></i></label>
-                                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { placeholder = "Password", name = "Password", id = "password", type = "password" } })
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Password", name = "Password", id = "password", type = "password" } })
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />

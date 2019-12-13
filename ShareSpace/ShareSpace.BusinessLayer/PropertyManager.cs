@@ -31,7 +31,13 @@ namespace ShareSpace.BusinessLayer
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
             return propertyProvider.GetAllProperties();
         }
-        
+
+        public static List<AdminPropertyList> GetAdminPropertyList()
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetAdminPropertyList();
+        }
+
         public static List<PropertySearchResultNew> GetPropertiesAndPropertyRating()
         {
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
@@ -44,6 +50,11 @@ namespace ShareSpace.BusinessLayer
             return propertyProvider.GetPropertyDetailsById(id);
         }
 
+        public static PropertyView GetPropertyViewById(int id)
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetPropertyViewById(id);
+        }
         public static List<ClientPropertyRating> PropertyRatings(int Id)
         {
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
@@ -54,6 +65,12 @@ namespace ShareSpace.BusinessLayer
         {
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
             return propertyProvider.GetPropertyById(propertyId);
+        }
+
+        public static AdminPropertyList GetAdminPropertyListById(long propertyId)
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetAdminPropertyListById(propertyId);
         }
 
         public static List<PropertyServiceViewModel> GetPropertyServicesOnClient(long propertyId)
@@ -93,6 +110,25 @@ namespace ShareSpace.BusinessLayer
             return isDelete;
         }
 
+        public static bool HideProperty(long propertyId)
+        {
+            SqlPropertyProvider sqlPropertyProvider = new SqlPropertyProvider();
+            var isHidden = sqlPropertyProvider.HideProperty(propertyId);
+            return isHidden;
+        }
+
         #endregion
+        public static List<PropertySearchResultNew> GetPropertiesBySearch(string fromDate, string toDate, string fromHour, string toHour)
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetPropertiesBySearch(fromDate, toDate, fromHour, toHour);
+        }
+        public static PropertyView GetPropertyViewByPropertyIdnBookingId(long propertyId, long bookingId)
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetPropertyViewByPropertyIdnBookingId(propertyId, bookingId);
+        }
     }
+
+
 }

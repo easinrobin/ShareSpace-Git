@@ -10,141 +10,7 @@
 
     </div>
     <!-- Search area box start -->
-    <div class="home-search search-area-box-3 hidden-xs hidden-sm">
-        <div class="search-contents banner-search-contents">
-            <form method="GET" action="../Home/SearchResults">
-                <div class="col-lg-12 col-pad col-pad-2">
-                    <div class="search-your-rooms">
-                        <h3 class="hidden-xs hidden-sm">Search</h3>
-                        <h2 class="hidden-xs hidden-sm">Your <span>Rooms</span></h2>
-                        <h2 class="hidden-lg hidden-md">Search Your <span>Rooms</span></h2>
-                    </div>
-                </div>
-                <div class="search-your-details">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <div class="form-group">
-                            <input type="text" id="checkInDate" class="btn-default" placeholder="Check In" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <div class="form-group">
-                        <input type="text" id="checkOutDate" class="btn-default" placeholder="Check Out" />
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <div class="form-group">
-                        <input type="text" id="checkInTime" class="btn-default" placeholder="Check In Time" />
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <div class="form-group">
-                        <input type="text" id="checkOutTime" class="btn-default" placeholder="Check Out Time" />
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <div class="form-group">
-                        <select class="selectpicker search-fields form-control-2" name="room">
-                            <option>Office Type</option>
-                            <option>Shared Office</option>
-                            <option>Whole Office</option>
-                            <option>Meeting Space</option>
-                            <option>Auditorium</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <div class="form-group">
-                        <select class="selectpicker search-fields form-control-2" name="adults">
-                            <option>Number of Person</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="form-group">
-                        <button class="search-button">@Html.ActionLink("Search", "SearchResults", "Home")</button>
-                    </div>
-                </div>
-
-            </form>
-        </div>
-    </div>
-    <!-- Search area box end -->
-    <!-- Search area box 2 start -->
-    <div class="search-area-box-2 hidden-lg hidden-md">
-
-        <div class="search-contents">
-            <form method="GET">
-                <div class="row">
-                    <div class="col-md-3 col-pad col-pad-2">
-                        <div class="search-your-rooms">
-                            <h3 class="hidden-xs hidden-sm">Search</h3>
-                            <h2 class="hidden-xs hidden-sm">Your <span>Rooms</span></h2>
-                            <h2 class="hidden-lg hidden-md">Search Your <span>Rooms</span></h2>
-                        </div>
-                    </div>
-                    <div class="search-your-details">
-                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
-                            <div class="form-group">
-                                <input type="text" class="btn-default" id="smallCheckInDate" placeholder="Check In Date">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
-                            <div class="form-group">
-                                <input type="text" class="btn-default" id="smallCheckOutDate" placeholder="Check Out Date">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
-                            <div class="form-group">
-                                <input type="text" class="btn-default" id="smallCheckInTime" placeholder="Check In Time">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
-                            <div class="form-group">
-                                <input type="text" class="btn-default" id="smallCheckOutTime" placeholder="Check Out Time">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
-                            <div class="form-group">
-                                <select class="selectpicker search-fields form-control-2" name="room">
-                                    <option>Office Type</option>
-                                    <option>Shared Office</option>
-                                    <option>Whole Office</option>
-                                    <option>Meeting Space</option>
-                                    <option>Auditorium</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
-                            <div class="form-group">
-                                <select class="selectpicker search-fields form-control-2" name="adults">
-                                    <option>Number of Person</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-md-12 col-sm-12 col-xs-12 col-pad">
-                            <div class="form-group">
-                                <button class="search-button">Search</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- Search area box 2 end -->
+    @Html.Partial("~/Views/Home/Partial/_searchpanel.cshtml", Model)
 </div>
 
 <div class="rooms-section content-area">
@@ -175,7 +41,7 @@
                                     </div>
                                 </div>
                                 <div class="price pull-right">
-                                    ৳@property.RetailPrice<sub>/Hour</sub>
+                                    ৳@property.RetailPrice.ToString("0.00")<sub>/Hour</sub>
                                 </div>
                             </div>
 
@@ -204,7 +70,7 @@
 
         <div class="text-center">
             <!-- Page navigation start -->
-            <nav aria-label="Page navigation">
+            @*<nav aria-label="Page navigation">
                 <ul class="pagination">
                     <li>
                         <a href="#" aria-label="Previous">
@@ -222,7 +88,7 @@
                         </a>
                     </li>
                 </ul>
-            </nav>
+            </nav>*@
             <!-- Page navigation end -->
         </div>
     </div>

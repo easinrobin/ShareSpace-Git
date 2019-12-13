@@ -84,6 +84,17 @@
                 return false;
             }
         }
+
+        if ($(input2).attr('type') == 'phone' || $(input2).attr('name') == 'phone') {
+            if ($(input2).val().trim().match(/^\d+$/) == null) {
+                return false;
+            }
+        }
+        else {
+            if ($(input2).val().trim() == '') {
+                return false;
+            }
+        }
     }
 
     function showValidate(input2) {

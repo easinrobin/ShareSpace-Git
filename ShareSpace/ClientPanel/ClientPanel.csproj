@@ -264,10 +264,12 @@
     <Content Include="img\avatar\avatar2.jpg" />
     <Content Include="img\avatar\avatar3.png" />
     <Content Include="img\avatar\avatar4.png" />
+    <Content Include="img\Bank.png" />
     <Content Include="img\banner\about-banner.jpg" />
     <Content Include="img\banner\office1.jpg" />
     <Content Include="img\banner\office2.jpg" />
     <Content Include="img\banner\office3.jpg" />
+    <Content Include="img\bkash.png" />
     <Content Include="img\contact.png" />
     <Content Include="img\dhaka map.jpg" />
     <Content Include="img\loader.gif" />
@@ -280,12 +282,12 @@
     <Content Include="img\properties\office-room3.jpg" />
     <Content Include="img\properties\office-room4.jpg" />
     <Content Include="img\properties\office-room5.jpg" />
-    <Content Include="img\properties\office-room6.jpg" />
-    <Content Include="img\properties\office-room7.jpg" />
+    <Content Include="img\properties\office-room2.jpg" />
     <Content Include="img\properties\office-room8.jpg" />
     <Content Include="img\properties\office-room9.jpg" />
     <Content Include="img\Registration\signin-image.jpg" />
     <Content Include="img\Registration\signup-image.jpg" />
+    <Content Include="img\Rocket.png" />
     <Content Include="Scripts\CustomJs\app.js" />
     <Content Include="Scripts\CustomJs\booking-validation.js" />
     <Content Include="Scripts\CustomJs\not-found.js" />
@@ -488,6 +490,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Home\BookingConfirmed.cshtml" />
+    <Content Include="Views\Home\Partial\_searchpanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -504,6 +507,10 @@
     <ProjectReference Include="..\ShareSpace.Models\ShareSpace.Models.csproj">
       <Project>{b5657d5d-a922-45f8-8758-35557589bbaf}</Project>
       <Name>ShareSpace.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShareSpace.Utility\ShareSpace.Utility.csproj">
+      <Project>{f426f871-eed8-4c69-b840-56c36986142b}</Project>
+      <Name>ShareSpace.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

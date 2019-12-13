@@ -1,7 +1,15 @@
-﻿@model ShareSpace.Models.Property.PropertyDetails
+﻿@model ShareSpace.Models.Client.ClientViewModel
 @{
     ViewBag.Title = "Office Details";
 }
+@{
+    var maploc = Model.PropertyView.HouseNo + "," + Model.PropertyView.FlatNo + "," + Model.PropertyView.RoadNo + "," + Model.PropertyView.Area + "," + Model.PropertyView.City + "," + Model.PropertyView.ZipCode;
+
+    var mapurl = "https://maps.google.com/maps?q=" + @maploc + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
+}
+<link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
 <div class="clear">
 
 </div>
@@ -18,27 +26,42 @@
                         <div class="carousel-outer">
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner">
-                                <div class="item">
-                                    <img src="@Model.ImageUrl" class="thumb-preview" alt="Chevrolet Impala">
-                                </div>
-                                <div class="item">
-                                    <img src="@Model.Image1" class="thumb-preview" alt="Chevrolet Impala">
-                                </div>
-                                <div class="item">
-                                    <img src="@Model.Image2" class="thumb-preview" alt="Chevrolet Impala">
-                                </div>
-                                <div class="item">
-                                    <img src="@Model.Image3" class="thumb-preview" alt="Chevrolet Impala">
-                                </div>
-                                <div class="item">
-                                    <img src="@Model.Image4" class="thumb-preview" alt="Chevrolet Impala">
-                                </div>
-                                <div class="item">
-                                    <img src="@Model.Image5" class="thumb-preview" alt="Chevrolet Impala">
-                                </div>
-                                <div class="item active">
-                                    <img src="@Model.Image6" class="thumb-preview" alt="Chevrolet Impala">
-                                </div>
+                                @foreach (var item in Model.GalleryList.Take((7)))
+                                {
+                                    var imagepath =Request.Url.Scheme+"://" + Request.Url.Authority + item.ImageUrl;
+                                    if (item.GalleryId == Model.GalleryList.First().GalleryId)
+                                    {
+                                        <div class="item active">
+                                            <img src="@imagepath" class="thumb-preview" alt="Chevrolet Impala">
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <img src="@imagepath" class="thumb-preview" alt="Chevrolet Impala">
+                                        </div>
+                                    }
+                                   
+                                }
+
+                                @*<div class="item">
+                                        <img src="@Model.Image1" class="thumb-preview" alt="Chevrolet Impala">
+                                    </div>
+                                    <div class="item">
+                                        <img src="@Model.Image2" class="thumb-preview" alt="Chevrolet Impala">
+                                    </div>
+                                    <div class="item">
+                                        <img src="@Model.Image3" class="thumb-preview" alt="Chevrolet Impala">
+                                    </div>
+                                    <div class="item">
+                                        <img src="@Model.Image4" class="thumb-preview" alt="Chevrolet Impala">
+                                    </div>
+                                    <div class="item">
+                                        <img src="@Model.Image5" class="thumb-preview" alt="Chevrolet Impala">
+                                    </div>
+                                    <div class="item active">
+                                        <img src="@Model.Image6" class="thumb-preview" alt="Chevrolet Impala">
+                                    </div>*@
                             </div>
                             <!-- Controls -->
                             <a class="left carousel-control" href="#carousel-custom" role="button" data-slide="prev">
@@ -56,34 +79,37 @@
                         </div>
                         <!-- Indicators -->
                         <ol class="carousel-indicators thumbs visible-lg visible-md">
-                            <li data-target="#carousel-custom" data-slide-to="0" class="">
-                                <img src="@Model.ImageUrl"
-                                     alt="Chevrolet Impala">
-                            </li>
-                            <li data-target="#carousel-custom" data-slide-to="1" class="">
-                                <img src="@Model.Image1"
-                                     alt="Chevrolet Impala">
-                            </li>
-                            <li data-target="#carousel-custom" data-slide-to="2" class="">
-                                <img src="@Model.Image2"
-                                     alt="Chevrolet Impala">
-                            </li>
-                            <li data-target="#carousel-custom" data-slide-to="3" class="">
-                                <img src="@Model.Image3"
-                                     alt="Chevrolet Impala">
-                            </li>
-                            <li data-target="#carousel-custom" data-slide-to="4" class="">
-                                <img src="@Model.Image4"
-                                     alt="Chevrolet Impala">
-                            </li>
-                            <li data-target="#carousel-custom" data-slide-to="5" class="">
-                                <img src="@Model.Image5"
-                                     alt="Chevrolet Impala">
-                            </li>
-                            <li data-target="#carousel-custom" data-slide-to="6" class="">
-                                <img src="@Model.Image6"
-                                     alt="Chevrolet Impala">
-                            </li>
+                            @foreach (var item in Model.GalleryList.Take((6)))
+                            {
+                                var imagepath =Request.Url.Scheme+"://" + Request.Url.Authority + item.ImageUrl;
+                                <li data-target="#carousel-custom" data-slide-to="0" class="">
+                                    <img src="@imagepath" alt="Chevrolet Impala">
+                                </li>
+                            }
+                            @*<li data-target="#carousel-custom" data-slide-to="1" class="">
+                                    <img src="@Model.Image1"
+                                         alt="Chevrolet Impala">
+                                </li>
+                                <li data-target="#carousel-custom" data-slide-to="2" class="">
+                                    <img src="@Model.Image2"
+                                         alt="Chevrolet Impala">
+                                </li>
+                                <li data-target="#carousel-custom" data-slide-to="3" class="">
+                                    <img src="@Model.Image3"
+                                         alt="Chevrolet Impala">
+                                </li>
+                                <li data-target="#carousel-custom" data-slide-to="4" class="">
+                                    <img src="@Model.Image4"
+                                         alt="Chevrolet Impala">
+                                </li>
+                                <li data-target="#carousel-custom" data-slide-to="5" class="">
+                                    <img src="@Model.Image5"
+                                         alt="Chevrolet Impala">
+                                </li>
+                                <li data-target="#carousel-custom" data-slide-to="6" class="">
+                                    <img src="@Model.Image6"
+                                         alt="Chevrolet Impala">
+                                </li>*@
                         </ol>
                     </div>
                 </div>
@@ -91,13 +117,13 @@
                 <div class="heading-rooms  clearfix sidebar-widget">
 
                     <div class="pull-left">
-                        <h3>@Model.PropertyName</h3>
+                        <h3>@Model.PropertyView.PropertyName</h3>
                         <p>
-                            <i class="fa fa-map-marker"></i>@Model.Address, @Model.Area, @Model.City - @Model.ZipCode
+                            <i class="fa fa-map-marker"></i>@Model.PropertyView.HouseNo, @Model.PropertyView.FlatNo, @Model.PropertyView.RoadNo, @Model.PropertyView.Area, @Model.PropertyView.City - @Model.PropertyView.ZipCode
                         </p>
                     </div>
                     <div class="pull-right">
-                        <h3><span>৳@Model.RetailPrice</span></h3>
+                        <h3><span>৳@Model.PropertyView.RetailPrice.ToString("0.00")</span></h3>
                         <h5>/ Hour</h5>
                     </div>
 
@@ -111,6 +137,16 @@
                         <div class="search-contents">
                             @using (Html.BeginForm("OfficeDetails", "Home", FormMethod.Post, new { @class = "validate-form" }))
                             {
+
+                                @Html.HiddenFor(m => m.PropertyView.HouseNo)
+                                @Html.HiddenFor(m => m.PropertyView.FlatNo)
+                                @Html.HiddenFor(m => m.PropertyView.RoadNo)
+                                @Html.HiddenFor(m => m.PropertyView.Area)
+                                @Html.HiddenFor(m => m.PropertyView.City)
+                                @Html.HiddenFor(m => m.PropertyView.ZipCode)
+                                @Html.HiddenFor(m => m.PropertyView.PropertyId)
+
+
                                 <div class="row">
                                     <div class="col-md-3 col-pad col-pad-2">
                                         <div class="search-your-rooms">
@@ -120,42 +156,49 @@
                                         </div>
                                     </div>
                                     <div class="search-your-details">
-                                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
                                             <div class="form-group">
                                                 <div class="validate-input" data-validate="Date is required">
-                                                    @Html.EditorFor(m => m.BookingEmail.FromDate, new { htmlAttributes = new { @class = "btn-default validate-field", id = string.Format("smallCheckInDate"), type = "text", name = "CheckInDate", placeholder = "Check In Date" } })
+                                                    @Html.EditorFor(m => m.BookingEmail.FromDate, new { htmlAttributes = new { @class = "btn-default validate-field", placeholder = "Check In Date" } })
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
                                             <div class="form-group">
                                                 <div class="validate-input" data-validate="Date is required">
                                                     @Html.EditorFor(m => m.BookingEmail.ToDate, new { htmlAttributes = new { @class = "btn-default validate-field", id = string.Format("smallCheckOutDate"), type = "text", name = "CheckOutDate", placeholder = "Check Out Date" } })
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
                                             <div class="form-group">
-                                                <div class="validate-input" data-validate="Time is required">
-                                                    @Html.EditorFor(m => m.BookingEmail.FromHour, new { htmlAttributes = new { @class = "btn-default validate-field", id = string.Format("smallCheckInTime"), type = "text", name = "CheckInTime", placeholder = "Check In Time" } })
+                                                <div class="validate-input" data-validate="Time is required" id="rangestart">
+                                                    @Html.EditorFor(m => m.BookingEmail.FromHour, new { htmlAttributes = new { @class = "btn-default validate-field", type = "text", name = "CheckInTime", placeholder = "Check In Time" } })
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
                                             <div class="form-group">
-                                                <div class="validate-input" data-validate="Time is required">
-                                                    @Html.EditorFor(m => m.BookingEmail.ToHour, new { htmlAttributes = new { @class = "btn-default validate-field", id = string.Format("smallCheckOutTime"), type = "text", name = "CheckOutTime", placeholder = "Check Out Time" } })
+                                                <div class="validate-input" data-validate="Time is required" id="rangeend">
+                                                    @Html.EditorFor(m => m.BookingEmail.ToHour, new { htmlAttributes = new { @class = "btn-default validate-field", type = "text", name = "CheckOutTime", placeholder = "Check Out Time" } })
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
                                             <div class="form-group">
                                                 <div class="validate-input" data-validate="Email is required">
                                                     @Html.EditorFor(m => m.BookingEmail.Email, new { htmlAttributes = new { @class = "btn-default validate-field", id = string.Format("email"), type = "email", name = "email", placeholder = "Your Email Address" } })
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-6 col-pad">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
+                                            <div class="form-group">
+                                                <div class="validate-input" data-validate="Mobile is required">
+                                                    @Html.EditorFor(m => m.BookingEmail.MobileNo, new { htmlAttributes = new { @class = "btn-default validate-field", type = "phone", name = "phone", placeholder = "Mobile" } })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
                                             <div class="form-group">
                                                 <div class="validate-input" data-validate="Number of Person is required">
                                                     @Html.DropDownListFor(m => m.BookingEmail.MaximumPerson, new List<SelectListItem>
@@ -164,7 +207,12 @@
                                                         new SelectListItem {Text = "2", Value = "2"},
                                                         new SelectListItem {Text = "3", Value = "3"},
                                                         new SelectListItem {Text = "4", Value = "4"},
-                                                        new SelectListItem {Text = "5", Value = "5"}
+                                                        new SelectListItem {Text = "5", Value = "5"},
+                                                        new SelectListItem {Text = "6", Value = "6"},
+                                                        new SelectListItem {Text = "7", Value = "7"},
+                                                        new SelectListItem {Text = "8", Value = "8"},
+                                                        new SelectListItem {Text = "9", Value = "9"},
+                                                        new SelectListItem {Text = "10", Value = "10"}
                                                     },
                                                         "Number of Person", new
                                                         {@class = "selectpicker search-fields form-control-2", name = "Person"}
@@ -189,7 +237,7 @@
                         <h3>Office Description</h3>
                         <!-- paragraph -->
                         <p>
-                            @Model.Description
+                            @Model.PropertyView.Description
                         </p>
                     </div>
 
@@ -255,11 +303,11 @@
                     </div>
                     <!-- Comments section end -->
                     <!-- Contact form start -->
-                    <div class="contact-form">
+                    <div class="contact-form" style="display: none">
                         <form id="contact_form" action="" method="GET" enctype="multipart/form-data">
                             <div class="main-title-2">
                                 <h1>Rate this Office</h1>
-                                <div id="client-rating" data-rateyo-star-width="20px" data-rateyo-rating="@Model.Rating">
+                                <div id="client-rating" data-rateyo-star-width="20px" data-rateyo-rating="@Model.PropertyView.Rating">
                                 </div>
                             </div>
                             <div class="main-title-2">
@@ -304,6 +352,13 @@
                         <div class="search-contents">
                             @using (Html.BeginForm("OfficeDetails", "Home", FormMethod.Post, new { @class = "validate-big-form" }))
                             {
+                                @Html.HiddenFor(m => m.PropertyView.PropertyId)
+                                @Html.HiddenFor(m => m.PropertyView.HouseNo)
+                                @Html.HiddenFor(m => m.PropertyView.FlatNo)
+                                @Html.HiddenFor(m => m.PropertyView.RoadNo)
+                                @Html.HiddenFor(m => m.PropertyView.Area)
+                                @Html.HiddenFor(m => m.PropertyView.City)
+                                @Html.HiddenFor(m => m.PropertyView.ZipCode)
                                 <div class="col-lg-12 col-pad col-pad-2">
                                     <div class="search-your-rooms">
                                         <h3 class="hidden-xs hidden-sm">Reserve Your</h3>
@@ -315,35 +370,42 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <div class="validate-big-input" data-validate="Date is required">
-                                                @Html.EditorFor(m => m.BookingEmail.FromDate, new { htmlAttributes = new { @class = "btn-default validate-big-field", id = string.Format("checkInDate"), type = "text", name = "CheckInDate", placeholder = "Check In Date" } })
+                                                @Html.EditorFor(m => m.BookingEmail.FromDate, new { htmlAttributes = new { @class = "btn-default validate-big-field", id = string.Format("checkInDate"), placeholder = "Check In Date", autocomplete = "off" } })
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <div class="validate-big-input" data-validate="Date is required">
-                                                @Html.EditorFor(m => m.BookingEmail.ToDate, new { htmlAttributes = new { @class = "btn-default validate-big-field", id = string.Format("checkOutDate"), type = "text", name = "CheckOutDate", placeholder = "Check Out Date" } })
+                                                @Html.EditorFor(m => m.BookingEmail.ToDate, new { htmlAttributes = new { @class = "btn-default validate-big-field", id = string.Format("checkOutDate"), type = "text", name = "CheckOutDate", placeholder = "Check Out Date", autocomplete = "off" } })
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <div class="validate-big-input" data-validate="Time is required">
-                                                @Html.EditorFor(m => m.BookingEmail.FromHour, new { htmlAttributes = new { @class = "btn-default validate-big-field", id = string.Format("checkInTime"), type = "text", name = "CheckInTime", placeholder = "Check In Time" } })
+                                            <div class="validate-big-input" data-validate="Time is required" id="rangestartsm">
+                                                @Html.EditorFor(m => m.BookingEmail.FromHour, new { htmlAttributes = new { @class = "btn-default validate-big-field", type = "text", name = "CheckInTime", placeholder = "Check In Time", autocomplete = "off" } })
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
-                                            <div class="validate-big-input" data-validate="Time is required">
-                                                @Html.EditorFor(m => m.BookingEmail.ToHour, new { htmlAttributes = new { @class = "btn-default validate-big-field", id = string.Format("checkOutTime"), type = "text", name = "CheckOutTime", placeholder = "Check Out Time" } })
+                                            <div class="validate-big-input" data-validate="Time is required" id="rangeendsm">
+                                                @Html.EditorFor(m => m.BookingEmail.ToHour, new { htmlAttributes = new { @class = "btn-default validate-big-field", type = "text", name = "CheckOutTime", placeholder = "Check Out Time", autocomplete = "off" } })
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <div class="validate-big-input" data-validate="Email is required">
-                                                @Html.EditorFor(m => m.BookingEmail.Email, new { htmlAttributes = new { @class = "btn-default validate-big-field", id = string.Format("email"), type = "email", name = "email", placeholder = "Your Email Address" } })
+                                                @Html.EditorFor(m => m.BookingEmail.Email, new { htmlAttributes = new { @class = "btn-default validate-big-field", id = string.Format("email"), type = "email", name = "email", placeholder = "Your Email Address", autocomplete = "off" } })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="validate-big-input" data-validate="Mobile is required">
+                                                @Html.EditorFor(m => m.BookingEmail.MobileNo, new { htmlAttributes = new { @class = "btn-default validate-big-field", type = "phone", name = "phone", placeholder = "Mobile", autocomplete = "off" } })
                                             </div>
                                         </div>
                                     </div>
@@ -356,7 +418,12 @@
                                                     new SelectListItem {Text = "2", Value = "2"},
                                                     new SelectListItem {Text = "3", Value = "3"},
                                                     new SelectListItem {Text = "4", Value = "4"},
-                                                    new SelectListItem {Text = "5", Value = "5"}
+                                                    new SelectListItem {Text = "5", Value = "5"},
+                                                    new SelectListItem {Text = "6", Value = "6"},
+                                                    new SelectListItem {Text = "7", Value = "7"},
+                                                    new SelectListItem {Text = "8", Value = "8"},
+                                                    new SelectListItem {Text = "9", Value = "9"},
+                                                    new SelectListItem {Text = "10", Value = "10"}
                                                 }, "Number of Person", new {@class = "selectpicker search-fields form-control-2", name = "Person"})
                                             </div>
                                         </div>
@@ -377,7 +444,7 @@
                         <div class="main-title-2">
                             <h1>Office Video</h1>
                         </div>
-                        <iframe src="https://www.youtube.com/embed/5e0LxrLSzok" allowfullscreen=""></iframe>
+                        <iframe src="https://www.youtube.com/embed/azJ-WlU3UPs" allowfullscreen=""></iframe>
                     </div>
                     <!-- Inside video end -->
                     <!-- Social media start -->
@@ -387,13 +454,7 @@
                             <h1>Social Media</h1>
                         </div>
                         <!-- Social list -->
-                        <ul class="social-list">
-                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#" class="rss"><i class="fa fa-rss"></i></a></li>
-                        </ul>
+                        <div class="addthis_inline_share_toolbox"></div>
                     </div>
                     <!-- Social media end -->
                     <!-- Location start  -->
@@ -403,9 +464,13 @@
                             <div class="main-title-2">
                                 <h1>Location</h1>
                             </div>
-                            <div id="map" class="contact-map" style="height: 662px; background-color: crimson">
-                                
-                            </div>
+
+                            <iframe class="contact-map" style="height: 662px; background-color: crimson" id="gmap_canvas"
+                                    src="@mapurl" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                            @*<div id="map" class="contact-map" style="height: 662px; background-color: crimson">
+
+                                </div>*@
+
                         </div>
                     </div>
                     <!-- Location end -->
@@ -416,3 +481,22 @@
         </div>
     </div>
 </div>
+<script>
+    $('#rangestart').calendar({
+        type: 'time',
+        endCalendar: $('#rangeend')
+    });
+    $('#rangeend').calendar({
+        type: 'time',
+        startCalendar: $('#rangestart')
+    });
+
+    $('#rangestartsm').calendar({
+        type: 'time',
+        endCalendar: $('#rangeendsm')
+    });
+    $('#rangeendsm').calendar({
+        type: 'time',
+        startCalendar: $('#rangestartsm')
+    });
+</script>

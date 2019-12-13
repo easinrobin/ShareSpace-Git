@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using ShareSpace.DataLayer.Service;
 using ShareSpace.DataLayerSql.Common;
+using ShareSpace.Models.Property;
 using ShareSpace.Models.Service;
 using ShareSpace.Utility;
 
@@ -30,6 +31,33 @@ namespace ShareSpace.DataLayerSql.Service
                 {
                     throw new Exception("Exception retrieving reviews. " + e.Message);
                 }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public List<Services> GetAllServices()
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Get_All_Services, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    List<Services> serviceList = new List<Services>();
+                    serviceList = UtilityManager.DataReaderMapToList<Services>(dataReader);
+                    return serviceList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+
                 finally
                 {
                     connection.Close();

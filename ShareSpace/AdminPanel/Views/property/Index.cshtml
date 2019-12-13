@@ -1,0 +1,55 @@
+﻿@model List<ShareSpace.Models.Property.AdminPropertyList>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class="content__title">
+    <h1>Properties</h1>
+
+    <div class="actions">
+        <a href="~/Property/Create" class="actions__item zmdi zmdi-plus zmdi-hc-fw" title="Create"></a>
+        <a href="~/Property/Index" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
+    </div>
+</header>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">
+            <a href="~/Property/Create" class="btn btn-light btn--icon-text" title="Create"><i class="zmdi  zmdi-plus-circle-o zmdi-hc-fw"></i> Create New</a>
+        </h4>
+        <div class="table-responsive">
+            <table @*id="data-table"*@ class="table">
+                <thead>
+                    <tr>
+                        <th>Vendor Name</th>
+                        <th>Property Name</th>
+                        <th>Feature Image</th>
+                        <th>Rent/ Hour</th>
+                        <th>Address</th>
+                        <th>Maximum Person</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                @foreach (var property in Model)
+                {
+                    <tbody>
+                        <tr>
+                            <td>@property.FirstName @property.LastName</td>
+                            <td>@property.PropertyName</td>
+                            <td>@property.FeatureImage</td>
+                            <td>@property.Price.ToString("0.00")</td>
+                            <td>House# @property.HouseNo,Flat# @property.FlatNo,Road# @property.RoadNo, @property.Area, @property.City</td>
+                            <td>@property.MaximumPerson</td>
+                            <td>
+                                @Html.ActionLink(" ", "UpdateProperty", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-edit" })&nbsp;&nbsp;
+                                @Html.ActionLink(" ", "GalleryList", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-image-o" })<br />
+                                @Html.ActionLink(" ", "FeatureList", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-assignment" })&nbsp;&nbsp;
+                                @Html.ActionLink(" ", "HideProperty", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-delete" })
+                            </td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+        </div>
+    </div>
+</div>

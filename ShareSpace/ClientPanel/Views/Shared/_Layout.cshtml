@@ -25,6 +25,8 @@
     @Scripts.Render("~/bundles/ie")
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0N5pbJN10Y1oYFRd0MJ_v2g8W2QT74JE"></script>
 
+
+
 </head>
 <body>
     <div class="page_loader"></div>
@@ -105,27 +107,27 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-xs-6 hidden-lg hidden-md hidden-sm pull-right">
-                            <ul style="list-style:none">
-                                <li>
-                                    <div class="navbar-search-box">
-                                        <form class="navbar-search" method="GET">
-                                            <input type="search" placeholder="Search......" name="search" class="navbar-search-input"
-                                                   onkeyup="buttonUp();" required>
-                                            <button type="submit" class="navbar-search-submit">Go</button>
-                                            <span class="navbar-search-icon">
-                                                <i class="fa fa-search"></i>
-                                            </span>
-                                        </form>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                        @*<div class="col-xs-6 hidden-lg hidden-md hidden-sm pull-right">
+                                <ul style="list-style:none">
+                                    <li>
+                                        <div class="navbar-search-box">
+                                            <form class="navbar-search" method="GET">
+                                                <input type="search" placeholder="Search......" name="search" class="navbar-search-input"
+                                                       onkeyup="buttonUp();" required>
+                                                <button type="submit" class="navbar-search-submit">Go</button>
+                                                <span class="navbar-search-icon">
+                                                    <i class="fa fa-search"></i>
+                                                </span>
+                                            </form>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>*@
                     </div>
 
                     <ul class="nav navbar-nav">
 
-                        <li class="dropdown active">
+                        <li class="dropdown">
                             @Html.ActionLink("Home", "Index", "Home")
                         </li>
                         <li class="dropdown">
@@ -140,16 +142,17 @@
                             </ul>
                         </li>
                         <li class="dropdown">
-                            @Html.ActionLink("Contact", "Contact", "Home", null, null)
-                        </li>
-                        <li class="dropdown">
                             @Html.ActionLink("About", "About", "Home", null, null)
                         </li>
+                        <li class="dropdown">
+                            @Html.ActionLink("Contact", "Contact", "Home", null, null)
+                        </li>
+                       
                     </ul>
                     <ul class="nav navbar-nav navbar-right hidden-sm hidden-xs">
                         <li>
                             <div class="navbar-search-box">
-                                <form class="navbar-search" method="GET">
+                                <form class="navbar-search" method="GET" action="../Home/SearchResults">
                                     <input type="search" placeholder="Search......" name="search" class="navbar-search-input"
                                            onkeyup="buttonUp();" required>
                                     <button type="submit" class="navbar-search-submit">Go</button>
@@ -211,13 +214,8 @@
                                 </li>
                             </ul>
                             <div class="clearfix"></div>
-                            <ul class="social-list">
-                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            </ul>
+                            
+                            <div class="addthis_inline_share_toolbox"></div>
                         </div>
                     </div>
                     <!-- Gallery -->
@@ -277,8 +275,17 @@
     @Scripts.Render("~/bundles/moveitJs")
     @*@Scripts.Render("~/bundles/succeedJs")*@
     @Scripts.Render("~/bundles/booking-validationJs")
+    
+    <script type="text/javascript">
 
-    <script>
+        $(function () {
+            $('.navbar-nav li').click(function () {
+                $(this).addClass('active').removeClass('active');
+            });
+        });
+
+    </script>
+<script>
         function LoadMap(propertes) {
             var defaultLat = 23.868287;
             var defaultLng = 90.410178;
@@ -329,5 +336,10 @@
         }
         LoadMap();
     </script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5dea55e7dfdac2b4"></script>
+
+<script type="text/javascript">function add_chatinline(){var hccid=36272608;var nt=document.createElement("script");nt.async=true;nt.src="https://mylivechat.com/chatinline.aspx?hccid="+hccid;var ct=document.getElementsByTagName("script")[0];ct.parentNode.insertBefore(nt,ct);}
+    add_chatinline(); </script>
 </body>
 </html>
