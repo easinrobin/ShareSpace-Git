@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ShareSpace.Models.Service;
 
 namespace ShareSpace.Models.Property
 {
@@ -9,15 +10,20 @@ namespace ShareSpace.Models.Property
         [Key]
         public long PropertyServiceId { get; set; }
 
-        [Display(Name = "ServiceName")]
+        [Display(Name = "Service Name")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "ServiceName required")]
-        public int ServiceName { get; set; }
+        public string ServiceName { get; set; }
 
         [Display(Name = "IsHidden")]
         public int IsHidden { get; set; }
 
-        [Display(Name = "ServiceId")]
-        public int ServiceId { get; set; }
+        [Display(Name = "Service Id")]
+        public long ServiceId { get; set; }
 
+        [Display(Name = "Property Id")]
+        public long PropertyId { get; set; }
+        
     }
+
+
 }

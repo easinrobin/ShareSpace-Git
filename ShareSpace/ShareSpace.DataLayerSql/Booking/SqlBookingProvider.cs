@@ -11,7 +11,7 @@ namespace ShareSpace.DataLayerSql.Booking
 {
     public class SqlBookingProvider : IBookingProvider
     {
-        #region Booking
+        #region SetBooking
         public long InsertBooking(Models.Booking.Booking booking)
         {
             long id = 0;
@@ -83,6 +83,37 @@ namespace ShareSpace.DataLayerSql.Booking
             }
             return isUpdate;
         }
+        
+        public bool DeleteBooking(long bookingId)
+        {
+            bool isDelete = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.DELETEBOOKINGS, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@BookingID", bookingId));
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    isDelete = false;
+                    throw new Exception("Exception Updating Data." + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return isDelete;
+        }
+
+        #endregion
+
+        #region GetBooking
 
         public List<Models.Booking.Booking> GetAllBookings()
         {
@@ -138,36 +169,7 @@ namespace ShareSpace.DataLayerSql.Booking
             }
         }
 
-
-
-        public bool DeleteBooking(long bookingId)
-        {
-            bool isDelete = true;
-            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
-            {
-                SqlCommand command = new SqlCommand(StoreProcedure.DELETEBOOKINGS, connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@BookingID", bookingId));
-
-                try
-                {
-                    connection.Open();
-                    command.ExecuteNonQuery();
-                }
-                catch (Exception e)
-                {
-                    isDelete = false;
-                    throw new Exception("Exception Updating Data." + e.Message);
-                }
-                finally
-                {
-                    connection.Close();
-                }
-            }
-            return isDelete;
-        }
-
-        public List<ClientsBookingHistory> GetClientBookingHistory(int clientId)
+        public List<ClientsBookingHistory> GetClientBookingHistory(long clientId)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {

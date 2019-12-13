@@ -1,68 +1,97 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace AdminPanel
 {
     public class BundleConfig
     {
-        // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            #region Scripts
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/ThirdPartyJs/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+                        "~/Scripts/ThirdPartyJs/jquery.validate*"));
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+                        "~/Scripts/ThirdPartyJs/modernizr-*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jquery.validate.unobtrusive").Include(
+                        "~/Scripts/ThirdPartyJs/jquery.validate.unobtrusive.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/poppermin").Include(
-                        "~/Scripts/popper.min.js"));
+                        "~/Scripts/ThirdPartyJs/popper.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrapmin").Include(
-                        "~/Scripts/bootstrap.min.js"));
+                        "~/Scripts/ThirdPartyJs/bootstrap.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryscrollbarmin").Include(
-                        "~/Scripts/jquery.scrollbar.min.js"));
+                        "~/Scripts/ThirdPartyJs/jquery.scrollbar.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryscrollLockmin").Include(
-                        "~/Scripts/jquery-scrollLock.min.js"));
-
+                        "~/Scripts/ThirdPartyJs/jquery-scrollLock.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquerydataTablesmin").Include(
-                        "~/Scripts/jquery.dataTables.min.js"));
+                        "~/Scripts/ThirdPartyJs/jquery.dataTables.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/dataTablesbuttonsmin").Include(
-                        "~/Scripts/dataTables.buttons.min.js"));
+                        "~/Scripts/ThirdPartyJs/dataTables.buttons.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/buttonsprintmin").Include(
-                        "~/Scripts/buttons.print.min.js"));
+                        "~/Scripts/ThirdPartyJs/buttons.print.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jszipmin").Include(
-                        "~/Scripts/jszip.min.js"));
+                        "~/Scripts/ThirdPartyJs/jszip.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/buttonshtml5min").Include(
-                        "~/Scripts/buttons.html5.min.js"));
+                        "~/Scripts/ThirdPartyJs/buttons.html5.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/appmin").Include(
-                        "~/Scripts/app.min.js"));
+                        "~/Scripts/CustomJs/app.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/sweetAlert2").Include(
+                        "~/Scripts/ThirdPartyJs/sweetalert2.min.js"));
+
+            //new
 
             bundles.Add(new ScriptBundle("~/bundles/curvedline").Include(
-                        "~/Scripts/curved-line.js"));
-            
+                        "~/Scripts/ThirdPartyJs/curved-line.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/charttooltips").Include(
-                        "~/Scripts/demo/js/flot-charts/chart-tooltips.js"));
+            bundles.Add(new ScriptBundle("~/bundles/autosize").Include(
+                "~/Scripts/ThirdPartyJs/autosize.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/other-charts").Include(
-                        "~/Scripts/demo/js/other-charts.js"));
+            bundles.Add(new ScriptBundle("~/bundles/dropzone").Include(
+                "~/Scripts/ThirdPartyJs/dropzone.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqvmap").Include(
-                        "~/Scripts/demo/js/jquery.vmap.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/fullcalendar").Include(
+                "~/Scripts/ThirdPartyJs/fullcalendar.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/easypiechart").Include(
+                "~/Scripts/ThirdPartyJs/jquery.easypiechart.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/flot").Include(
+                "~/Scripts/ThirdPartyJs/jquery.flot.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/flotResize").Include(
+                "~/Scripts/ThirdPartyJs/jquery.flot.resize.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/peity").Include(
+                "~/Scripts/ThirdPartyJs/jquery.peity.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/lightgallery").Include(
+                "~/Scripts/ThirdPartyJs/lightgallery-all.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/salvattore").Include(
+                "~/Scripts/ThirdPartyJs/salvattore.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/select").Include(
+                "~/Scripts/ThirdPartyJs/bootstrap-select.min.js"));
+
+
+
+
+            //rich text
             bundles.Add(new ScriptBundle("~/bundles/rich-textJs-1").Include(
                 "~/Scripts/rich-textJs/codemirror.min.js"));
 
@@ -153,29 +182,34 @@ namespace AdminPanel
             bundles.Add(new ScriptBundle("~/bundles/rich-textJs-30").Include(
                 "~/Scripts/rich-textJs/quote.min.js"));
 
+            #endregion
 
 
+
+
+
+            #region StyleSheets
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.min.css"));
+                      "~/Content/ThirdPartyCss/bootstrap.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/font-awesome").Include(
-                "~/Content/font-awesome.min.css"));
+                "~/Content/ThirdPartyCss/font-awesome.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/app-min").Include(
-                "~/Content/app.min.css"));
+                "~/Content/CustomCss/app.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/animate-min").Include(
-                "~/Content/animate.min.css"));
+                "~/Content/ThirdPartyCss/animate.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/jquery-scrollbar").Include(
-                "~/Content/jquery.scrollbar.css"));
+                "~/Content/ThirdPartyCss/jquery.scrollbar.css"));
 
             bundles.Add(new StyleBundle("~/Content/material-font").Include(
                 "~/Content/material-design-iconic-font/dist/css/material-design-iconic-font.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/demo-css").Include(
-                "~/Content/demo.css"));
+                "~/Content/CustomCss/demo.css"));
 
             bundles.Add(new StyleBundle("~/Content/rich-text-1").Include(
                 "~/Content/rich-text/froala_editor.css"));
@@ -224,6 +258,22 @@ namespace AdminPanel
 
             bundles.Add(new StyleBundle("~/Content/rich-text-16").Include(
                 "~/Content/rich-text/codemirror.min.css"));
+
+
+            //new
+            bundles.Add(new StyleBundle("~/Content/dropzone").Include(
+                "~/Content/ThirdPartyCss/dropzone.css"));
+
+            bundles.Add(new StyleBundle("~/Content/fullcalendar").Include(
+                "~/Content/ThirdPartyCss/fullcalendar.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/select").Include(
+                        "~/Content/ThirdPartyCss/bootstrap-select.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/sweetAlert2").Include(
+                        "~/Content/ThirdPartyCss/sweetalert2.min.css"));
+
+            #endregion
         }
     }
 }

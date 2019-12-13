@@ -84,10 +84,10 @@ $(function () {
 	//Datepicker
     $(function () {
 		$('#checkInDate').datetimepicker({
-			format: "DD-MM-YYYY"
+            format: "MM/DD/YYYY"
 		});
 		$('#checkOutDate').datetimepicker({
-			format: "DD-MM-YYYY",
+            format: "MM/DD/YYYY",
 
 		    useCurrent: false 
 	    });
@@ -101,10 +101,10 @@ $(function () {
 
     $(function () {
 	    $('#smallCheckInDate').datetimepicker({
-		    format: "DD-MM-YYYY"
+            format: "MM/DD/YYYY"
 	    });
 		$('#smallCheckOutDate').datetimepicker({
-			format: "DD-MM-YYYY",
+            format: "MM/DD/YYYY",
 		    useCurrent: false
 	    });
 		$("#smallCheckInDate").on("dp.change", function (e) {
@@ -113,6 +113,12 @@ $(function () {
 		$("#smallCheckOutDate").on("dp.change", function (e) {
 			$('#smallCheckInDate').data("DateTimePicker").maxDate(e.date);
 	    });
+    });
+
+    $(function () {
+        $('#birthDate').datetimepicker({
+            format: "MM/DD/YYYY"
+        });
     });
 
 	//TimePicker

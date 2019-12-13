@@ -1,0 +1,51 @@
+﻿@model ShareSpace.Models.Admin.AdminVWModel
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.PropertyName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Property.PropertyName, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "PropertyName" } })
+            @Html.ValidationMessageFor(model => model.Property.PropertyName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.PropertyType, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select name="data-table_length" aria-controls="data-table" class="btn btn-dark dropdown-toggle dropdown-toggle-split">
+                <option value="PropertyType">Property Type</option>
+                <option value="Office Space ">Office Space </option>
+                <option value="Industrial">Industrial</option>
+                <option value="Office Space ">Office Space </option>
+                <option value="Industrial">Industrial</option>
+                </ select >
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.MaximumPerson, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Property.MaximumPerson, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "MaximumPerson" } })
+            @Html.ValidationMessageFor(model => model.Property.MaximumPerson, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Property.Price, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Price" } })
+            @Html.ValidationMessageFor(model => model.Property.Price, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Property.Description, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Description" } })
+            @Html.ValidationMessageFor(model => model.Property.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+</div>

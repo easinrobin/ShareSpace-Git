@@ -57,10 +57,10 @@ namespace ShareSpace.Models.Property
         public decimal RetailPrice { get; set; }
 
         [Display(Name = "Latitude")]
-        public float Latitude { get; set; }
+        public decimal Latitude { get; set; }
 
         [Display(Name = "Longitude")]
-        public float Longitude { get; set; }
+        public decimal Longitude { get; set; }
 
         [Display(Name = "IsHidden")]
         public bool IsHidden { get; set; }
@@ -80,24 +80,6 @@ namespace ShareSpace.Models.Property
         [Display(Name = "Image Url")]
         public string ImageUrl { get; set; }
 
-        [Display(Name = "Image1")]
-        public string Image1 { get; set; }
-
-        [Display(Name = "Image2")]
-        public string Image2 { get; set; }
-
-        [Display(Name = "Image3")]
-        public string Image3 { get; set; }
-
-        [Display(Name = "Image4")]
-        public string Image4 { get; set; }
-
-        [Display(Name = "Image5")]
-        public string Image5 { get; set; }
-
-        [Display(Name = "Image6")]
-        public string Image6 { get; set; }
-
         [Display(Name = "Country")]
         public string Country { get; set; }
 
@@ -107,8 +89,14 @@ namespace ShareSpace.Models.Property
         [Display(Name = "Area")]
         public string Area { get; set; }
 
-        [Display(Name = "Address")]
-        public string Address { get; set; }
+        [Display(Name = "House No")]
+        public string HouseNo { get; set; }
+
+        [Display(Name = "Flat No")]
+        public string FlatNo { get; set; }
+
+        [Display(Name = "Road No")]
+        public string RoadNo { get; set; }
 
         [Display(Name = "ZipCode")]
         public int ZipCode { get; set; }
@@ -129,5 +117,7 @@ namespace ShareSpace.Models.Property
         public List<ClientPropertyRating> ClientPropertyRatings { get; set; }
         [NotMapped]
         public BookingEmail BookingEmail { get; set; }
+        [NotMapped]
+        public List<PropertyServiceViewModel> PropertyServiceOnClient { get; set; }
     }
 }

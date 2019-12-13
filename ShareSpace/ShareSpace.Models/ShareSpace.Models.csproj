@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,23 +52,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AdminVWModel.cs" />
+    <Compile Include="Auth\Login.cs" />
     <Compile Include="Booking\Booking.cs" />
     <Compile Include="Booking\BookingEmail.cs" />
     <Compile Include="Client\Client.cs" />
     <Compile Include="Client\ClientsBookingHistory.cs" />
+    <Compile Include="Client\ClientViewModel.cs" />
     <Compile Include="ContactForm.cs" />
     <Compile Include="Gallery\Gallery.cs" />
+    <Compile Include="NewsLetter\NewsLetter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Property\AdminPropertyList.cs" />
     <Compile Include="Property\FeatureProperty.cs" />
     <Compile Include="Property\Property.cs" />
     <Compile Include="Property\PropertyAddress.cs" />
     <Compile Include="Property\PropertyDetails.cs" />
     <Compile Include="Property\ClientPropertyRating.cs" />
     <Compile Include="Property\PropertyRating.cs" />
+    <Compile Include="Property\PropertySearchResultNew.cs" />
     <Compile Include="Property\PropertyService.cs" />
     <Compile Include="Property\PropertySearchResult.cs" />
+    <Compile Include="Property\PropertyServiceViewModel.cs" />
+    <Compile Include="Property\PropertyView.cs" />
+    <Compile Include="Search\OfficeSearch.cs" />
     <Compile Include="Service\FeaturedServices.cs" />
     <Compile Include="Service\Services.cs" />
+    <Compile Include="Testimonial\Testimonial.cs" />
+    <Compile Include="Transaction\Transaction.cs" />
+    <Compile Include="User\User.cs" />
+    <Compile Include="Vendor\Vendor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

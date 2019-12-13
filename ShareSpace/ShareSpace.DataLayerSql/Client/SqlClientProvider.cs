@@ -4,13 +4,14 @@ using System.Data;
 using System.Data.SqlClient;
 using ShareSpace.DataLayer.Client;
 using ShareSpace.DataLayerSql.Common;
+using ShareSpace.Models.Auth;
 using ShareSpace.Utility;
 
 namespace ShareSpace.DataLayerSql.Client
 {
     public class SqlClientProvider : IClientProvider
     {
-        #region Client
+        #region SetClient
         public long InsertClient(Models.Client.Client client)
         {
             long id = 0;
@@ -110,6 +111,10 @@ namespace ShareSpace.DataLayerSql.Client
             return isDelete;
         }
 
+        #endregion
+
+        #region GetClients
+
         public List<Models.Client.Client> GetAllClients()
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
@@ -191,8 +196,35 @@ namespace ShareSpace.DataLayerSql.Client
             }
         }
 
+        public Models.Client.Client GetClientByEmailAndPassword(string email, string password)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Get_Client_By_Email_And_Password, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@Email", email));
+                command.Parameters.Add(new SqlParameter("@Password", password));
 
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    Models.Client.Client client = new Models.Client.Client();
+                    client = UtilityManager.DataReaderMap<Models.Client.Client>(reader);
+                    return client;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
 
         #endregion
+
     }
 }

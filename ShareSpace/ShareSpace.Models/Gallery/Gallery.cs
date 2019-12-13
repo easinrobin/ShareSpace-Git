@@ -16,17 +16,8 @@ namespace ShareSpace.Models.Gallery
         [Display(Name = "ImageUrl")]
         public string ImageUrl { get; set; }
 
-        [Display(Name = "Image1")]
-        public string Image1 { get; set; }
-
-        [Display(Name = "Image2")]
-        public string Image2 { get; set; }
-
-        [Display(Name = "Image3")]
-        public string Image3 { get; set; }
-
         [Display(Name = "PropertyId")]
-        public int PropertyId { get; set; }
+        public long PropertyId { get; set; }
 
         [Display(Name = "CreatedBy")]
         public string CreatedBy { get; set; }

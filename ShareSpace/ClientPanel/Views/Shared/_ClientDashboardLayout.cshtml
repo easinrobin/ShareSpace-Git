@@ -30,7 +30,7 @@
 		</div>
 
 		<div class="logo hidden-sm-down">
-			<h1><a href="#">Share Space</a></h1>
+			<h1><a href="../Dashboard/Index">Share Space</a></h1>
 		</div>
 	</header>
 
@@ -39,18 +39,18 @@
 
 			<div class="user">
 				<div class="user__info" data-toggle="dropdown">
-					<img class="user__img" src="/img/avatar/avatar-5.png" alt="">
+					<img class="user__img" src="/img/avatar/avatar1.jpg" alt="">
 					<div>
-						<div class="user__name">Mr.x</div>
-						<div class="user__email">mr.x@gmail.com</div>
+                        <div class="user__name">@Session["FirstName"].ToString() @Session["LastName"].ToString()</div>
+                        <div class="user__email">@Session["UserName"].ToString()</div>
 					</div>
 				</div>
 
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="../Dashboard/Index"><i class="fa fa-eye"></i> View Profile</a>
-					<a class="dropdown-item" href="../Dashboard/EditProfile"><i class="fa fa-pencil"></i> Edit Profile</a>
-					<a class="dropdown-item" href="../Home/Index"><i class="fa fa-sign-out"></i> Logout</a>
-				</div>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="../Dashboard/Index"><i class="fa fa-eye"></i> View Profile</a>
+                    <a>@Html.ActionLink("View Profile", "ViewProfile", "Dashboard", null, new { @class = "dropdown-item" })</a>
+                    <a>@Html.ActionLink("Logout", "Logout", "Auth", null, new { @class = "dropdown-item" })</a>
+                </div>
 			</div>
 
 			<ul class="navigation">
@@ -60,7 +60,7 @@
 			</ul>
 		</div>
 	</aside>
-	<main class="content">
+	<main class="content" style="background: #00bb81; ">
 		@RenderBody()
 
 		<footer class="footer hidden-xs-down">
