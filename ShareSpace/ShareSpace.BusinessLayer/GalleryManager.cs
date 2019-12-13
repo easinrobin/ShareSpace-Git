@@ -20,7 +20,7 @@ namespace ShareSpace.BusinessLayer
             return sqlGalleryProvider.GetGalleryById(galleryId);
         }
 
-        public static Gallery GetGalleryByPropertyId(long propertyId)
+        public static List<Gallery> GetGalleryByPropertyId(long propertyId)
         {
             SqlGalleryProvider sqlGalleryProvider = new SqlGalleryProvider();
             return sqlGalleryProvider.GetGalleryByPropertyId(propertyId);

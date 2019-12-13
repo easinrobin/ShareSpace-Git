@@ -58,7 +58,7 @@ namespace ShareSpace.DataLayerSql.Common
         public static string Get_Property_PropertyRating = "sp_property_getPropertyAndPropertyRating";
 
         public static string GET_PROPERTY_BY_SEARCH = "sp_property_getPropertyBySearch";
-
+        public static string GET_PROPERTY_BY_PROPERTYID_BOOKINGID = "sp_property_getPropertyByPropertyIdnBookingId";
 
         //Services
         public static string GETFEATUREDSERVICE = "sp_service_getfeaturedservices";
@@ -132,5 +132,40 @@ namespace ShareSpace.DataLayerSql.Common
         public static string UPDATEGALLERYS = "sp_gallery_updategallery";
 
         public static string DELETEGALLERYS = "sp_gallery_deletegallery";
+
+        //Users
+        public static string GETALLUSERS = "sp_user_getallusers";
+
+        public static string GETUSERBYID = "sp_user_getuserbyid";
+
+        public static string INSERTUSER = "sp_user_insertuser";
+
+        public static string UPDATEUSER = "sp_user_updateuser";
+
+        public static string DELETEUSER = "sp_user_deleteuser";
+
+        //Testimonial
+
+        public static string GETALLTESTIMONIALS = "sp_testimonial_getalltestimonials";
+
+        public static string GETTESTIMONIALBYID = "sp_testimonial_gettestimonialbyid";
+
+        public static string INSERTTESTIMONIAL = "sp_testimonial_inserttestimonial";
+
+        public static string UPDATETESTIMONIAL = "sp_testimonial_updatetestimonial";
+
+        public static string DELETETESTIMONIAL = "sp_testimonial_deletetestimonial";
+
+        //NewsLetter
+
+        public static string GETALLNEWSLETTERS = "sp_newsletter_getallnewsletters";
+
+        public static string GETNEWSLETTERBYID = "sp_newsletter_getnewsletterbyid";
+
+        public static string INSERTNEWSLETTER = "sp_newsletter_insertnewsletter";
+
+        public static string UPDATENEWSLETTER = "sp_newsletter_updatenewsletter";
+
+        public static string DELETENEWSLETTER = "sp_newsletter_deletenewsletter";
     }
 }

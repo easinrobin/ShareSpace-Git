@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ShareSpace.Models.Property;
 using ShareSpace.Models.Search;
-
+using ShareSpace.Models.Booking;
 namespace ShareSpace.Models.Client
 {
     public class ClientViewModel
@@ -15,5 +15,10 @@ namespace ShareSpace.Models.Client
         public PropertySearchResultNew PropertySearchResult { get; set; }
         public Booking.Booking Booking { get; set; }
         public OfficeSearch OfficeSearch { get; set; }
+        public List<ClientPropertyRating> ClientPropertyRatings { get; set; }
+        public PropertyView PropertyView { get; set; }
+        public List<PropertyServiceViewModel> PropertyServiceOnClient { get; set; }
+        public List<Gallery.Gallery> GalleryList { get; set; }
+        public BookingEmail BookingEmail { get; set; }
     }
 }

@@ -124,8 +124,11 @@
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsLetterController.cs" />
     <Compile Include="Controllers\PropertyController.cs" />
+    <Compile Include="Controllers\TestimonialController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -521,6 +524,13 @@
     <Content Include="Views\Property\Partial\_Property.cshtml" />
     <Content Include="Views\Property\UpdateProperty.cshtml" />
     <Content Include="Views\Property\GalleryList.cshtml" />
+    <Content Include="Views\User\AdminUsers.cshtml" />
+    <Content Include="Views\User\InsertUser.cshtml" />
+    <Content Include="Views\Property\CreateGallery.cshtml" />
+    <Content Include="Views\NewsLetter\AdminNewsLetters.cshtml" />
+    <Content Include="Views\NewsLetter\InsertNewsLetter.cshtml" />
+    <Content Include="Views\Testimonial\AdminTestimonials.cshtml" />
+    <Content Include="Views\Testimonial\InsertTestimonial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

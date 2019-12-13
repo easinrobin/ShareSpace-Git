@@ -57,10 +57,13 @@
     <Compile Include="Client\SqlClientProvider.cs" />
     <Compile Include="Common\CommonUtility.cs" />
     <Compile Include="Gallery\SqlGalleryProvider.cs" />
+    <Compile Include="NewsLetter\SqlNewsLetterProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property\SqlPropertyProvider.cs" />
     <Compile Include="Service\SqlServiceProvider.cs" />
+    <Compile Include="Testimonial\SqlTestimonialProvider.cs" />
     <Compile Include="Transaction\SqlTransactionProvider.cs" />
+    <Compile Include="User\SqlUserProvider.cs" />
     <Compile Include="Vendor\SqlVendorsProvider.cs" />
   </ItemGroup>
   <ItemGroup>

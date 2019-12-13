@@ -16,24 +16,6 @@ namespace ShareSpace.Models.Gallery
         [Display(Name = "ImageUrl")]
         public string ImageUrl { get; set; }
 
-        [Display(Name = "Image1")]
-        public string Image1 { get; set; }
-
-        [Display(Name = "Image2")]
-        public string Image2 { get; set; }
-
-        [Display(Name = "Image3")]
-        public string Image3 { get; set; }
-
-        [Display(Name = "Image4")]
-        public string Image4 { get; set; }
-
-        [Display(Name = "Image5")]
-        public string Image5 { get; set; }
-
-        [Display(Name = "Image6")]
-        public string Image6 { get; set; }
-
         [Display(Name = "PropertyId")]
         public long PropertyId { get; set; }
 

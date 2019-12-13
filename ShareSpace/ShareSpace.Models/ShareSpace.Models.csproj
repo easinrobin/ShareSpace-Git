@@ -61,6 +61,7 @@
     <Compile Include="Client\ClientViewModel.cs" />
     <Compile Include="ContactForm.cs" />
     <Compile Include="Gallery\Gallery.cs" />
+    <Compile Include="NewsLetter\NewsLetter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property\AdminPropertyList.cs" />
     <Compile Include="Property\FeatureProperty.cs" />
@@ -73,10 +74,13 @@
     <Compile Include="Property\PropertyService.cs" />
     <Compile Include="Property\PropertySearchResult.cs" />
     <Compile Include="Property\PropertyServiceViewModel.cs" />
+    <Compile Include="Property\PropertyView.cs" />
     <Compile Include="Search\OfficeSearch.cs" />
     <Compile Include="Service\FeaturedServices.cs" />
     <Compile Include="Service\Services.cs" />
+    <Compile Include="Testimonial\Testimonial.cs" />
     <Compile Include="Transaction\Transaction.cs" />
+    <Compile Include="User\User.cs" />
     <Compile Include="Vendor\Vendor.cs" />
   </ItemGroup>
   <ItemGroup>

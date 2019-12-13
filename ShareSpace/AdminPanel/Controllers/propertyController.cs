@@ -22,7 +22,6 @@ namespace AdminPanel.Controllers
             return View(model);
         }
 
-
         public ActionResult Create()
         {
             AdminVWModel adminVWModel = new AdminVWModel();
@@ -46,8 +45,20 @@ namespace AdminPanel.Controllers
         {
             ViewBag.PropertyId = propertyId;
             AdminVWModel adminVwModel = new AdminVWModel();
-            adminVwModel.Gallery = GalleryManager.GetGalleryByPropertyId(propertyId);
+            adminVwModel.GalleryList = GalleryManager.GetGalleryByPropertyId(propertyId);
 
+            return View(adminVwModel.GalleryList);
+        }
+
+        public ActionResult CreateGallery(long propertyId)
+        {
+
+            AdminVWModel adminVwModel = new AdminVWModel();
+            Gallery gallery = new Gallery()
+            {
+                PropertyId = propertyId
+            };
+            adminVwModel.Gallery = gallery;
             return View(adminVwModel);
         }
 
@@ -106,6 +117,56 @@ namespace AdminPanel.Controllers
             bool isUpdatePropertyAddress = AddressManager.UpdateAddress(adminVwModel.PropertyAddress);
 
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult CreateGallery(AdminVWModel adminVwModel, HttpPostedFileBase images)
+        {
+            if (adminVwModel != null)
+            {
+
+                foreach (var file in adminVwModel.Files)
+                {
+                    if (Request.Url != null)
+                    {
+                        string pathUrl = "";
+
+                        if (file.ContentLength > 0)
+                        {
+                            string savepath, savefile;
+                            var filename = Path.GetFileName(Guid.NewGuid() + file.FileName);
+                            savepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img/Offices/");
+                            if (!Directory.Exists(savepath))
+                                Directory.CreateDirectory(savepath);
+                            savefile = Path.Combine(savepath, filename);
+                            file.SaveAs(savefile);
+                            pathUrl = "/img/Offices/" + filename;
+                        }
+
+                        var gallery = new Gallery
+                        {
+                            ImageUrl = pathUrl,
+                            ImageType = "Feature Image",
+                            PropertyId = adminVwModel.Gallery.PropertyId,
+                            CreatedBy = "Admin",
+                            UpdateBy = "Admin",
+                            CreatedDate = DateTime.Now,
+                            UpdateDate = DateTime.Now
+                        };
+                        var galleryId = GalleryManager.InsertGallery(gallery);
+                    }
+                }
+            }
+            return RedirectToAction("GalleryList", new
+            {
+                PropertyId = adminVwModel.Gallery.PropertyId
+            });
+        }
+
+        public ActionResult DeleteGalleryItem(long galleryId)
+        {
+            GalleryManager.DeleteGallery(galleryId);
+            return RedirectToAction("GalleryList");
         }
 
         public void _Property(AdminVWModel adminVWModel, HttpPostedFileBase images)
@@ -174,14 +235,6 @@ namespace AdminPanel.Controllers
         {
             if (adminVWModel != null)
             {
-                string imageUrl = "";
-                string imageUrl1 = "";
-                string imageUrl2 = "";
-                string imageUrl3 = "";
-                string imageUrl4 = "";
-                string imageUrl5 = "";
-                string imageUrl6 = "";
-
                 foreach (var file in adminVWModel.Files)
                 {
                     string pathUrl = "";
@@ -196,41 +249,20 @@ namespace AdminPanel.Controllers
                         savefile = Path.Combine(savepath, filename);
                         file.SaveAs(savefile);
                         pathUrl = "/img/Offices/" + filename;
-
-                        if (string.IsNullOrEmpty(imageUrl))
-                            imageUrl = pathUrl;
-                        else if (string.IsNullOrEmpty(imageUrl1))
-                            imageUrl1 = pathUrl;
-                        else if (string.IsNullOrEmpty(imageUrl2))
-                            imageUrl2 = pathUrl;
-                        else if (string.IsNullOrEmpty(imageUrl3))
-                            imageUrl3 = pathUrl;
-                        else if (string.IsNullOrEmpty(imageUrl3))
-                            imageUrl4 = pathUrl;
-                        else if (string.IsNullOrEmpty(imageUrl3))
-                            imageUrl5 = pathUrl;
-                        else if (string.IsNullOrEmpty(imageUrl3))
-                            imageUrl6 = pathUrl;
                     }
-                }
 
-                var gallery = new Gallery
-                {
-                    ImageUrl = imageUrl,
-                    Image1 = imageUrl1,
-                    Image2 = imageUrl2,
-                    Image3 = imageUrl3,
-                    Image4 = imageUrl4,
-                    Image5 = imageUrl5,
-                    Image6 = imageUrl6,
-                    ImageType = "Feature Image",
-                    PropertyId = propertyId,
-                    CreatedBy = "Admin",
-                    UpdateBy = "Admin",
-                    CreatedDate = DateTime.Now,
-                    UpdateDate = DateTime.Now
-                };
-                var galleryId = GalleryManager.InsertGallery(gallery);
+                    var gallery = new Gallery
+                    {
+                        ImageUrl = pathUrl,
+                        ImageType = "Feature Image",
+                        PropertyId = propertyId,
+                        CreatedBy = "Admin",
+                        UpdateBy = "Admin",
+                        CreatedDate = DateTime.Now,
+                        UpdateDate = DateTime.Now
+                    };
+                    var galleryId = GalleryManager.InsertGallery(gallery);
+                }
             }
         }
 
@@ -247,8 +279,6 @@ namespace AdminPanel.Controllers
             PropertyManager.HideProperty(propertyId);
             return RedirectToAction("Index");
         }
-
-
 
         private void _loadVendors()
         {

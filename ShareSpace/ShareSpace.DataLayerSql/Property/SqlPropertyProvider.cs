@@ -204,6 +204,33 @@ namespace ShareSpace.DataLayerSql.Property
             }
         }
 
+        public PropertyView GetPropertyViewById(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GETPROPERTYDETAILSBYID, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@PropertyId", id));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    PropertyView propertyDetails = new PropertyView();
+                    propertyDetails = UtilityManager.DataReaderMap<PropertyView>(reader);
+                    return propertyDetails;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
         public List<ClientPropertyRating> GetClientPropertyRatings(int Id)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
@@ -537,6 +564,34 @@ namespace ShareSpace.DataLayerSql.Property
                 }
             }
         }
+        public PropertyView GetPropertyViewByPropertyIdnBookingId(long propertyId, long bookingId)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GET_PROPERTY_BY_PROPERTYID_BOOKINGID, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@propertyId", propertyId));
+                command.Parameters.Add(new SqlParameter("@bookingId", bookingId));
+                try
+                {
+                    connection.Open();
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    PropertyView propertyList = new PropertyView();
+                    propertyList = UtilityManager.DataReaderMap<PropertyView>(dataReader);
+                    return propertyList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
 
     }
 }

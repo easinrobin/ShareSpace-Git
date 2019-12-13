@@ -60,15 +60,18 @@
             <h1><span>Featured </span>Spaces</h1>
         </div>
         <div class="row">
+           
+
             @foreach (var property in ViewBag.featuredProperties)
             {
                 var propertyLink = "/Home/OfficeDetails/" + property.PropertyId;
+                var imagepath = Request.Url.Scheme + "://" + Request.Url.Authority + property.FeatureImage;
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 wow fadeInUp delay-04s">
                     <!-- Hotel box start -->
                     <div class="hotel-box">
                         <!--header -->
                         <div class="header clearfix">
-                            <img src="@property.FeatureImage" alt="img-6" class="img-responsive">
+                            <img src="@imagepath" alt="img-6" class="img-responsive">
                         </div>
                         <!-- Detail -->
                         <div class="detail clearfix">

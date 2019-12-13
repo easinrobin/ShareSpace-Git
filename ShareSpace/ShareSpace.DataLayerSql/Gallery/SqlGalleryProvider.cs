@@ -139,7 +139,7 @@ namespace ShareSpace.DataLayerSql.Gallery
             }
         }
 
-        public Models.Gallery.Gallery GetGalleryByPropertyId(long propertyId)
+        public List<Models.Gallery.Gallery> GetGalleryByPropertyId(long propertyId)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
@@ -151,9 +151,9 @@ namespace ShareSpace.DataLayerSql.Gallery
                 {
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
-                    Models.Gallery.Gallery gallery = new Models.Gallery.Gallery();
-                    gallery = UtilityManager.DataReaderMap<Models.Gallery.Gallery>(reader);
-                    return gallery;
+                    List<Models.Gallery.Gallery> galleryList = new List<Models.Gallery.Gallery>();
+                    galleryList = UtilityManager.DataReaderMapToList<Models.Gallery.Gallery>(reader);
+                    return galleryList;
                 }
                 catch (Exception e)
                 {

@@ -50,6 +50,11 @@ namespace ShareSpace.BusinessLayer
             return propertyProvider.GetPropertyDetailsById(id);
         }
 
+        public static PropertyView GetPropertyViewById(int id)
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetPropertyViewById(id);
+        }
         public static List<ClientPropertyRating> PropertyRatings(int Id)
         {
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
@@ -117,6 +122,11 @@ namespace ShareSpace.BusinessLayer
         {
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
             return propertyProvider.GetPropertiesBySearch(fromDate, toDate, fromHour, toHour);
+        }
+        public static PropertyView GetPropertyViewByPropertyIdnBookingId(long propertyId, long bookingId)
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetPropertyViewByPropertyIdnBookingId(propertyId, bookingId);
         }
     }
 
