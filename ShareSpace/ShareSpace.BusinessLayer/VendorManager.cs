@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ShareSpace.DataLayerSql.Vendor;
+using ShareSpace.Models.Property;
 using ShareSpace.Models.Vendor;
 
 namespace ShareSpace.BusinessLayer
@@ -20,10 +21,23 @@ namespace ShareSpace.BusinessLayer
             return sqlVendorProvider.GetVendorById(vendorId);
         }
 
+        public static List<Property> GetVendorsPropertyById(long vendorId)
+        {
+            SqlVendorsProvider sqlVendorProvider = new SqlVendorsProvider();
+            return sqlVendorProvider.GetVendorsPropertyById(vendorId);
+        }
+
         public static List<Vendor> GetAllVendorsByEmailNPhone(string email, string mobileNo)
         {
             SqlVendorsProvider sqlVendorProvider = new SqlVendorsProvider();
             var allVendors = sqlVendorProvider.GetAllVendorsByEmailNPhone(email, mobileNo);
+            return allVendors;
+        }
+
+        public static Vendor GetVendorByEmailPassword(string email, string password)
+        {
+            SqlVendorsProvider sqlVendorProvider = new SqlVendorsProvider();
+            var allVendors = sqlVendorProvider.GetVendorByEmailPassword(email, password);
             return allVendors;
         }
 

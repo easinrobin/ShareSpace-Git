@@ -55,9 +55,12 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string Hide_Property = "sp_property_hideProperty";
 
+        public static string Delete_PropertyService_byId = "sp_propertyservice_deletepropertyservice";
+
         public static string Get_Property_PropertyRating = "sp_property_getPropertyAndPropertyRating";
 
         public static string GET_PROPERTY_BY_SEARCH = "sp_property_getPropertyBySearch";
+
         public static string GET_PROPERTY_BY_PROPERTYID_BOOKINGID = "sp_property_getPropertyByPropertyIdnBookingId";
 
         //Services
@@ -70,6 +73,8 @@ namespace ShareSpace.DataLayerSql.Common
         public static string Insert_Property_Service = "sp_propertyservice_insertpropertyservice";
 
         public static string Get_All_Services = "sp_service_getallservice";
+
+        public static string Get_Services_By_PropertyId = "sp_view_getPropertyServiceOnUI";
         //Booking
         public static string INSERTBOOKINGS = "sp_booking_insertbooking";
 
@@ -88,6 +93,8 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string GETVENDORSBYID = "sp_vendor_getvendorbyid";
 
+        public static string GetVendorPropertyByVendorId = "sp_vendor_getVendorPropertyByVendorId";
+
         public static string INSERTVENDORS = "sp_vendor_insertvendors";
 
         public static string UPDATEVENDORS = "sp_vendor_updatevendors";
@@ -95,6 +102,8 @@ namespace ShareSpace.DataLayerSql.Common
         public static string DELETEVENDORS = "sp_vendor_deletevendors";
 
         public static string GETALLVENDORSBYEMAIL_MOBILE = "sp_vendor_getallvendorbyemailandmobile";
+
+        public static string GetVendorByEmailPassword = "sp_vendor_getvendorbyemailandpassword";
 
         //Transactions
         public static string GETALLTRANSACTIONS = "sp_transaction_getalltransaction";
@@ -143,6 +152,7 @@ namespace ShareSpace.DataLayerSql.Common
         public static string UPDATEUSER = "sp_user_updateuser";
 
         public static string DELETEUSER = "sp_user_deleteuser";
+        public static string GET_USER_BY_USERNAME_PASSWORD = "sp_user_getuserbyusernamenpassword";
 
         //Testimonial
 

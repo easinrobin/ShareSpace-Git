@@ -1,0 +1,97 @@
+﻿@using ShareSpace.Models.Vendor
+@model ShareSpace.Models.Admin.AdminVWModel
+
+<style>
+    option {
+        background-color: #6c1b20;
+    }
+</style>
+
+<div class="form-horizontal">
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.PropertyName, new { @class = "card-body__title" })
+        @Html.TextBoxFor(model => model.Property.PropertyName, new { @class = "form-control", placeHolder = "Property Name" })
+        @Html.ValidationMessageFor(model => model.Property.PropertyName, "", new { @class = "validation-text" })
+    </div>
+
+
+    <div class="form-group" style="display: none;">
+        @Html.LabelFor(model => model.Property.PropertyType, new { @class = "card-body__title" })
+        @Html.TextBoxFor(model => model.Property.PropertyType, new { @class = "form-control", placeHolder = "E.g. Office, Auditorium" })
+        @Html.ValidationMessageFor(model => model.Property.PropertyType, "", new { @class = "validation-text" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.ShareType, new { @class = "card-body__title" })
+
+        @Html.DropDownListFor(m => m.Property.ShareType, new List<SelectListItem>
+        {
+
+            new SelectListItem {Text = "Shared Office", Value = "Shared Office"},
+            new SelectListItem {Text = "Whole Office", Value = "Whole Office"},
+            new SelectListItem {Text = "Meeting Space", Value = "Meeting Space"},
+            new SelectListItem {Text = "Auditorium", Value = "Auditorium"}
+        },
+            "Office Type", new
+            { @class = "form-control ddlbg", name = "Type" }
+            )
+        @Html.ValidationMessageFor(model => model.Property.ShareType, "", new { @class = "validation-text" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.MaximumPerson, new { @class = "card-body__title" })
+        <div class="form-group">
+            @Html.DropDownListFor(model => model.Property.MaximumPerson, new List<SelectListItem>
+            {
+                new SelectListItem {Text = "1", Value = "1"},
+                new SelectListItem {Text = "2", Value = "2"},
+                new SelectListItem {Text = "3", Value = "3"},
+                new SelectListItem {Text = "4", Value = "4"},
+                new SelectListItem {Text = "5", Value = "5"},
+                new SelectListItem {Text = "10", Value = "10"}
+            },
+                "Number of Person", new
+                {@class = "form-control ddlbg", name = "Person" }
+                )
+        </div>
+        @Html.ValidationMessageFor(model => model.Property.MaximumPerson, "", new { @class = "validation-text" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.Price, new { @class = "card-body__title" })
+        @Html.TextBoxFor(model => model.Property.Price, new { @class = "form-control", PlaceHolder = "Price" })
+        @Html.ValidationMessageFor(model => model.Property.Price, "", new { @class = "validation-text" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.FeatureImage, new { @class = "card-body__title" })
+        <div class="card">
+            <div class="card-body">
+                <span class="control-label col-md-2">Upload Images:</span>
+                <div class="col-md-10">
+                    <input type="file" name="files" id="file" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.ShortDescription, new { @class = "card-body__title" })
+        @Html.TextAreaFor(model => model.Property.ShortDescription, new { @class = "form-control", rows = "2", placeHolder = "Short Description" })
+        @Html.ValidationMessageFor(model => model.Property.ShortDescription, "", new { @class = "validation-text" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Property.Description, new { @class = "card-body__title" })
+        @Html.TextAreaFor(model => model.Property.Description, new { @class = "form-control", rows = "3", placeHolder = "Description" })
+        @Html.ValidationMessageFor(model => model.Property.Description, "", new { @class = "validation-text" })
+    </div>
+    <div class="form-group">
+        <strong>Move to next Tab</strong>
+    </div>
+</div>

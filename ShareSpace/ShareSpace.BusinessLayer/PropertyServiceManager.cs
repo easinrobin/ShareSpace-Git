@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ShareSpace.DataLayerSql.Property;
+using ShareSpace.DataLayerSql.Service;
 using ShareSpace.Models.Property;
 
 namespace ShareSpace.BusinessLayer
@@ -14,6 +15,18 @@ namespace ShareSpace.BusinessLayer
         {
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
             return propertyProvider.InsertPropertyService(service);
+        }
+
+        public static List<PropertyServiceViewModel> GetServicesByPropertyId(long propertyId)
+        {
+            SqlPropertyProvider sqlGalleryProvider = new SqlPropertyProvider();
+            return sqlGalleryProvider.GetServicesByPropertyId(propertyId);
+        }
+
+        public static bool DeletePropertyServiceById(long propertyServiceId)
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.DeletePropertyServiceById(propertyServiceId);
         }
     }
 }

@@ -273,6 +273,9 @@ namespace AdminPanel
             bundles.Add(new StyleBundle("~/Content/sweetAlert2").Include(
                         "~/Content/ThirdPartyCss/sweetalert2.min.css"));
 
+            bundles.Add(new StyleBundle("~/fonts/flatIcon").Include(
+                "~/fonts/flaticon/font/flaticon.css"));
+
             #endregion
         }
     }

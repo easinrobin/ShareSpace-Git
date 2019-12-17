@@ -1,0 +1,54 @@
+﻿@model List<ShareSpace.Models.Gallery.Gallery>
+@{
+    ViewBag.Title = "GalleryList";
+    Layout = "~/Areas/Vendor/Views/Shared/_VendorLayout.cshtml";
+}
+
+@{
+    var propertyId = ViewBag.PropertyId;
+}
+
+<nav aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Property/Index">Properties</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Galleries</li>
+    </ol>
+</nav>
+<header class="content__title">
+    <h1>Gallery</h1>
+
+    <div class="actions">
+        <a href="/Property/CreateGallery/@propertyId" class="actions__item zmdi zmdi-plus zmdi-hc-fw" title="Create"></a>
+        <a href="/Property/GalleryList/@propertyId" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
+    </div>
+</header>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">
+            <a href="/Property/CreateGallery/?propertyId=@propertyId" class="btn btn-light btn--icon-text" title="Create"><i class="zmdi  zmdi-plus-circle-o zmdi-hc-fw"></i> Add New</a>
+        </h4>
+        <div class="table-responsive">
+            <table id="data-table" class="table">
+                <thead>
+                    <tr>
+                        <th>Images</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img src="@item.ImageUrl" width="100" height="100" alt="Office" />
+                            </td>
+                            <td>
+                                @Html.ActionLink(" ", "DeleteGalleryItem", new { @item.GalleryId }, new { @class = "actions__item zmdi zmdi-delete zmdi-hc-fw", onclick = "return confirm('Are you sure you want to delete this item?')" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

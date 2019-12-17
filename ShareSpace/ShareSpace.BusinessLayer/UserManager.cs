@@ -27,8 +27,12 @@ namespace ShareSpace.BusinessLayer
             return sqlUserProvider.GetUserById(userId);
         }
 
-
-
+        public static User GetUserByUserNameNPassword(string username, string password)
+        {
+            SqlUserProvider sqlUserProvider = new SqlUserProvider();
+            return sqlUserProvider.GetUserByUserNameNPassword(username, password);
+        }
+        
         #endregion
 
 

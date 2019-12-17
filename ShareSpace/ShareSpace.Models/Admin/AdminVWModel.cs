@@ -14,6 +14,8 @@ namespace ShareSpace.Models.Admin
         public PropertyAddress PropertyAddress { get; set; }
         public PropertyRating PropertyRating { get; set; }
         public PropertyService PropertyService { get; set; }
+        public List<PropertyServiceViewModel> PropertyServiceVwModel { get; set; }
+        public List<PropertyService> PropertyServiceList { get; set; }
         public Gallery.Gallery Gallery { get; set; }
         public List<Gallery.Gallery> GalleryList { get; set; }
         public Services Services { get; set; }

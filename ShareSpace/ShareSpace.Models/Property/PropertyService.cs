@@ -15,15 +15,13 @@ namespace ShareSpace.Models.Property
         public string ServiceName { get; set; }
 
         [Display(Name = "IsHidden")]
-        public int IsHidden { get; set; }
+        public bool IsHidden { get; set; }
 
         [Display(Name = "Service Id")]
         public long ServiceId { get; set; }
 
         [Display(Name = "Property Id")]
         public long PropertyId { get; set; }
-        
+
     }
-
-
 }

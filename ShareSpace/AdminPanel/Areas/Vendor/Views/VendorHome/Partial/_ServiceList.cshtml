@@ -1,0 +1,29 @@
+﻿@model ShareSpace.Models.Admin.AdminVWModel
+
+<div class="form-horizontal">
+    <div class="row">
+        <div class="card-body">
+            <h4 class="card-title">Services</h4>
+            <h6 class="card-subtitle">Add Your Service Item.</h6>
+            <div class="listview">
+                @for (int idx = 0; idx < Model.ServiceList.Count; idx++)
+                {
+                    <div class="listview__item float-right col-sm-6">
+                        <label class="custom-control custom-checkbox align-self-start">
+                            @Html.HiddenFor(x => Model.ServiceList[idx].ServiceId)
+                            @Html.CheckBoxFor(x => x.ServiceList[idx].IsSelected, new { @class = "custom-control-input" })
+
+
+                            <span class="custom-control-indicator"></span>
+                        </label>
+                        <i class="@Model.ServiceList[idx].ImagePath"></i>
+
+                        <div class="listview__content">
+                            <div class="listview__heading">&nbsp;&nbsp;@Model.ServiceList[idx].ServiceName</div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿@model ShareSpace.Models.Admin.AdminVWModel
+@{
+    ViewBag.Title = "CreateGallery";
+    Layout = "~/Areas/Vendor/Views/Shared/_VendorLayout.cshtml";
+}
+
+<nav aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Property/Index">Properties</a></li>
+        <li class="breadcrumb-item"><a href="/Property/GalleryList?propertyId=@Model.Gallery.PropertyId">Galleries</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Gallery</li>
+    </ol>
+</nav>
+<header class="content__title">
+    <h1>Add Gallery</h1>
+
+
+</header>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title"></h4>
+        <h6 class="card-subtitle"></h6>
+        @using (Html.BeginForm("CreateGallery", "VendorHome", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Gallery.PropertyId)
+                
+                <div class="form-group">
+                    <span class="control-label col-md-2">Upload Images:</span>
+                    <div class="col-md-10">
+                        <input type="file" name="files" id="files" multiple />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Add" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -120,6 +120,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Vendor\Controllers\VendorHomeController.cs" />
+    <Compile Include="Areas\Vendor\VendorAreaRegistration.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
@@ -242,6 +244,9 @@
     <Content Include="Content\ThirdPartyCss\select2.min.css" />
     <Content Include="Content\ThirdPartyCss\sweetalert2.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\flaticon\font\flaticon.css" />
+    <Content Include="fonts\flaticon\font\flaticon.html" />
+    <Content Include="fonts\flaticon\font\Flaticon.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -423,6 +428,26 @@
     <Content Include="Scripts\ThirdPartyJs\bootstrap-select.min.js.map" />
     <Content Include="Scripts\ThirdPartyJs\bootstrap-select.js.map" />
     <Content Include="Content\ThirdPartyCss\bootstrap-select.css.map" />
+    <Content Include="fonts\flaticon\font\_flaticon.scss" />
+    <Content Include="fonts\flaticon\font\Flaticon.eot" />
+    <Content Include="fonts\flaticon\font\Flaticon.ttf" />
+    <Content Include="fonts\flaticon\font\Flaticon.woff" />
+    <Content Include="fonts\flaticon\font\Flaticond41d.eot" />
+    <Content Include="fonts\flaticon\font\font.rar" />
+    <Content Include="Areas\Vendor\Views\web.config" />
+    <Content Include="Areas\Vendor\Views\Shared\_VendorLayout.cshtml" />
+    <Content Include="Areas\Vendor\Views\VendorHome\Index.cshtml" />
+    <Content Include="Areas\Vendor\Views\VendorHome\Properties.cshtml" />
+    <Content Include="Areas\Vendor\Views\VendorHome\Create.cshtml" />
+    <Content Include="Areas\Vendor\Views\VendorHome\Partial\_Address.cshtml" />
+    <Content Include="Areas\Vendor\Views\VendorHome\Partial\_Gallery.cshtml" />
+    <Content Include="Areas\Vendor\Views\VendorHome\Partial\_Property.cshtml" />
+    <Content Include="Areas\Vendor\Views\VendorHome\Partial\_ServiceList.cshtml" />
+    <Content Include="Areas\Vendor\Views\VendorHome\GalleryList.cshtml" />
+    <Content Include="Areas\Vendor\Views\VendorHome\ServiceList.cshtml" />
+    <Content Include="Areas\Vendor\Views\VendorHome\UpdateProperty.cshtml" />
+    <Content Include="Areas\Vendor\Views\VendorHome\CreateGallery.cshtml" />
+    <Content Include="Areas\Vendor\Views\VendorHome\CreateServices.cshtml" />
     <None Include="Scripts\ThirdPartyJs\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ThirdPartyJs\buttons.html5.min.js" />
     <Content Include="Scripts\ThirdPartyJs\buttons.print.min.js" />
@@ -531,9 +556,12 @@
     <Content Include="Views\NewsLetter\InsertNewsLetter.cshtml" />
     <Content Include="Views\Testimonial\AdminTestimonials.cshtml" />
     <Content Include="Views\Testimonial\InsertTestimonial.cshtml" />
+    <Content Include="Views\Property\ServiceList.cshtml" />
+    <Content Include="Views\Property\CreateServices.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Vendor\Models\" />
     <Folder Include="img\Offices\" />
     <Folder Include="Models\" />
   </ItemGroup>

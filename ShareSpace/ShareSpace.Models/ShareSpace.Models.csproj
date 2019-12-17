@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\AdminVWModel.cs" />
+    <Compile Include="Auth\AuthViewModel.cs" />
     <Compile Include="Auth\Login.cs" />
     <Compile Include="Booking\Booking.cs" />
     <Compile Include="Booking\BookingEmail.cs" />
