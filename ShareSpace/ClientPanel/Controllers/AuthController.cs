@@ -55,15 +55,19 @@ namespace ClientPanel.Controllers
                 client = ClientManager.GetClientByEmailAndPassword(email, password);
 
                 //email = Session["UserName"] != null ? Session["UserName"].ToString() : string.Empty;
+                if (client != null)
+                {
+                    Session["UserName"] = client.Email;
+                    Session["ClientId"] = client.ClientId;
+                    Session["FirstName"] = client.FirstName;
+                    Session["LastName"] = client.LastName;
+                    Session["ClientPhoto"] = client.ClientPhoto;
+                    Session["MobileNo"] = client.MobileNo;
+                    Session["Country"] = client.Country;
+                    return RedirectToAction("Index", "Dashboard", client);
+                }
 
-                Session["UserName"] = client.Email;
-                Session["ClientId"] = client.ClientId;
-                Session["FirstName"] = client.FirstName;
-                Session["LastName"] = client.LastName;
-                Session["ClientPhoto"] = client.ClientPhoto;
-                Session["MobileNo"] = client.MobileNo;
-                Session["Country"] = client.Country;
-                return View("~/Views/Dashboard/Index.cshtml", client);
+                return RedirectToAction("Login");
             }
             else
             {

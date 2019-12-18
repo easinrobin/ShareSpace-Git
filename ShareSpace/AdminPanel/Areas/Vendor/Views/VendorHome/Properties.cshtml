@@ -8,8 +8,8 @@
     <h1>Properties</h1>
 
     <div class="actions">
-        <a href="~/Areas/Vendor/Views/Home/Create" class="actions__item zmdi zmdi-plus zmdi-hc-fw" title="Create"></a>
-        <a href="~/Areas/Vendor/Views/Home/Index" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
+        <a href="~/Vendor/VendorHome/Create" class="actions__item zmdi zmdi-plus zmdi-hc-fw" title="Create"></a>
+        <a href="~/Vendor/VendorHome/Properties" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
     </div>
 </header>
 <div class="card">
@@ -42,7 +42,7 @@
                                 @Html.ActionLink(" ", "UpdateProperty", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-edit" })&nbsp;&nbsp;
                                 @Html.ActionLink(" ", "GalleryList", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-image-o" })<br />
                                 @Html.ActionLink(" ", "ServiceList", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-assignment" })&nbsp;&nbsp;
-                                @Html.ActionLink(" ", "HideProperty", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-delete" })
+                                @Html.ActionLink(" ", "HideProperty", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-delete", onclick = "return confirm('Are you sure you want to delete this item?')" })
                             </td>
                         </tr>
                     </tbody>

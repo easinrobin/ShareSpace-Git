@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ShareSpace.Models.User;
 using System.IO;
 using ShareSpace.BusinessLayer;
+using ShareSpace.Models.Vendor;
 
 namespace AdminPanel.Controllers
 {
@@ -23,37 +24,42 @@ namespace AdminPanel.Controllers
         {
             if (ModelState.IsValid)
             {
-                var data = UserManager.GetUserByUserNameNPassword(user.UserName.Trim(), user.UserPassword.Trim());
-                if (data != null)
+                if (user.UserRole == "Admin")
                 {
-                    if (user.UserRole == "Admin")
+                    var data = UserManager.GetUserByUserNameNPassword(user.UserName.Trim(), user.UserPassword.Trim());
+                    if (data != null)
                     {
+
                         Session["UserID"] = data.UserID.ToString();
                         Session["UserName"] = data.UserName.ToString();
                         return View("~/Views/Home/Index.cshtml");
                     }
                     else
                     {
-                        Session["VendorId"] = 2;
-                        return View("~/Areas/Vendor/Views/VendorHome/Index.cshtml");
+                        ViewBag.ErrMsg = "Please enter email and password!.";
                     }
                 }
-                else
+                else if (user.UserRole == "Vendor")
                 {
-
-                    ViewBag.ErrMsg = "Please enter email and password!.";
-
+                    var data = VendorManager.GetVendorByEmailPassword(user.UserName.Trim(), user.UserPassword.Trim());
+                    if (data != null)
+                    {
+                        Session["VendorId"] = data.VendorId;
+                        Session["UserName"] = data.Email.ToString();
+                        return View("~/Areas/Vendor/Views/VendorHome/Index.cshtml");
+                    }
+                    else
+                    {
+                        ViewBag.ErrMsg = "Please enter email and password!.";
+                    }
                 }
             }
             else
             {
-
                 ViewBag.ErrMsg = "Please enter email and password!.";
-
             }
+
             return View(user);
-
         }
-
     }
 }

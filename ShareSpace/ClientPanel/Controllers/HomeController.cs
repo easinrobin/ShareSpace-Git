@@ -23,8 +23,8 @@ namespace ClientPanel.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.featuredProperties = PropertyManager.GetFeaturedProperties(9);
-            ViewBag.featuredService = ServiceManager.GetFeaturedServices(9);
+            ViewBag.featuredProperties = PropertyManager.GetFeaturedProperties(6);
+            ViewBag.featuredService = ServiceManager.GetFeaturedServices(6);
 
             return View("~/Views/Home/Index.cshtml");
         }

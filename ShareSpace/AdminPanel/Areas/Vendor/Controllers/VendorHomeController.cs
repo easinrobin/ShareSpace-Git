@@ -191,7 +191,7 @@ namespace AdminPanel.Areas.Vendor.Controllers
         public ActionResult CreateServices(AdminVWModel adminVwModel)
         {
             _ServiceList(adminVwModel.PropertyService.PropertyId, adminVwModel, adminVwModel.ServiceList?.FindAll((x => x.IsSelected)));
-            return RedirectToAction("Index");
+            return RedirectToAction("Properties");
         }
         //load
         private void _loadVendors()
@@ -306,19 +306,19 @@ namespace AdminPanel.Areas.Vendor.Controllers
         public ActionResult HideProperty(long propertyId)
         {
             PropertyManager.HideProperty(propertyId);
-            return RedirectToAction("Index");
+            return RedirectToAction("Properties");
         }
 
-        public ActionResult DeleteGalleryItem(long galleryId)
+        public ActionResult DeleteGalleryItem(long galleryId, AdminVWModel adminVwModel)
         {
             GalleryManager.DeleteGallery(galleryId);
-            return RedirectToAction("GalleryList");
+            return RedirectToAction("Properties");
         }
 
         public ActionResult DeletePropertyServiceItem(long propertyServiceId)
         {
             PropertyServiceManager.DeletePropertyServiceById(propertyServiceId);
-            return RedirectToAction("Index");
+            return RedirectToAction("Properties");
         }
     }
 }

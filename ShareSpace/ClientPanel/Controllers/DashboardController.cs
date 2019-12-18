@@ -11,9 +11,10 @@ namespace ClientPanel.Controllers
     public class DashboardController : Controller
     {
         // GET: ClientDashboard
-        public ActionResult Index()
+        public ActionResult Index(Client client)
         {
-            Client client = new Client();
+            ViewBag.featuredProperties = PropertyManager.GetFeaturedProperties(6);
+            
             //client.Email = Session["UserName"] != null ? Session["UserName"].ToString() : string.Empty;
             Session["UserName"] = client.Email;
             Session["ClientId"] = client.ClientId;
@@ -21,24 +22,29 @@ namespace ClientPanel.Controllers
             if (client.Email != null)
             {
                 client = ClientManager.GetClientByEmail(client.Email);
-                if (client == null)
-                {
-                    return View("~/Views/Auth/Login.cshtml");
-                }
-
-                return View();
+                return View(client);
             }
-            return View("~/Views/Auth/Login.cshtml");
+            return RedirectToAction("Login", "Auth");
         }
 
         public ActionResult ViewProfile()
         {
-            return View("Index");
+            long clientId = Session["ClientId"] != null ? Convert.ToInt64(Session["ClientId"]) : 0;
+            Client client = ClientManager.GetClientById(clientId);
+            return RedirectToAction("Index", client);
         }
+
+        //public ActionResult EditProfile()
+        //{
+        //    return View();
+        //}
 
         public ActionResult EditProfile()
         {
-            return View();
+            long clientId = Session["ClientId"] != null ? Convert.ToInt64(Session["ClientId"]) : 0;
+            Client client = ClientManager.GetClientById(clientId);
+            //ClientManager.GetClientById(clientId);
+            return View("~/Views/Dashboard/EditProfile.cshtml", client);
         }
 
         public ActionResult History()
@@ -55,6 +61,18 @@ namespace ClientPanel.Controllers
             return View("~/Views/Error");
         }
 
-        
+        [HttpPost]
+        public ActionResult EditProfile(Client client)
+        {
+            client.ClientPhoto = "none";
+            client.CreatedBy = client.FirstName;
+            client.UpdateBy = client.FirstName;
+            client.CreatedDate = DateTime.Today;
+            client.UpdateDate = DateTime.Today;
+            Int64 clientId = Session["ClientId"] != null ? Convert.ToInt64(Session["ClientId"]) : 0;
+            client.ClientId = clientId;
+            bool isUpdate = ClientManager.UpdateClient(client);
+            return View();
+        }
     }
 }
