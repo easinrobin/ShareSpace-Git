@@ -1,33 +1,33 @@
-﻿@model List<ShareSpace.Models.Booking.Booking>
+﻿@model List<ShareSpace.Models.Booking.AdminBookingList>
 
 
 <header class="content__title">
     <h1>BookingS</h1>
 
     <div class="actions">
-        <div class="dropdown actions__item">
-            <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
-            <div class="dropdown-menu dropdown-menu-right">
-                <a href="#" class="dropdown-item">Refresh</a>
-            </div>
-        </div>
+        <a href="~/Booking/InsertBooking" class="actions__item zmdi zmdi-plus zmdi-hc-fw" title="Create"></a>
+        <a href="~/Booking/AdminBookings" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
     </div>
 
 </header>
 
 <div class="card">
     <div class="card-body">
-        <a href="/Booking/InsertBooking" class="btn btn-light">New Contact</a>
+        <a href="/Booking/InsertBooking" class="btn btn-light">Add New</a>
 
         <div class="table-responsive">
             <table id="data-table" class="table">
                 <thead style="color: #ffaa00">
                     <tr>
-                        <th>FromDate</th>
-                        <th>ToDate</th>
-                        <th>MaximumPerson</th>
-                        <th>FromHour</th>
-                        <th>ToHour</th>
+                        <th>Client Name</th>
+                        <th>Property Name</th>
+                        <th>Location</th>
+                        <th>Property Image</th>
+                        <th>From Date</th>
+                        <th>To Date</th>
+                        @*<th>From Hour</th>
+                        <th>To Hour</th>*@
+                        <th>Max Person</th>
                         <th>Action</th>
                         <th>Details</th>
                     </tr>
@@ -36,33 +36,40 @@
                     @foreach (var booking in Model)
                     {
                         <tr>
-                            <td>@booking.FromDate.ToString("MM/dd/yyyy")</td>
-                            <td>@booking.ToDate.ToString("MM/dd/yyyy")</td>
-                            <td>@booking.MaximumPerson</td>
-                            <td>@booking.FromHour</td>
-                            <td>@booking.ToHour</td>
+                            <td>@booking.FirstName @booking.LastName</td>
+                            <td>@booking.PropertyName</td>
+                            <td>@booking.Area @booking.City</td>
                             <td>
-                                @Html.ActionLink(" ", "UpdateBooking", new { bookingId = booking.BookingId }, new { @class = "zmdi zmdi-edit" })
-                                <a href="#" data-toggle="modal" data-target="#confirm-delete" class="btn btn-default">
-                                    <i class="zmdi zmdi-delete"></i>
-                                </a>
-                                <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                            </div>
-                                            <div class="modal-body" style="align-self: center;">
-                                                Are you sure you want to delete this element?
-                                            </div>
-                                            <div class="modal-footer" style="align-self: center;">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                @Html.ActionLink("Delete", "DeleteBooking", new { bookingId = booking.BookingId }, new { @class = "btn btn-danger" })
+                                <img src="@booking.FeatureImage" alt="@booking.PropertyName" width="100" height="100" />
+                            </td>
+                            <td>@booking.FromDate.ToString("MM/dd/yyyy") @booking.FromHour</td>
+                            <td>@booking.ToDate.ToString("MM/dd/yyyy") @booking.ToHour</td>
+                            @*<td>@booking.FromHour</td>
+                            <td>@booking.ToHour</td>*@
+                            <td>@booking.BookingMaximumPerson</td>
+                            <td>
+                                @Html.ActionLink(" ", "UpdateBooking", new { bookingId = booking.BookingId }, new { @class = "zmdi zmdi-edit" })&nbsp;
+                                @Html.ActionLink(" ", "DeleteBooking", new { bookingId = booking.BookingId }, new { @class = "zmdi zmdi-delete zmdi-hc-fw", onclick = "return confirm('Are you sure you want to delete this item?')" })
+                                @*<a href="#" data-toggle="modal" data-target="#confirm-delete" class="btn btn-default">
+            <i class="zmdi zmdi-delete"></i>
+        </a>
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    </div>
+                    <div class="modal-body" style="align-self: center;">
+                        Are you sure you want to delete this element?
+                    </div>
+                    <div class="modal-footer" style="align-self: center;">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        @Html.ActionLink("Delete", "DeleteBooking", new { bookingId = booking.BookingId }, new { @class = "btn btn-danger" })
 
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
                             </td>
                             <td><a href="../Booking/BookingConfirmation">View</a></td>
                         </tr>

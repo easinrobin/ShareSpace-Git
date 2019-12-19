@@ -82,6 +82,8 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string GETALLBOOKINGS = "sp_booking_getallbooking";
 
+        public static string Get_Admin_BookingList = "sp_view_adminBookingListView";
+
         public static string GETBOOKINGSBYID = "sp_Booking_getBookingbyid";
 
         public static string DELETEBOOKINGS = "sp_booking_deletebooking";

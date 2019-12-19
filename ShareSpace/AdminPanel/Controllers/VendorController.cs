@@ -68,7 +68,7 @@ namespace AdminPanel.Controllers
         public ActionResult AdminVendors()
         {
             List<Vendor> allVendors = VendorManager.GetAllVendors();
-            return View("~/Views/Vendor/AdminVendors.cshtml", allVendors);
+            return View(allVendors);
         }
 
 

@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using ShareSpace.DataLayer.Booking;
 using ShareSpace.DataLayerSql.Common;
+using ShareSpace.Models.Booking;
 using ShareSpace.Models.Client;
 using ShareSpace.Utility;
 
@@ -128,6 +129,33 @@ namespace ShareSpace.DataLayerSql.Booking
                     SqlDataReader dataReader = command.ExecuteReader();
                     List<Models.Booking.Booking> bookingList = new List<Models.Booking.Booking>();
                     bookingList = UtilityManager.DataReaderMapToList<Models.Booking.Booking>(dataReader);
+                    return bookingList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public List<AdminBookingList> GetAdminBookingList()
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Get_Admin_BookingList, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    List<AdminBookingList> bookingList = new List<AdminBookingList>();
+                    bookingList = UtilityManager.DataReaderMapToList<AdminBookingList>(dataReader);
                     return bookingList;
                 }
                 catch (Exception e)

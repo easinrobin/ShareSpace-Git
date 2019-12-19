@@ -1674,12 +1674,14 @@ footer ul {
 }
 
 .testimonial-bg {
-    background: url(../img/room/big-img-7.jpg);
+    background: #50626C;
     background-position: center center;
     background-repeat: no-repeat;
     position: relative;
     z-index: 0;
     width: 100%;
+    min-height: 500px;
+    margin-bottom: 50px;
 }
 
 .testimonial-bg .content .avatar {

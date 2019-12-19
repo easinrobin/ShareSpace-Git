@@ -11,19 +11,26 @@ namespace ShareSpace.Models.Booking
         public int BookingId { get; set; }
 
         [Display(Name = "FromDate")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "dd/mm/yyyy")]
-        public DateTime FromDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "DD/MM/YYYY")]
+        public DateTime? FromDate { get; set; }
 
         [Display(Name = "ToDate")]
-        public DateTime ToDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "DD/MM/YYYY")]
+        public DateTime? ToDate { get; set; }
 
         [Display(Name = "MaximumPerson")]
         public int MaximumPerson { get; set; }
 
         [Display(Name = "FromHour")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:MM}")]
         public string FromHour { get; set; }
 
         [Display(Name = "ToHour")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         public string ToHour { get; set; }
 
         [Display(Name = "ClientId")]
@@ -39,10 +46,10 @@ namespace ShareSpace.Models.Booking
         public string UpdateBy { get; set; }
 
         [Display(Name = "CreatedDate")]
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         [Display(Name = "UpdateDate")]
-        public DateTime UpdateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
 
         [Display(Name = "BookingNo")]
         public string BookingNo { get; set; }
