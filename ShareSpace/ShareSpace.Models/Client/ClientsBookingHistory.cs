@@ -19,10 +19,10 @@ namespace ShareSpace.Models.Client
         public int PropertyAddressId { get; set; }
 
         [Display(Name = "From Date")]
-        public DateTime? FromDate { get; set; }
+        public DateTime FromDate { get; set; }
 
         [Display(Name = "To Date")]
-        public DateTime? ToDate { get; set; }
+        public DateTime ToDate { get; set; }
 
         [Display(Name = "From Hour")]
         public string FromHour { get; set; }

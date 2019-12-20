@@ -1,21 +1,21 @@
 ﻿@model List<ShareSpace.Models.Property.Property>
 @{
     ViewBag.Title = "Properties";
-    Layout = "~/Areas/Vendor/Views/Shared/_VendorLayout.cshtml";
+    Layout = "~/Areas/VendorPanel/Views/Shared/_VendorHomeLayout.cshtml";
 }
 
 <header class="content__title">
     <h1>Properties</h1>
 
     <div class="actions">
-        <a href="~/Vendor/VendorHome/Create" class="actions__item zmdi zmdi-plus zmdi-hc-fw" title="Create"></a>
-        <a href="~/Vendor/VendorHome/Properties" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
+        <a href="~/VendorPanel/VendorHome/Create" class="actions__item zmdi zmdi-plus zmdi-hc-fw" title="Create"></a>
+        <a href="~/VendorPanel/VendorHome/Properties" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
     </div>
 </header>
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">
-            <a href="~/Vendor/VendorHome/Create" class="btn btn-light btn--icon-text" title="Create"><i class="zmdi  zmdi-plus-circle-o zmdi-hc-fw"></i> Create New</a>
+            <a href="~/VendorPanel/VendorHome/Create" class="btn btn-light btn--icon-text" title="Create"><i class="zmdi  zmdi-plus-circle-o zmdi-hc-fw"></i> Create New</a>
         </h4>
         <div class="table-responsive">
             <table @*id="data-table"*@ class="table">

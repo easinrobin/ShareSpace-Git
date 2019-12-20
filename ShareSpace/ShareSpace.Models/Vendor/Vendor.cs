@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Web;
 
 namespace ShareSpace.Models.Vendor
 {
@@ -27,6 +30,7 @@ namespace ShareSpace.Models.Vendor
         public string Country { get; set; }
 
         [Display(Name = "MobileNo")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "MobileNo required")]
         public string MobileNo { get; set; }
 
         [Display(Name = "BirthDate")]
@@ -34,18 +38,16 @@ namespace ShareSpace.Models.Vendor
         public DateTime? BirthDate { get; set; }
 
         [Display(Name = "Password")]
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Maximum 8digit")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Password Required")]
         public string Password { get; set; }
 
         [Display(Name = "VendorPhoto")]
         public string VendorPhoto { get; set; }
 
         [Display(Name = "CreatedBy")]
-        //[Required(AllowEmptyStrings = false, ErrorMessage = "Maximum length is {1}")]
         public string CreatedBy { get; set; }
 
         [Display(Name = "UpdateBy")]
-        //[Required(AllowEmptyStrings = false, ErrorMessage = "Maximum length is {1}")]
         public string UpdateBy { get; set; }
 
         [Display(Name = "CreatedDate")]
@@ -53,5 +55,8 @@ namespace ShareSpace.Models.Vendor
 
         [Display(Name = "UpdateDate")]
         public DateTime? UpdateDate { get; set; }
+
+        [NotMapped]
+        public IEnumerable<HttpPostedFileBase> Files { get; set; }
     }
 }

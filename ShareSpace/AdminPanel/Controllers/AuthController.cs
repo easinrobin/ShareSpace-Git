@@ -32,6 +32,7 @@ namespace AdminPanel.Controllers
 
                         Session["UserID"] = data.UserID.ToString();
                         Session["UserName"] = data.UserName.ToString();
+                        Session["Name"] = "Site Admin";
                         return View("~/Views/Home/Index.cshtml");
                     }
                     else
@@ -46,7 +47,8 @@ namespace AdminPanel.Controllers
                     {
                         Session["VendorId"] = data.VendorId;
                         Session["UserName"] = data.Email.ToString();
-                        return View("~/Areas/Vendor/Views/VendorHome/Index.cshtml");
+                        Session["Name"] = data.FirstName;
+                        return View("~/Areas/VendorPanel/Views/VendorHome/Index.cshtml");
                     }
                     else
                     {

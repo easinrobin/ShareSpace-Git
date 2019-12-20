@@ -16,8 +16,8 @@ namespace ClientPanel.Controllers
             ViewBag.featuredProperties = PropertyManager.GetFeaturedProperties(6);
             
             //client.Email = Session["UserName"] != null ? Session["UserName"].ToString() : string.Empty;
-            Session["UserName"] = client.Email;
-            Session["ClientId"] = client.ClientId;
+            client.Email = (string) Session["UserName"];
+            client.ClientId = (long) Session["ClientId"];
 
             if (client.Email != null)
             {

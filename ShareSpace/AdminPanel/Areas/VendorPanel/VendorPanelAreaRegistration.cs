@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace AdminPanel.Areas.Vendor
+namespace AdminPanel.Areas.VendorPanel
 {
-    public class VendorAreaRegistration : AreaRegistration 
+    public class VendorPanelAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "Vendor";
+                return "VendorPanel";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Vendor_default",
-                "Vendor/{controller}/{action}/{id}",
+                "VendorPanel_default",
+                "VendorPanel/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

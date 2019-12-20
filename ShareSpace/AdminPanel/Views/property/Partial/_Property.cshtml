@@ -94,11 +94,12 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Property.Description, new { @class = "card-body__title" })
         @Html.TextAreaFor(model => model.Property.Description, new { @class = "form-control", rows = "3", placeHolder = "Description" })
-        @Html.ValidationMessageFor(model => model.Property.Description, "", new { @class = "validation-text" })
+        
         
         <section id="editor" class="rich-text-box">
             <div id='edit'>
-
+            @*@Html.TextAreaFor(model => model.Property.Description, new { @id = "edit", placeHolder = "Description" })
+            @Html.ValidationMessageFor(model => model.Property.Description, "", new { @class = "validation-text" })*@
             </div>
         </section>
 
@@ -117,4 +118,4 @@
                 })
         })()
     </script>
-}
+} 

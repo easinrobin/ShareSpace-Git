@@ -39,7 +39,9 @@ namespace ClientPanel.Controllers
             if (ModelState.IsValid)
             {
                 var id = ClientManager.InsertClient(client);
-                return RedirectToAction("Login");
+                Session["Name"] = client.FirstName;
+                Session["Email"] = client.Email;
+                return RedirectToAction("Index", "Home");
             }
             return View(client);
         }

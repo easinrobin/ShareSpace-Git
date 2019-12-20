@@ -1,4 +1,5 @@
-﻿@model List<ShareSpace.Models.Client.ClientsBookingHistory>
+﻿@using Microsoft.Ajax.Utilities
+@model List<ShareSpace.Models.Client.ClientsBookingHistory>
 
 @{
     ViewBag.Title = "History";
@@ -23,6 +24,7 @@
                     <div class="contacts__info">
                         <strong>@booking.PropertyName</strong>
                         <small>@booking.Area, @booking.City - @booking.ZipCode</small>
+                        <small>@booking.FromDate.ToString("MM/dd/yyyy") At @booking.FromHour, To @booking.ToDate.ToString("MM/dd/yyyy") At @booking.ToHour</small>
                     </div>
 
                     <button class="contacts__btn" onclick="location.href='/Home/OfficeDetails/@booking.PropertyId'">Review</button>

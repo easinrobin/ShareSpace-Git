@@ -10,11 +10,11 @@ using ShareSpace.Models.Gallery;
 using ShareSpace.Models.Property;
 using ShareSpace.Models.Service;
 
-namespace AdminPanel.Areas.Vendor.Controllers
+namespace AdminPanel.Areas.VendorPanel.Controllers
 {
     public class VendorHomeController : Controller
     {
-        // GET: Vendor/Vendor
+        // GET: VendorPanel/VendorHome
         public ActionResult Index()
         {
             return View();
@@ -40,7 +40,7 @@ namespace AdminPanel.Areas.Vendor.Controllers
             AdminVWModel adminVwModel = new AdminVWModel();
             adminVwModel.Property = PropertyManager.GetPropertyById(propertyId);
             adminVwModel.PropertyAddress = AddressManager.GetAddressByPropertyId(propertyId);
-            return View("~/Areas/Vendor/Views/VendorHome/UpdateProperty.cshtml", adminVwModel);
+            return View("~/Areas/VendorPanel/Views/VendorHome/UpdateProperty.cshtml", adminVwModel);
         }
 
         public ActionResult GalleryList(long propertyId)
@@ -88,7 +88,7 @@ namespace AdminPanel.Areas.Vendor.Controllers
         {
             long vendorId = 2;
             //Session["VendorId"] = adminVWModel.Property.VendorId;
-            adminVWModel.Property.VendorId = (int) vendorId;
+            adminVWModel.Property.VendorId = (int)vendorId;
             _Property(adminVWModel, images);
             var propertyId = PropertyManager.InsertProperty(adminVWModel.Property);
 

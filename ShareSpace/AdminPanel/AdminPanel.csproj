@@ -120,8 +120,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Areas\Vendor\Controllers\VendorHomeController.cs" />
-    <Compile Include="Areas\Vendor\VendorAreaRegistration.cs" />
+    <Compile Include="Areas\VendorPanel\Controllers\VendorHomeController.cs" />
+    <Compile Include="Areas\VendorPanel\VendorPanelAreaRegistration.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
@@ -434,20 +434,20 @@
     <Content Include="fonts\flaticon\font\Flaticon.woff" />
     <Content Include="fonts\flaticon\font\Flaticond41d.eot" />
     <Content Include="fonts\flaticon\font\font.rar" />
-    <Content Include="Areas\Vendor\Views\web.config" />
-    <Content Include="Areas\Vendor\Views\Shared\_VendorLayout.cshtml" />
-    <Content Include="Areas\Vendor\Views\VendorHome\Index.cshtml" />
-    <Content Include="Areas\Vendor\Views\VendorHome\Properties.cshtml" />
-    <Content Include="Areas\Vendor\Views\VendorHome\Create.cshtml" />
-    <Content Include="Areas\Vendor\Views\VendorHome\Partial\_Address.cshtml" />
-    <Content Include="Areas\Vendor\Views\VendorHome\Partial\_Gallery.cshtml" />
-    <Content Include="Areas\Vendor\Views\VendorHome\Partial\_Property.cshtml" />
-    <Content Include="Areas\Vendor\Views\VendorHome\Partial\_ServiceList.cshtml" />
-    <Content Include="Areas\Vendor\Views\VendorHome\GalleryList.cshtml" />
-    <Content Include="Areas\Vendor\Views\VendorHome\ServiceList.cshtml" />
-    <Content Include="Areas\Vendor\Views\VendorHome\UpdateProperty.cshtml" />
-    <Content Include="Areas\Vendor\Views\VendorHome\CreateGallery.cshtml" />
-    <Content Include="Areas\Vendor\Views\VendorHome\CreateServices.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\web.config" />
+    <Content Include="Areas\VendorPanel\Views\Shared\_VendorHomeLayout.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\Partial\_Address.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\Partial\_Gallery.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\Partial\_Property.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\Partial\_ServiceList.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\Create.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\CreateGallery.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\CreateServices.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\GalleryList.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\Index.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\Properties.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\ServiceList.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\UpdateProperty.cshtml" />
     <None Include="Scripts\ThirdPartyJs\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ThirdPartyJs\buttons.html5.min.js" />
     <Content Include="Scripts\ThirdPartyJs\buttons.print.min.js" />
@@ -510,12 +510,12 @@
     <Content Include="Scripts\ThirdPartyJs\salvattore.min.js" />
     <Content Include="Scripts\ThirdPartyJs\select2.full.min.js" />
     <Content Include="Scripts\ThirdPartyJs\sweetalert2.min.js" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <Content Include="Web_7.config" />
+    <Content Include="Web_7.Debug.config">
+      <DependentUpon>Web_7.config</DependentUpon>
     </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <Content Include="Web_7.Release.config">
+      <DependentUpon>Web_7.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -558,10 +558,17 @@
     <Content Include="Views\Testimonial\InsertTestimonial.cshtml" />
     <Content Include="Views\Property\ServiceList.cshtml" />
     <Content Include="Views\Property\CreateServices.cshtml" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Vendor\Models\" />
+    <Folder Include="Areas\VendorPanel\Models\" />
     <Folder Include="img\Offices\" />
     <Folder Include="Models\" />
   </ItemGroup>
