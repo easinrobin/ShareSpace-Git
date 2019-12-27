@@ -10371,7 +10371,7 @@ button, input, optgroup, select, textarea {
 }
 
 [data-sa-theme="3"] {
-    background-color: #174042
+    background-color: #00BB81
 }
 
 [data-sa-theme="4"] {
@@ -12461,4 +12461,392 @@ ul.jqtree-tree {
 
 .error-text-min {
     float: right
+}
+
+/* Office */
+.hotel-box {
+    background: #FFFFFF;
+    margin: 0 auto 30px;
+}
+
+    .hotel-box:hover {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.10), 0 3px 3px 0 rgba(0, 0, 0, 0.10);
+    }
+
+    .hotel-box .detail {
+        padding: 20px 20px 20px;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+        .hotel-box .detail p {
+            color: #5a5959;
+            line-height: 23px;
+            margin-bottom: 20px;
+        }
+
+        .hotel-box .detail h3 {
+            margin: 0 0 15px;
+            font-size: 26px;
+        }
+
+    .hotel-box .price {
+        position: absolute;
+        right: 0;
+        top: -40px;
+        padding: 10px 15px;
+        letter-spacing: 1px;
+        font-weight: 600;
+        color: #fff;
+        border-radius: 0;
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    .hotel-box .detail h4 sub {
+        font-weight: 400;
+    }
+
+    .hotel-box .detail h3 a {
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+        .hotel-box .detail h3 a:hover {
+            color: #5a5959;
+        }
+
+/** HOTEL BOX 2 LIST AREA START **/
+.hotel-box-2 {
+    background: #FFFFFF;
+    margin: 0 auto 30px;
+}
+
+    .hotel-box-2:hover {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.10), 0 3px 3px 0 rgba(0, 0, 0, 0.10);
+    }
+
+    .hotel-box-2 .detail {
+        padding: 20px 15px 20px;
+        position: relative;
+        display: inline-block;
+    }
+
+        .hotel-box-2 .detail p {
+            color: #5a5959;
+            line-height: 23px;
+            margin-bottom: 20px;
+        }
+
+        .hotel-box-2 .detail h3 {
+            margin: 0 0 15px;
+        }
+
+            .hotel-box-2 .detail h3 a {
+                font-size: 18px;
+                font-weight: 600;
+                text-decoration: none;
+                color: #555;
+            }
+
+    .hotel-box-2 .price {
+        letter-spacing: 1px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+.hotel-box-3 {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+    .hotel-box-3 .text {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 10px 20px;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+    }
+
+        .hotel-box-3 .text a {
+            color: #fff;
+        }
+
+    .hotel-box-3 .text {
+        font-size: 18px;
+    }
+
+    .hotel-box-3 .price {
+        float: right;
+    }
+
+        .hotel-box-3 .price span {
+            font-size: 18px;
+            margin-right: 5px;
+        }
+
+/** HOTEL BOX LIST AREA START **/
+
+.hotel-box-list {
+    background: #FFFFFF;
+    margin: 0 auto 30px;
+    float: left;
+}
+
+    .hotel-box-list:hover {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.10), 0 3px 3px 0 rgba(0, 0, 0, 0.10);
+    }
+
+    .hotel-box-list .col-pad {
+        padding: 0;
+    }
+
+.hotel-box-list .detail {
+    padding: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.hotel-box-list .heading {
+    margin-bottom: 10px;
+    width: 100%;
+    display: inline-block;
+}
+
+.hotel-box-list .detail h3 {
+    margin: 0;
+}
+
+    .hotel-box-list .detail h3 a {
+        text-decoration: none;
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+        .hotel-box-list .detail h3 a:hover {
+            color: #5a5959;
+        }
+
+.hotel-box-list .detail p {
+    color: #5a5959;
+    line-height: 23px;
+    margin-bottom: 15px;
+}
+
+.hotel-box-list .price {
+    font-size: 20px;
+}
+
+.hotel-box {
+    background: rgba(0, 187, 129, 0.75);
+    margin: 0 auto 30px;
+}
+
+    .hotel-box:hover {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.10), 0 3px 3px 0 rgba(0, 0, 0, 0.10);
+    }
+
+    .hotel-box .detail {
+        padding: 20px 20px 20px;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+        .hotel-box .detail p {
+            color: #fff;
+            line-height: 23px;
+            margin-bottom: 20px;
+        }
+
+        .hotel-box .detail h3 {
+            margin: 0 0 15px;
+            font-size: 26px;
+        }
+
+    .hotel-box .price {
+        position: absolute;
+        right: 0;
+        top: -40px;
+        padding: 10px 15px;
+        letter-spacing: 1px;
+        font-weight: 600;
+        color: #fff;
+        border-radius: 0;
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    .hotel-box .detail h4 sub {
+        font-weight: 400;
+    }
+
+    .hotel-box .detail h3 a {
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+        .hotel-box .detail h3 a:hover {
+            color: #5a5959;
+        }
+
+/** HOTEL BOX 2 LIST AREA START **/
+.hotel-box-2 {
+    background: rgba(0, 187, 129, 0.25);
+    margin: 0 auto 30px;
+}
+
+    .hotel-box-2:hover {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.10), 0 3px 3px 0 rgba(0, 0, 0, 0.10);
+    }
+
+    .hotel-box-2 .detail {
+        padding: 20px 15px 20px;
+        position: relative;
+        display: inline-block;
+    }
+
+        .hotel-box-2 .detail p {
+            color: #5a5959;
+            line-height: 23px;
+            margin-bottom: 20px;
+        }
+
+        .hotel-box-2 .detail h3 {
+            margin: 0 0 15px;
+        }
+
+            .hotel-box-2 .detail h3 a {
+                font-size: 18px;
+                font-weight: 600;
+                text-decoration: none;
+                color: #555;
+            }
+
+    .hotel-box-2 .price {
+        letter-spacing: 1px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+.hotel-box-3 {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+    .hotel-box-3 .text {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 10px 20px;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+    }
+
+        .hotel-box-3 .text a {
+            color: #fff;
+        }
+
+    .hotel-box-3 .text {
+        font-size: 18px;
+    }
+
+    .hotel-box-3 .price {
+        float: right;
+    }
+
+        .hotel-box-3 .price span {
+            font-size: 18px;
+            margin-right: 5px;
+        }
+
+/** HOTEL BOX LIST AREA START **/
+
+.hotel-box-list {
+    background: rgba(0, 187, 129, 0.25);
+    margin: 0 auto 30px;
+    float: left;
+}
+
+    .hotel-box-list:hover {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.10), 0 3px 3px 0 rgba(0, 0, 0, 0.10);
+    }
+
+    .hotel-box-list .col-pad {
+        padding: 0;
+    }
+
+.rating {
+    margin: 0 0 10px;
+    padding: 0;
+}
+
+    .rating li {
+        list-style: none;
+        display: inline-block;
+        font-size: 14px;
+    }
+
+        .rating li i {
+            color: orange;
+        }
+
+.hotel-box-list .detail {
+    padding: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.hotel-box-list .heading {
+    margin-bottom: 10px;
+    width: 100%;
+    display: inline-block;
+}
+
+.hotel-box-list .detail h3 {
+    margin: 0;
+}
+
+    .hotel-box-list .detail h3 a {
+        text-decoration: none;
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+        .hotel-box-list .detail h3 a:hover {
+            color: #5a5959;
+        }
+
+.hotel-box-list .detail p {
+    color: #5a5959;
+    line-height: 23px;
+    margin-bottom: 15px;
+}
+
+.hotel-box-list .price {
+    font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .hotel-box-list .detail {
+        padding: 20px;
+    }
+
+    .hotel-box-list .btn {
+        margin-top: 20px;
+    }
+
+    .hotel-box-list .detail h3 a {
+        font-size: 21px;
+    }
+
+    .hotel-box-list .price {
+        font-size: 17px;
+    }
 }

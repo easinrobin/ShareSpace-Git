@@ -56,13 +56,19 @@ namespace AdminPanel
             //new
 
             bundles.Add(new ScriptBundle("~/bundles/curvedline").Include(
-                        "~/Scripts/ThirdPartyJs/curved-line.js"));
+                        "~/Scripts/ThirdPartyJs/curvedLines.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/autosize").Include(
                 "~/Scripts/ThirdPartyJs/autosize.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/dropzone").Include(
                 "~/Scripts/ThirdPartyJs/dropzone.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/momentJs").Include(
+                "~/Scripts/ThirdPartyJs/moment.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/flatpickr").Include(
+                "~/Scripts/ThirdPartyJs/flatpickr.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/fullcalendar").Include(
                 "~/Scripts/ThirdPartyJs/fullcalendar.min.js"));
@@ -221,7 +227,7 @@ namespace AdminPanel
                 "~/Content/rich-text/code_view.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/rich-text-4").Include(
-                "~/Content/rich-text/color.css"));
+                "~/Content/rich-text/colors.css"));
 
             bundles.Add(new StyleBundle("~/Content/rich-text-5").Include(
                 "~/Content/rich-text/emoticons.min.css"));
@@ -272,6 +278,12 @@ namespace AdminPanel
 
             bundles.Add(new StyleBundle("~/Content/sweetAlert2").Include(
                         "~/Content/ThirdPartyCss/sweetalert2.min.css"));
+
+            bundles.Add(new StyleBundle("~/fonts/flatIcon").Include(
+                "~/fonts/flaticon/font/flaticon.css"));
+
+            bundles.Add(new StyleBundle("~/Content/flatpickr").Include(
+                "~/Content/ThirdPartyCss/flatpickr.min.css"));
 
             #endregion
         }

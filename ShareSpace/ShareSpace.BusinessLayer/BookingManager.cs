@@ -8,10 +8,17 @@ namespace ShareSpace.BusinessLayer
     public class BookingManager
     {
         #region Get
-        public static List<Booking> GetAllBookings(int i)
+        public static List<Booking> GetAllBookings()
         {
             SqlBookingProvider sqlBookingProvider = new SqlBookingProvider();
             var allBookings = sqlBookingProvider.GetAllBookings();
+            return allBookings;
+        }
+
+        public static List<AdminBookingList> GetAdminBookingList()
+        {
+            SqlBookingProvider sqlBookingProvider = new SqlBookingProvider();
+            var allBookings = sqlBookingProvider.GetAdminBookingList();
             return allBookings;
         }
 

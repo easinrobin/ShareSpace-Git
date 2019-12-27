@@ -534,6 +534,33 @@ namespace ShareSpace.DataLayerSql.Property
             return id;
         }
 
+        public bool DeletePropertyServiceById(long propertyServiceId)
+        {
+            bool isDelete = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Delete_PropertyService_byId, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@PropertyServiceId", propertyServiceId));
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    isDelete = false;
+                    throw new Exception("Exception Updating Data." + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return isDelete;
+        }
+
         #endregion
         public List<PropertySearchResultNew> GetPropertiesBySearch(string fromDate, string toDate, string fromHour, string toHour)
         {
@@ -592,6 +619,31 @@ namespace ShareSpace.DataLayerSql.Property
             }
         }
 
+        public List<PropertyServiceViewModel> GetServicesByPropertyId(long propertyId)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Get_Services_By_PropertyId, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@PropertyId", propertyId));
 
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    List<PropertyServiceViewModel> serviceList = new List<PropertyServiceViewModel>();
+                    serviceList = UtilityManager.DataReaderMapToList<PropertyServiceViewModel>(reader);
+                    return serviceList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
     }
 }

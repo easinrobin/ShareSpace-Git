@@ -2,96 +2,95 @@
 
 <html>
 <head>
-	<meta name="viewport" content="width=device-width" />
-	<title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
 
-	@Styles.Render("~/Content/css")
-	@Styles.Render("~/Content/animateCss")
-	@Styles.Render("~/Content/bootstrapSubmenu")
-	@Styles.Render("~/Content/bootstrapSelect")
-	@Styles.Render("~/fonts/fontAwesome")
-	@Styles.Render("~/fonts/flatIcon")
-	@Styles.Render("~/fonts/linearIcon")
-	@Styles.Render("~/Content/jQueryCustomScroll")
-	@Styles.Render("~/Content/bootstrapDate")
-	@*@Styles.Render("~/Content/customCss")
-	@Styles.Render("~/Content/defaultCss")*@
-	@Styles.Render("~/Content/clientDashboardCss")
-	@Styles.Render("~/Content/ieBug")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/animateCss")
+    @Styles.Render("~/Content/bootstrapSubmenu")
+    @Styles.Render("~/Content/bootstrapSelect")
+    @Styles.Render("~/fonts/fontAwesome")
+    @Styles.Render("~/fonts/flatIcon")
+    @Styles.Render("~/fonts/linearIcon")
+    @Styles.Render("~/Content/jQueryCustomScroll")
+    @Styles.Render("~/Content/bootstrapDate")
+    @Styles.Render("~/Content/rateYo")
+    @*@Styles.Render("~/Content/customCss")
+        @Styles.Render("~/Content/defaultCss")*@
+    @Styles.Render("~/Content/clientDashboardCss")
+    @Styles.Render("~/Content/ieBug")
 
-	@Scripts.Render("~/bundles/modernizr")
-	@Scripts.Render("~/bundles/ie")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/ie")
 </head>
 <body data-sa-theme="3">
-	<div class="page_loader"></div>
-	<header class="header">
-		<div class="navigation-trigger hidden-xl-up" data-sa-action="aside-open" data-sa-target=".sidebar">
-			<i class="fa fa-bars"></i>
-		</div>
+    <div class="page_loader"></div>
+    <header class="header">
+        <div class="navigation-trigger hidden-xl-up" data-sa-action="aside-open" data-sa-target=".sidebar">
+            <i class="fa fa-bars"></i>
+        </div>
 
-		<div class="logo hidden-sm-down">
-			<h1><a href="../Dashboard/Index">Share Space</a></h1>
-		</div>
-	</header>
+        <div class="logo hidden-sm-down">
+            <h1><a href="../Dashboard/Index">Share Space</a></h1>
+        </div>
+    </header>
 
-	<aside class="sidebar">
-		<div class="scrollbar-inner">
+    <aside class="sidebar">
+        <div class="scrollbar-inner">
 
-			<div class="user">
-				<div class="user__info" data-toggle="dropdown">
-					<img class="user__img" src="/img/avatar/avatar1.jpg" alt="">
-					<div>
+            <div class="user">
+                <div class="user__info" data-toggle="dropdown">
+                    <img class="user__img" src="/img/avatar/avatar1.jpg" alt="">
+                    <div>
                         <div class="user__name">@Session["FirstName"].ToString() @Session["LastName"].ToString()</div>
                         <div class="user__email">@Session["UserName"].ToString()</div>
-					</div>
-				</div>
+                    </div>
+                </div>
 
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="../Dashboard/Index"><i class="fa fa-eye"></i> View Profile</a>
-                    <a>@Html.ActionLink("View Profile", "ViewProfile", "Dashboard", null, new { @class = "dropdown-item" })</a>
-                    <a>@Html.ActionLink("Logout", "Logout", "Auth", null, new { @class = "dropdown-item" })</a>
+                    @Html.ActionLink(" View Profile", "ViewProfile", "Dashboard", null, new { @class = "dropdown-item fa fa-eye" })
+                    @Html.ActionLink(" Edit Profile", "EditProfile", "Dashboard", null, new { @class = "dropdown-item fa fa-edit" })
+                    @Html.ActionLink(" Logout", "Logout", "Auth", null, new { @class = "dropdown-item fa fa-sign-out" })
                 </div>
-			</div>
+            </div>
 
-			<ul class="navigation">
-				<li><a href="/Home/Index"><i class="fa fa-home"></i>Home</a></li>
+            <ul class="navigation">
+                <li><a href="/Home/Index"><i class="fa fa-home"></i>Home</a></li>
 
-				<li><a href="../Dashboard/History"><i class="fa fa-clock-o"></i>History</a></li>
-			</ul>
-		</div>
-	</aside>
-	<main class="content" style="background: #00bb81; ">
-		@RenderBody()
+                <li><a href="../Dashboard/History"><i class="fa fa-clock-o"></i>History</a></li>
+            </ul>
+        </div>
+    </aside>
+    <main class="content" style="background: #00bb81; ">
+        @RenderBody()
 
-		<footer class="footer hidden-xs-down">
-			<p>© Super Admin Responsive. All rights reserved.</p>
+        <footer class="footer hidden-xs-down">
+            <p>&copy; @DateTime.Now.Year <a href="http://byteheart.com/" target="_blank">ByteHeart</a>. Trademarks and brands are the property of their respective owners.</p>
 
-			<ul class="nav footer__nav">
-				<a class="nav-link" href="#">Homepage</a>
+            <ul class="nav footer__nav">
+                <a class="nav-link" href="/Home/Index">Homepage</a>
 
-				<a class="nav-link" href="#">Company</a>
+                <a class="nav-link" href="/Home/SearchResults">Offices</a>
 
-				<a class="nav-link" href="#">Support</a>
+                <a class="nav-link" href="/Home/Contact">Contacts</a>
+            </ul>
+        </footer>
+    </main>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/bootstrapSubmenu")
+    @Scripts.Render("~/bundles/ytPlayer")
+    @Scripts.Render("~/bundles/wowJs")
+    @Scripts.Render("~/bundles/bootstrapSelect")
+    @Scripts.Render("~/bundles/easing")
+    @Scripts.Render("~/bundles/scrollUp")
+    @Scripts.Render("~/bundles/customScrollbar")
+    @Scripts.Render("~/bundles/customScrollbarContact")
 
-				<a class="nav-link" href="#">News</a>
-
-				<a class="nav-link" href="#">Contacts</a>
-			</ul>
-		</footer>
-	</main>
-	@Scripts.Render("~/bundles/jquery")
-	@Scripts.Render("~/bundles/bootstrap")
-	@Scripts.Render("~/bundles/bootstrapSubmenu")
-	@Scripts.Render("~/bundles/ytPlayer")
-	@Scripts.Render("~/bundles/wowJs")
-	@Scripts.Render("~/bundles/bootstrapSelect")
-	@Scripts.Render("~/bundles/easing")
-	@Scripts.Render("~/bundles/scrollUp")
-	@Scripts.Render("~/bundles/customScrollbar")
-	@Scripts.Render("~/bundles/customScrollbarContact")
-	@Scripts.Render("~/bundles/filterizr")
-	@Scripts.Render("~/bundles/momentJs")
-	@Scripts.Render("~/bundles/bootstrapDate")
-	@Scripts.Render("~/bundles/clientDashboardJs")
+    @Scripts.Render("~/bundles/filterizr")
+    @Scripts.Render("~/bundles/momentJs")
+    @Scripts.Render("~/bundles/bootstrapDate")
+    @Scripts.Render("~/bundles/clientDashboardJs")
+    @Scripts.Render("~/bundles/rateYo")
 </body>
 </html>

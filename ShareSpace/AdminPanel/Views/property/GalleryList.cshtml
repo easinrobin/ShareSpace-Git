@@ -18,14 +18,14 @@
     <h1>Gallery</h1>
 
     <div class="actions">
-        <a href="/Property/CreateGallery/@propertyId" class="actions__item zmdi zmdi-plus zmdi-hc-fw" title="Create"></a>
-        <a href="/Property/GalleryList/@propertyId" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
+        <a href="/Property/CreateGallery?propertyId=@propertyId" class="actions__item zmdi zmdi-plus zmdi-hc-fw" title="Create"></a>
+        <a href="/Property/GalleryList?propertyId=@propertyId" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
     </div>
 </header>
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">
-            <a href="/Property/CreateGallery/?propertyId=@propertyId" class="btn btn-light btn--icon-text" title="Create"><i class="zmdi  zmdi-plus-circle-o zmdi-hc-fw"></i> Add New</a>
+            <a href="/Property/CreateGallery?propertyId=@propertyId" class="btn btn-light btn--icon-text" title="Create"><i class="zmdi  zmdi-plus-circle-o zmdi-hc-fw"></i> Add New</a>
         </h4>
         <div class="table-responsive">
             <table id="data-table" class="table">

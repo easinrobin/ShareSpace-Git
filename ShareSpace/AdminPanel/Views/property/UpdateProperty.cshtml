@@ -1,6 +1,6 @@
 ﻿@model ShareSpace.Models.Admin.AdminVWModel
 @{
-    ViewBag.Title = "UpdateProperty";
+    ViewBag.Title = "Update Property";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -105,8 +105,9 @@
                         <div class="card-body">
                             <span class="control-label col-md-2">Upload Images:</span>
                             <div class="col-md-10">
-                                <input type="file" name="files" id="files" />
-                               @* @Html.TextBoxFor(model => model.Property.FeatureImage, new { type = "file", name = "files", id = "files" })*@
+                                @*<input type="file" name="files" id="files" />*@
+                                @Html.TextBoxFor(model => model.Files, new { type = "file", id = "files" })
+                                @Html.ValidationMessageFor(model => model.Files, "", new { @class = "validation-text" })
                             </div>
                         </div>
                     </div>

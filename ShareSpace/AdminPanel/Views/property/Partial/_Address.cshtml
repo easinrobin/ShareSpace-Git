@@ -14,7 +14,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.PropertyAddress.FlatNo, new { @class = "card-body__title" })
 
-        @Html.EditorFor(model => model.PropertyAddress.FlatNo, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "City" } })
+        @Html.EditorFor(model => model.PropertyAddress.FlatNo, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Flat No." } })
         @Html.ValidationMessageFor(model => model.PropertyAddress.FlatNo, "", new { @class = "validation-text" })
 
     </div>
@@ -22,7 +22,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.PropertyAddress.RoadNo, new { @class = "card-body__title" })
 
-        @Html.EditorFor(model => model.PropertyAddress.RoadNo, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "City" } })
+        @Html.EditorFor(model => model.PropertyAddress.RoadNo, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Road No." } })
         @Html.ValidationMessageFor(model => model.PropertyAddress.RoadNo, "", new { @class = "validation-text" })
 
     </div>
@@ -38,7 +38,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.PropertyAddress.City, new { @class = "card-body__title" })
 
-        @Html.EditorFor(model => model.PropertyAddress.City, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Area" } })
+        @Html.EditorFor(model => model.PropertyAddress.City, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "City" } })
         @Html.ValidationMessageFor(model => model.PropertyAddress.City, "", new { @class = "validation-text" })
 
     </div>
@@ -46,7 +46,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.PropertyAddress.ZipCode, new { @class = "card-body__title" })
 
-        @Html.EditorFor(model => model.PropertyAddress.ZipCode, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "ZipCode" } })
+        @Html.EditorFor(model => model.PropertyAddress.ZipCode, new { htmlAttributes = new { @class = "form-control", PlaceHolder = "Zip Code" } })
         @Html.ValidationMessageFor(model => model.PropertyAddress.ZipCode, "", new { @class = "validation-text" })
 
     </div>

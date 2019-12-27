@@ -28,6 +28,7 @@ namespace ShareSpace.Models.Property
         public int MaximumPerson { get; set; }
 
         [Display(Name = "Description")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Description required")]
         public string Description { get; set; }
 
         [Display(Name = "Short Description")]

@@ -69,7 +69,33 @@ namespace ShareSpace.DataLayerSql.User
             }
         }
 
-        
+        public Models.User.User GetUserByUserNameNPassword(string username, string password)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GET_USER_BY_USERNAME_PASSWORD, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@Username", username));
+                command.Parameters.Add(new SqlParameter("@Password", password));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    Models.User.User user = new Models.User.User();
+                    user = UtilityManager.DataReaderMap<Models.User.User>(reader);
+                    return user;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
 
         #endregion
 

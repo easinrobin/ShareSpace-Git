@@ -20,5 +20,7 @@ namespace ShareSpace.Models.Client
         public List<PropertyServiceViewModel> PropertyServiceOnClient { get; set; }
         public List<Gallery.Gallery> GalleryList { get; set; }
         public BookingEmail BookingEmail { get; set; }
+        public Client Client { get; set; }
+        public NewsLetter.NewsLetter NewsLetter { get; set; }
     }
 }

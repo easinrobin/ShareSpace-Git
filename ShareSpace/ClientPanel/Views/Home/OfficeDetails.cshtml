@@ -6,6 +6,8 @@
     var maploc = Model.PropertyView.HouseNo + "," + Model.PropertyView.FlatNo + "," + Model.PropertyView.RoadNo + "," + Model.PropertyView.Area + "," + Model.PropertyView.City + "," + Model.PropertyView.ZipCode;
 
     var mapurl = "https://maps.google.com/maps?q=" + @maploc + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
+
+    var propertyHiddenAddress = Model.PropertyView.HouseNo + ", " + Model.PropertyView.FlatNo + ", " + Model.PropertyView.RoadNo + ", ";
 }
 <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
@@ -28,7 +30,7 @@
                             <div class="carousel-inner">
                                 @foreach (var item in Model.GalleryList.Take((7)))
                                 {
-                                    var imagepath =Request.Url.Scheme+"://" + Request.Url.Authority + item.ImageUrl;
+                                    var imagepath = "http://adminss.thebyteheart.com/" + item.ImageUrl;
                                     if (item.GalleryId == Model.GalleryList.First().GalleryId)
                                     {
                                         <div class="item active">
@@ -41,27 +43,8 @@
                                             <img src="@imagepath" class="thumb-preview" alt="Chevrolet Impala">
                                         </div>
                                     }
-                                   
-                                }
 
-                                @*<div class="item">
-                                        <img src="@Model.Image1" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
-                                    <div class="item">
-                                        <img src="@Model.Image2" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
-                                    <div class="item">
-                                        <img src="@Model.Image3" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
-                                    <div class="item">
-                                        <img src="@Model.Image4" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
-                                    <div class="item">
-                                        <img src="@Model.Image5" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>
-                                    <div class="item active">
-                                        <img src="@Model.Image6" class="thumb-preview" alt="Chevrolet Impala">
-                                    </div>*@
+                                }
                             </div>
                             <!-- Controls -->
                             <a class="left carousel-control" href="#carousel-custom" role="button" data-slide="prev">
@@ -79,37 +62,14 @@
                         </div>
                         <!-- Indicators -->
                         <ol class="carousel-indicators thumbs visible-lg visible-md">
-                            @foreach (var item in Model.GalleryList.Take((6)))
+                            @foreach (var item in Model.GalleryList.Take((7)))
                             {
-                                var imagepath =Request.Url.Scheme+"://" + Request.Url.Authority + item.ImageUrl;
+                                //var imagepath =Request.Url.Scheme+"://" + Request.Url.Authority + item.ImageUrl;
+                                var imagepath = "http://adminss.thebyteheart.com/" + item.ImageUrl;
                                 <li data-target="#carousel-custom" data-slide-to="0" class="">
                                     <img src="@imagepath" alt="Chevrolet Impala">
                                 </li>
                             }
-                            @*<li data-target="#carousel-custom" data-slide-to="1" class="">
-                                    <img src="@Model.Image1"
-                                         alt="Chevrolet Impala">
-                                </li>
-                                <li data-target="#carousel-custom" data-slide-to="2" class="">
-                                    <img src="@Model.Image2"
-                                         alt="Chevrolet Impala">
-                                </li>
-                                <li data-target="#carousel-custom" data-slide-to="3" class="">
-                                    <img src="@Model.Image3"
-                                         alt="Chevrolet Impala">
-                                </li>
-                                <li data-target="#carousel-custom" data-slide-to="4" class="">
-                                    <img src="@Model.Image4"
-                                         alt="Chevrolet Impala">
-                                </li>
-                                <li data-target="#carousel-custom" data-slide-to="5" class="">
-                                    <img src="@Model.Image5"
-                                         alt="Chevrolet Impala">
-                                </li>
-                                <li data-target="#carousel-custom" data-slide-to="6" class="">
-                                    <img src="@Model.Image6"
-                                         alt="Chevrolet Impala">
-                                </li>*@
                         </ol>
                     </div>
                 </div>
@@ -119,7 +79,11 @@
                     <div class="pull-left">
                         <h3>@Model.PropertyView.PropertyName</h3>
                         <p>
-                            <i class="fa fa-map-marker"></i>@Model.PropertyView.HouseNo, @Model.PropertyView.FlatNo, @Model.PropertyView.RoadNo, @Model.PropertyView.Area, @Model.PropertyView.City - @Model.PropertyView.ZipCode
+                            <i class="fa fa-map-marker"></i>@if (Session["UserName"] != null)
+                            {
+                                @propertyHiddenAddress
+                            }
+                            @Model.PropertyView.Area, @Model.PropertyView.City - @Model.PropertyView.ZipCode
                         </p>
                     </div>
                     <div class="pull-right">
@@ -295,7 +259,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </li>
                             }
 
@@ -303,42 +266,46 @@
                     </div>
                     <!-- Comments section end -->
                     <!-- Contact form start -->
-                    <div class="contact-form" style="display: none">
-                        <form id="contact_form" action="" method="GET" enctype="multipart/form-data">
-                            <div class="main-title-2">
-                                <h1>Rate this Office</h1>
-                                <div id="client-rating" data-rateyo-star-width="20px" data-rateyo-rating="@Model.PropertyView.Rating">
-                                </div>
-                            </div>
-                            <div class="main-title-2">
-                                <h1> <span>Leave</span> a Comment</h1>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group fullname">
-                                        <input type="text" name="full-name" class="input-text" placeholder="Full Name">
+                    @if (Session["UserName"] != null)
+                    {
+                        <div class="contact-form">
+                            <form id="contact_form" action="" method="GET" enctype="multipart/form-data">
+                                <div class="main-title-2">
+                                    <h1>Rate this Office</h1>
+                                    <div id="client-rating" data-rateyo-star-width="20px" data-rateyo-rating="@Model.PropertyView.Rating">
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group enter-email">
-                                        <input type="email" name="email" class="input-text" placeholder="Enter email">
-                                    </div>
+                                <div class="main-title-2">
+                                    <h1> <span>Leave</span> a Comment</h1>
                                 </div>
 
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="form-group message">
-                                        <textarea class="input-text" name="message" placeholder="Write message"></textarea>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group fullname">
+                                            <input type="text" name="full-name" class="input-text" placeholder="Full Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group enter-email">
+                                            <input type="email" name="email" class="input-text" placeholder="Enter email">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group message">
+                                            <textarea class="input-text" name="message" placeholder="Write message"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                        <div class="form-group send-btn">
+                                            <button type="submit" class="button-md button-theme">Post Comment</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group send-btn">
-                                        <button type="submit" class="button-md button-theme">Post Comment</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                            </form>
+                        </div>
+                    }
+
                     <!-- Contact form end -->
 
                 </div>
@@ -465,11 +432,8 @@
                                 <h1>Location</h1>
                             </div>
 
-                            <iframe class="contact-map" style="height: 662px; background-color: crimson" id="gmap_canvas"
+                            <iframe class="contact-map" style="height: 662px; background-color: #fff" id="gmap_canvas"
                                     src="@mapurl" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                            @*<div id="map" class="contact-map" style="height: 662px; background-color: crimson">
-
-                                </div>*@
 
                         </div>
                     </div>

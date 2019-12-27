@@ -120,6 +120,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\VendorPanel\Controllers\VendorHomeController.cs" />
+    <Compile Include="Areas\VendorPanel\VendorPanelAreaRegistration.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
@@ -218,6 +220,7 @@
     <Content Include="Content\ThirdPartyCss\bootstrap.min.css" />
     <Content Include="Content\CustomCss\demo.css" />
     <Content Include="Content\ThirdPartyCss\dropzone.css" />
+    <Content Include="Content\ThirdPartyCss\flatpickr.min.css" />
     <Content Include="Content\ThirdPartyCss\font-awesome.css" />
     <Content Include="Content\ThirdPartyCss\font-awesome.min.css" />
     <Content Include="Content\ThirdPartyCss\fullcalendar.min.css" />
@@ -242,6 +245,9 @@
     <Content Include="Content\ThirdPartyCss\select2.min.css" />
     <Content Include="Content\ThirdPartyCss\sweetalert2.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\flaticon\font\flaticon.css" />
+    <Content Include="fonts\flaticon\font\flaticon.html" />
+    <Content Include="fonts\flaticon\font\Flaticon.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -423,6 +429,26 @@
     <Content Include="Scripts\ThirdPartyJs\bootstrap-select.min.js.map" />
     <Content Include="Scripts\ThirdPartyJs\bootstrap-select.js.map" />
     <Content Include="Content\ThirdPartyCss\bootstrap-select.css.map" />
+    <Content Include="fonts\flaticon\font\_flaticon.scss" />
+    <Content Include="fonts\flaticon\font\Flaticon.eot" />
+    <Content Include="fonts\flaticon\font\Flaticon.ttf" />
+    <Content Include="fonts\flaticon\font\Flaticon.woff" />
+    <Content Include="fonts\flaticon\font\Flaticond41d.eot" />
+    <Content Include="fonts\flaticon\font\font.rar" />
+    <Content Include="Areas\VendorPanel\Views\web.config" />
+    <Content Include="Areas\VendorPanel\Views\Shared\_VendorHomeLayout.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\Partial\_Address.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\Partial\_Gallery.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\Partial\_Property.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\Partial\_ServiceList.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\Create.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\CreateGallery.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\CreateServices.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\GalleryList.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\Index.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\Properties.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\ServiceList.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\UpdateProperty.cshtml" />
     <None Include="Scripts\ThirdPartyJs\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ThirdPartyJs\buttons.html5.min.js" />
     <Content Include="Scripts\ThirdPartyJs\buttons.print.min.js" />
@@ -432,6 +458,7 @@
     <Content Include="Scripts\ThirdPartyJs\curvedLines.js" />
     <Content Include="Scripts\ThirdPartyJs\dataTables.buttons.min.js" />
     <Content Include="Scripts\ThirdPartyJs\dropzone.min.js" />
+    <Content Include="Scripts\ThirdPartyJs\flatpickr.min.js" />
     <Content Include="Scripts\ThirdPartyJs\fullcalendar.min.js" />
     <Content Include="Scripts\ThirdPartyJs\jquery-3.4.1.js" />
     <Content Include="Scripts\ThirdPartyJs\jquery-3.4.1.min.js" />
@@ -455,6 +482,7 @@
     <Content Include="Scripts\ThirdPartyJs\jszip.min.js" />
     <Content Include="Scripts\ThirdPartyJs\lightgallery-all.min.js" />
     <Content Include="Scripts\ThirdPartyJs\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ThirdPartyJs\moment.min.js" />
     <Content Include="Scripts\ThirdPartyJs\popper.min.js" />
     <Content Include="Scripts\rich-textJs\code_beautifier.min.js" />
     <Content Include="Scripts\rich-textJs\code_view.min.js" />
@@ -485,12 +513,12 @@
     <Content Include="Scripts\ThirdPartyJs\salvattore.min.js" />
     <Content Include="Scripts\ThirdPartyJs\select2.full.min.js" />
     <Content Include="Scripts\ThirdPartyJs\sweetalert2.min.js" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <Content Include="Web_7.config" />
+    <Content Include="Web_7.Debug.config">
+      <DependentUpon>Web_7.config</DependentUpon>
     </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <Content Include="Web_7.Release.config">
+      <DependentUpon>Web_7.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -531,9 +559,19 @@
     <Content Include="Views\NewsLetter\InsertNewsLetter.cshtml" />
     <Content Include="Views\Testimonial\AdminTestimonials.cshtml" />
     <Content Include="Views\Testimonial\InsertTestimonial.cshtml" />
+    <Content Include="Views\Property\ServiceList.cshtml" />
+    <Content Include="Views\Property\CreateServices.cshtml" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\VendorPanel\Models\" />
     <Folder Include="img\Offices\" />
     <Folder Include="Models\" />
   </ItemGroup>

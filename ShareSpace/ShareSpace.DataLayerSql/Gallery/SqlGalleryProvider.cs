@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ShareSpace.DataLayerSql.Common;
+using ShareSpace.Models.Service;
 using ShareSpace.Utility;
 
 namespace ShareSpace.DataLayerSql.Gallery
@@ -196,5 +197,6 @@ namespace ShareSpace.DataLayerSql.Gallery
         }
 
         #endregion
+
     }
 }

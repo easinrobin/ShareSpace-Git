@@ -15,6 +15,8 @@
     @Styles.Render("~/Content/fullcalendar")
     @Styles.Render("~/Content/select")
     @Styles.Render("~/Content/sweetAlert2")
+    @Styles.Render("~/fonts/flatIcon")
+    @Styles.Render("~/Content/flatpickr")
     @Styles.Render("~/Content/rich-text-1")
     @Styles.Render("~/Content/rich-text-2")
     @Styles.Render("~/Content/rich-text-3")
@@ -36,13 +38,13 @@
 </head>
 <body data-sa-theme="1">
     <main class="main">
-        @*<div class="page-loader">
-                <div class="page-loader__spinner">
-                    <svg viewBox="25 25 50 50">
-                        <circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-                    </svg>
-                </div>
-            </div>*@
+        <div class="page-loader">
+            <div class="page-loader__spinner">
+                <svg viewBox="25 25 50 50">
+                    <circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                </svg>
+            </div>
+        </div>
 
         <header class="header">
             <div class="navigation-trigger hidden-xl-up" data-sa-action="aside-open" data-sa-target=".sidebar">
@@ -50,7 +52,7 @@
             </div>
 
             <div class="logo hidden-sm-down">
-                <h1><a href="index.html">Share Space</a></h1>
+                <h1><a href="~/Home/Index">Share Space</a></h1>
             </div>
 
             <ul class="top-nav">
@@ -73,8 +75,15 @@
                     <div class="user__info" data-toggle="dropdown">
                         <img class="user__img" src="/img/profile-pics/8.jpg" alt="">
                         <div>
-                            <div class="user__name">Mr.x</div>
-                            <div class="user__email">mr.x@gmail.com</div>
+                            @if (Session["UserName"] != null && Session["Name"] != null)
+                            {
+                                <div class="user__name">@Session["Name"].ToString()</div>
+                                <div class="user__email">@Session["UserName"].ToString()</div>
+                            }
+                            else
+                            {
+                                Response.Redirect("~/Auth/Login");
+                            }
                         </div>
                     </div>
 
@@ -86,17 +95,23 @@
                 </div>
 
                 <ul class="navigation">
-                    <li><a href="/Home/Index"><i class="zmdi zmdi-dashbord"></i>Dashboard</a></li>
+                    <li><a href="/Home/Index"><i class="zmdi zmdi-view-dashboard"></i>Dashboard</a></li>
 
-                    <li><a href="/Vendor/AdminVendors"><i class="zmdi zmdi-vendors"></i>Vendors</a></li>
+                    <li><a href="/Vendor/AdminVendors"><i class="zmdi zmdi-accounts-list"></i>Vendors</a></li>
 
-                    <li><a href="/Client/AdminClients"><i class="zmdi zmdi-clients"></i>Clients</a></li>
+                    <li><a href="/Client/AdminClients"><i class="zmdi zmdi-accounts"></i>Clients</a></li>
 
-                    <li><a href="/Property/Index"><i class="zmdi zmdi-property"></i>Properties</a></li>
+                    <li><a href="/Property/Index"><i class="zmdi zmdi-city"></i>Properties</a></li>
 
-                    <li><a href="/Booking/AdminBookings"><i class="zmdi zmdi-booking"></i>Booking</a></li>
+                    <li><a href="/Booking/AdminBookings"><i class="zmdi zmdi-book"></i>Booking</a></li>
 
-                    <li><a href="/Transaction/AdminTransactions"><i class="zmdi zmdi-transaction"></i>Transactions</a></li>
+                    @*<li><a href="/Transaction/AdminTransactions"><i class="zmdi zmdi-money-box"></i>Transactions</a></li>*@
+
+                    <li><a href="/Testimonial/AdminTestimonials"><i class="zmdi zmdi-comments"></i>Testimonial</a></li>
+
+                    <li><a href="/NewsLetter/AdminNewsLetters"><i class="zmdi zmdi-email"></i>Newsletter</a></li>
+
+                    <li><a href="/User/AdminUsers"><i class="zmdi zmdi-account"></i>Users</a></li>
                 </ul>
             </div>
         </aside>
@@ -105,19 +120,7 @@
 
             @RenderBody()
             <footer class="footer hidden-xs-down">
-                <p>© Super Admin Responsive. All rights reserved.</p>
-
-                <ul class="nav footer__nav">
-                    <a class="nav-link" href="#">Homepage</a>
-
-                    <a class="nav-link" href="#">Company</a>
-
-                    <a class="nav-link" href="#">Support</a>
-
-                    <a class="nav-link" href="#">News</a>
-
-                    <a class="nav-link" href="#">Contacts</a>
-                </ul>
+                <p>&copy; @DateTime.Now.Year <a href="http://byteheart.com/" target="_blank">ByteHeart</a>. Trademarks and brands are the property of their respective owners.</p>
             </footer>
         </section>
     </main>
@@ -136,9 +139,11 @@
     @Scripts.Render("~/bundles/jszipmin")
     @Scripts.Render("~/bundles/buttonshtml5min")
     @Scripts.Render("~/bundles/appmin")
-    @Scripts.Render("~/bundles/curvedline")
+    @*@Scripts.Render("~/bundles/curvedline")*@
     @Scripts.Render("~/bundles/autosize")
     @Scripts.Render("~/bundles/dropzone")
+    @Scripts.Render("~/bundles/momentJs")
+    @Scripts.Render("~/bundles/flatpickr")
     @*@Scripts.Render("~/bundles/fullcalendar")*@
     @Scripts.Render("~/bundles/easypiechart")
     @Scripts.Render("~/bundles/flot")
@@ -181,37 +186,37 @@
     @Scripts.Render("~/bundles/rich-textJs-29")
     @Scripts.Render("~/bundles/rich-textJs-30")
 
-<script>
-    $(document).ready(function () {
-        $('a[data-confirm]').click(function (ev) {
-            var href = $(this).attr('href');
+    <script>
+        $(document).ready(function () {
+            $('a[data-confirm]').click(function (ev) {
+                var href = $(this).attr('href');
 
-            if (!$('#dataConfirmModal').length) {
-                $('body').append('<div id="dataConfirmModal" class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="dataConfirmLabel">Please Confirm</h3></div><div class="modal-body"></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button><a class="btn btn-primary" id="dataConfirmOK">OK</a></div></div>');
-            }
-            $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
-            $('#dataConfirmOK').attr('href', href);
-            $('#dataConfirmModal').modal({
-                show: true
+                if (!$('#dataConfirmModal').length) {
+                    $('body').append('<div id="dataConfirmModal" class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="dataConfirmLabel">Please Confirm</h3></div><div class="modal-body"></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button><a class="btn btn-primary" id="dataConfirmOK">OK</a></div></div>');
+                }
+                $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
+                $('#dataConfirmOK').attr('href', href);
+                $('#dataConfirmModal').modal({
+                    show: true
+                });
+                return false;
             });
-            return false;
         });
-    });
 
-    $('#confirm-delete').on('show.bs.modal', function (e) {
-        $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-    });
+        $('#confirm-delete').on('show.bs.modal', function (e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
 
 
-    (function () {
-        new FroalaEditor("#edit",
-            {
-                theme: 'dark'
-            })
-    })()
-</script>
+        (function () {
+            new FroalaEditor("#edit",
+                {
+                    theme: 'dark'
+                })
+        })()
+    </script>
 
-@RenderSection("scripts", required: false)
+    @RenderSection("scripts", false)
 
 </body>
 </html>

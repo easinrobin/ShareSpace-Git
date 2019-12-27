@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using ShareSpace.BusinessLayer;
 using ShareSpace.Models;
 using ShareSpace.Models.Booking;
+using ShareSpace.Models.Client;
+using ShareSpace.Models.Property;
 
 namespace AdminPanel.Controllers
 {
@@ -14,6 +16,8 @@ namespace AdminPanel.Controllers
         // GET: Booking
         public ActionResult InsertBooking()
         {
+            _loadProperties();
+            _loadClients();
             return View();
         }
 
@@ -21,6 +25,8 @@ namespace AdminPanel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult InsertBooking(Booking booking)
         {
+            //_loadProperties();
+            //_loadClients();
             BookingManager manager = new BookingManager();
             //if (ModelState.IsValid)
             //{
@@ -38,6 +44,8 @@ namespace AdminPanel.Controllers
 
         public ActionResult UpdateBooking(int bookingId)
         {
+            _loadProperties();
+            _loadClients();
             Booking booking = BookingManager.GetBookingById(bookingId);
             return View("~/Views/Booking/InsertBooking.cshtml", booking);
         }
@@ -45,7 +53,7 @@ namespace AdminPanel.Controllers
 
         public ActionResult AdminBookings()
         {
-            List<Booking> allBookings = BookingManager.GetAllBookings(1);
+            List<AdminBookingList> allBookings = BookingManager.GetAdminBookingList();
 
             
             return View("~/Views/Booking/AdminBookings.cshtml", allBookings);
@@ -63,6 +71,26 @@ namespace AdminPanel.Controllers
             ViewBag.Message = "Booking Confirmation";
 
             return View();
+        }
+
+        //public ActionResult Create()
+        //{
+        //    Booking booking = new Booking();
+        //    _loadProperties();
+        //    _loadClients();
+        //    return View(booking);
+        //}
+
+        private void _loadProperties()
+        {
+            List<Property> dataList = PropertyManager.GetAllProperties();
+            ViewBag.PropertyList = new SelectList(dataList, "PropertyId", "PropertyName");
+        }
+
+        private void _loadClients()
+        {
+            List<Client> dataList = ClientManager.GetAllClients();
+            ViewBag.ClientList = new SelectList(dataList, "ClientId", "FirstName");
         }
     }
 }

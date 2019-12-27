@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using ShareSpace.BusinessLayer;
 using ShareSpace.Models;
+using ShareSpace.Models.Property;
 using ShareSpace.Models.Transaction;
+using ShareSpace.Models.Vendor;
 
 namespace AdminPanel.Controllers
 {
@@ -14,6 +16,8 @@ namespace AdminPanel.Controllers
         // GET: Transaction
         public ActionResult InsertTransaction()
         {
+            _loadProperties();
+            _loadVendors();
             return View();
         }
 
@@ -32,19 +36,16 @@ namespace AdminPanel.Controllers
             {
                 TransactionManager.InsertTransaction(transaction);
             }
-
-            //return RedirectToAction("InsertVendor");
-            //}
             return RedirectToAction("AdminTransactions");
         }
 
         public ActionResult UpdateTransaction(int transactionId)
         {
+            _loadProperties();
+            _loadVendors();
             Transaction transaction = TransactionManager.GetTransactionById(transactionId);
             return View("~/Views/Transaction/InsertTransaction.cshtml", transaction);
         }
-
-
 
         public ActionResult AdminTransactions()
         {
@@ -52,12 +53,22 @@ namespace AdminPanel.Controllers
             return View("~/Views/Transaction/AdminTransactions.cshtml", allTransactions);
         }
 
-        [HttpPost]
         public ActionResult DeleteTransaction(int transactionId)
         {
+            TransactionManager.DeleteTransaction(transactionId);
+            return RedirectToAction("AdminTransactions");
+        }
 
-            TransactionManager deleteTransaction = new TransactionManager();
-            return RedirectToAction("AdminTransactions", deleteTransaction);
+        private void _loadProperties()
+        {
+            List<Property> dataList = PropertyManager.GetAllProperties();
+            ViewBag.PropertyList = new SelectList(dataList, "PropertyId", "PropertyName");
+        }
+
+        private void _loadVendors()
+        {
+            List<Vendor> dataList = VendorManager.GetAllVendors();
+            ViewBag.VendorList = new SelectList(dataList, "VendorId", "FirstName");
         }
     }
 }

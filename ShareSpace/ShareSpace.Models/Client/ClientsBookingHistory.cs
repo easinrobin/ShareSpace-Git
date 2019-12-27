@@ -19,16 +19,16 @@ namespace ShareSpace.Models.Client
         public int PropertyAddressId { get; set; }
 
         [Display(Name = "From Date")]
-        public DateTime? FromDate { get; set; }
+        public DateTime FromDate { get; set; }
 
         [Display(Name = "To Date")]
-        public DateTime? ToDate { get; set; }
+        public DateTime ToDate { get; set; }
 
         [Display(Name = "From Hour")]
-        public TimeSpan? FromHour { get; set; }
+        public string FromHour { get; set; }
 
         [Display(Name = "To Hour")]
-        public TimeSpan? ToHour { get; set; }
+        public string ToHour { get; set; }
 
         [Display(Name = "Property Name")]
         public string PropertyName { get; set; }
@@ -39,8 +39,14 @@ namespace ShareSpace.Models.Client
         [Display(Name = "Area")]
         public string Area { get; set; }
 
-        [Display(Name = "Address")]
-        public string Address { get; set; }
+        [Display(Name = "HouseNo")]
+        public string HouseNo { get; set; }
+
+        [Display(Name = "FlatNo")]
+        public string FlatNo { get; set; }
+
+        [Display(Name = "RoadNo")]
+        public string RoadNo { get; set; }
 
         [Display(Name = "City")]
         public string City { get; set; }

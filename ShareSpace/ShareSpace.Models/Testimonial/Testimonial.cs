@@ -14,11 +14,11 @@ namespace ShareSpace.Models.Testimonial
         [Required(AllowEmptyStrings = false, ErrorMessage = "Name required")]
         public string Name { get; set; }
 
-        [Display(Name = "ClientDetails")]
-        [Required(ErrorMessage = "ClientDetails required")]
+        [Display(Name = "Client Details")]
+        [Required(ErrorMessage = "Client Details required")]
         public string ClientDetails { get; set; }
 
-        [Display(Name = "ProfileImage")]
+        [Display(Name = "Profile Image")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Image required")]
         public string ProfileImage { get; set; }
 
@@ -26,7 +26,7 @@ namespace ShareSpace.Models.Testimonial
         //[Required(AllowEmptyStrings = false, ErrorMessage = "  required")]
         public string Message { get; set; }
 
-        [Display(Name = "IsActive")]
+        [Display(Name = "Is Active")]
         public long IsActive { get; set; }
     }
 }

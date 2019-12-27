@@ -52,13 +52,32 @@ namespace AdminPanel.Controllers
 
         public ActionResult CreateGallery(long propertyId)
         {
-
             AdminVWModel adminVwModel = new AdminVWModel();
             Gallery gallery = new Gallery()
             {
                 PropertyId = propertyId
             };
             adminVwModel.Gallery = gallery;
+            return View(adminVwModel);
+        }
+
+        public ActionResult ServiceList(int propertyId)
+        {
+            ViewBag.PropertyId = propertyId;
+            AdminVWModel adminVwModel = new AdminVWModel();
+            adminVwModel.PropertyServiceVwModel = PropertyServiceManager.GetServicesByPropertyId(propertyId);
+            return View(adminVwModel);
+        }
+
+        public ActionResult CreateServices(long propertyId)
+        {
+            AdminVWModel adminVwModel = new AdminVWModel();
+            _loadServices(adminVwModel);
+            PropertyService propertyService = new PropertyService()
+            {
+                PropertyId = propertyId
+            };
+            adminVwModel.PropertyService = propertyService;
             return View(adminVwModel);
         }
 
@@ -163,10 +182,49 @@ namespace AdminPanel.Controllers
             });
         }
 
+        [HttpPost]
+        public ActionResult CreateServices(AdminVWModel adminVwModel)
+        {
+            _ServiceList(adminVwModel.PropertyService.PropertyId, adminVwModel, adminVwModel.ServiceList?.FindAll((x => x.IsSelected)));
+            return RedirectToAction("Index");
+        }
+
+        //Delete
         public ActionResult DeleteGalleryItem(long galleryId)
         {
             GalleryManager.DeleteGallery(galleryId);
-            return RedirectToAction("GalleryList");
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteProperty(long propertyId)
+        {
+            PropertyManager.DeleteProperty(propertyId);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult HideProperty(long propertyId)
+        {
+            PropertyManager.HideProperty(propertyId);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DeletePropertyServiceItem(long propertyServiceId)
+        {
+            PropertyServiceManager.DeletePropertyServiceById(propertyServiceId);
+            return RedirectToAction("Index");
+        }
+
+        //load
+        private void _loadVendors()
+        {
+            List<Vendor> dataList = VendorManager.GetAllVendors();
+            ViewBag.VendorList = new SelectList(dataList, "VendorId", "FirstName");
+        }
+
+        private List<Services> _loadServices(AdminVWModel adminVWModel)
+        {
+            List<Services> serviceList = ServiceManager.GetAllServices();
+            return adminVWModel.ServiceList = serviceList;
         }
 
         public void _Property(AdminVWModel adminVWModel, HttpPostedFileBase images)
@@ -224,7 +282,7 @@ namespace AdminPanel.Controllers
                     PropertyId = propertyId,
                     ServiceId = service.ServiceId,
                     ServiceName = service.ServiceName,
-                    IsHidden = 0
+                    IsHidden = false
                 };
 
                 var serviceId = PropertyServiceManager.InsertPropertyService(services);
@@ -264,32 +322,6 @@ namespace AdminPanel.Controllers
                     var galleryId = GalleryManager.InsertGallery(gallery);
                 }
             }
-        }
-
-
-        //Delete
-        public ActionResult DeleteProperty(long propertyId)
-        {
-            PropertyManager.DeleteProperty(propertyId);
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult HideProperty(long propertyId)
-        {
-            PropertyManager.HideProperty(propertyId);
-            return RedirectToAction("Index");
-        }
-
-        private void _loadVendors()
-        {
-            List<Vendor> dataList = VendorManager.GetAllVendors();
-            ViewBag.VendorList = new SelectList(dataList, "VendorId", "FirstName");
-        }
-
-        private List<Services> _loadServices(AdminVWModel adminVWModel)
-        {
-            List<Services> serviceList = ServiceManager.GetAllServices();
-            return adminVWModel.ServiceList = serviceList;
         }
     }
 }

@@ -25,8 +25,6 @@
     @Scripts.Render("~/bundles/ie")
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0N5pbJN10Y1oYFRd0MJ_v2g8W2QT74JE"></script>
 
-
-
 </head>
 <body>
     <div class="page_loader"></div>
@@ -63,12 +61,20 @@
                                 <i class="fa fa-instagram"></i>
                             </a>
                         </li>
-                        <li>
-                            <a href="/Auth/Login" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
-                        </li>
-                        <li>
-                            <a href="/Dashboard/Index" class="sign-in"><i class="fa fa-user"></i></a>
-                        </li>
+                        @if (Session["UserName"] != null)
+                        {
+                            <li>
+                                <a href="/Dashboard/Index" class="">Hello @Session["FirstName"]</a>
+                            </li>
+                            <li>|</li>
+                            <li>@Html.ActionLink("Logout", "Logout", "Auth")</li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="/Auth/Login" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -97,14 +103,22 @@
                     <div class="container hidden-lg hidden-md hidden-sm">
                         <div class="col-xs-6 social-list hidden-lg hidden-md hidden-sm pull-left">
                             <ul>
-                                <li>
-                                    <a href="/Auth/Login" class="sign-in">
-                                        <i class="fa fa-user"> Log In / Register</i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Dashboard/Index" class="sign-in user-profile-icon"><i class="fa fa-user"></i></a>
-                                </li>
+                                @if (Session["UserName"] != null)
+                                {
+                                    <li>
+                                        <a href="/Dashboard/Index" class="">Hello @Session["FirstName"]</a>
+                                    </li>
+                                    <li>|</li>
+                                    <li>@Html.ActionLink("Logout", "Logout", "Auth")</li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="/Auth/Login" class="sign-in">
+                                            <i class="fa fa-user"> Log In / Register</i>
+                                        </a>
+                                    </li>
+                                }
                             </ul>
                         </div>
                         @*<div class="col-xs-6 hidden-lg hidden-md hidden-sm pull-right">
@@ -147,7 +161,7 @@
                         <li class="dropdown">
                             @Html.ActionLink("Contact", "Contact", "Home", null, null)
                         </li>
-                       
+
                     </ul>
                     <ul class="nav navbar-nav navbar-right hidden-sm hidden-xs">
                         <li>
@@ -214,7 +228,7 @@
                                 </li>
                             </ul>
                             <div class="clearfix"></div>
-                            
+
                             <div class="addthis_inline_share_toolbox"></div>
                         </div>
                     </div>
@@ -230,14 +244,13 @@
                             </div>
                             <div class="newsletter-inner">
                                 <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <form action="#" method="GET">
+                                @using (Html.BeginForm("InsertNewsLetter", "Home", FormMethod.Post))
+                                {
                                     <p><input type="text" class="form-contact" name="email" placeholder="Enter your email"></p>
                                     <p>
-                                        <button type="submit" name="submitNewsletter" class="btn button-small">
-                                            Signup
-                                        </button>
+                                        <button type="submit" class="btn button-small">Signup</button>
                                     </p>
-                                </form>
+                                }
                             </div>
                         </div>
                     </div>
@@ -275,7 +288,7 @@
     @Scripts.Render("~/bundles/moveitJs")
     @*@Scripts.Render("~/bundles/succeedJs")*@
     @Scripts.Render("~/bundles/booking-validationJs")
-    
+
     <script type="text/javascript">
 
         $(function () {
@@ -285,7 +298,7 @@
         });
 
     </script>
-<script>
+    <script>
         function LoadMap(propertes) {
             var defaultLat = 23.868287;
             var defaultLng = 90.410178;
@@ -336,10 +349,11 @@
         }
         LoadMap();
     </script>
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5dea55e7dfdac2b4"></script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5dea55e7dfdac2b4"></script>
 
-<script type="text/javascript">function add_chatinline(){var hccid=36272608;var nt=document.createElement("script");nt.async=true;nt.src="https://mylivechat.com/chatinline.aspx?hccid="+hccid;var ct=document.getElementsByTagName("script")[0];ct.parentNode.insertBefore(nt,ct);}
-    add_chatinline(); </script>
+    <script type="text/javascript">
+        function add_chatinline() { var hccid = 36272608; var nt = document.createElement("script"); nt.async = true; nt.src = "https://mylivechat.com/chatinline.aspx?hccid=" + hccid; var ct = document.getElementsByTagName("script")[0]; ct.parentNode.insertBefore(nt, ct); }
+        add_chatinline();</script>
 </body>
 </html>

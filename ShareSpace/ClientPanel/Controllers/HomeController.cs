@@ -15,6 +15,8 @@ using System;
 using System.Text;
 using System.Globalization;
 using Microsoft.Ajax.Utilities;
+using ShareSpace.Models.NewsLetter;
+using ShareSpace.Models.Testimonial;
 using ShareSpace.Utility;
 
 namespace ClientPanel.Controllers
@@ -23,8 +25,8 @@ namespace ClientPanel.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.featuredProperties = PropertyManager.GetFeaturedProperties(9);
-            ViewBag.featuredService = ServiceManager.GetFeaturedServices(9);
+            ViewBag.featuredProperties = PropertyManager.GetFeaturedProperties(6);
+            ViewBag.featuredService = ServiceManager.GetFeaturedServices(6);
 
             return View("~/Views/Home/Index.cshtml");
         }
@@ -158,12 +160,23 @@ namespace ClientPanel.Controllers
 
         public ActionResult About()
         {
-            return View();
+            List<Testimonial> testimonialList = new List<Testimonial>();
+            testimonialList = TestimonialManager.GetAllTestimonials();
+            return View(testimonialList);
         }
 
         public ActionResult Contact()
         {
             return View();
+        }
+
+        public ActionResult InsertNewsLetter(string email)
+        {
+            NewsLetter newsLetter = new NewsLetter();
+            newsLetter.Email = email;
+            newsLetter.CreatedDate = DateTime.Now;
+            NewsLetterManager.InsertNewsLetter(newsLetter);
+            return RedirectToAction("Index");
         }
 
         public ActionResult BookingConfirmed(string PropertyId, string BookingId)
@@ -352,6 +365,8 @@ namespace ClientPanel.Controllers
             return clientid;
         }
 
+
+
         [HttpPost]
         public ActionResult Contact(ContactForm contactForm)
         {
@@ -389,8 +404,7 @@ namespace ClientPanel.Controllers
                 return Redirect(Request.UrlReferrer.PathAndQuery);
             }
 
-
-
+            
             return View();
         }
 

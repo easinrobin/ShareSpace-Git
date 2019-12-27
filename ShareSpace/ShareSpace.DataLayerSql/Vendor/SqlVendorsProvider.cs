@@ -112,6 +112,33 @@ namespace ShareSpace.DataLayerSql.Vendor
             }
         }
 
+        public List<Models.Property.Property> GetVendorsPropertyById(long vendorId)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GetVendorPropertyByVendorId, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@VendorId", vendorId));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    List<Models.Property.Property> property = new List<Models.Property.Property>();
+                    property = UtilityManager.DataReaderMapToList<Models.Property.Property>(reader);
+                    return property;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
         public Models.Vendor.Vendor GetVendorById(long vendorId)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
@@ -183,6 +210,34 @@ namespace ShareSpace.DataLayerSql.Vendor
                     List<Models.Vendor.Vendor> vendorList = new List<Models.Vendor.Vendor>();
                     vendorList = UtilityManager.DataReaderMapToList<Models.Vendor.Vendor>(dataReader);
                     return vendorList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public Models.Vendor.Vendor GetVendorByEmailPassword(string email, string password)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GetVendorByEmailPassword, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@Email", email));
+                command.Parameters.Add(new SqlParameter("@Password", password));
+                try
+                {
+                    connection.Open();
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    Models.Vendor.Vendor vendor = new Models.Vendor.Vendor();
+                    vendor = UtilityManager.DataReaderMap<Models.Vendor.Vendor>(dataReader);
+                    return vendor;
                 }
                 catch (Exception e)
                 {

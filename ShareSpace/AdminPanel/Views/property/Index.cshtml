@@ -36,15 +36,17 @@
                         <tr>
                             <td>@property.FirstName @property.LastName</td>
                             <td>@property.PropertyName</td>
-                            <td>@property.FeatureImage</td>
+                            <td>
+                                <img src="@property.FeatureImage" alt="@property.PropertyName" height="100" width="100"/>
+                            </td>
                             <td>@property.Price.ToString("0.00")</td>
                             <td>House# @property.HouseNo,Flat# @property.FlatNo,Road# @property.RoadNo, @property.Area, @property.City</td>
                             <td>@property.MaximumPerson</td>
                             <td>
                                 @Html.ActionLink(" ", "UpdateProperty", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-edit" })&nbsp;&nbsp;
                                 @Html.ActionLink(" ", "GalleryList", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-image-o" })<br />
-                                @Html.ActionLink(" ", "FeatureList", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-assignment" })&nbsp;&nbsp;
-                                @Html.ActionLink(" ", "HideProperty", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-delete" })
+                                @Html.ActionLink(" ", "ServiceList", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-assignment" })&nbsp;&nbsp;
+                                @Html.ActionLink(" ", "HideProperty", new { propertyId = property.PropertyId }, new { @class = "zmdi zmdi-delete", onclick = "return confirm('Are you sure you want to delete this item?')" })
                             </td>
                         </tr>
                     </tbody>

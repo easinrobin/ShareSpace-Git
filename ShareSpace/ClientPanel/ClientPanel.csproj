@@ -278,6 +278,7 @@
     <Content Include="img\logo\ShareSpaceLogo.png" />
     <Content Include="img\logo\ss-footer.png" />
     <Content Include="img\logo\ss-header.png" />
+    <Content Include="img\properties\f498c300-bc52-4702-a725-ef27b08ebc93office-room1.jpg" />
     <Content Include="img\properties\office-room1.jpg" />
     <Content Include="img\properties\office-room3.jpg" />
     <Content Include="img\properties\office-room4.jpg" />
@@ -464,12 +465,12 @@
     <Content Include="Scripts\Third-partyJs\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\Third-partyJs\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Third-partyJs\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <Content Include="Web1.config" />
+    <Content Include="Web1.Debug.config">
+      <DependentUpon>Web1.config</DependentUpon>
     </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <Content Include="Web1.Release.config">
+      <DependentUpon>Web1.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -491,6 +492,13 @@
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Home\BookingConfirmed.cshtml" />
     <Content Include="Views\Home\Partial\_searchpanel.cshtml" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

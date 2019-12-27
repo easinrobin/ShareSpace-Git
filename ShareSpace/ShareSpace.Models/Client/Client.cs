@@ -31,7 +31,7 @@ namespace ShareSpace.Models.Client
         [Display(Name = "Mobile No.")]
         public string MobileNo { get; set; }
 
-        [Display(Name = "BirthDate")]
+        [Display(Name = "Birth Date")]
         public DateTime? BirthDate { get; set; }
 
         [Display(Name = "Password")]
