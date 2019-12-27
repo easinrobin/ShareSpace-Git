@@ -23,24 +23,23 @@
         <h6 class="card-subtitle"></h6>
         @using (Html.BeginForm("CreateGallery", "VendorHome", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            
-            <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Gallery.PropertyId)
 
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.Gallery.PropertyId)
-                
-                <div class="form-group">
-                    <span class="control-label col-md-2">Upload Images:</span>
-                    <div class="col-md-10">
-                        <input type="file" name="files" id="files" multiple />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Add" class="btn btn-success" />
-                    </div>
+            <div class="form-group">
+                <span class="control-label col-md-2">Upload Images:</span>
+                <div class="col-md-10">
+                    @*<input type="file" name="files" id="files" multiple />*@
+                    @Html.TextBoxFor(model => model.Files, new { type = "file", id = "files", @multiple = "multiple" })
+                    @Html.ValidationMessageFor(model => model.Files, "", new { @class = "validation-text" })
                 </div>
             </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Add" class="btn btn-success" />
+                </div>
+            </div>
+
         }
     </div>
 </div>

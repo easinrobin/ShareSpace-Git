@@ -1,4 +1,4 @@
-﻿@model ShareSpace.Models.Vendor.Vendor
+﻿@model ShareSpace.Models.Admin.AdminVWModel
 @{
     ViewBag.Title = "New Vendor";
 }
@@ -28,7 +28,7 @@
         }
         else
         {
-            <a href="~/Vendor/UpdateVendor?vendorId=@Model.VendorId" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
+            <a href="~/Vendor/UpdateVendor?vendorId=@Model.Vendors.VendorId" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
 
         }
     </div>
@@ -36,65 +36,66 @@
 
 <div class="card">
     <div class="card-body">
-        @using (Html.BeginForm("InsertVendor", "Vendor", FormMethod.Post))
+        @using (Html.BeginForm("InsertVendor", "Vendor", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            @Html.HiddenFor(x => x.VendorId)
+            @Html.HiddenFor(x => x.Vendors.VendorId)
             @Html.AntiForgeryToken()
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
-                @Html.LabelFor(model => model.FirstName, new { @class = "card-body__title" })
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "First Name" } })
-                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.Vendors.FirstName, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.Vendors.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "First Name" } })
+                @Html.ValidationMessageFor(model => model.Vendors.FirstName, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.LastName, new { @class = "card-body__title" })
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Last Name" } })
-                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.Vendors.LastName, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.Vendors.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Last Name" } })
+                @Html.ValidationMessageFor(model => model.Vendors.LastName, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Email, new { @class = "card-body__title" })
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.Vendors.Email, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.Vendors.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+                @Html.ValidationMessageFor(model => model.Vendors.Email, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.BirthDate, new { @class = "card-body__title" })
-                @Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { @class = "form-control date-picker", placeholder = "Birth Date" } })
-                @Html.ValidationMessageFor(model => model.BirthDate, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.Vendors.BirthDate, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.Vendors.BirthDate, new { htmlAttributes = new { @class = "form-control date-picker", placeholder = "Birth Date" } })
+                @Html.ValidationMessageFor(model => model.Vendors.BirthDate, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Country, new { @class = "card-body__title" })
-                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control ", placeholder = "Country" } })
-                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.Vendors.Country, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.Vendors.Country, new { htmlAttributes = new { @class = "form-control ", placeholder = "Country" } })
+                @Html.ValidationMessageFor(model => model.Vendors.Country, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.VendorPhoto, new { @class = "card-body__title" })
+                @Html.LabelFor(model => model.Vendors.VendorPhoto, new { @class = "card-body__title" })
                 <div class="card">
                     <div class="card-body">
                         <span class="card-body__title">Upload Images:</span>
                         <div class="col-md-10">
-                            <input type="file" name="files" id="file" class="btn btn-success" />
-                            @Html.ValidationMessageFor(model => model.VendorPhoto, "", new { @class = "validation-text" })
+                            @*<input type="file" name="files" id="file" class="btn btn-success" />*@
+                            @Html.TextBoxFor(model => model.Files, new { type = "file", id = "files" })
+                            @Html.ValidationMessageFor(model => model.Files, "", new { @class = "validation-text" })
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.MobileNo, new { @class = "card-body__title" })
-                @Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile No" } })
-                @Html.ValidationMessageFor(model => model.MobileNo, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.Vendors.MobileNo, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.Vendors.MobileNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile No" } })
+                @Html.ValidationMessageFor(model => model.Vendors.MobileNo, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Password, new { @class = "card-body__title" })
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password", type = "password", @Value = ViewBag.GeneratePassword } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.Vendors.Password, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.Vendors.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password", type = "password", @Value = ViewBag.GeneratePassword } })
+                @Html.ValidationMessageFor(model => model.Vendors.Password, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group">

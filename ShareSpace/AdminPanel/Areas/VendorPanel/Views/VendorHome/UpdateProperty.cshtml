@@ -12,7 +12,7 @@
 
 <nav aria-label="breadcrumb" role="navigation">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="~/Vendor/VendorHome/Properties">Properties</a></li>
+        <li class="breadcrumb-item"><a href="~/VendorPanel/VendorHome/Properties">Properties</a></li>
         <li class="breadcrumb-item active" aria-current="page">Update Property</li>
     </ol>
 </nav>
@@ -20,8 +20,8 @@
 <header class="content__title">
     <h1>Property</h1>
     <div class="actions">
-        <a href="~/Vendor/VendorHome/Properties" class="actions__item zmdi zmdi-view-list zmdi-hc-fw" title="Back to List"></a>
-        <a href="~/Vendor/VendorHome/UpdateProperty/?propertyId=@Model.Property.PropertyId" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
+        <a href="~/VendorPanel/VendorHome/Properties" class="actions__item zmdi zmdi-view-list zmdi-hc-fw" title="Back to List"></a>
+        <a href="~/VendorPanel/VendorHome/UpdateProperty/?propertyId=@Model.Property.PropertyId" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
     </div>
 </header>
 
@@ -82,6 +82,10 @@
                             new SelectListItem {Text = "3", Value = "3"},
                             new SelectListItem {Text = "4", Value = "4"},
                             new SelectListItem {Text = "5", Value = "5"},
+                            new SelectListItem {Text = "6", Value = "6"},
+                            new SelectListItem {Text = "7", Value = "7"},
+                            new SelectListItem {Text = "8", Value = "8"},
+                            new SelectListItem {Text = "9", Value = "9"},
                             new SelectListItem {Text = "10", Value = "10"}
                         },
                             Model.Property.MaximumPerson.ToString(), new
@@ -93,9 +97,9 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Property.Price, new { @class = "card-body__title" })
-                    @Html.TextBoxFor(model => model.Property.Price, new { @class = "form-control", PlaceHolder = "Price" })
-                    @Html.ValidationMessageFor(model => model.Property.Price, "", new { @class = "validation-text" })
+                    @Html.LabelFor(model => model.Property.RetailPrice, new { @class = "card-body__title" })
+                    @Html.TextBoxFor(model => model.Property.RetailPrice, new { @class = "form-control", PlaceHolder = "Price" })
+                    @Html.ValidationMessageFor(model => model.Property.RetailPrice, "", new { @class = "validation-text" })
 
                 </div>
 
@@ -105,8 +109,9 @@
                         <div class="card-body">
                             <span class="control-label col-md-2">Upload Images:</span>
                             <div class="col-md-10">
-                                <input type="file" name="files" id="files" />
-                               @* @Html.TextBoxFor(model => model.Property.FeatureImage, new { type = "file", name = "files", id = "files" })*@
+                                @*<input type="file" name="files" id="files" />*@
+                                @Html.TextBoxFor(model => model.Files, new { type = "file", id = "files" })
+                                @Html.ValidationMessageFor(model => model.Files, "", new { @class = "validation-text" })
                             </div>
                         </div>
                     </div>
@@ -120,8 +125,11 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Property.Description, new { @class = "card-body__title" })
-                    @Html.TextAreaFor(model => model.Property.Description, new { @class = "form-control", rows = "3", placeHolder = "Description" })
-                    @Html.ValidationMessageFor(model => model.Property.Description, "", new { @class = "validation-text" })
+                    <section id="editor" class="rich-text-box">
+                        @Html.TextAreaFor(model => model.Property.Description, new { @id = "edit", placeHolder = "Description" })
+                        @Html.ValidationMessageFor(model => model.Property.Description, "", new { @class = "validation-text" })
+                    </section>
+
                 </div>
 
                 <div class="form-group">
@@ -186,3 +194,14 @@
         }
     </div>
 </div>
+
+@section scripts{
+    <script>
+        (function () {
+            new FroalaEditor("#edit",
+                {
+                    theme: 'dark'
+                })
+        })()
+    </script>
+} 

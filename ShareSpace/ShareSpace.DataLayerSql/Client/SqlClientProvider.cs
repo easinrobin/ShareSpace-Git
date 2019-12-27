@@ -89,7 +89,7 @@ namespace ShareSpace.DataLayerSql.Client
             bool isDelete = true;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.DELETECLIENT);
+                SqlCommand command = new SqlCommand(StoreProcedure.DELETECLIENT, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add(new SqlParameter("@ClientID", clientId));
 

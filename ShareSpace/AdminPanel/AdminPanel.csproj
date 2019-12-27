@@ -269,6 +269,7 @@
     <Content Include="img\bg\7.jpg" />
     <Content Include="img\bg\8.jpg" />
     <Content Include="img\bg\9.jpg" />
+    <Content Include="img\Offices\avatar1.jpg" />
     <Content Include="img\profile-pics\8.jpg" />
     <Content Include="Scripts\ThirdPartyJs\bootstrap-select.js" />
     <Content Include="Scripts\ThirdPartyJs\bootstrap-select.min.js" />
@@ -449,6 +450,7 @@
     <Content Include="Areas\VendorPanel\Views\VendorHome\Properties.cshtml" />
     <Content Include="Areas\VendorPanel\Views\VendorHome\ServiceList.cshtml" />
     <Content Include="Areas\VendorPanel\Views\VendorHome\UpdateProperty.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\Profile.cshtml" />
     <None Include="Scripts\ThirdPartyJs\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ThirdPartyJs\buttons.html5.min.js" />
     <Content Include="Scripts\ThirdPartyJs\buttons.print.min.js" />
@@ -572,7 +574,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\VendorPanel\Models\" />
-    <Folder Include="img\Offices\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -56,6 +56,9 @@ namespace ShareSpace.Models.Property
         [Display(Name = "Price")]
         public decimal Price { get; set; }
 
+        [Display(Name = "Retail Price")]
+        public decimal RetailPrice { get; set; }
+
         [Display(Name = "Short Description")]
         public string ShortDescription { get; set; }
 

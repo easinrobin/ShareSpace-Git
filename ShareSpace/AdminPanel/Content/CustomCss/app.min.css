@@ -24,6 +24,10 @@ progress, sub, sup {
     vertical-align: baseline
 }
 
+#data-table_length select option {
+    background: #561828;
+}
+
 button, hr, input {
     overflow: visible
 }
@@ -12407,4 +12411,8 @@ ul.jqtree-tree {
     color: #E32636;
     font-style: italic;
     font-size: 15px;
+}
+
+#data-table_length select option {
+    background: #561828;
 }

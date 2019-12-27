@@ -18,7 +18,7 @@
             <a href="~/Property/Create" class="btn btn-light btn--icon-text" title="Create"><i class="zmdi  zmdi-plus-circle-o zmdi-hc-fw"></i> Create New</a>
         </h4>
         <div class="table-responsive">
-            <table @*id="data-table"*@ class="table">
+            <table id="data-table" class="table">
                 <thead>
                     <tr>
                         <th>Vendor Name</th>
@@ -39,7 +39,7 @@
                             <td>
                                 <img src="@property.FeatureImage" alt="@property.PropertyName" height="100" width="100"/>
                             </td>
-                            <td>@property.Price.ToString("0.00")</td>
+                            <td>@property.RetailPrice.ToString("0.00")</td>
                             <td>House# @property.HouseNo,Flat# @property.FlatNo,Road# @property.RoadNo, @property.Area, @property.City</td>
                             <td>@property.MaximumPerson</td>
                             <td>

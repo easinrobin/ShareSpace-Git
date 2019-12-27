@@ -213,7 +213,7 @@ namespace ClientPanel.Controllers
 
                 string bookingNo = "SS" + UtilityManager.RandomString(5);
                 bookingId = _insertBooking(bookingEmail, clientId, propertyId, bookingNo);
-                _sendEmail(bookingEmail, propertyId, bookingNo, address, area, city, zipCode, password);
+                //_sendEmail(bookingEmail, propertyId, bookingNo, address, area, city, zipCode, password);
 
             }
             catch (Exception ex)

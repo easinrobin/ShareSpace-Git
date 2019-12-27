@@ -22,6 +22,8 @@ namespace ShareSpace.Models.Admin
         public Services Services { get; set; }
         public Vendor.Vendor Vendors { get; set; }
         public List<Vendor.Vendor> VendorList { get; set; }
+        public Testimonial.Testimonial Testimonial { get; set; }
+        public Client.Client Clients { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Image Required")]
         public IEnumerable<HttpPostedFileBase> Files { get; set; }

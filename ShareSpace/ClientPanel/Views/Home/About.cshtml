@@ -88,10 +88,11 @@
                                 {
                                     if (item.TestimonialId == Model.First().TestimonialId)
                                     {
+                                        var imagepath = "http://adminss.thebyteheart.com/" + @item.ProfileImage;
                                         <div class="item content active clearfix">
                                             <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
                                                 <div class="avatar">
-                                                    <img src="@item.ProfileImage" alt="@item.Name" class="img-responsive">
+                                                    <img src="@imagepath" alt="@item.Name" class="img-responsive">
                                                 </div>
                                             </div>
                                             <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
@@ -115,10 +116,11 @@
                                     }
                                     else
                                     {
+                                        var imagepath = "http://adminss.thebyteheart.com/" + @item.ProfileImage;
                                         <div class="item content clearfix">
                                             <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
                                                 <div class="avatar">
-                                                    <img src="@item.ProfileImage" alt="avatar-1" class="img-responsive">
+                                                    <img src="@imagepath" alt="avatar-1" class="img-responsive">
                                                 </div>
                                             </div>
                                             <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">

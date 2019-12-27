@@ -42,9 +42,10 @@
                     @foreach (var property in Model.PropertySearchResultList.ToList())
                     {
                         var propertyLink = "/Home/OfficeDetails/" + property.PropertyId;
+                        var imagepath = "http://adminss.thebyteheart.com/" + property.FeatureImage;
                         <div class="hotel-box-list wow fadeInUp delay-02s">
                             <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 col-pad">
-                                <img src=@property.FeatureImage alt="img-15" class="img-responsive">
+                                <img src=@imagepath alt="img-15" class="img-responsive">
                             </div>
                             <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 detail">
                                 <div class="heading">

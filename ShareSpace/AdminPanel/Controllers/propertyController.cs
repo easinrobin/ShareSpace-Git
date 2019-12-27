@@ -82,6 +82,7 @@ namespace AdminPanel.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Create(AdminVWModel adminVWModel, HttpPostedFileBase images)
         {
             _Property(adminVWModel, images);
@@ -101,6 +102,7 @@ namespace AdminPanel.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult UpdateProperty(AdminVWModel adminVwModel, HttpPostedFileBase images)
         {
             const string createdBy = "Admin";
@@ -130,7 +132,6 @@ namespace AdminPanel.Controllers
                     adminVwModel.Property.FeatureImage = pathUrl;
                 }
             }
-
 
             bool isUpdateProperty = PropertyManager.UpdateProperty(adminVwModel.Property);
             bool isUpdatePropertyAddress = AddressManager.UpdateAddress(adminVwModel.PropertyAddress);

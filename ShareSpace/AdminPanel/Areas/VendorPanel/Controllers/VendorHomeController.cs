@@ -9,6 +9,7 @@ using ShareSpace.Models.Admin;
 using ShareSpace.Models.Gallery;
 using ShareSpace.Models.Property;
 using ShareSpace.Models.Service;
+using ShareSpace.Models.Vendor;
 
 namespace AdminPanel.Areas.VendorPanel.Controllers
 {
@@ -83,7 +84,30 @@ namespace AdminPanel.Areas.VendorPanel.Controllers
             return View(adminVwModel);
         }
 
+        public ActionResult Profile()
+        {
+            long vendorId = Session["VendorId"] != null ? Convert.ToInt64(Session["VendorId"]) : 0;
+            Vendor vendor = VendorManager.GetVendorById(vendorId);
+            //VendorManager.GetVendorById(vendorId);
+            return View("~/Areas/VendorPanel/Views/VendorHome/Profile.cshtml", vendor);
+        }
+
         [HttpPost]
+        public ActionResult Profile(Vendor vendor)
+        {
+            vendor.VendorPhoto = null;
+            vendor.CreatedBy = vendor.FirstName;
+            vendor.UpdateBy = vendor.FirstName;
+            vendor.CreatedDate = DateTime.Today;
+            vendor.UpdateDate = DateTime.Today;
+            Int64 vendorId = Session["VendorId"] != null ? Convert.ToInt64(Session["VendorId"]) : 0;
+            vendor.VendorId = vendorId;
+            bool isUpdate = VendorManager.UpdateVendor(vendor);
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Create(AdminVWModel adminVWModel, HttpPostedFileBase images)
         {
             long vendorId = 2;
@@ -106,6 +130,7 @@ namespace AdminPanel.Areas.VendorPanel.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult UpdateProperty(AdminVWModel adminVwModel, HttpPostedFileBase images)
         {
             const string createdBy = "Admin";

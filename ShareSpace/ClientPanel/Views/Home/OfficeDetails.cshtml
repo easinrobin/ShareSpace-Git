@@ -3,7 +3,7 @@
     ViewBag.Title = "Office Details";
 }
 @{
-    var maploc = Model.PropertyView.HouseNo + "," + Model.PropertyView.FlatNo + "," + Model.PropertyView.RoadNo + "," + Model.PropertyView.Area + "," + Model.PropertyView.City + "," + Model.PropertyView.ZipCode;
+    var maploc =  Model.PropertyView.RoadNo + "," + Model.PropertyView.Area + "," + Model.PropertyView.City + "," + Model.PropertyView.ZipCode;
 
     var mapurl = "https://maps.google.com/maps?q=" + @maploc + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
 
@@ -200,9 +200,7 @@
                         <!-- Title -->
                         <h3>Office Description</h3>
                         <!-- paragraph -->
-                        <p>
-                            @Model.PropertyView.Description
-                        </p>
+                        @Html.Raw(@Model.PropertyView.Description)
                     </div>
 
                     <!-- Rooms features start -->

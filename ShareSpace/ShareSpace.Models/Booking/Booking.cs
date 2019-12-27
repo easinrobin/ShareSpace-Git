@@ -13,24 +13,29 @@ namespace ShareSpace.Models.Booking
         [Display(Name = "From Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "DD/MM/YYYY")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "From Date required")]
         public DateTime? FromDate { get; set; }
 
         [Display(Name = "To Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "DD/MM/YYYY")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "To Date required")]
         public DateTime? ToDate { get; set; }
 
         [Display(Name = "Maximum Person")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Maximum person required")]
         public int MaximumPerson { get; set; }
 
         [Display(Name = "From Hour")]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:MM}")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Start Time required")]
         public string FromHour { get; set; }
 
         [Display(Name = "To Hour")]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "End Time required")]
         public string ToHour { get; set; }
 
         [Display(Name = "Client Id")]

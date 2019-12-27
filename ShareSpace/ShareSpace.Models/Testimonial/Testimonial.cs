@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Web;
 
 namespace ShareSpace.Models.Testimonial
 {
@@ -23,7 +27,7 @@ namespace ShareSpace.Models.Testimonial
         public string ProfileImage { get; set; }
 
         [Display(Name = "Message")]
-        //[Required(AllowEmptyStrings = false, ErrorMessage = "  required")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Message required")]
         public string Message { get; set; }
 
         [Display(Name = "Is Active")]

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -7,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ShareSpace.BusinessLayer;
 using ShareSpace.Models;
+using ShareSpace.Models.Admin;
 using ShareSpace.Models.Client;
 using ShareSpace.Models.Vendor;
 
@@ -23,31 +25,33 @@ namespace AdminPanel.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult InsertClient(Client client)
+        public ActionResult InsertClient(AdminVWModel adminVwModel, HttpPostedFileBase image)
         {
             ClientManager manager = new ClientManager();
             
-            if (client != null && client.ClientId > 0)
+            if (adminVwModel.Clients != null && adminVwModel.Clients.ClientId > 0)
             {
-                client.ClientPhoto = string.Empty;
-                ClientManager.UpdateClient(client);
+                _UploadImage(adminVwModel, image);
+                //adminVwModel.Clients.ClientPhoto = string.Empty;
+                ClientManager.UpdateClient(adminVwModel.Clients);
             }
             else
             {
-                if (client != null)
+                if (adminVwModel.Clients != null)
                 {
-                    client.ClientPhoto = string.Empty;
-                    ClientManager.InsertClient(client);
+                    _UploadImage(adminVwModel, image);
+                    //client.ClientPhoto = string.Empty;
+                    ClientManager.InsertClient(adminVwModel.Clients);
                 }
             }
 
             return RedirectToAction("AdminClients");
         }
 
-        public ActionResult UpdateClient(int clientId)
+        public ActionResult UpdateClient(AdminVWModel adminVwModel, int clientId)
         {
-            Client client = ClientManager.GetClientById(clientId);
-            return View("~/Views/Client/InsertClient.cshtml", client);
+            adminVwModel.Clients = ClientManager.GetClientById(clientId);
+            return View("~/Views/Client/InsertClient.cshtml", adminVwModel);
         }
 
 
@@ -113,6 +117,27 @@ namespace AdminPanel.Controllers
             {
                 Console.WriteLine(exception);
                 throw;
+            }
+        }
+
+        private void _UploadImage(AdminVWModel adminVwModel, HttpPostedFileBase images)
+        {
+            foreach (var file in adminVwModel.Files.Take(1))
+            {
+                string pathUrl = "";
+
+                if (file.ContentLength > 0)
+                {
+                    string savepath, savefile;
+                    var filename = Path.GetFileName(Guid.NewGuid() + file.FileName);
+                    savepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img/Offices/");
+                    if (!Directory.Exists(savepath))
+                        Directory.CreateDirectory(savepath);
+                    savefile = Path.Combine(savepath, filename);
+                    file.SaveAs(savefile);
+                    pathUrl = "/img/Offices/" + filename;
+                    adminVwModel.Clients.ClientPhoto = pathUrl;
+                }
             }
         }
     }

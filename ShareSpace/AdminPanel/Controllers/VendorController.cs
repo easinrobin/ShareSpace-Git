@@ -7,6 +7,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using ShareSpace.BusinessLayer;
+using ShareSpace.Models.Admin;
 using ShareSpace.Models.Booking;
 using ShareSpace.Models.Vendor;
 
@@ -23,23 +24,23 @@ namespace AdminPanel.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult InsertVendor(Vendor vendor)
+        public ActionResult InsertVendor(AdminVWModel adminVwModel, HttpPostedFileBase image)
         {
             VendorManager manager = new VendorManager();
-            if (vendor != null && vendor.VendorId > 0)
+            if (adminVwModel.Vendors != null && adminVwModel.Vendors.VendorId > 0)
             {
-                //_UploadImage(vendor, images);
-                vendor.VendorPhoto = string.Empty;
-                VendorManager.UpdateVendor(vendor);
+                _UploadImage(adminVwModel, image);
+                //adminVwModel.Vendors.VendorPhoto = string.Empty;
+                VendorManager.UpdateVendor(adminVwModel.Vendors);
             }
             else
             {
-                //_UploadImage(vendor, images);
-                if (vendor != null)
+                _UploadImage(adminVwModel, image);
+                if (adminVwModel.Vendors != null)
                 {
-                    vendor.VendorPhoto = string.Empty;
-                    VendorManager.InsertVendor(vendor);
-                    _sendEmail(vendor);
+                    //vendor.VendorPhoto = string.Empty;
+                    VendorManager.InsertVendor(adminVwModel.Vendors);
+                    //_sendEmail(adminVwModel.Vendors);
                 }
             }
             return RedirectToAction("AdminVendors");
@@ -59,10 +60,10 @@ namespace AdminPanel.Controllers
         //    }
         //}
 
-        public ActionResult UpdateVendor(int vendorId)
+        public ActionResult UpdateVendor(AdminVWModel adminVwModel, int vendorId)
         {
-            Vendor vendor = VendorManager.GetVendorById(vendorId);
-            return View("~/Views/Vendor/InsertVendor.cshtml", vendor);
+            adminVwModel.Vendors = VendorManager.GetVendorById(vendorId);
+            return View("~/Views/Vendor/InsertVendor.cshtml", adminVwModel);
         }
 
 
@@ -132,25 +133,25 @@ namespace AdminPanel.Controllers
             }
         }
 
-        //private void _UploadImage(Vendor vendor, HttpPostedFileBase images)
-        //{
-        //    foreach (var file in vendor.Files.Take(1))
-        //    {
-        //        string pathUrl = "";
+        private void _UploadImage(AdminVWModel adminVwModel, HttpPostedFileBase images)
+        {
+            foreach (var file in adminVwModel.Files.Take(1))
+            {
+                string pathUrl = "";
 
-        //        if (file.ContentLength > 0)
-        //        {
-        //            string savepath, savefile;
-        //            var filename = Path.GetFileName(Guid.NewGuid() + file.FileName);
-        //            savepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img/Offices/");
-        //            if (!Directory.Exists(savepath))
-        //                Directory.CreateDirectory(savepath);
-        //            savefile = Path.Combine(savepath, filename);
-        //            file.SaveAs(savefile);
-        //            pathUrl = "/img/Offices/" + filename;
-        //            vendor.VendorPhoto = pathUrl;
-        //        }
-        //    }
-        //}
+                if (file.ContentLength > 0)
+                {
+                    string savepath, savefile;
+                    var filename = Path.GetFileName(Guid.NewGuid() + file.FileName);
+                    savepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img/Offices/");
+                    if (!Directory.Exists(savepath))
+                        Directory.CreateDirectory(savepath);
+                    savefile = Path.Combine(savepath, filename);
+                    file.SaveAs(savefile);
+                    pathUrl = "/img/Offices/" + filename;
+                    adminVwModel.Vendors.VendorPhoto = pathUrl;
+                }
+            }
+        }
     }
 }

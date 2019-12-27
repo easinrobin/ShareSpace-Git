@@ -12467,6 +12467,7 @@ ul.jqtree-tree {
 .hotel-box {
     background: #FFFFFF;
     margin: 0 auto 30px;
+    height: 320px;
 }
 
     .hotel-box:hover {
