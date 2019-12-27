@@ -23,19 +23,24 @@ namespace AdminPanel.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult InsertVendor(Vendor vendor, HttpPostedFileBase images)
+        public ActionResult InsertVendor(Vendor vendor)
         {
             VendorManager manager = new VendorManager();
             if (vendor != null && vendor.VendorId > 0)
             {
-                _UploadImage(vendor, images);
+                //_UploadImage(vendor, images);
+                vendor.VendorPhoto = string.Empty;
                 VendorManager.UpdateVendor(vendor);
             }
             else
             {
-                _UploadImage(vendor, images);
-                VendorManager.InsertVendor(vendor);
-                _sendEmail(vendor);
+                //_UploadImage(vendor, images);
+                if (vendor != null)
+                {
+                    vendor.VendorPhoto = string.Empty;
+                    VendorManager.InsertVendor(vendor);
+                    _sendEmail(vendor);
+                }
             }
             return RedirectToAction("AdminVendors");
         }
@@ -87,8 +92,7 @@ namespace AdminPanel.Controllers
             try
             {
                 var data = VendorManager.GetVendorById(Convert.ToInt64(vendor.VendorId));
-
-
+                
                 StringBuilder sb = new StringBuilder();
                 sb.AppendFormat("<div style=\"background:#F6F6F6;width:600px;margin:10px auto;overflow: hidden; padding-bottom:40px; box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.10), 0 3px 3px 0 rgba(0, 0, 0, 0.10); font-family:Roboto, Helvetica, Arial;\">");
                 sb.AppendFormat("<div style=\"padding-top:20px; text-align:center; background:#333333eb;\">");
@@ -103,16 +107,6 @@ namespace AdminPanel.Controllers
                 sb.AppendFormat("\n<p style=\"font-size:18px; color:#ffff;\">Your username: {0} and Password: {1}</p>", vendor.Email.Trim(), vendor.Password);
                 sb.AppendFormat("</div>");
                 
-                //sb.AppendFormat("</div> </div></div> ");
-                //sb.AppendFormat("<div style=\"width: 600px; text-align:center; clear: both; padding-top: 40px; font-size:14px;\">");
-                //sb.AppendFormat(
-                //    "You can see details from <a href='http://ss.byteheart.com/Auth/Login' target='_blank'> your panel </a>");
-                //if (!string.IsNullOrEmpty(vendor.Password))
-                //{
-                //    sb.AppendFormat("\n <br/> Your username: {0} and Password: {1}", vendor.Email.Trim(), vendor.Password);
-                //}
-                //sb.AppendFormat("</div></div>");
-
 
                 SmtpClient client = new SmtpClient("smtp.office365.com", 587);
                 client.EnableSsl = true;
@@ -136,28 +130,27 @@ namespace AdminPanel.Controllers
                 Console.WriteLine(exception);
                 throw;
             }
-
         }
 
-        private void _UploadImage(Vendor vendor, HttpPostedFileBase images)
-        {
-            foreach (var file in vendor.Files.Take(1))
-            {
-                string pathUrl = "";
+        //private void _UploadImage(Vendor vendor, HttpPostedFileBase images)
+        //{
+        //    foreach (var file in vendor.Files.Take(1))
+        //    {
+        //        string pathUrl = "";
 
-                if (file.ContentLength > 0)
-                {
-                    string savepath, savefile;
-                    var filename = Path.GetFileName(Guid.NewGuid() + file.FileName);
-                    savepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img/Offices/");
-                    if (!Directory.Exists(savepath))
-                        Directory.CreateDirectory(savepath);
-                    savefile = Path.Combine(savepath, filename);
-                    file.SaveAs(savefile);
-                    pathUrl = "/img/Offices/" + filename;
-                    vendor.VendorPhoto = pathUrl;
-                }
-            }
-        }
+        //        if (file.ContentLength > 0)
+        //        {
+        //            string savepath, savefile;
+        //            var filename = Path.GetFileName(Guid.NewGuid() + file.FileName);
+        //            savepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img/Offices/");
+        //            if (!Directory.Exists(savepath))
+        //                Directory.CreateDirectory(savepath);
+        //            savefile = Path.Combine(savepath, filename);
+        //            file.SaveAs(savefile);
+        //            pathUrl = "/img/Offices/" + filename;
+        //            vendor.VendorPhoto = pathUrl;
+        //        }
+        //    }
+        //}
     }
 }

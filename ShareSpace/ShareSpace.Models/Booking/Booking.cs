@@ -6,37 +6,37 @@ namespace ShareSpace.Models.Booking
     public class Booking
     {
         [Key]
-        [Display(Name = "BookingId")]
+        [Display(Name = "Booking Id")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "BookingId required")]
         public int BookingId { get; set; }
 
-        [Display(Name = "FromDate")]
+        [Display(Name = "From Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "DD/MM/YYYY")]
         public DateTime? FromDate { get; set; }
 
-        [Display(Name = "ToDate")]
+        [Display(Name = "To Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "DD/MM/YYYY")]
         public DateTime? ToDate { get; set; }
 
-        [Display(Name = "MaximumPerson")]
+        [Display(Name = "Maximum Person")]
         public int MaximumPerson { get; set; }
 
-        [Display(Name = "FromHour")]
+        [Display(Name = "From Hour")]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:MM}")]
         public string FromHour { get; set; }
 
-        [Display(Name = "ToHour")]
+        [Display(Name = "To Hour")]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         public string ToHour { get; set; }
 
-        [Display(Name = "ClientId")]
+        [Display(Name = "Client Id")]
         public Int64 ClientId { get; set; }
 
-        [Display(Name = "PropertyId")]
+        [Display(Name = "Property Id")]
         public Int64 PropertyId { get; set; }
 
         [Display(Name = "CreatedBy")]

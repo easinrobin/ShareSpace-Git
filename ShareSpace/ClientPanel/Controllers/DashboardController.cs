@@ -51,7 +51,6 @@ namespace ClientPanel.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 Int64 clientId = Session["ClientId"] != null ? Convert.ToInt64(Session["ClientId"]) : 0;
                 List<ClientsBookingHistory> bookingHistoryList = new List<ClientsBookingHistory>();
 

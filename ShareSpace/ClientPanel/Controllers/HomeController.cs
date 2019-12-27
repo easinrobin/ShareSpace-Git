@@ -404,8 +404,7 @@ namespace ClientPanel.Controllers
                 return Redirect(Request.UrlReferrer.PathAndQuery);
             }
 
-
-
+            
             return View();
         }
 

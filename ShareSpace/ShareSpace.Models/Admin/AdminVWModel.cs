@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using ShareSpace.Models.Property;
 using System.Web;
 using ShareSpace.Models.Service;
@@ -21,6 +22,8 @@ namespace ShareSpace.Models.Admin
         public Services Services { get; set; }
         public Vendor.Vendor Vendors { get; set; }
         public List<Vendor.Vendor> VendorList { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Image Required")]
         public IEnumerable<HttpPostedFileBase> Files { get; set; }
 
         public List<PropertyDetails> PropertyDetailsList { get; set; }

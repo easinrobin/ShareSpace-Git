@@ -20,7 +20,7 @@ namespace AdminPanel.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(User user)
+        public ActionResult Login(Role user)
         {
             if (ModelState.IsValid)
             {

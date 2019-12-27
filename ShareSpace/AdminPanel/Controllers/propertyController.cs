@@ -193,7 +193,7 @@ namespace AdminPanel.Controllers
         public ActionResult DeleteGalleryItem(long galleryId)
         {
             GalleryManager.DeleteGallery(galleryId);
-            return RedirectToAction("GalleryList");
+            return RedirectToAction("Index");
         }
 
         public ActionResult DeleteProperty(long propertyId)

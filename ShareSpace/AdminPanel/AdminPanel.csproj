@@ -220,6 +220,7 @@
     <Content Include="Content\ThirdPartyCss\bootstrap.min.css" />
     <Content Include="Content\CustomCss\demo.css" />
     <Content Include="Content\ThirdPartyCss\dropzone.css" />
+    <Content Include="Content\ThirdPartyCss\flatpickr.min.css" />
     <Content Include="Content\ThirdPartyCss\font-awesome.css" />
     <Content Include="Content\ThirdPartyCss\font-awesome.min.css" />
     <Content Include="Content\ThirdPartyCss\fullcalendar.min.css" />
@@ -457,6 +458,7 @@
     <Content Include="Scripts\ThirdPartyJs\curvedLines.js" />
     <Content Include="Scripts\ThirdPartyJs\dataTables.buttons.min.js" />
     <Content Include="Scripts\ThirdPartyJs\dropzone.min.js" />
+    <Content Include="Scripts\ThirdPartyJs\flatpickr.min.js" />
     <Content Include="Scripts\ThirdPartyJs\fullcalendar.min.js" />
     <Content Include="Scripts\ThirdPartyJs\jquery-3.4.1.js" />
     <Content Include="Scripts\ThirdPartyJs\jquery-3.4.1.min.js" />
@@ -480,6 +482,7 @@
     <Content Include="Scripts\ThirdPartyJs\jszip.min.js" />
     <Content Include="Scripts\ThirdPartyJs\lightgallery-all.min.js" />
     <Content Include="Scripts\ThirdPartyJs\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ThirdPartyJs\moment.min.js" />
     <Content Include="Scripts\ThirdPartyJs\popper.min.js" />
     <Content Include="Scripts\rich-textJs\code_beautifier.min.js" />
     <Content Include="Scripts\rich-textJs\code_view.min.js" />

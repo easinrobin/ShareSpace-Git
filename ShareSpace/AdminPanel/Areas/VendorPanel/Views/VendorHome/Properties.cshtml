@@ -3,7 +3,11 @@
     ViewBag.Title = "Properties";
     Layout = "~/Areas/VendorPanel/Views/Shared/_VendorHomeLayout.cshtml";
 }
-
+<style>
+    .table option {
+        background-color: transparent;
+    }
+</style>
 <header class="content__title">
     <h1>Properties</h1>
 
@@ -18,7 +22,7 @@
             <a href="~/VendorPanel/VendorHome/Create" class="btn btn-light btn--icon-text" title="Create"><i class="zmdi  zmdi-plus-circle-o zmdi-hc-fw"></i> Create New</a>
         </h4>
         <div class="table-responsive">
-            <table @*id="data-table"*@ class="table">
+            <table id="data-table" class="table">
                 <thead>
                     <tr>
                         <th>Property Name</th>
@@ -34,7 +38,9 @@
                     <tbody>
                         <tr>
                             <td>@property.PropertyName</td>
-                            <td>@property.FeatureImage</td>
+                            <td>
+                                <img src="@property.FeatureImage" height="100" width="100" alt="@property.PropertyName"/>
+                            </td>
                             <td>@property.Price.ToString("0.00")</td>
                             @*<td>House# @property.HouseNo,Flat# @property.FlatNo,Road# @property.RoadNo, @property.Area, @property.City</td>*@
                             <td>@property.MaximumPerson</td>

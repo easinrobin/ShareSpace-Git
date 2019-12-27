@@ -106,8 +106,10 @@
                                 @if (Session["UserName"] != null)
                                 {
                                     <li>
-                                        <a href="/Dashboard/Index" class="sign-in"><i class="fa fa-user"></i>&nbsp;&nbsp;Profile</a>
+                                        <a href="/Dashboard/Index" class="">Hello @Session["FirstName"]</a>
                                     </li>
+                                    <li>|</li>
+                                    <li>@Html.ActionLink("Logout", "Logout", "Auth")</li>
                                 }
                                 else
                                 {

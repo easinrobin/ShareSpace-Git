@@ -1,14 +1,4 @@
-﻿@*@{
-    if (Session["UserName"] !=null && Session["Name"] != null)
-    {
-        Response.Redirect("~/Areas/VendorPanel/Views/VendorHome/Index.cshtml");
-    }
-    else
-    {
-        Response.Redirect("~/Views/Auth/Login.cshtml");
-    }
-}*@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -83,7 +73,7 @@
                     <div class="user__info" data-toggle="dropdown">
                         <img class="user__img" src="/img/profile-pics/8.jpg" alt="">
                         <div>
-                            @if (Session["UserName"] !=null && Session["Name"] != null)
+                            @if (Session["UserName"] != null && Session["Name"] != null)
                             {
                                 <div class="user__name">@Session["Name"].ToString()</div>
                                 <div class="user__email">@Session["UserName"].ToString()</div>
@@ -103,11 +93,11 @@
                 </div>
 
                 <ul class="navigation">
-                    <li><a href="/VendorPanel/VendorHome/Index"><i class="zmdi zmdi-dashbord"></i>Dashboard</a></li>
+                    <li><a href="/VendorPanel/VendorHome/Index"><i class="zmdi zmdi-view-dashboard"></i>Dashboard</a></li>
 
-                    <li><a href="/VendorPanel/VendorHome/Profile"><i class="zmdi zmdi-property"></i>Profile</a></li>
+                    <li><a href="/VendorPanel/VendorHome/Profile"><i class="zmdi zmdi-account"></i>Profile</a></li>
 
-                    <li><a href="/VendorPanel/VendorHome/Properties"><i class="zmdi zmdi-property"></i>Properties</a></li>
+                    <li><a href="/VendorPanel/VendorHome/Properties"><i class="zmdi zmdi-city"></i>Properties</a></li>
                 </ul>
             </div>
         </aside>
@@ -169,5 +159,16 @@
     @Scripts.Render("~/bundles/rich-textJs-28")
     @Scripts.Render("~/bundles/rich-textJs-29")
     @Scripts.Render("~/bundles/rich-textJs-30")
+
+<script>
+    (function () {
+        new FroalaEditor("#edit",
+            {
+                theme: 'dark'
+            })
+    })()
+</script>
+
+@RenderSection("scripts", false)
 </body>
 </html>
