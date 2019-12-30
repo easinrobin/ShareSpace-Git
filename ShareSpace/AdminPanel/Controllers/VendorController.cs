@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using ShareSpace.BusinessLayer;
 using ShareSpace.Models.Admin;
-using ShareSpace.Models.Booking;
 using ShareSpace.Models.Vendor;
 
 namespace AdminPanel.Controllers
@@ -30,7 +29,9 @@ namespace AdminPanel.Controllers
             if (adminVwModel.Vendors != null && adminVwModel.Vendors.VendorId > 0)
             {
                 _UploadImage(adminVwModel, image);
-                //adminVwModel.Vendors.VendorPhoto = string.Empty;
+                adminVwModel.Vendors.IsInActive = false;
+                adminVwModel.Vendors.UpdateBy = "Admin";
+                adminVwModel.Vendors.UpdateDate = DateTime.Now.Date;
                 VendorManager.UpdateVendor(adminVwModel.Vendors);
             }
             else
@@ -38,7 +39,10 @@ namespace AdminPanel.Controllers
                 _UploadImage(adminVwModel, image);
                 if (adminVwModel.Vendors != null)
                 {
-                    //vendor.VendorPhoto = string.Empty;
+                    _UploadImage(adminVwModel, image);
+                    adminVwModel.Vendors.IsInActive = false;
+                    adminVwModel.Vendors.CreatedBy = "Admin";
+                    adminVwModel.Vendors.CreatedDate = DateTime.Now.Date;
                     VendorManager.InsertVendor(adminVwModel.Vendors);
                     //_sendEmail(adminVwModel.Vendors);
                 }
@@ -77,6 +81,13 @@ namespace AdminPanel.Controllers
         public ActionResult DeleteVendor(long vendorId)
         {
             VendorManager.DeleteVendor(vendorId);
+            return RedirectToAction("AdminVendors");
+        }
+
+        public ActionResult HideVendor(long vendorId)
+        {
+            VendorManager.HideVendor(vendorId);
+            PropertyManager.HidePropertyByVendorId(vendorId);
             return RedirectToAction("AdminVendors");
         }
 

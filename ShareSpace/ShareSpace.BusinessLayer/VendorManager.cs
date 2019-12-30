@@ -66,6 +66,13 @@ namespace ShareSpace.BusinessLayer
             return isDelete;
         }
 
+        public static bool HideVendor(long vendorId)
+        {
+            SqlVendorsProvider sqlVendorProvider = new SqlVendorsProvider();
+            var isDelete = sqlVendorProvider.HideVendor(vendorId);
+            return isDelete;
+        }
+
         #endregion
     }
 }

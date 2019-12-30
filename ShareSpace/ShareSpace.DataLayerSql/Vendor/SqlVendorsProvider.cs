@@ -194,7 +194,34 @@ namespace ShareSpace.DataLayerSql.Vendor
             }
             return isDelete;
         }
-        
+
+        public bool HideVendor(long vendorId)
+        {
+            bool isHide = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.HideVendor, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@VendorID", vendorId));
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    isHide = false;
+                    throw new Exception("Exception Updating Data." + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return isHide;
+        }
+
         public List<Models.Vendor.Vendor> GetAllVendorsByEmailNPhone(string email, string mobileNo)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))

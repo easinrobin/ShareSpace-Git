@@ -32,7 +32,9 @@ namespace AdminPanel.Controllers
             if (adminVwModel.Clients != null && adminVwModel.Clients.ClientId > 0)
             {
                 _UploadImage(adminVwModel, image);
-                //adminVwModel.Clients.ClientPhoto = string.Empty;
+                adminVwModel.Clients.IsInActive = false;
+                adminVwModel.Clients.UpdateBy = "Admin";
+                adminVwModel.Clients.UpdateDate = DateTime.Now;
                 ClientManager.UpdateClient(adminVwModel.Clients);
             }
             else
@@ -40,7 +42,9 @@ namespace AdminPanel.Controllers
                 if (adminVwModel.Clients != null)
                 {
                     _UploadImage(adminVwModel, image);
-                    //client.ClientPhoto = string.Empty;
+                    adminVwModel.Clients.IsInActive = false;
+                    adminVwModel.Clients.CreatedBy = "Admin";
+                    adminVwModel.Clients.CreatedDate = DateTime.Now;
                     ClientManager.InsertClient(adminVwModel.Clients);
                 }
             }
@@ -65,6 +69,12 @@ namespace AdminPanel.Controllers
         public ActionResult DeleteClient(long clientId)
         {
             ClientManager.DeleteClient(clientId);
+            return RedirectToAction("AdminClients");
+        }
+
+        public ActionResult HideClient(long clientId)
+        {
+            ClientManager.HideClient(clientId);
             return RedirectToAction("AdminClients");
         }
 

@@ -11,14 +11,10 @@ namespace ShareSpace.Models.Booking
         public int BookingId { get; set; }
 
         [Display(Name = "From Date")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "DD/MM/YYYY")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "From Date required")]
         public DateTime? FromDate { get; set; }
 
         [Display(Name = "To Date")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "DD/MM/YYYY")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "To Date required")]
         public DateTime? ToDate { get; set; }
 

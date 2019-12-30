@@ -41,6 +41,9 @@ namespace ShareSpace.Models.Client
         [Display(Name = "Client Photo")]
         public string ClientPhoto { get; set; }
 
+        [Display(Name = "Is InActive")]
+        public bool IsInActive { get; set; }
+
         [Display(Name = "Created By")]
         public string CreatedBy { get; set; }
 

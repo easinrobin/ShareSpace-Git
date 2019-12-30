@@ -496,6 +496,33 @@ namespace ShareSpace.DataLayerSql.Property
             return isHidden;
         }
 
+        public bool HidePropertyByVendorId(long vendorId)
+        {
+            bool isHidden = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Hide_Property_By_VendorId, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@VendorId", vendorId));
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    isHidden = false;
+                    throw new Exception("Exception Updating Data." + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return isHidden;
+        }
+
         public long InsertPropertyService(PropertyService propertyService)
         {
             long id = 0;

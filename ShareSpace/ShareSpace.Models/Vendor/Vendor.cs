@@ -45,6 +45,9 @@ namespace ShareSpace.Models.Vendor
         [Required(AllowEmptyStrings = false, ErrorMessage = "Vendor Photo Required")]
         public string VendorPhoto { get; set; }
 
+        [Display(Name="Is InActive")]
+        public bool IsInActive { get; set; }
+
         [Display(Name = "CreatedBy")]
         public string CreatedBy { get; set; }
 

@@ -20,6 +20,8 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string DELETECLIENT = "sp_client_deleteclients";
 
+        public static string HideClient = "sp_client_hideclients";
+
         public static string GETCLIENTBYEMAIL = "sp_client_getclientbyemail";
 
         public static string Get_Client_By_Email_And_Password = "sp_client_GetClientByEmailAndPassword";
@@ -54,6 +56,8 @@ namespace ShareSpace.DataLayerSql.Common
         public static string DELETEPROPERTYS = "sp_property_deleteproperty";
 
         public static string Hide_Property = "sp_property_hideProperty";
+
+        public static string Hide_Property_By_VendorId = "sp_property_hidePropertyByVendorId";
 
         public static string Delete_PropertyService_byId = "sp_propertyservice_deletepropertyservice";
 
@@ -102,6 +106,8 @@ namespace ShareSpace.DataLayerSql.Common
         public static string UPDATEVENDORS = "sp_vendor_updatevendors";
 
         public static string DELETEVENDORS = "sp_vendor_deletevendors";
+
+        public static string HideVendor = "sp_vendor_hidevendors";
 
         public static string GETALLVENDORSBYEMAIL_MOBILE = "sp_vendor_getallvendorbyemailandmobile";
 

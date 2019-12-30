@@ -56,6 +56,13 @@ namespace ShareSpace.BusinessLayer
             var isDelete = sqlClientProvider.DeleteClient(clientId);
             return isDelete;
         }
+
+        public static bool HideClient(long clientId)
+        {
+            SqlClientProvider sqlClientProvider = new SqlClientProvider();
+            var isDelete = sqlClientProvider.HideClient(clientId);
+            return isDelete;
+        }
         #endregion
     }
 }

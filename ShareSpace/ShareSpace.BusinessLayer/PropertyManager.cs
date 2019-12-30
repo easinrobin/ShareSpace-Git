@@ -117,6 +117,13 @@ namespace ShareSpace.BusinessLayer
             return isHidden;
         }
 
+        public static bool HidePropertyByVendorId(long vendorId)
+        {
+            SqlPropertyProvider sqlPropertyProvider = new SqlPropertyProvider();
+            var isHidden = sqlPropertyProvider.HidePropertyByVendorId(vendorId);
+            return isHidden;
+        }
+
         #endregion
         public static List<PropertySearchResultNew> GetPropertiesBySearch(string fromDate, string toDate, string fromHour, string toHour)
         {
