@@ -127,7 +127,7 @@
                     @Html.LabelFor(model => model.Property.Description, new { @class = "card-body__title" })
                     @*@Html.TextAreaFor(model => model.Property.Description, new { @class = "form-control", rows = "3", placeHolder = "Description" })*@
                     <section id="editor" class="rich-text-box">
-                        @Html.TextAreaFor(model => model.Property.Description, new { @id = "edit", placeHolder = "Description" })
+                        @Html.TextAreaFor(model => model.Property.Description, new { @id = "wysiwyg-editor", placeHolder = "Description" })
                         @Html.ValidationMessageFor(model => model.Property.Description, "", new { @class = "validation-text" })
                     </section>
 

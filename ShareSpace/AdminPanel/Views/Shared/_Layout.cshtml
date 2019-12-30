@@ -19,20 +19,6 @@
     @Styles.Render("~/Content/flatpickr")
     @Styles.Render("~/Content/rich-text-1")
     @Styles.Render("~/Content/rich-text-2")
-    @Styles.Render("~/Content/rich-text-3")
-    @Styles.Render("~/Content/rich-text-4")
-    @Styles.Render("~/Content/rich-text-5")
-    @*@Styles.Render("~/Content/rich-text-6")*@
-    @*@Styles.Render("~/Content/rich-text-7")*@
-    @Styles.Render("~/Content/rich-text-8")
-    @Styles.Render("~/Content/rich-text-9")
-    @Styles.Render("~/Content/rich-text-10")
-    @*@Styles.Render("~/Content/rich-text-11")*@
-    @Styles.Render("~/Content/rich-text-12")
-    @Styles.Render("~/Content/rich-text-13")
-    @*@Styles.Render("~/Content/rich-text-14")*@
-    @Styles.Render("~/Content/rich-text-15")
-    @Styles.Render("~/Content/rich-text-16")
 
 
 </head>
@@ -157,34 +143,7 @@
 
     @Scripts.Render("~/bundles/rich-textJs-1")
     @Scripts.Render("~/bundles/rich-textJs-2")
-    @Scripts.Render("~/bundles/rich-textJs-3")
-    @Scripts.Render("~/bundles/rich-textJs-4")
-    @Scripts.Render("~/bundles/rich-textJs-5")
-    @Scripts.Render("~/bundles/rich-textJs-6")
-    @Scripts.Render("~/bundles/rich-textJs-7")
-    @Scripts.Render("~/bundles/rich-textJs-8")
-    @Scripts.Render("~/bundles/rich-textJs-9")
-    @Scripts.Render("~/bundles/rich-textJs-10")
-    @Scripts.Render("~/bundles/rich-textJs-11")
-    @*@Scripts.Render("~/bundles/rich-textJs-12")*@
-    @*@Scripts.Render("~/bundles/rich-textJs-13")*@
-    @*@Scripts.Render("~/bundles/rich-textJs-14")*@
-    @Scripts.Render("~/bundles/rich-textJs-15")
-    @*@Scripts.Render("~/bundles/rich-textJs-16")*@
-    @Scripts.Render("~/bundles/rich-textJs-17")
-    @Scripts.Render("~/bundles/rich-textJs-18")
-    @Scripts.Render("~/bundles/rich-textJs-19")
-    @Scripts.Render("~/bundles/rich-textJs-20")
-    @*@Scripts.Render("~/bundles/rich-textJs-21")*@
-    @*@Scripts.Render("~/bundles/rich-textJs-22")*@
-    @*@Scripts.Render("~/bundles/rich-textJs-23")*@
-    @Scripts.Render("~/bundles/rich-textJs-24")
-    @Scripts.Render("~/bundles/rich-textJs-25")
-    @Scripts.Render("~/bundles/rich-textJs-26")
-    @Scripts.Render("~/bundles/rich-textJs-27")
-    @Scripts.Render("~/bundles/rich-textJs-28")
-    @Scripts.Render("~/bundles/rich-textJs-29")
-    @Scripts.Render("~/bundles/rich-textJs-30")
+    
 
     <script>
         $(document).ready(function () {
@@ -207,13 +166,8 @@
             $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
         });
 
+        $('#wysiwyg-editor').trumbowyg();
 
-        (function () {
-            new FroalaEditor("#edit",
-                {
-                    theme: 'dark'
-                })
-        })()
     </script>
 
     @RenderSection("scripts", false)

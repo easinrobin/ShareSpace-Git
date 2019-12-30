@@ -126,7 +126,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Property.Description, new { @class = "card-body__title" })
                     <section id="editor" class="rich-text-box">
-                        @Html.TextAreaFor(model => model.Property.Description, new { @id = "edit", placeHolder = "Description" })
+                        @Html.TextAreaFor(model => model.Property.Description, new { @id = "wysiwyg-editor", placeHolder = "Description" })
                         @Html.ValidationMessageFor(model => model.Property.Description, "", new { @class = "validation-text" })
                     </section>
 
@@ -194,14 +194,3 @@
         }
     </div>
 </div>
-
-@section scripts{
-    <script>
-        (function () {
-            new FroalaEditor("#edit",
-                {
-                    theme: 'dark'
-                })
-        })()
-    </script>
-} 
