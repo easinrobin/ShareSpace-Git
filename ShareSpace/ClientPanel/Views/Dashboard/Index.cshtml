@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_ClientDashboardLayout.cshtml";
+    var imagepath2 = "http://adminss.thebyteheart.com/" + Model.ClientPhoto;
 }
 
 <div class="content__inner content__inner--sm">
@@ -12,7 +13,7 @@
 
     <div class="card profile">
         <div class="profile__img">
-            <img src="@Model.ClientPhoto" alt="@Model.FirstName">
+            <img src="@imagepath2" alt="@Model.FirstName">
         </div>
 
         <div class="profile__info">
@@ -34,12 +35,13 @@
                     {
                         var propertyLink = "/Home/OfficeDetails/" + property.PropertyId;
                         //var imagepath = Request.Url.Scheme + "://" + Request.Url.Authority + property.FeatureImage;
+                        var imagepath = "http://adminss.thebyteheart.com/" + property.FeatureImage;
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 wow fadeInUp delay-04s">
                             <!-- Hotel box start -->
                             <div class="hotel-box">
                                 <!--header -->
                                 <div class="clearfix">
-                                    <img src="@property.FeatureImage" alt="img-6" class="img-responsive">
+                                    <img src="@imagepath" alt="img-6" class="img-responsive">
                                 </div>
                                 <!-- Detail -->
                                 <div class="detail clearfix">

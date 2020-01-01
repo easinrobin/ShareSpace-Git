@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Booking Confirmed";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var imagepath = "http://adminss.thebyteheart.com/" + Model.FeatureImage;
 }
 
 <div class="clear"></div>
@@ -29,7 +30,7 @@
                 <div class="col-md-8 col-sm-6">
                     <!-- Booking Image Start-->
                     <div class="Bookin_img">
-                        <img src="@Model.FeatureImage" alt="sharespace" style="width: 100%; height:370px;" />
+                        <img src="@imagepath" alt="sharespace" style="width: 100%; height:370px;" />
                     </div>
                     <!-- Booking Image end -->
                 </div>

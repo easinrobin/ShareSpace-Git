@@ -62,7 +62,7 @@ namespace ShareSpace.Models.Property
         public bool IsSearchable { get; set; }
 
         [Display(Name = "Vendor Id")]
-        public int VendorId { get; set; }
+        public long VendorId { get; set; }
 
         [Display(Name = "Created By")]
         public string CreatedBy { get; set; }

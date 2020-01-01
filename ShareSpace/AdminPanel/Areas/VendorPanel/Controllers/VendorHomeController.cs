@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 using ShareSpace.BusinessLayer;
 using ShareSpace.Models.Admin;
 using ShareSpace.Models.Gallery;
@@ -21,8 +22,10 @@ namespace AdminPanel.Areas.VendorPanel.Controllers
             return View();
         }
 
-        public ActionResult Properties(long vendorId = 2)
+        public ActionResult Properties()
         {
+            long vendorId = 0;
+            vendorId = (long)Session["VendorId"];
             var model = VendorManager.GetVendorsPropertyById(vendorId);
             return View(model);
         }
@@ -112,9 +115,8 @@ namespace AdminPanel.Areas.VendorPanel.Controllers
         [ValidateInput(false)]
         public ActionResult Create(AdminVWModel adminVWModel, HttpPostedFileBase images)
         {
-            long vendorId = 2;
             //Session["VendorId"] = adminVWModel.Property.VendorId;
-            adminVWModel.Property.VendorId = (int)vendorId;
+            adminVWModel.Property.VendorId = (long)Session["VendorId"];
             _Property(adminVWModel, images);
             var propertyId = PropertyManager.InsertProperty(adminVWModel.Property);
 

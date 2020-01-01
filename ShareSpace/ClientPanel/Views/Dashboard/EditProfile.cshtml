@@ -11,10 +11,11 @@
         var imagepath = "http://adminss.thebyteheart.com/" + Model.Client.ClientPhoto;
         <div class="new-contact__header">
 
-            @Html.TextBoxFor(model => model.Files, new { type = "file", id = "files", @class = "fa fa-camera new-contact__upload" })
-
+            @*@Html.TextBoxFor(model => model.Files, new { type = "file", id = "files", @class = "fa fa-camera new-contact__upload" })*@
+            <input type="file" name="files" id="files" class="fa fa-camera new-contact__upload" />
 
             <img src="@imagepath" class="new-contact__img" alt="">
+
         </div>
 
         <div class="card-body">

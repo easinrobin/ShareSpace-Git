@@ -10,12 +10,9 @@
         @Html.HiddenFor(model => model.Vendors.VendorPhoto)
         var imagepath = "http://adminss.thebyteheart.com/" + Model.Vendors.VendorPhoto;
         <div class="new-contact__header">
-            @*<a href="#" class="fa fa-camera new-contact__upload"></a>
 
-                <img src="/img/Offices/avatar1.jpg" class="new-contact__img" alt="">*@
-            @*<img src="@Model.VendorPhoto" class="new-contact__img" alt="">*@
-
-            @Html.TextBoxFor(model => model.Files, new { type = "file", id = "files", @class = "fa fa-camera new-contact__upload" })
+            @*@Html.TextBoxFor(model => model.Files, new { type = "file", id = "files", @class = "fa fa-camera new-contact__upload" })*@
+            <input type="file" name="files" id="files" class="fa fa-camera new-contact__upload" />
 
             <img src="@imagepath" class="new-contact__img" alt="">
         </div>

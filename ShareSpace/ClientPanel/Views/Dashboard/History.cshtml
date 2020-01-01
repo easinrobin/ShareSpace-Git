@@ -14,11 +14,11 @@
     <div class="contacts row">
         @foreach (var booking in Model.ToList())
         {
-
+            var imagepath = "http://adminss.thebyteheart.com/" + booking.FeatureImage;
             <div class="col-md-6 col-sm-6 col-6">
                 <div class="contacts__item">
                     <a href="#" class="contacts__img">
-                        <img src="@booking.FeatureImage" alt="@booking.PropertyName">
+                        <img src="@imagepath" alt="@booking.PropertyName">
                     </a>
 
                     <div class="contacts__info">
