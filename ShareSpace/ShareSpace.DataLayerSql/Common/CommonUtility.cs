@@ -185,5 +185,8 @@ namespace ShareSpace.DataLayerSql.Common
         public static string UPDATENEWSLETTER = "sp_newsletter_updatenewsletter";
 
         public static string DELETENEWSLETTER = "sp_newsletter_deletenewsletter";
+
+        //PropertyRating
+        public static string INSERT_PROPERTY_RATING = "sp_propertyrating_insertpropertyrating";
     }
 }

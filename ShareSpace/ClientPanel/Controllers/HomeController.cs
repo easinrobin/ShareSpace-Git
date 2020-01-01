@@ -181,7 +181,7 @@ namespace ClientPanel.Controllers
 
         public ActionResult BookingConfirmed(string PropertyId, string BookingId)
         {
-            var model = new PropertyView();
+            var model = new BookingConfirmed();
             if (Request.QueryString["PropertyId"] != null)
             {
                 long propertyId = Request.QueryString["PropertyId"] != null
@@ -198,9 +198,10 @@ namespace ClientPanel.Controllers
         }
 
         [HttpPost]
-        public ActionResult OfficeDetails(BookingEmail bookingEmail, string propertyId, string address, string area, string city, string zipCode)
+        public ActionResult OfficeDetails(BookingEmail bookingEmail, PropertyView propertyView, string address, string area, string city, string zipCode)
         {
             long bookingId = 0;
+            long propertyId = propertyView.PropertyId;
             try
             {
                 string password = string.Empty;
@@ -218,7 +219,7 @@ namespace ClientPanel.Controllers
             }
             catch (Exception ex)
             {
-                return Redirect(Request.UrlReferrer.PathAndQuery);
+                if (Request.UrlReferrer != null) return Redirect(Request.UrlReferrer.PathAndQuery);
             }
 
             // return RedirectToAction("BookingConfirmed");
@@ -294,7 +295,7 @@ namespace ClientPanel.Controllers
 
         }
 
-        private long _insertBooking(BookingEmail bookingEmail, long clientId, string propertyId, string bookingNo)
+        private long _insertBooking(BookingEmail bookingEmail, long clientId, long propertyId, string bookingNo)
         {
             long bookingId = 0;
             try
@@ -365,7 +366,15 @@ namespace ClientPanel.Controllers
             return clientid;
         }
 
-
+        [HttpPost]
+        public ActionResult ClientReview(ClientViewModel clientVwModel, PropertyView propertyView)
+        {
+            clientVwModel.PropertyRating.ClientId = (long) Session["ClientId"];
+            clientVwModel.PropertyRating.PropertyId = propertyView.PropertyId;
+            clientVwModel.PropertyRating.CreatedDate = DateTime.Now;
+            PropertyRatingManager.InsertPropertyRating(clientVwModel.PropertyRating);
+            return RedirectToAction("OfficeDetails/"+propertyView.PropertyId);
+        }
 
         [HttpPost]
         public ActionResult Contact(ContactForm contactForm)

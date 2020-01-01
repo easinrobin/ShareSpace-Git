@@ -19,10 +19,10 @@ namespace ShareSpace.Models.Property
         public int Rating { get; set; }
 
         [Display(Name = "PropertyId")]
-        public int PropertyId { get; set; }
+        public long PropertyId { get; set; }
 
         [Display(Name = "ClientId")]
-        public int ClientId { get; set; }
+        public long ClientId { get; set; }
 
         [Display(Name = "CreatedBy")]
         public string CreatedBy { get; set; }

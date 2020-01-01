@@ -1,4 +1,6 @@
-﻿namespace ShareSpace.Models.Property
+﻿using System;
+
+namespace ShareSpace.Models.Property
 { 
     public class ClientPropertyRating
     {
@@ -11,5 +13,6 @@
         public string Email { get; set; }
         public string Review { get; set; }
         public int Rating { get; set; }
+        public DateTime? CreatedDate { get; set; }
     }
 }

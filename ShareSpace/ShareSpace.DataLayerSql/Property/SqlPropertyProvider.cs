@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using ShareSpace.DataLayer.Property;
 using ShareSpace.DataLayerSql.Common;
+using ShareSpace.Models.Booking;
 using ShareSpace.Models.Client;
 using ShareSpace.Models.Property;
 using ShareSpace.Utility;
@@ -561,6 +562,44 @@ namespace ShareSpace.DataLayerSql.Property
             return id;
         }
 
+        public long InsertPropertyRating(PropertyRating propertyRating)
+        {
+            long id = 0;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.INSERT_PROPERTY_RATING, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlParameter returnValue = new SqlParameter("@" + "PropertyRatingId", SqlDbType.Int);
+                returnValue.Direction = ParameterDirection.Output;
+                command.Parameters.Add(returnValue);
+                foreach (var service in propertyRating.GetType().GetProperties())
+                {
+                    if (service.Name != "PropertyRatingId")
+                    {
+                        string name = service.Name;
+                        var value = service.GetValue(propertyRating, null);
+
+                        command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                    }
+                }
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    id = (int)command.Parameters["@PropertyRatingId"].Value;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return id;
+        }
+
         public bool DeletePropertyServiceById(long propertyServiceId)
         {
             bool isDelete = true;
@@ -618,7 +657,7 @@ namespace ShareSpace.DataLayerSql.Property
                 }
             }
         }
-        public PropertyView GetPropertyViewByPropertyIdnBookingId(long propertyId, long bookingId)
+        public BookingConfirmed GetPropertyViewByPropertyIdnBookingId(long propertyId, long bookingId)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
@@ -630,8 +669,8 @@ namespace ShareSpace.DataLayerSql.Property
                 {
                     connection.Open();
                     SqlDataReader dataReader = command.ExecuteReader();
-                    PropertyView propertyList = new PropertyView();
-                    propertyList = UtilityManager.DataReaderMap<PropertyView>(dataReader);
+                    BookingConfirmed propertyList = new BookingConfirmed();
+                    propertyList = UtilityManager.DataReaderMap<BookingConfirmed>(dataReader);
                     return propertyList;
                 }
                 catch (Exception e)

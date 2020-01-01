@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using ShareSpace.Models.Property;
 using ShareSpace.Models.Search;
 using ShareSpace.Models.Booking;
@@ -22,5 +24,9 @@ namespace ShareSpace.Models.Client
         public BookingEmail BookingEmail { get; set; }
         public Client Client { get; set; }
         public NewsLetter.NewsLetter NewsLetter { get; set; }
+        public PropertyRating PropertyRating { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Image Required")]
+        public IEnumerable<HttpPostedFileBase> Files { get; set; }
     }
 }

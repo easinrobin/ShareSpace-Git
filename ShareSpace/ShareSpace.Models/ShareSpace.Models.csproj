@@ -57,6 +57,7 @@
     <Compile Include="Auth\Login.cs" />
     <Compile Include="Booking\AdminBookingList.cs" />
     <Compile Include="Booking\Booking.cs" />
+    <Compile Include="Booking\BookingConfirmed.cs" />
     <Compile Include="Booking\BookingEmail.cs" />
     <Compile Include="Client\Client.cs" />
     <Compile Include="Client\ClientsBookingHistory.cs" />

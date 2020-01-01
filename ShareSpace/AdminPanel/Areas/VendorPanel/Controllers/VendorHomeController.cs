@@ -86,24 +86,26 @@ namespace AdminPanel.Areas.VendorPanel.Controllers
 
         public ActionResult Profile()
         {
+            AdminVWModel av = new AdminVWModel();
             long vendorId = Session["VendorId"] != null ? Convert.ToInt64(Session["VendorId"]) : 0;
-            Vendor vendor = VendorManager.GetVendorById(vendorId);
+            av.Vendors = VendorManager.GetVendorById(vendorId);
             //VendorManager.GetVendorById(vendorId);
-            return View("~/Areas/VendorPanel/Views/VendorHome/Profile.cshtml", vendor);
+            return View("~/Areas/VendorPanel/Views/VendorHome/Profile.cshtml", av);
         }
 
         [HttpPost]
-        public ActionResult Profile(Vendor vendor)
+        public ActionResult Profile(AdminVWModel av, HttpPostedFileBase image)
         {
-            vendor.VendorPhoto = null;
-            vendor.CreatedBy = vendor.FirstName;
-            vendor.UpdateBy = vendor.FirstName;
-            vendor.CreatedDate = DateTime.Today;
-            vendor.UpdateDate = DateTime.Today;
+            _UploadImage(av, image);
+            av.Vendors.CreatedBy = av.Vendors.FirstName;
+            av.Vendors.UpdateBy = av.Vendors.FirstName;
+            av.Vendors.IsInActive = false;
+            av.Vendors.CreatedDate = DateTime.Today;
+            av.Vendors.UpdateDate = DateTime.Today;
             Int64 vendorId = Session["VendorId"] != null ? Convert.ToInt64(Session["VendorId"]) : 0;
-            vendor.VendorId = vendorId;
-            bool isUpdate = VendorManager.UpdateVendor(vendor);
-            return View();
+            av.Vendors.VendorId = vendorId;
+            bool isUpdate = VendorManager.UpdateVendor(av.Vendors);
+            return View("Index");
         }
 
         [HttpPost]
@@ -344,6 +346,34 @@ namespace AdminPanel.Areas.VendorPanel.Controllers
         {
             PropertyServiceManager.DeletePropertyServiceById(propertyServiceId);
             return RedirectToAction("Properties");
+        }
+
+        private void _UploadImage(AdminVWModel av, HttpPostedFileBase images)
+        {
+            foreach (var file in av.Files.Take(1))
+            {
+                string pathUrl = "";
+
+                if (file != null)
+                {
+                    if (file.ContentLength > 0)
+                    {
+                        string savepath, savefile;
+                        var filename = Path.GetFileName(Guid.NewGuid() + file.FileName);
+                        savepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img/Offices/");
+                        if (!Directory.Exists(savepath))
+                            Directory.CreateDirectory(savepath);
+                        savefile = Path.Combine(savepath, filename);
+                        file.SaveAs(savefile);
+                        pathUrl = "/img/Offices/" + filename;
+                        av.Vendors.VendorPhoto = pathUrl;
+                    }
+                }
+                else
+                {
+                    pathUrl = av.Vendors.VendorPhoto;
+                }
+            }
         }
     }
 }

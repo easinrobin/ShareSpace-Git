@@ -3,11 +3,13 @@
     ViewBag.Title = "Office Details";
 }
 @{
-    var maploc =  Model.PropertyView.RoadNo + "," + Model.PropertyView.Area + "," + Model.PropertyView.City + "," + Model.PropertyView.ZipCode;
+    var maploc = Model.PropertyView.RoadNo + "," + Model.PropertyView.Area + "," + Model.PropertyView.City + "," + Model.PropertyView.ZipCode;
 
     var mapurl = "https://maps.google.com/maps?q=" + @maploc + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
 
     var propertyHiddenAddress = Model.PropertyView.HouseNo + ", " + Model.PropertyView.FlatNo + ", " + Model.PropertyView.RoadNo + ", ";
+
+
 }
 <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
@@ -228,11 +230,12 @@
                         <ul class="comments">
                             @foreach (var comments in Model.ClientPropertyRatings)
                             {
+                                var imagepath = "http://adminss.thebyteheart.com/" + @comments.ClientPhoto;
                                 <li>
                                     <div class="comment">
                                         <div class="comment-author">
                                             <a href="#">
-                                                <img src="@comments.ClientPhoto" alt="avatar-5">
+                                                <img src="@imagepath" alt="@comments.FirstName @comments.LastName">
                                             </a>
                                         </div>
                                         <div class="comment-content">
@@ -242,7 +245,7 @@
                                                 </div>
 
                                                 <div class="comment-meta-date">
-                                                    <span class="hidden-xs">8:42 PM 3/3/2017</span>
+                                                    <span class="hidden-xs">@comments.CreatedDate</span>
                                                 </div>
                                             </div>
                                             <div class="clearfix"></div>
@@ -266,42 +269,59 @@
                     <!-- Contact form start -->
                     @if (Session["UserName"] != null)
                     {
-                        <div class="contact-form">
-                            <form id="contact_form" action="" method="GET" enctype="multipart/form-data">
-                                <div class="main-title-2">
-                                    <h1>Rate this Office</h1>
-                                    <div id="client-rating" data-rateyo-star-width="20px" data-rateyo-rating="@Model.PropertyView.Rating">
-                                    </div>
-                                </div>
-                                <div class="main-title-2">
-                                    <h1> <span>Leave</span> a Comment</h1>
-                                </div>
+                    <div class="contact-form">
+                        @using (Html.BeginForm("ClientReview", "Home", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(m => m.PropertyView.PropertyId)
+                            
+                            <div class="main-title-2">
+                                <h1>Rate this Office</h1>
+                                @*<div id="client-rating" data-rateyo-star-width="20px" data-rateyo-rating="@Model.PropertyRating.Rating">
+                                   
+                                </div>*@
+                                @*@Html.EditorFor(x => x.PropertyRating.Rating, new{ @id = "client-rating" })
+                                @Html.HiddenFor(x => x.PropertyRating.Rating)*@
+                                @Html.DropDownListFor(model => model.PropertyRating.Rating, new List<SelectListItem>
+                                {
+                                    new SelectListItem {Text = "1", Value = "1"},
+                                    new SelectListItem {Text = "2", Value = "2"},
+                                    new SelectListItem {Text = "3", Value = "3"},
+                                    new SelectListItem {Text = "4", Value = "4"},
+                                    new SelectListItem {Text = "5", Value = "5"},
+                                },"Rating", new{@class = "form-control ddlbg", name = "Rating" }
+                                    )
+                            </div>
+                            <div class="main-title-2">
+                                <h1> <span>Leave</span> a Comment</h1>
+                            </div>
 
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="form-group fullname">
-                                            <input type="text" name="full-name" class="input-text" placeholder="Full Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="form-group enter-email">
-                                            <input type="email" name="email" class="input-text" placeholder="Enter email">
-                                        </div>
-                                    </div>
+                            <div class="row">
+                                @*<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group fullname">
+                        <input type="text" name="full-name" class="input-text" placeholder="Full Name">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group enter-email">
+                        <input type="email" name="email" class="input-text" placeholder="Enter email">
+                    </div>
+                </div>*@
 
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="form-group message">
-                                            <textarea class="input-text" name="message" placeholder="Write message"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="form-group send-btn">
-                                            <button type="submit" class="button-md button-theme">Post Comment</button>
-                                        </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group message">
+                                        @*<textarea class="input-text" name="message" placeholder="Write message"></textarea>*@
+                                        @Html.TextAreaFor(x => x.PropertyRating.Review, new { @class = "input-text", placeholder = "Write message" })
                                     </div>
                                 </div>
-                            </form>
-                        </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group send-btn">
+                                        @*<button type="submit" class="button-md button-theme">Post Comment</button>*@
+                                        <input type="submit" class="button-md button-theme" value="Post a Comment" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
                     }
 
                     <!-- Contact form end -->
@@ -461,4 +481,5 @@
         type: 'time',
         startCalendar: $('#rangestartsm')
     });
+
 </script>

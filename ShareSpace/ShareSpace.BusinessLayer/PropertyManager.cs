@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ShareSpace.DataLayerSql.Property;
+using ShareSpace.Models.Booking;
 using ShareSpace.Models.Property;
 
 namespace ShareSpace.BusinessLayer
@@ -130,7 +131,7 @@ namespace ShareSpace.BusinessLayer
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
             return propertyProvider.GetPropertiesBySearch(fromDate, toDate, fromHour, toHour);
         }
-        public static PropertyView GetPropertyViewByPropertyIdnBookingId(long propertyId, long bookingId)
+        public static BookingConfirmed GetPropertyViewByPropertyIdnBookingId(long propertyId, long bookingId)
         {
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
             return propertyProvider.GetPropertyViewByPropertyIdnBookingId(propertyId, bookingId);

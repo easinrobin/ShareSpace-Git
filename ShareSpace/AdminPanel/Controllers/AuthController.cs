@@ -48,6 +48,7 @@ namespace AdminPanel.Controllers
                         Session["VendorId"] = data.VendorId;
                         Session["UserName"] = data.Email.ToString();
                         Session["Name"] = data.FirstName;
+                        Session["VendorPhoto"] = data.VendorPhoto;
                         return View("~/Areas/VendorPanel/Views/VendorHome/Index.cshtml");
                     }
                     else
