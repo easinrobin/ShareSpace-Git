@@ -97,10 +97,39 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Property.RetailPrice, new { @class = "card-body__title" })
+                    <label class="card-body__title">Vendor Price</label>
                     @Html.TextBoxFor(model => model.Property.RetailPrice, new { @class = "form-control", PlaceHolder = "Price" })
                     @Html.ValidationMessageFor(model => model.Property.RetailPrice, "", new { @class = "validation-text" })
+                </div>
 
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Property.One_hr_price, new { @class = "card-body__title" })
+                    @Html.TextBoxFor(model => model.Property.One_hr_price, new { @class = "form-control", PlaceHolder = "Price" })
+                    @Html.ValidationMessageFor(model => model.Property.One_hr_price, "", new { @class = "validation-text" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Property.Four_hr_price, new { @class = "card-body__title" })
+                    @Html.TextBoxFor(model => model.Property.Four_hr_price, new { @class = "form-control", PlaceHolder = "Price" })
+                    @Html.ValidationMessageFor(model => model.Property.Four_hr_price, "", new { @class = "validation-text" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Property.Weekly_price, new { @class = "card-body__title" })
+                    @Html.TextBoxFor(model => model.Property.Weekly_price, new { @class = "form-control", PlaceHolder = "Price" })
+                    @Html.ValidationMessageFor(model => model.Property.Weekly_price, "", new { @class = "validation-text" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Property.Monthly_price, new { @class = "card-body__title" })
+                    @Html.TextBoxFor(model => model.Property.Monthly_price, new { @class = "form-control", PlaceHolder = "Price" })
+                    @Html.ValidationMessageFor(model => model.Property.Monthly_price, "", new { @class = "validation-text" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Property.Three_months_price, new { @class = "card-body__title" })
+                    @Html.TextBoxFor(model => model.Property.Three_months_price, new { @class = "form-control", PlaceHolder = "Price" })
+                    @Html.ValidationMessageFor(model => model.Property.Three_months_price, "", new { @class = "validation-text" })
                 </div>
 
                 <div class="form-group">
@@ -115,6 +144,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Property.VideoLink, new { @class = "card-body__title" })
+                    @Html.TextBoxFor(model => model.Property.VideoLink, new { @class = "form-control", PlaceHolder = "Price" })
+                    @Html.ValidationMessageFor(model => model.Property.VideoLink, "", new { @class = "validation-text" })
                 </div>
 
                 <div class="form-group">

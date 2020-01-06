@@ -25,6 +25,7 @@ namespace ShareSpace.Models.Client
         public Client Client { get; set; }
         public NewsLetter.NewsLetter NewsLetter { get; set; }
         public PropertyRating PropertyRating { get; set; }
+        public PropertyWorkingDays PropertyWorkingDays { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Image Required")]
         public IEnumerable<HttpPostedFileBase> Files { get; set; }

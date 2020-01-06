@@ -33,7 +33,7 @@ namespace AdminPanel.Controllers
                         Session["UserID"] = data.UserID.ToString();
                         Session["UserName"] = data.UserName.ToString();
                         Session["Name"] = "Site Admin";
-                        return View("~/Views/Home/Index.cshtml");
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {

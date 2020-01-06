@@ -123,6 +123,33 @@ namespace ShareSpace.DataLayerSql.Property
             }
         }
 
+        public List<AdminPropertyList> GetPendingPropertyList()
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Get_Pending_PropertyList, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    List<AdminPropertyList> propertyList = new List<AdminPropertyList>();
+                    propertyList = UtilityManager.DataReaderMapToList<AdminPropertyList>(dataReader);
+                    return propertyList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
         public List<PropertySearchResultNew> GetPropertiesAndPropertyRating()
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
@@ -648,6 +675,33 @@ namespace ShareSpace.DataLayerSql.Property
                 }
             }
             return isHidden;
+        }
+
+        public bool ApproveProperty(long propertyId)
+        {
+            bool isApproved = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Approve_Property, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@PropertyID", propertyId));
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    isApproved = false;
+                    throw new Exception("Exception Updating Data." + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return isApproved;
         }
 
         public bool HidePropertyByVendorId(long vendorId)

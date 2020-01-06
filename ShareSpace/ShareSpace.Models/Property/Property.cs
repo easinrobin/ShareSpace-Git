@@ -82,6 +82,9 @@ namespace ShareSpace.Models.Property
         [Display(Name = "Vendor Id")]
         public long VendorId { get; set; }
 
+        [Display(Name = "Video Link")]
+        public string VideoLink { get; set; }
+
         [Display(Name = "Created By")]
         public string CreatedBy { get; set; }
 

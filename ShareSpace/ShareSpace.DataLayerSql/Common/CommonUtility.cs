@@ -43,6 +43,8 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string Get_Admin_PropertyList = "sp_view_adminPanelPropertyList";
 
+        public static string Get_Pending_PropertyList = "sp_view_adminPendingPropertyList";
+
         public static string Get_Admin_PropertyListById = "sp_property_getAdminPropertyById";
 
         public static string GETPROPERTYSBYID = "sp_property_getpropertybyid";
@@ -56,6 +58,8 @@ namespace ShareSpace.DataLayerSql.Common
         public static string DELETEPROPERTYS = "sp_property_deleteproperty";
 
         public static string Hide_Property = "sp_property_hideProperty";
+
+        public static string Approve_Property = "sp_property_approveProperty";
 
         public static string Hide_Property_By_VendorId = "sp_property_hidePropertyByVendorId";
 

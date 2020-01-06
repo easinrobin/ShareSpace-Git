@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShareSpace.BusinessLayer;
 using ShareSpace.Models.Client;
 
 namespace AdminPanel.Controllers
@@ -11,7 +12,20 @@ namespace AdminPanel.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var model = PropertyManager.GetPendingPropertyList();
+            return View(model);
+        }
+
+        public ActionResult HideProperty(long propertyId)
+        {
+            PropertyManager.HideProperty(propertyId);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult ApproveProperty(long propertyId)
+        {
+            PropertyManager.ApproveProperty(propertyId);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Property()

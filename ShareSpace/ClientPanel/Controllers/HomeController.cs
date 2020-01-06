@@ -133,7 +133,10 @@ namespace ClientPanel.Controllers
                 cvModel.ClientPropertyRatings = PropertyManager.PropertyRatings(id);
 
                 cvModel.PropertyServiceOnClient = PropertyManager.GetPropertyServicesOnClient(id);
+
                 cvModel.GalleryList = GalleryManager.GetGalleryByPropertyId(id);
+
+                cvModel.PropertyWorkingDays = PropertyWorkingDaysManager.GetAllPropertyWorkingDaysByPropertyId(id);
 
                 return View("~/Views/Home/OfficeDetails.cshtml", cvModel);
             }
@@ -195,6 +198,11 @@ namespace ClientPanel.Controllers
                 model = PropertyManager.GetPropertyViewByPropertyIdnBookingId(propertyId, bookingId);
             }
             return View("~/Views/Home/BookingConfirmed.cshtml", model);
+        }
+
+        public ActionResult Terms()
+        {
+            return View();
         }
 
         [HttpPost]

@@ -29,7 +29,7 @@
         <h4 class="card-title">
             <a href="/Property/CreateWorkDays?propertyId=@propertyId" class="btn btn-light btn--icon-text" title="Create"><i class="zmdi  zmdi-plus-circle-o zmdi-hc-fw"></i> Add New</a>
         </h4>
-        @using (Html.BeginForm("UpdateWorkDays", "Property", FormMethod.Post))
+        @using (Html.BeginForm("UpdateWorkDays", "VendorHome", FormMethod.Post))
         {
             @Html.HiddenFor(model => model.WorkingDays.PropertyId)
             @Html.HiddenFor(model => model.WorkingDays.Id)

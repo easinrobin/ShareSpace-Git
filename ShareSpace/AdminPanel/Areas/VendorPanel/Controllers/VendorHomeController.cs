@@ -123,6 +123,7 @@ namespace AdminPanel.Areas.VendorPanel.Controllers
         {
             //Session["VendorId"] = adminVWModel.Property.VendorId;
             adminVWModel.Property.VendorId = (long)Session["VendorId"];
+            adminVWModel.Property.IsApproved = false;
             _Property(adminVWModel, images);
             var propertyId = PropertyManager.InsertProperty(adminVWModel.Property);
 
@@ -239,7 +240,7 @@ namespace AdminPanel.Areas.VendorPanel.Controllers
             av.WorkingDays.UpdateBy = "Admin";
             av.WorkingDays.UpdateDate = DateTime.Now;
             bool isUpdate = PropertyWorkingDaysManager.UpdatePropertyWorkingDays(av.WorkingDays);
-            return RedirectToAction("Index");
+            return RedirectToAction("Properties");
         }
         //load
         private void _loadVendors()

@@ -764,6 +764,9 @@ a:hover {
     margin: 0 0 5px 0;
 }
 
+.tbl-price td{
+    padding: 10px;
+}
 /** SEARCH AREA BOX START **/
 .search-area-box {
     position: absolute;
@@ -778,7 +781,7 @@ a:hover {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.6);
     padding: 30px 15px 10px;
-    max-width: 500px;
+    width: 500px;
     top: 30%;
     right: 8%;
 }
@@ -793,7 +796,7 @@ a:hover {
 }
 
 .search-area-box-6 {
-    height: 570px;
+    height: 590px;
     padding: 30px 15px 10px;
     max-width: 500px;
     top: 35%;
@@ -807,6 +810,35 @@ a:hover {
 
 .search-area-box-3 .search-contents h2 {
     margin-bottom: 30px;
+}
+
+.section-title-border {
+    position: relative;
+    height: 5px;
+    width: 30px;
+    background: #1AD69C;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.section-title-border::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 50%;
+    background: #1AD69C;
+    border-radius: 10px;
+    right: -60%;
+    top: 0;
+}
+.section-title-border::after {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 25%;
+    background: #000;
+    border-radius: 10px;
+    right: -100%;
+    top: 0;
 }
 
 .form-control-2 {
@@ -1034,6 +1066,7 @@ span.flatpickr-weekday {
     font-weight: 600;
     margin: 0 0 15px;
     font-size: 25px;
+    text-transform: uppercase;
 }
 
 .sidebar .main-title-2 h1 {
@@ -3529,8 +3562,7 @@ a:hover {
 }
 
 .rooms-features {
-    border: solid 2px #bbbbbb;
-    padding: 20px;
+    padding: 0;
 }
 
 .rooms-features ul {
@@ -4973,6 +5005,7 @@ a:focus {
 
     .main-title-2 h1 {
         font-size: 18px;
+
     }
 
     .main-title-2 {

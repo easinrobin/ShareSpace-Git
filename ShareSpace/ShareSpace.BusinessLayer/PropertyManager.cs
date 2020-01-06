@@ -39,6 +39,12 @@ namespace ShareSpace.BusinessLayer
             return propertyProvider.GetAdminPropertyList();
         }
 
+        public static List<AdminPropertyList> GetPendingPropertyList()
+        {
+            SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
+            return propertyProvider.GetPendingPropertyList();
+        }
+
         public static List<PropertySearchResultNew> GetPropertiesAndPropertyRating()
         {
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
@@ -115,6 +121,13 @@ namespace ShareSpace.BusinessLayer
         {
             SqlPropertyProvider sqlPropertyProvider = new SqlPropertyProvider();
             var isHidden = sqlPropertyProvider.HideProperty(propertyId);
+            return isHidden;
+        }
+
+        public static bool ApproveProperty(long propertyId)
+        {
+            SqlPropertyProvider sqlPropertyProvider = new SqlPropertyProvider();
+            var isHidden = sqlPropertyProvider.ApproveProperty(propertyId);
             return isHidden;
         }
 

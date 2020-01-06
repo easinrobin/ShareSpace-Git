@@ -16,7 +16,13 @@ namespace ShareSpace.Models.Property
         public string FeatureImage { get; set; }
         public decimal Price { get; set; }
         public decimal RetailPrice { get; set; }
+        public decimal One_hr_price { get; set; }
+        public decimal Four_hr_price { get; set; }
+        public decimal Weekly_price { get; set; }
+        public decimal Monthly_price { get; set; }
+        public decimal Three_months_price { get; set; }
         public int Rating { get; set; }
+        public string VideoLink { get; set; }
 
         public string Country { get; set; }
         public string City { get; set; }

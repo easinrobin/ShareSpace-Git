@@ -9,7 +9,7 @@
 
     var propertyHiddenAddress = Model.PropertyView.HouseNo + ", " + Model.PropertyView.FlatNo + ", " + Model.PropertyView.RoadNo + ", ";
 
-
+    var ytvideourl = "https://www.youtube.com/embed/" + Model.PropertyView.VideoLink;
 }
 <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
@@ -190,7 +190,7 @@
                                             <div class="form-group">
                                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                                                 <label for="agree-term" class="label-agree-term">
-                                                    <span><span></span></span>I agree all statements in <a href="#" class="term-service">Terms of service</a>
+                                                    <span><span></span></span>I agree all statements in <a href="/Home/Terms" class="term-service">Terms of service</a>
                                                 </label>
                                             </div>
                                         </div>
@@ -206,16 +206,25 @@
                     </div>
                     <!-- Search area box 2 end -->
 
-                    <div class="mrg-btm-30">
+                    <div class="mrg-btm-40">
                         <!-- Title -->
-                        <h3>Office Description</h3>
+                        <div class="main-title-2">
+                            <h1>
+                                <span style="color: #1AD69C">Office </span>Description
+                            </h1>
+                            <div class="section-title-border"></div>
+                        </div>
                         <!-- paragraph -->
                         @Html.Raw(@Model.PropertyView.Description)
                     </div>
 
                     <!-- Rooms features start -->
-                    <div class="rooms-features mrg-btm-30">
-                        <h3>Office Amenities</h3>
+                    <div class="rooms-features mrg-btm-40">
+                        <div class="main-title-2">
+                            <h1><span style="color: #1AD69C">Office</span> Amenities</h1>
+                            <div class="section-title-border"></div>
+                        </div>
+
                         <div class="row">
                             <ul class="condition">
                                 @foreach (var services in Model.PropertyServiceOnClient)
@@ -228,115 +237,277 @@
                         </div>
                     </div>
                     <!-- Rooms features end -->
-                    <!-- Comments section start -->
-                    <div class="comments-section mrg-btm-30">
-                        <!-- Main Title 2 -->
-                        <div class="main-title-2">
-                            <h1><span>Office </span> Reviews</h1>
-                        </div>
-
-                        <ul class="comments">
-                            @foreach (var comments in Model.ClientPropertyRatings)
-                            {
-                                var imagepath = "http://adminss.thebyteheart.com/" + @comments.ClientPhoto;
-                                <li>
-                                    <div class="comment">
-                                        <div class="comment-author">
-                                            <a href="#">
-                                                <img src="@imagepath" alt="@comments.FirstName @comments.LastName">
-                                            </a>
-                                        </div>
-                                        <div class="comment-content">
-                                            <div class="comment-meta">
-                                                <div class="comment-meta-author">
-                                                    @comments.FirstName @comments.LastName
-                                                </div>
-
-                                                <div class="comment-meta-date">
-                                                    <span class="hidden-xs">@comments.CreatedDate</span>
-                                                </div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                            <div class="comment-body">
-                                                <div class="comment-rating">
-                                                    <div class="rating" data-rateyo-star-width="20px" data-rateyo-rating="@comments.Rating">
-                                                    </div>
-                                                </div>
-                                                <p>
-                                                    @comments.Review
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            }
-
-                        </ul>
-                    </div>
-                    <!-- Comments section end -->
-                    <!-- Contact form start -->
-                    @if (Session["UserName"] != null)
+                    <!-- Price Table start -->
+                    @if (Model.PropertyView != null)
                     {
-                        <div class="contact-form">
-                            @using (Html.BeginForm("ClientReview", "Home", FormMethod.Post))
-                            {
-                                @Html.HiddenFor(m => m.PropertyView.PropertyId)
+                        <div class="rooms-features mrg-btm-40">
+                            <div class="main-title-2">
+                                <h1><span style="color: #1AD69C">Price</span> Table</h1>
+                                <div class="section-title-border"></div>
+                            </div>
 
-                                <div class="main-title-2">
-                                    <h1>Rate this Office</h1>
-                                    @*<div id="client-rating" data-rateyo-star-width="20px" data-rateyo-rating="@Model.PropertyRating.Rating">
-
-                                        </div>*@
-                                    @*@Html.EditorFor(x => x.PropertyRating.Rating, new{ @id = "client-rating" })
-                                        @Html.HiddenFor(x => x.PropertyRating.Rating)*@
-                                    @Html.DropDownListFor(model => model.PropertyRating.Rating, new List<SelectListItem>
+                            <div class="row">
+                                <table class="table-responsive table-striped tbl-price" style="width: 100%; margin: 0 20px;">
+                                    @if (Model.PropertyView.One_hr_price != 0)
                                     {
-                                        new SelectListItem {Text = "1", Value = "1"},
-                                        new SelectListItem {Text = "2", Value = "2"},
-                                        new SelectListItem {Text = "3", Value = "3"},
-                                        new SelectListItem {Text = "4", Value = "4"},
-                                        new SelectListItem {Text = "5", Value = "5"},
-                                    },"Rating", new{@class = "form-control ddlbg", name = "Rating" }
-                                        )
-                                </div>
-                                <div class="main-title-2">
-                                    <h1> <span>Leave</span> a Comment</h1>
-                                </div>
+                                        <tr>
+                                            <td>One Hour Rent</td>
+                                            <td>৳@Model.PropertyView.One_hr_price.ToString("0.00")</td>
+                                        </tr>
+                                    }
+                                    @if (Model.PropertyView.Four_hr_price != 0)
+                                    {
+                                        <tr>
+                                            <td>Four Hour Rent</td>
+                                            <td>৳@Model.PropertyView.Four_hr_price.ToString("0.00")</td>
+                                        </tr>
+                                    }
+                                    @if (Model.PropertyView.Weekly_price != 0)
+                                    {
+                                        <tr>
+                                            <td>Weekly Rent</td>
+                                            <td>৳@Model.PropertyView.Weekly_price.ToString("0.00")</td>
+                                        </tr>
+                                    }
+                                    @if (Model.PropertyView.Monthly_price != 0)
+                                    {
+                                        <tr>
+                                            <td>Monthly Rent</td>
+                                            <td>৳@Model.PropertyView.Monthly_price.ToString("0.00")</td>
+                                        </tr>
+                                    }
+                                    @if (Model.PropertyView.Three_months_price != 0)
+                                    {
+                                        <tr>
+                                            <td>Three Months Rent</td>
+                                            <td>৳@Model.PropertyView.Three_months_price.ToString("0.00")</td>
+                                        </tr>
+                                    }
 
-                                <div class="row">
-                                    @*<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <div class="form-group fullname">
-                                                <input type="text" name="full-name" class="input-text" placeholder="Full Name">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                            <div class="form-group enter-email">
-                                                <input type="email" name="email" class="input-text" placeholder="Enter email">
-                                            </div>
-                                        </div>*@
+                                </table>
+                            </div>
+                        </div>
+                    }
+                    <!-- Price Table end -->
+                    <!-- Office working days start -->
+                    @if (Model.PropertyWorkingDays != null)
+                    {
+                        <div class="rooms-features mrg-btm-40">
+                            <div class="main-title-2">
+                                <h1><span style="color: #1AD69C">Opening</span> Hours</h1>
+                                <div class="section-title-border"></div>
+                            </div>
+                            <div class="row">
+                                <ul class="condition">
+                                    @if (Model.PropertyWorkingDays.Sat == false)
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Saturday</strong><br />
+                                            Closed
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Saturday</strong><br />
+                                            @Model.PropertyWorkingDays.StartTime - @Model.PropertyWorkingDays.EndTime
+                                        </li>
+                                    }
 
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="form-group message">
-                                            @*<textarea class="input-text" name="message" placeholder="Write message"></textarea>*@
-                                            @Html.TextAreaFor(x => x.PropertyRating.Review, new { @class = "input-text", placeholder = "Write message" })
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                                        <div class="form-group send-btn">
-                                            @*<button type="submit" class="button-md button-theme">Post Comment</button>*@
-                                            <input type="submit" class="button-md button-theme" value="Post a Comment" />
-                                        </div>
-                                    </div>
-                                </div>
-                            }
+                                    @if (Model.PropertyWorkingDays.Sun == false)
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Sunday</strong><br />
+                                            Closed
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Sunday</strong><br />
+                                            @Model.PropertyWorkingDays.StartTime - @Model.PropertyWorkingDays.EndTime
+                                        </li>
+                                    }
+
+                                    @if (Model.PropertyWorkingDays.Mon == false)
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Monday</strong><br />
+                                            Closed
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Monday</strong><br />
+                                            @Model.PropertyWorkingDays.StartTime - @Model.PropertyWorkingDays.EndTime
+                                        </li>
+                                    }
+
+                                    @if (Model.PropertyWorkingDays.Tue == false)
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Tuesday</strong><br />
+                                            Closed
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Tuesday</strong><br />
+                                            @Model.PropertyWorkingDays.StartTime - @Model.PropertyWorkingDays.EndTime
+                                        </li>
+                                    }
+
+                                    @if (Model.PropertyWorkingDays.Wed == false)
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Wednesday</strong><br />
+                                            Closed
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Wednesday</strong><br />
+                                            @Model.PropertyWorkingDays.StartTime - @Model.PropertyWorkingDays.EndTime
+                                        </li>
+                                    }
+
+                                    @if (Model.PropertyWorkingDays.Thu == false)
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Thursday</strong><br />
+                                            Closed
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Thursday</strong><br />
+                                            @Model.PropertyWorkingDays.StartTime - @Model.PropertyWorkingDays.EndTime
+                                        </li>
+                                    }
+
+                                    @if (Model.PropertyWorkingDays.Fri == false)
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Friday</strong><br />
+                                            Closed
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Friday</strong><br />
+                                            @Model.PropertyWorkingDays.StartTime - @Model.PropertyWorkingDays.EndTime
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
                         </div>
                     }
 
-                    <!-- Contact form end -->
+                    <!-- Office working days end -->
+                    <!-- Comments section start -->
+                    <div class="comments-section mrg-btm-40">
+                        <!-- Main Title 2 -->
+                        <div class="main-title-2">
+                            <h1><span style="color: #1AD69C">Office </span> Reviews</h1>
+                            <div class="section-title-border"></div>
+                        </div>
 
+                    </div>
+                    <ul class="comments">
+                        @foreach (var comments in Model.ClientPropertyRatings)
+                        {
+                            var imagepath = "http://adminss.thebyteheart.com/" + @comments.ClientPhoto;
+                            <li>
+                                <div class="comment">
+                                    <div class="comment-author">
+                                        <a>
+                                            <img src="@imagepath" alt="@comments.FirstName @comments.LastName">
+                                        </a>
+                                    </div>
+                                    <div class="comment-content">
+                                        <div class="comment-meta">
+                                            <div class="comment-meta-author">
+                                                @comments.FirstName @comments.LastName
+                                            </div>
+
+                                            <div class="comment-meta-date">
+                                                <span class="hidden-xs">@comments.CreatedDate</span>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="comment-body">
+                                            <div class="comment-rating">
+                                                <div class="rating" data-rateyo-star-width="20px" data-rateyo-rating="@comments.Rating">
+                                                </div>
+                                            </div>
+                                            <p>
+                                                @comments.Review
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+
+                    </ul>
                 </div>
-                <!-- Course details section end -->
+                <!-- Comments section end -->
+                <!-- Contact form start -->
+                @if (Session["UserName"] != null)
+                {
+                    <div class="contact-form">
+                        @using (Html.BeginForm("ClientReview", "Home", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(m => m.PropertyView.PropertyId)
+
+                            <div class="main-title-2">
+                                <h1>Rate this Office</h1>
+                                @*<div id="client-rating" data-rateyo-star-width="20px" data-rateyo-rating="@Model.PropertyRating.Rating">
+
+                            </div>*@
+                                @*@Html.EditorFor(x => x.PropertyRating.Rating, new{ @id = "client-rating" })
+                            @Html.HiddenFor(x => x.PropertyRating.Rating)*@
+                                @Html.DropDownListFor(model => model.PropertyRating.Rating, new List<SelectListItem>
+                                {
+                                    new SelectListItem {Text = "1", Value = "1"},
+                                    new SelectListItem {Text = "2", Value = "2"},
+                                    new SelectListItem {Text = "3", Value = "3"},
+                                    new SelectListItem {Text = "4", Value = "4"},
+                                    new SelectListItem {Text = "5", Value = "5"},
+                                },"Rating", new{@class = "form-control ddlbg", name = "Rating" }
+                                    )
+                            </div>
+                            <div class="main-title-2">
+                                <h1> <span>Leave</span> a Comment</h1>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group message">
+                                        @*<textarea class="input-text" name="message" placeholder="Write message"></textarea>*@
+                                        @Html.TextAreaFor(x => x.PropertyRating.Review, new { @class = "input-text", placeholder = "Write message" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group send-btn">
+                                        @*<button type="submit" class="button-md button-theme">Post Comment</button>*@
+                                        <input type="submit" class="button-md button-theme" value="Post a Comment" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+
+                <!-- Contact form end -->
+
             </div>
+            <!-- Course details section end -->
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <!-- Sidebar start -->
                 <div class="sidebar right">
@@ -425,7 +596,7 @@
                                         <div class="form-group">
                                             <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                                             <label for="agree-term" class="label-agree-term">
-                                                <span><span></span></span>I agree all statements in <a href="#" class="term-service">Terms of service</a>
+                                                <span><span></span></span>I agree all statements in <a href="/Home/Terms" class="term-service">Terms of service</a>
                                             </label>
                                         </div>
                                     </div>
@@ -440,12 +611,24 @@
                     </div>
                     <!-- Search area box end -->
                     <!-- Inside video start  -->
-                    <div class="inside-video sidebar-widget">
-                        <div class="main-title-2">
-                            <h1>Office Video</h1>
+                    @if (Model.PropertyView.VideoLink == null)
+                    {
+                        <div class="inside-video sidebar-widget" style="display: none">
+                            <div class="main-title-2">
+                                <h1>Office Video</h1>
+                            </div>
                         </div>
-                        <iframe src="https://www.youtube.com/embed/azJ-WlU3UPs" allowfullscreen=""></iframe>
-                    </div>
+                    }
+                    else
+                    {
+                        <div class="inside-video sidebar-widget">
+                            <div class="main-title-2">
+                                <h1>Office Video</h1>
+                            </div>
+                            <iframe src="@ytvideourl" allowfullscreen=""></iframe>
+                            @*<iframe src="https://www.youtube.com/embed/C4Xjdxg2vTg" allowfullscreen=""></iframe>*@
+                        </div>
+                    }
                     <!-- Inside video end -->
                     <!-- Social media start -->
                     <div class="social-media sidebar-widget clearfix">
@@ -465,7 +648,7 @@
                                 <h1>Location</h1>
                             </div>
 
-                            <iframe class="contact-map" style="height: 662px; background-color: #fff" id="gmap_canvas"
+                            <iframe class="contact-map" style="height: 662px; width: 100%; background-color: #fff" id="gmap_canvas"
                                     src="@mapurl" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
 
                         </div>
@@ -476,8 +659,10 @@
                 <!-- Sidebar end -->
             </div>
         </div>
+        
     </div>
 </div>
+
 <script>
     $('#rangestart').calendar({
         type: 'time',
