@@ -440,6 +440,8 @@
     <Content Include="Areas\VendorPanel\Views\VendorHome\ServiceList.cshtml" />
     <Content Include="Areas\VendorPanel\Views\VendorHome\UpdateProperty.cshtml" />
     <Content Include="Areas\VendorPanel\Views\VendorHome\Profile.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\Partial\_WorkingDays.cshtml" />
+    <Content Include="Areas\VendorPanel\Views\VendorHome\WorkDaysList.cshtml" />
     <None Include="Scripts\ThirdPartyJs\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ThirdPartyJs\buttons.html5.min.js" />
     <Content Include="Scripts\ThirdPartyJs\buttons.print.min.js" />
@@ -524,6 +526,8 @@
     <Content Include="Views\Property\ServiceList.cshtml" />
     <Content Include="Views\Property\CreateServices.cshtml" />
     <Content Include="Web.config" />
+    <Content Include="Views\Property\Partial\_WorkingDays.cshtml" />
+    <Content Include="Views\Property\WorkDaysList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

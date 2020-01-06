@@ -35,6 +35,9 @@
                     <a class="nav-link" data-toggle="tab" href="#feature" role="tab">Services</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#workDays" role="tab">Work Days</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#gallery" role="tab">Gallery</a>
                 </li>
             </ul>
@@ -51,6 +54,9 @@
                     </div>
                     <div class="tab-pane " id="feature" role="tabpanel">
                         @Html.Partial("~/Areas/VendorPanel/Views/VendorHome/Partial/_ServiceList.cshtml", Model)
+                    </div>
+                    <div class="tab-pane " id="workDays" role="tabpanel">
+                        @Html.Partial("~/Areas/VendorPanel/Views/VendorHome/Partial/_WorkingDays.cshtml", Model)
                     </div>
                     <div class="tab-pane " id="gallery" role="tabpanel">
                         @Html.Partial("~/Areas/VendorPanel/Views/VendorHome/Partial/_Gallery.cshtml", Model)

@@ -4,13 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Services.Description;
 using ShareSpace.BusinessLayer;
 using ShareSpace.Models.Admin;
 using ShareSpace.Models.Gallery;
 using ShareSpace.Models.Property;
 using ShareSpace.Models.Service;
-using ShareSpace.Models.Vendor;
 
 namespace AdminPanel.Areas.VendorPanel.Controllers
 {
@@ -96,6 +94,14 @@ namespace AdminPanel.Areas.VendorPanel.Controllers
             return View("~/Areas/VendorPanel/Views/VendorHome/Profile.cshtml", av);
         }
 
+        public ActionResult WorkDaysList(long propertyId)
+        {
+            ViewBag.PropertyId = propertyId;
+            AdminVWModel av = new AdminVWModel();
+            av.WorkingDays = PropertyWorkingDaysManager.GetAllPropertyWorkingDaysByPropertyId(propertyId);
+            return View(av);
+        }
+
         [HttpPost]
         public ActionResult Profile(AdminVWModel av, HttpPostedFileBase image)
         {
@@ -127,6 +133,8 @@ namespace AdminPanel.Areas.VendorPanel.Controllers
                 var propertyAddressId = AddressManager.InsertAddress(adminVWModel.PropertyAddress);
 
                 _ServiceList(propertyId, adminVWModel, adminVWModel.ServiceList?.FindAll((x => x.IsSelected)));
+
+                _WorkDays(propertyId, adminVWModel, adminVWModel.WorkingDays);
 
                 _Gallery(propertyId, adminVWModel);
             }
@@ -221,6 +229,17 @@ namespace AdminPanel.Areas.VendorPanel.Controllers
         {
             _ServiceList(adminVwModel.PropertyService.PropertyId, adminVwModel, adminVwModel.ServiceList?.FindAll((x => x.IsSelected)));
             return RedirectToAction("Properties");
+        }
+
+        [HttpPost]
+        public ActionResult UpdateWorkDays(AdminVWModel av)
+        {
+            av.WorkingDays.CreatedBy = "Admin";
+            av.WorkingDays.CreatedDate = DateTime.Now;
+            av.WorkingDays.UpdateBy = "Admin";
+            av.WorkingDays.UpdateDate = DateTime.Now;
+            bool isUpdate = PropertyWorkingDaysManager.UpdatePropertyWorkingDays(av.WorkingDays);
+            return RedirectToAction("Index");
         }
         //load
         private void _loadVendors()
@@ -330,6 +349,12 @@ namespace AdminPanel.Areas.VendorPanel.Controllers
                     var galleryId = GalleryManager.InsertGallery(gallery);
                 }
             }
+        }
+
+        public void _WorkDays(long propertyId, AdminVWModel adminVwModel, PropertyWorkingDays workDays)
+        {
+            adminVwModel.WorkingDays.PropertyId = propertyId;
+            var serviceId = PropertyWorkingDaysManager.InsertPropertyWorkingDays(adminVwModel.WorkingDays);
         }
 
         public ActionResult HideProperty(long propertyId)

@@ -188,5 +188,16 @@ namespace ShareSpace.DataLayerSql.Common
 
         //PropertyRating
         public static string INSERT_PROPERTY_RATING = "sp_propertyrating_insertpropertyrating";
+
+        //Working Days
+        public static string GET_PROPERTY_WORKING_DAYS_BY_PROPERTY_ID = "sp_propertyWorkingDays_getPropertyWorkingDaysByPropertyId";
+
+        public static string INSERT_PROPERTY_WORKING_DAYS = "sp_propertyWorkingDays_insertPropertyWorkingDays";
+
+        public static string UPDATE_PROPERTY_WORKING_DAYS = "sp_propertyWorkingDays_updatePropertyWorkingDays";
+
+        public static string DELETE_PROPERTY_WORKING_DAYS = "sp_propertyWorkingDays_deletePropertyWorkingDays";
+
+        public static string GET_ALL_PROPERTY_WORKING_DAYS = "sp_propertyWorkingDays_getAllPropertyWorkingDays";
     }
 }

@@ -30,6 +30,8 @@ namespace ShareSpace.Models.Admin
 
         public List<PropertyDetails> PropertyDetailsList { get; set; }
         public List<Services> ServiceList { get; set; }
+        public List<PropertyWorkingDays> WorkingDaysList { get; set; }
+        public PropertyWorkingDays WorkingDays { get; set; }
         //public List<ServiceType> ServiceTypes { get; set; }
         //public List<FeatureDetails> Features { get; set; }
         //public List<FacilityDetails> Facilities { get; set; }

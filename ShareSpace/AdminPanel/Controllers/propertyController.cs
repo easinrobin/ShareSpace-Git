@@ -69,6 +69,14 @@ namespace AdminPanel.Controllers
             return View(adminVwModel);
         }
 
+        public ActionResult WorkDaysList(long propertyId)
+        {
+            ViewBag.PropertyId = propertyId;
+            AdminVWModel av = new AdminVWModel();
+            av.WorkingDays = PropertyWorkingDaysManager.GetAllPropertyWorkingDaysByPropertyId(propertyId);
+            return View(av);
+        }
+
         public ActionResult CreateServices(long propertyId)
         {
             AdminVWModel adminVwModel = new AdminVWModel();
@@ -95,6 +103,8 @@ namespace AdminPanel.Controllers
                 var propertyAddressId = AddressManager.InsertAddress(adminVWModel.PropertyAddress);
 
                 _ServiceList(propertyId, adminVWModel, adminVWModel.ServiceList?.FindAll((x => x.IsSelected)));
+
+                _WorkDays(propertyId, adminVWModel, adminVWModel.WorkingDays);
 
                 _Gallery(propertyId, adminVWModel);
             }
@@ -136,6 +146,17 @@ namespace AdminPanel.Controllers
             bool isUpdateProperty = PropertyManager.UpdateProperty(adminVwModel.Property);
             bool isUpdatePropertyAddress = AddressManager.UpdateAddress(adminVwModel.PropertyAddress);
 
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult UpdateWorkDays( AdminVWModel av)
+        {
+            av.WorkingDays.CreatedBy = "Admin";
+            av.WorkingDays.CreatedDate = DateTime.Now;
+            av.WorkingDays.UpdateBy = "Admin";
+            av.WorkingDays.UpdateDate = DateTime.Now;
+            bool isUpdate = PropertyWorkingDaysManager.UpdatePropertyWorkingDays(av.WorkingDays);
             return RedirectToAction("Index");
         }
 
@@ -228,6 +249,12 @@ namespace AdminPanel.Controllers
             return adminVWModel.ServiceList = serviceList;
         }
 
+        private List<PropertyWorkingDays> _loadWorkingDays(AdminVWModel adminVWModel)
+        {
+            List<PropertyWorkingDays> workingDaysList = PropertyWorkingDaysManager.GetAllPropertyWorkingDays();
+            return adminVWModel.WorkingDaysList = workingDaysList;
+        }
+
         public void _Property(AdminVWModel adminVWModel, HttpPostedFileBase images)
         {
             string createdBy = "Admin";
@@ -288,6 +315,12 @@ namespace AdminPanel.Controllers
 
                 var serviceId = PropertyServiceManager.InsertPropertyService(services);
             }
+        }
+
+        public void _WorkDays(long propertyId, AdminVWModel adminVwModel, PropertyWorkingDays workDays)
+        {
+            adminVwModel.WorkingDays.PropertyId = propertyId;
+            var serviceId = PropertyWorkingDaysManager.InsertPropertyWorkingDays(adminVwModel.WorkingDays);
         }
 
         private void _Gallery(long propertyId, AdminVWModel adminVWModel)

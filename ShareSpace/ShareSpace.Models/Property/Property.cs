@@ -46,6 +46,21 @@ namespace ShareSpace.Models.Property
         [Required(AllowEmptyStrings = false, ErrorMessage = "Property Retail Required")]
         public decimal RetailPrice { get; set; }
 
+        [Display(Name = "One Hour Price")]
+        public decimal One_hr_price { get; set; }
+
+        [Display(Name = "Four Hour Price")]
+        public decimal Four_hr_price { get; set; }
+
+        [Display(Name = "Weekly Price")]
+        public decimal Weekly_price { get; set; }
+
+        [Display(Name = "Monthly Price")]
+        public decimal Monthly_price { get; set; }
+
+        [Display(Name = "Three Months Price")]
+        public decimal Three_months_price { get; set; }
+
         [Display(Name = "Latitude")]
         public decimal Latitude { get; set; }
 
@@ -60,6 +75,9 @@ namespace ShareSpace.Models.Property
 
         [Display(Name = "IsSearchable")]
         public bool IsSearchable { get; set; }
+
+        [Display(Name = "Is Approved")]
+        public bool IsApproved { get; set; }
 
         [Display(Name = "Vendor Id")]
         public long VendorId { get; set; }

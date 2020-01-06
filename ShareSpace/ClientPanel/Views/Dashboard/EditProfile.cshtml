@@ -8,7 +8,7 @@
     @using (Html.BeginForm("EditProfile", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.HiddenFor(model => model.Client.ClientPhoto)
-        var imagepath = "http://adminss.thebyteheart.com/" + Model.Client.ClientPhoto;
+        var imagepath = "http://ss.byteheart.com/" + Model.Client.ClientPhoto;
         <div class="new-contact__header">
 
             @*@Html.TextBoxFor(model => model.Files, new { type = "file", id = "files", @class = "fa fa-camera new-contact__upload" })*@

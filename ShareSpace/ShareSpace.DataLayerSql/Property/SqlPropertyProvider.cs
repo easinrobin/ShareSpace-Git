@@ -367,6 +367,60 @@ namespace ShareSpace.DataLayerSql.Property
             }
         }
 
+        public PropertyWorkingDays GetPropertyWorkingDaysByPropertyId(long Id)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GET_PROPERTY_WORKING_DAYS_BY_PROPERTY_ID, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@PropertyId", Id));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    PropertyWorkingDays workingDaysList = new PropertyWorkingDays();
+                    workingDaysList = UtilityManager.DataReaderMap<PropertyWorkingDays>(reader);
+                    return workingDaysList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public List<PropertyWorkingDays> GetAllPropertyWorkingDays()
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.GET_ALL_PROPERTY_WORKING_DAYS, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader dataReader = command.ExecuteReader();
+                    List<PropertyWorkingDays> workingDaysList = new List<PropertyWorkingDays>();
+                    workingDaysList = UtilityManager.DataReaderMapToList<PropertyWorkingDays>(dataReader);
+                    return workingDaysList;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
         #endregion
 
         #region SetProperty
@@ -396,6 +450,44 @@ namespace ShareSpace.DataLayerSql.Property
                     connection.Open();
                     command.ExecuteNonQuery();
                     id = (int)command.Parameters["@PropertyId"].Value;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Execption Adding Data. " + ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return id;
+        }
+
+        public long InsertPropertyWorkingDays(PropertyWorkingDays workingDays)
+        {
+            long id = 0;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.INSERT_PROPERTY_WORKING_DAYS, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlParameter returnValue = new SqlParameter("@" + "Id", SqlDbType.Int);
+                returnValue.Direction = ParameterDirection.Output;
+                command.Parameters.Add(returnValue);
+                foreach (var propertys in workingDays.GetType().GetProperties())
+                {
+                    if (propertys.Name != "Id")
+                    {
+                        string name = propertys.Name;
+                        var value = propertys.GetValue(workingDays, null);
+
+                        command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                    }
+                }
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    id = (int)command.Parameters["@Id"].Value;
                 }
                 catch (Exception ex)
                 {
@@ -443,6 +535,40 @@ namespace ShareSpace.DataLayerSql.Property
             return isUpdate;
         }
 
+        public bool UpdatePropertyWorkingDays(PropertyWorkingDays workingDays)
+        {
+            bool isUpdate = true;
+
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.UPDATE_PROPERTY_WORKING_DAYS, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                foreach (var propertys in workingDays.GetType().GetProperties())
+                {
+                    string name = propertys.Name;
+                    var value = propertys.GetValue(workingDays, null);
+                    command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
+                }
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    isUpdate = false;
+                    throw new Exception("Exception Updating Data." + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return isUpdate;
+        }
+
         public bool DeleteProperty(long propertyId)
         {
             bool isDelete = true;
@@ -451,6 +577,33 @@ namespace ShareSpace.DataLayerSql.Property
                 SqlCommand command = new SqlCommand(StoreProcedure.DELETEPROPERTYS, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add(new SqlParameter("@PropertyID", propertyId));
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    isDelete = false;
+                    throw new Exception("Exception Updating Data." + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return isDelete;
+        }
+
+        public bool DeletePropertyWorkingDays(long Id)
+        {
+            bool isDelete = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.DELETE_PROPERTY_WORKING_DAYS, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@Id", Id));
 
                 try
                 {

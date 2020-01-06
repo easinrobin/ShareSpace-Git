@@ -60,6 +60,7 @@
     <Compile Include="PropertyManager.cs" />
     <Compile Include="PropertyRatingManager.cs" />
     <Compile Include="PropertyServiceManager.cs" />
+    <Compile Include="PropertyWorkingDaysManager.cs" />
     <Compile Include="ServiceManager.cs" />
     <Compile Include="TestimonialManager.cs" />
     <Compile Include="TransactionManager.cs" />
