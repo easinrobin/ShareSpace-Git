@@ -7,7 +7,7 @@
 
     var mapurl = "https://maps.google.com/maps?q=" + @maploc + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
 
-    var propertyHiddenAddress = Model.PropertyView.HouseNo + ", " + Model.PropertyView.FlatNo + ", " + Model.PropertyView.RoadNo + ", ";
+    var propertyHiddenAddress = "House No. " + Model.PropertyView.HouseNo + ", Flat No. " + Model.PropertyView.FlatNo + ", Road No. " + Model.PropertyView.RoadNo + ", ";
 
     var ytvideourl = "https://www.youtube.com/embed/" + Model.PropertyView.VideoLink;
 }
@@ -25,7 +25,7 @@
 
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <!--  Rooms detail slider start -->
-                <div class="rooms-detail-slider simple-slider mrg-btm-40 ">
+                <div class="rooms-detail-slider simple-slider mrg-btm-40 " style="height: 550px;">
                     <div id="carousel-custom" class="carousel slide" data-ride="carousel">
                         <div class="carousel-outer">
                             <!-- Wrapper for slides -->
@@ -421,7 +421,7 @@
                     <ul class="comments">
                         @foreach (var comments in Model.ClientPropertyRatings)
                         {
-                            var imagepath = "http://adminss.thebyteheart.com/" + @comments.ClientPhoto;
+                            var imagepath = "http://ss.byteheart.com/" + @comments.ClientPhoto;
                             <li>
                                 <div class="comment">
                                     <div class="comment-author">

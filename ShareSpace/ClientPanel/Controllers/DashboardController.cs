@@ -5,8 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ShareSpace.BusinessLayer;
-using ShareSpace.Models;
-using ShareSpace.Models.Admin;
 using ShareSpace.Models.Client;
 
 namespace ClientPanel.Controllers
@@ -19,22 +17,30 @@ namespace ClientPanel.Controllers
             ViewBag.featuredProperties = PropertyManager.GetFeaturedProperties(6);
 
             //client.Email = Session["UserName"] != null ? Session["UserName"].ToString() : string.Empty;
-            client.Email = (string)Session["UserName"];
-            client.ClientId = (long)Session["ClientId"];
-
-            if (client.Email != null)
+            if (Session["ClientId"] != null)
             {
-                client = ClientManager.GetClientByEmail(client.Email);
-                return View(client);
+                client.Email = (string)Session["UserName"];
+                client.ClientId = (long)Session["ClientId"];
+                
+                if (client.Email != null)
+                {
+                    client = ClientManager.GetClientByEmail(client.Email);
+                    return View(client);
+                }
             }
             return RedirectToAction("Login", "Auth");
         }
 
         public ActionResult ViewProfile()
         {
-            long clientId = Session["ClientId"] != null ? Convert.ToInt64(Session["ClientId"]) : 0;
-            Client client = ClientManager.GetClientById(clientId);
-            return RedirectToAction("Index", client);
+            if (Session["ClientId"] != null)
+            {
+                long clientId = Session["ClientId"] != null ? Convert.ToInt64(Session["ClientId"]) : 0;
+                Client client = ClientManager.GetClientById(clientId);
+                return RedirectToAction("Index", client);
+            }
+
+            return RedirectToAction("Login", "Auth");
         }
 
         //public ActionResult EditProfile()
@@ -44,16 +50,21 @@ namespace ClientPanel.Controllers
 
         public ActionResult EditProfile()
         {
-            ClientViewModel cv = new ClientViewModel();
-            long clientId = Session["ClientId"] != null ? Convert.ToInt64(Session["ClientId"]) : 0;
-            cv.Client = ClientManager.GetClientById(clientId);
-            //ClientManager.GetClientById(clientId);
-            return View("~/Views/Dashboard/EditProfile.cshtml", cv);
+            if (Session["ClientId"] != null)
+            {
+                ClientViewModel cv = new ClientViewModel();
+                long clientId = Session["ClientId"] != null ? Convert.ToInt64(Session["ClientId"]) : 0;
+                cv.Client = ClientManager.GetClientById(clientId);
+                //ClientManager.GetClientById(clientId);
+                return View("~/Views/Dashboard/EditProfile.cshtml", cv);
+            }
+
+            return RedirectToAction("Login", "Auth");
         }
 
         public ActionResult History()
         {
-            if (ModelState.IsValid)
+            if (Session["ClientId"] != null)
             {
                 Int64 clientId = Session["ClientId"] != null ? Convert.ToInt64(Session["ClientId"]) : 0;
                 List<ClientsBookingHistory> bookingHistoryList = new List<ClientsBookingHistory>();
@@ -61,7 +72,7 @@ namespace ClientPanel.Controllers
                 bookingHistoryList = BookingManager.ClientsBookingHistory(clientId);
                 return View("~/Views/Dashboard/History.cshtml", bookingHistoryList.ToList());
             }
-            return View("~/Views/Error");
+            return RedirectToAction("Login", "Auth");
         }
 
         [HttpPost]

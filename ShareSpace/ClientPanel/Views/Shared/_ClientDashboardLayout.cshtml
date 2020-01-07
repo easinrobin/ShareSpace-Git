@@ -35,7 +35,7 @@
         </div>
 
         <div class="logo hidden-sm-down">
-            <h1><a href="../Dashboard/Index">Share Space</a></h1>
+            <h1><a href="../Home/Index">Share Space</a></h1>
         </div>
     </header>
 
@@ -46,8 +46,16 @@
                 <div class="user__info" data-toggle="dropdown">
                     <img class="user__img" src="@imagepath2" alt="">
                     <div>
-                        <div class="user__name">@Session["FirstName"].ToString() @Session["LastName"].ToString()</div>
-                        <div class="user__email">@Session["UserName"].ToString()</div>
+                        @if (Session["FirstName"] != null && Session["LastName"] != null)
+                        {
+                            <div class="user__name">@Session["FirstName"].ToString() @Session["LastName"].ToString()</div>
+                            <div class="user__email">@Session["UserName"].ToString()</div>
+                        }
+                        else
+                        {
+                            Response.Redirect("~/Auth/Login");
+                        }
+
                     </div>
                 </div>
 

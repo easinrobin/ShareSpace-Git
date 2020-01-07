@@ -28,37 +28,18 @@
                 <tbody>
                     @foreach (var client in Model)
                     {
+                        var imagepath = "http://adminss.thebyteheart.com/" + client.ClientPhoto;
                         <tr>
                             <td>@client.FirstName @client.LastName</td>
                             <td>@client.Email</td>
                             <td>@client.Country</td>
                             <td>@client.MobileNo</td>
                             <td>
-                                <img src="@client.ClientPhoto" width="50" height="50" alt="@client.FirstName @client.LastName"/>
+                                <img src="@imagepath" width="50" height="50" alt="@client.FirstName @client.LastName"/>
                             </td>
                             <td>
                                 @Html.ActionLink(" ", "UpdateClient", new { clientId = client.ClientId }, new { @class = "zmdi zmdi-edit" })&nbsp;&nbsp;
                                 @Html.ActionLink(" ", "HideClient", new { clientId = client.ClientId }, new { @class = "zmdi zmdi-delete", onclick = "return confirm('Are you sure you want to delete this item?')" })
-                                @*<a href="#" data-toggle="modal" data-target="#confirm-delete" class="btn btn-default">
-                                        <i class="zmdi zmdi-delete"></i>
-                                    </a>
-                                    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-
-                                                </div>
-                                                <div class="modal-body" style="align-self: center;">
-                                                    Are you sure you want to delete this element?
-                                                </div>
-                                                <div class="modal-footer" style="align-self: center;">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                    @Html.ActionLink("Delete", "DeleteClient", new { clientId = client.ClientId }, new { @class = "btn btn-danger btn-ok" })
-                                                    <a>Delete</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>*@
                             </td>
                         </tr>
                     }

@@ -24,5 +24,6 @@ namespace ShareSpace.Models.Search
         public bool IsSearchable { get; set; }
         public int Rating { get; set; }
         public int NoPerson { get; set; }
+        public string SearchText { get; set; }
     }
 }

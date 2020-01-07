@@ -27,6 +27,12 @@ namespace ShareSpace.BusinessLayer
             return sqlClientProvider.GetClientByEmail(email);
         }
 
+        public static Client GetClientByMobile(string mobile)
+        {
+            SqlClientProvider sqlClientProvider = new SqlClientProvider();
+            return sqlClientProvider.GetClientByMobile(mobile);
+        }
+
         public static Client GetClientByEmailAndPassword(string email, string password)
         {
             SqlClientProvider clientProvider = new SqlClientProvider();

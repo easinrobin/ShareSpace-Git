@@ -5,6 +5,7 @@ using ShareSpace.BusinessLayer;
 using ShareSpace.Models;
 using ShareSpace.Models.Auth;
 using ShareSpace.Models.Client;
+using Vereyon.Web;
 
 namespace ClientPanel.Controllers
 {
@@ -32,16 +33,49 @@ namespace ClientPanel.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        private Client _checkExclient(string email)
+        {
+            var client = ClientManager.GetClientByEmail(email);
+            if (client != null)
+            {
+                email = client.Email;
+                FlashMessage.Danger("Email Already Exists");
+            }
+            return client;
+        }
+
+        private Client _checkExclientByMobile(string mobile)
+        {
+            var client = ClientManager.GetClientByMobile(mobile);
+            if (client != null)
+            {
+                mobile = client.MobileNo;
+                FlashMessage.Danger("Mobile No Already Exists");
+            }
+            return client;
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SignUp([Bind(Include = "ClientId,FirstName,LastName,Email,Country,MobileNo,BirthDate,Password")] Client client)
         {
             if (ModelState.IsValid)
             {
-                var id = ClientManager.InsertClient(client);
-                Session["Name"] = client.FirstName;
-                Session["Email"] = client.Email;
-                return RedirectToAction("Index", "Home");
+                if (_checkExclient(client.Email) == null && _checkExclientByMobile(client.MobileNo) == null)
+                {
+                    var id = ClientManager.InsertClient(client);
+                    Session["UserName"] = client.Email;
+                    Session["Password"] = client.Password;
+                    client = ClientManager.GetClientByEmailAndPassword(client.Email, client.Password);
+                    Session["UserName"] = client.Email;
+                    Session["ClientId"] = client.ClientId;
+                    Session["FirstName"] = client.FirstName;
+                    Session["LastName"] = client.LastName;
+                    Session["ClientPhoto"] = client.ClientPhoto;
+                    Session["MobileNo"] = client.MobileNo;
+                    Session["Country"] = client.Country;
+                    return RedirectToAction("Index", "Dashboard", client);
+                }
             }
             return View(client);
         }

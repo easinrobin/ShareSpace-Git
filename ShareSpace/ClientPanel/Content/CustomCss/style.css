@@ -2378,6 +2378,7 @@ footer ul {
     color: #5a5959;
     line-height: 23px;
     margin-bottom: 20px;
+    min-height: 90px;
 }
 
 .hotel-box .detail h3 {

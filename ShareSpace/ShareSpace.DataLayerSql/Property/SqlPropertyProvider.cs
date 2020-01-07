@@ -835,16 +835,43 @@ namespace ShareSpace.DataLayerSql.Property
         }
 
         #endregion
-        public List<PropertySearchResultNew> GetPropertiesBySearch(string fromDate, string toDate, string fromHour, string toHour)
+        //public List<PropertySearchResultNew> GetPropertiesBySearch(string fromDate, string toDate, string fromHour, string toHour)
+        //{
+        //    using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+        //    {
+        //        SqlCommand command = new SqlCommand(StoreProcedure.GET_PROPERTY_BY_SEARCH, connection);
+        //        command.CommandType = CommandType.StoredProcedure;
+        //        command.Parameters.Add(new SqlParameter("@fromDate", fromDate));
+        //        command.Parameters.Add(new SqlParameter("@toDate", toDate));
+        //        command.Parameters.Add(new SqlParameter("@fromHour", fromHour));
+        //        command.Parameters.Add(new SqlParameter("@toHour", toHour));
+        //        try
+        //        {
+        //            connection.Open();
+        //            SqlDataReader dataReader = command.ExecuteReader();
+        //            List<PropertySearchResultNew> propertyList = new List<PropertySearchResultNew>();
+        //            propertyList = UtilityManager.DataReaderMapToList<PropertySearchResultNew>(dataReader);
+        //            return propertyList;
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            throw new Exception("Exception retrieving reviews. " + e.Message);
+        //        }
+
+        //        finally
+        //        {
+        //            connection.Close();
+        //        }
+        //    }
+        //}
+
+        public List<PropertySearchResultNew> GetPropertiesBySearch(string searchtext)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
                 SqlCommand command = new SqlCommand(StoreProcedure.GET_PROPERTY_BY_SEARCH, connection);
                 command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.Add(new SqlParameter("@fromDate", fromDate));
-                command.Parameters.Add(new SqlParameter("@toDate", toDate));
-                command.Parameters.Add(new SqlParameter("@fromHour", fromHour));
-                command.Parameters.Add(new SqlParameter("@toHour", toHour));
+                command.Parameters.Add(new SqlParameter("@searchtext", searchtext));
                 try
                 {
                     connection.Open();
@@ -864,6 +891,7 @@ namespace ShareSpace.DataLayerSql.Property
                 }
             }
         }
+
         public BookingConfirmed GetPropertyViewByPropertyIdnBookingId(long propertyId, long bookingId)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))

@@ -139,10 +139,10 @@ namespace ShareSpace.BusinessLayer
         }
 
         #endregion
-        public static List<PropertySearchResultNew> GetPropertiesBySearch(string fromDate, string toDate, string fromHour, string toHour)
+        public static List<PropertySearchResultNew> GetPropertiesBySearch(string searchtext)
         {
             SqlPropertyProvider propertyProvider = new SqlPropertyProvider();
-            return propertyProvider.GetPropertiesBySearch(fromDate, toDate, fromHour, toHour);
+            return propertyProvider.GetPropertiesBySearch(searchtext);
         }
         public static BookingConfirmed GetPropertyViewByPropertyIdnBookingId(long propertyId, long bookingId)
         {

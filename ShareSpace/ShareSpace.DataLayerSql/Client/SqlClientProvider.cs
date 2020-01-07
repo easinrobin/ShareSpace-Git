@@ -223,6 +223,33 @@ namespace ShareSpace.DataLayerSql.Client
             }
         }
 
+        public Models.Client.Client GetClientByMobile(string mobile)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Get_Client_By_Mobile, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@MobileNo", mobile));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    Models.Client.Client client = new Models.Client.Client();
+                    client = UtilityManager.DataReaderMap<Models.Client.Client>(reader);
+                    return client;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
         public Models.Client.Client GetClientByEmailAndPassword(string email, string password)
         {
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))

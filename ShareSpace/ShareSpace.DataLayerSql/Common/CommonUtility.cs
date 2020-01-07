@@ -24,6 +24,8 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string GETCLIENTBYEMAIL = "sp_client_getclientbyemail";
 
+        public static string Get_Client_By_Mobile = "sp_client_getclientbyMobile";
+
         public static string Get_Client_By_Email_And_Password = "sp_client_GetClientByEmailAndPassword";
 
         //Properties
@@ -67,7 +69,7 @@ namespace ShareSpace.DataLayerSql.Common
 
         public static string Get_Property_PropertyRating = "sp_property_getPropertyAndPropertyRating";
 
-        public static string GET_PROPERTY_BY_SEARCH = "sp_property_getPropertyBySearch";
+        public static string GET_PROPERTY_BY_SEARCH = "sp_property_getPropertyBySearchTwo";
 
         public static string GET_PROPERTY_BY_PROPERTYID_BOOKINGID = "sp_property_getPropertyByPropertyIdnBookingId";
 

@@ -28,20 +28,28 @@
 
                     <div class="signin-form">
                         <h2 class="form-title">Log In</h2>
-                        @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "register-form", @id = "login-form" }))
+                        @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "validate-form register-form", @id = "login-form" }))
                         {
                             <div class="form-group">
-                                <label><i class="fa fa-envelope"></i></label>
-                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "Email", name = "Email", id = "email" } })
+                                <div class="form-group">
+                                    <div class="validate-input" data-validate="Email is required">
+                                        <label><i class="fa fa-envelope"></i></label>
+                                        @Html.TextBoxFor(model => model.Email, new { @class = "validate-field", placeholder = "Email", name = "Email", id = "email" })
+                                    </div>
+
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label><i class="fa fa-lock"></i></label>
-                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Password", name = "Password", id = "password", type = "password" } })
+                                <div class="validate-input" data-validate="Password is required">
+                                    <label><i class="fa fa-lock"></i></label>
+                                    @Html.TextBoxFor(model => model.Password, new { @class = "validate-field", type = "password", placeholder = "Password", name = "Password", id = "password" })
+                                </div>
+
                             </div>
-                            <div class="form-group">
+                            @*<div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
-                            </div>
+                            </div>*@
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
                             </div>
@@ -51,7 +59,8 @@
                 </div>
             </div>
         </section>
-
     </div>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="~/Scripts/CustomJs/signUp-val.js"></script>
 </body>
 </html>

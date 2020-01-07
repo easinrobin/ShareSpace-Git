@@ -36,61 +36,32 @@ namespace ClientPanel.Controllers
             List<PropertySearchResultNew> allPropertyList = new List<PropertySearchResultNew>();
             if (cvModel.OfficeSearch != null)
             {
-                string fromDate = "";
-                if (!string.IsNullOrEmpty(cvModel.OfficeSearch.FromDate))
-                    fromDate = cvModel.OfficeSearch.FromDate;
-                string toDate = "";
-                if (!string.IsNullOrEmpty(cvModel.OfficeSearch.ToDate))
-                    toDate = cvModel.OfficeSearch.ToDate;
-                string fromHour = "";
-                if (!string.IsNullOrEmpty(cvModel.OfficeSearch.FromHour))
-                    fromHour = cvModel.OfficeSearch.FromHour;
-                string toHour = "";
-                if (!string.IsNullOrEmpty(cvModel.OfficeSearch.ToHour))
-                    toHour = cvModel.OfficeSearch.ToHour;
-
-
-                allPropertyList = PropertyManager.GetPropertiesBySearch(fromDate,
-                    toDate, fromHour, toHour);
-
+                string searchtxt = cvModel.OfficeSearch.SearchText != null
+                    ? cvModel.OfficeSearch.SearchText
+                    : string.Empty;
+                allPropertyList = PropertyManager.GetPropertiesBySearch(searchtxt);
                 if (allPropertyList != null)
                 {
                     if (!string.IsNullOrEmpty(cvModel.OfficeSearch.ShareType))
                     {
                         if (cvModel.OfficeSearch.ShareType != "All")
-                            allPropertyList = allPropertyList.Where(x => x.ShareType == cvModel.OfficeSearch.ShareType).ToList();
+                            allPropertyList = allPropertyList.Where(x => x.ShareType == cvModel.OfficeSearch.ShareType)
+                                .ToList();
                     }
 
-
-                    if (cvModel.OfficeSearch.NoPerson > 0)
-                        allPropertyList = allPropertyList.Where(x => x.MaximumPerson == cvModel.OfficeSearch.NoPerson).ToList();
-
-                    if ((!string.IsNullOrEmpty(cvModel.OfficeSearch.ShareType)) && (cvModel.OfficeSearch.NoPerson > 0))
-                    {
-                        allPropertyList = allPropertyList.Where(x => x.ShareType == cvModel.OfficeSearch.ShareType && x.MaximumPerson == cvModel.OfficeSearch.NoPerson).ToList();
-                    }
-
-
-                    if (allPropertyList.Count > 0)
-                    {
-                        _loadServices(allPropertyList, cvModel);
-                    }
-                    else
-                    {
-                        ViewBag.Message = "0";
-                    }
-
+                    _loadServices(allPropertyList, cvModel);
+                    cvModel.PropertySearchResultList = allPropertyList;
                 }
                 else
                 {
                     cvModel.PropertySearchResultList = new List<PropertySearchResultNew>();
                     ViewBag.Message = "0";
                 }
+
             }
             else if (!string.IsNullOrEmpty(Request.QueryString["search"]))
             {
-                allPropertyList = PropertyManager.GetPropertiesBySearch(string.Empty,
-                    string.Empty, string.Empty, string.Empty);
+                allPropertyList = PropertyManager.GetPropertiesBySearch(string.Empty);
                 if (allPropertyList != null)
                 {
 
@@ -99,6 +70,7 @@ namespace ClientPanel.Controllers
                     if (allPropertyList.Count > 0)
                     {
                         _loadServices(allPropertyList, cvModel);
+                        cvModel.PropertySearchResultList = allPropertyList;
                     }
                     else
                     {

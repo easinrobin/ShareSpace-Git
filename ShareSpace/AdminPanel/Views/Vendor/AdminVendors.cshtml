@@ -29,13 +29,14 @@
                 <tbody>
                     @foreach (var vendor in Model)
                     {
+                        var imagepath = "http://adminss.thebyteheart.com/" + vendor.VendorPhoto;
                         <tr>
                             <td>@vendor.FirstName @vendor.LastName</td>
                             <td>@vendor.Email</td>
                             <td>@vendor.Country</td>
                             <td>@vendor.MobileNo</td>
                             <td>
-                                <img src="@vendor.VendorPhoto" width="50" height="50" alt="@vendor.FirstName @vendor.LastName"/>
+                                <img src="@imagepath" width="50" height="50" alt="@vendor.FirstName @vendor.LastName"/>
                             </td>
                             <td>
                                 @Html.ActionLink(" ", "UpdateVendor", new { vendorId = vendor.VendorId }, new { @class = "zmdi zmdi-edit" })&nbsp;&nbsp;
