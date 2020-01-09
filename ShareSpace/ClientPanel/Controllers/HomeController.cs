@@ -40,48 +40,42 @@ namespace ClientPanel.Controllers
                     ? cvModel.OfficeSearch.SearchText
                     : string.Empty;
                 allPropertyList = PropertyManager.GetPropertiesBySearch(searchtxt);
-                if (allPropertyList != null)
+                if (allPropertyList.Count != 0)
                 {
                     if (!string.IsNullOrEmpty(cvModel.OfficeSearch.ShareType))
                     {
                         if (cvModel.OfficeSearch.ShareType != "All")
                             allPropertyList = allPropertyList.Where(x => x.ShareType == cvModel.OfficeSearch.ShareType)
                                 .ToList();
+                        
                     }
 
                     _loadServices(allPropertyList, cvModel);
                     cvModel.PropertySearchResultList = allPropertyList;
+                    ViewBag.Message = "0";
                 }
                 else
                 {
                     cvModel.PropertySearchResultList = new List<PropertySearchResultNew>();
-                    ViewBag.Message = "0";
                 }
-
+                
             }
             else if (!string.IsNullOrEmpty(Request.QueryString["search"]))
             {
-                allPropertyList = PropertyManager.GetPropertiesBySearch(string.Empty);
-                if (allPropertyList != null)
+                string searchtxt = Request.QueryString["search"].ToString() != null
+                       ? Request.QueryString["search"].ToString()
+                       : string.Empty;
+                allPropertyList = PropertyManager.GetPropertiesBySearch(searchtxt);
+                if (allPropertyList.Count != 0)
                 {
-
-                    string text = Request.QueryString["search"].ToString();
-                    allPropertyList = allPropertyList.Where(x => x.PropertyName.ToLower().Contains(text.ToLower()) || x.ShareType.ToLower().Contains(text.ToLower())).ToList();
-                    if (allPropertyList.Count > 0)
-                    {
-                        _loadServices(allPropertyList, cvModel);
-                        cvModel.PropertySearchResultList = allPropertyList;
-                    }
-                    else
-                    {
-                        ViewBag.Message = "0";
-                    }
+                    _loadServices(allPropertyList, cvModel);
+                    cvModel.PropertySearchResultList = allPropertyList;
+                    ViewBag.Message = "0";
                 }
             }
             else
             {
                 cvModel.PropertySearchResultList = new List<PropertySearchResultNew>();
-                ViewBag.Message = "0";
             }
 
             return View("~/Views/Home/SearchResults.cshtml", cvModel);
@@ -184,18 +178,21 @@ namespace ClientPanel.Controllers
             long propertyId = propertyView.PropertyId;
             try
             {
-                string password = string.Empty;
-                long clientId = _checkExclient(bookingEmail.Email.Trim());
-                if (clientId == 0)
+                if (!ModelState.IsValid)
                 {
-                    password = UtilityManager.RandomString(5);
-                    clientId = _insertClient(bookingEmail, password);
+                    string password = string.Empty;
+                    long clientId = _checkExclient(bookingEmail.Email.Trim());
+                    if (clientId == 0)
+                    {
+                        password = UtilityManager.RandomString(5);
+                        clientId = _insertClient(bookingEmail, password);
+                    }
+
+                    string bookingNo = "SS" + UtilityManager.RandomString(5);
+                    bookingId = _insertBooking(bookingEmail, clientId, propertyId, bookingNo);
+                    //_sendEmail(bookingEmail, propertyId, bookingNo, address, area, city, zipCode, password);
+
                 }
-
-                string bookingNo = "SS" + UtilityManager.RandomString(5);
-                bookingId = _insertBooking(bookingEmail, clientId, propertyId, bookingNo);
-                //_sendEmail(bookingEmail, propertyId, bookingNo, address, area, city, zipCode, password);
-
             }
             catch (Exception ex)
             {
@@ -349,11 +346,11 @@ namespace ClientPanel.Controllers
         [HttpPost]
         public ActionResult ClientReview(ClientViewModel clientVwModel, PropertyView propertyView)
         {
-            clientVwModel.PropertyRating.ClientId = (long) Session["ClientId"];
+            clientVwModel.PropertyRating.ClientId = (long)Session["ClientId"];
             clientVwModel.PropertyRating.PropertyId = propertyView.PropertyId;
             clientVwModel.PropertyRating.CreatedDate = DateTime.Now;
             PropertyRatingManager.InsertPropertyRating(clientVwModel.PropertyRating);
-            return RedirectToAction("OfficeDetails/"+propertyView.PropertyId);
+            return RedirectToAction("OfficeDetails/" + propertyView.PropertyId);
         }
 
         [HttpPost]
@@ -393,7 +390,7 @@ namespace ClientPanel.Controllers
                 return Redirect(Request.UrlReferrer.PathAndQuery);
             }
 
-            
+
             return View();
         }
 

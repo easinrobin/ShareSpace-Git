@@ -167,7 +167,7 @@
                         <li>
                             <div class="navbar-search-box">
                                 <form class="navbar-search" method="GET" action="../Home/SearchResults">
-                                    <input type="search" placeholder="Search......" name="search" class="navbar-search-input"
+                                    <input type="search" placeholder="Search Property Name" name="search" class="navbar-search-input"
                                            onkeyup="buttonUp();" required>
                                     <button type="submit" class="navbar-search-submit">Go</button>
                                     <span class="navbar-search-icon">
@@ -243,7 +243,7 @@
                                 <h1>Newsletter</h1>
                             </div>
                             <div class="newsletter-inner">
-                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <p>Subscribe to our Newsletter so that you dont miss any update of the exclusive offers.</p>
                                 @using (Html.BeginForm("InsertNewsLetter", "Home", FormMethod.Post))
                                 {
                                     <p><input type="text" class="form-contact" name="email" placeholder="Enter your email"></p>

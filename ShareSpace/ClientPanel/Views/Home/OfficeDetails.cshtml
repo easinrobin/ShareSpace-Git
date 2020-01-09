@@ -25,7 +25,7 @@
 
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <!--  Rooms detail slider start -->
-                <div class="rooms-detail-slider simple-slider mrg-btm-40 " style="height: 550px;">
+                <div class="rooms-detail-slider simple-slider mrg-btm-40 office-gallery">
                     <div id="carousel-custom" class="carousel slide" data-ride="carousel">
                         <div class="carousel-outer">
                             <!-- Wrapper for slides -->
@@ -188,10 +188,12 @@
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12 col-pad">
                                             <div class="form-group">
-                                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                                                @*<input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />*@
+                                                @Html.CheckBoxFor(x => x.PropertyView.TermsAndConditions, new { @class = "agree-term" })
                                                 <label for="agree-term" class="label-agree-term">
-                                                    <span><span></span></span>I agree all statements in <a href="/Home/Terms" class="term-service">Terms of service</a>
-                                                </label>
+                                                    <span><span></span></span>I agree all statements in <a href="/Home/Terms" target="_blank" class="term-service">Terms of service</a>
+                                                </label><br/>
+                                                @Html.ValidationMessageFor(x => x.PropertyView.TermsAndConditions, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12 col-pad">
@@ -469,9 +471,9 @@
                                 <h1>Rate this Office</h1>
                                 @*<div id="client-rating" data-rateyo-star-width="20px" data-rateyo-rating="@Model.PropertyRating.Rating">
 
-                            </div>*@
+                                    </div>*@
                                 @*@Html.EditorFor(x => x.PropertyRating.Rating, new{ @id = "client-rating" })
-                            @Html.HiddenFor(x => x.PropertyRating.Rating)*@
+                                    @Html.HiddenFor(x => x.PropertyRating.Rating)*@
                                 @Html.DropDownListFor(model => model.PropertyRating.Rating, new List<SelectListItem>
                                 {
                                     new SelectListItem {Text = "1", Value = "1"},
@@ -594,10 +596,12 @@
                                     </div>
                                     <div class="col-md-12 col-sm-12 col-xs-12 ">
                                         <div class="form-group">
-                                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                                            @*<input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />*@
+                                            @Html.CheckBoxFor(x => x.PropertyView.TermsAndConditions, new { @class = "agree-term" })
                                             <label for="agree-term" class="label-agree-term">
-                                                <span><span></span></span>I agree all statements in <a href="/Home/Terms" class="term-service">Terms of service</a>
-                                            </label>
+                                                <span><span></span></span>I agree all statements in <a href="/Home/Terms" target="_blank" class="term-service">Terms of service</a>
+                                            </label><br/>
+                                            @Html.ValidationMessageFor(x => x.PropertyView.TermsAndConditions, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -659,7 +663,7 @@
                 <!-- Sidebar end -->
             </div>
         </div>
-        
+
     </div>
 </div>
 
@@ -701,4 +705,21 @@
         startCalendar: $('#rangeStarDatesm')
     });
 
+</script>
+
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.js"></script>
+
+<script>
+    // extend jquery range validator to work for required checkboxes
+    var defaultRangeValidator = $.validator.methods.range;
+    $.validator.methods.range = function (value, element, param) {
+        if (element.type === 'checkbox') {
+            // if it's a checkbox return true if it is checked
+            return element.checked;
+        } else {
+            // otherwise run the default validation function
+            return defaultRangeValidator.call(this, value, element, param);
+        }
+    }
 </script>

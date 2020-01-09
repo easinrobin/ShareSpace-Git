@@ -110,6 +110,9 @@ a:hover {
     border-radius: 0px;
 }
 
+.office-gallery {
+    height: 550px;
+}
 /* Solid Buttons Structure**/
 .button-sm {
     cursor: pointer;
@@ -4700,6 +4703,10 @@ a:focus {
 @media (max-width: 768px) {
     .logo img {
         height: 35px;
+    }
+
+    .office-gallery {
+        height: 430px;
     }
 
     .search-contents .btn-default, .flatpickr-mobile {

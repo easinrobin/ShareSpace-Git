@@ -12,13 +12,13 @@ namespace ClientPanel
                         "~/Scripts/Third-partyJs/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                "~/Scripts/ThirdPartyJs/jquery.validate.min.js"));
+                        "~/Scripts/Third-partyJs/jquery.validate.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                "~/Scripts/ThirdPartyJs/modernizr-2.8.3.js"));
+                        "~/Scripts/Third-partyJs/modernizr-2.8.3.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery.validate.unobtrusive").Include(
-                "~/Scripts/ThirdPartyJs/jquery.validate.unobtrusive.min.js"));
+                         "~/Scripts/Third-partyJs/jquery.validate.unobtrusive.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/Scripts/Third-partyJs/bootstrap.js"));

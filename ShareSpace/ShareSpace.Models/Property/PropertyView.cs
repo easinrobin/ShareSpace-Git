@@ -61,6 +61,11 @@ namespace ShareSpace.Models.Property
         public string MobileNo { get; set; }
 
         [NotMapped]
+        [Display(Name = "Terms and Conditions")]
+        [Range(typeof(bool), "true", "true", ErrorMessage = "Accept Terms of service")]
+        public bool TermsAndConditions { get; set; }
+
+        [NotMapped]
         public string FullAddressWithoutHome
         {
             get

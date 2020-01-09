@@ -102,6 +102,12 @@ namespace AdminPanel.Areas.VendorPanel.Controllers
             return View(av);
         }
 
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login", "Auth");
+        }
+
         [HttpPost]
         public ActionResult Profile(AdminVWModel av, HttpPostedFileBase image)
         {
