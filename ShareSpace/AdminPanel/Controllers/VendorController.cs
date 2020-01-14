@@ -50,20 +50,6 @@ namespace AdminPanel.Controllers
             return RedirectToAction("AdminVendors");
         }
 
-        //public string GetAllVendorsByEmailNPhone(string email)
-        //{
-        //   VendorManager manager = new VendorManager();
-        //    var emailStatus = manager.Email.Where(model => model.Email == email).FirstOrDefault();
-        //    if (emailStatus != null)
-        //    {
-        //        return "1";
-        //    }
-        //    else
-        //    {
-        //        return "0";
-        //    }
-        //}
-
         public ActionResult UpdateVendor(AdminVWModel adminVwModel, int vendorId)
         {
             adminVwModel.Vendors = VendorManager.GetVendorById(vendorId);
@@ -163,6 +149,28 @@ namespace AdminPanel.Controllers
                     adminVwModel.Vendors.VendorPhoto = pathUrl;
                 }
             }
+        }
+
+        public JsonResult IsEmailExist(AdminVWModel av)
+        {
+            var emailList = VendorManager.GetAllVendors();
+            var email = emailList.ToList();
+            if (email.All(x => x.Email.ToLower() != av.Vendors.Email.ToLower()))
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult IsMobileExist(AdminVWModel av)
+        {
+            var mobileList = VendorManager.GetAllVendors();
+            var mobile = mobileList.ToList();
+            if (mobile.All(x => x.MobileNo.ToLower() != av.Vendors.MobileNo.ToLower()))
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ShareSpace.Models.Vendor
 {
@@ -23,6 +24,7 @@ namespace ShareSpace.Models.Vendor
 
         [Display(Name = "Email")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Email required")]
+        [Remote("IsEmailExist", "Vendor", ErrorMessage = "Email already exist")]
         public string Email { get; set; }
 
         [Display(Name = "Country")]
@@ -31,6 +33,7 @@ namespace ShareSpace.Models.Vendor
 
         [Display(Name = "MobileNo")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "MobileNo required")]
+        [Remote("IsMobileExist", "Vendor", ErrorMessage = "Mobile No. already exist")]
         public string MobileNo { get; set; }
 
         [Display(Name = "Birth Date")]

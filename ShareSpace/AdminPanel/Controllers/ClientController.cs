@@ -150,5 +150,27 @@ namespace AdminPanel.Controllers
                 }
             }
         }
+
+        public JsonResult IsEmailExist(AdminVWModel av)
+        {
+            var emailList = ClientManager.GetAllClients();
+            var email = emailList.ToList();
+            if (email.All(x => x.Email.ToLower() != av.Clients.Email.ToLower()))
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult IsMobileExist(AdminVWModel av)
+        {
+            var mobileList = ClientManager.GetAllClients();
+            var mobile = mobileList.ToList();
+            if (mobile.All(x => x.MobileNo.ToLower() != av.Clients.MobileNo.ToLower()))
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
     }
 }

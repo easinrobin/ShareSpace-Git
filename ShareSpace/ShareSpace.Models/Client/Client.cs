@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 namespace ShareSpace.Models.Client
 {
@@ -22,6 +23,7 @@ namespace ShareSpace.Models.Client
 
         [Display(Name = "Email")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Email required")]
+        [Remote("IsEmailExist", "Client", ErrorMessage = "Email already exist")]
         public string Email { get; set; }
 
         [Display(Name = "Country")]
@@ -29,6 +31,8 @@ namespace ShareSpace.Models.Client
         public string Country { get; set; }
 
         [Display(Name = "Mobile No.")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Mobile No. required")]
+        [Remote("IsMobileExist", "Client", ErrorMessage = "Mobile No. already exist")]
         public string MobileNo { get; set; }
 
         [Display(Name = "Birth Date")]
