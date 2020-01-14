@@ -1,77 +1,119 @@
 ﻿@model ShareSpace.Models.Client.Client
-@using System.Web.UI.WebControls
 @{
-	Layout = null;
+    Layout = null;
 }
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<title>Log In</title>
-	@Styles.Render("~/fonts/fontAwesome")
-	@Styles.Render("~/Content/loginCss")
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log In</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/fonts/fontAwesome")
+    @Styles.Render("~/Content/loginCss")
+    @Styles.Render("~/Content/bootstrapDate")
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
-	<div class="main">
-		<section class="signup">
-			<div class="container">
-				<div class="signup-content">
-					<div class="signup-form">
-						<h2 class="form-title">Sign up</h2>
-						@using (Html.BeginForm())
-						{
-							@Html.AntiForgeryToken()
-							<form method="POST" class="register-form" id="register-form">
-								<div class="form-group">
-									<label><i class="fa fa-user"></i></label>
-									@Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { placeholder = "First Name", name = "FirstName", id = "name" } })
-								</div>
-								<div class="form-group">
-									<label><i class="fa fa-user"></i></label>
-									@Html.EditorFor(model => model.LastName, new { htmlAttributes = new { placeholder = "Last Name", name = "FirstName", id = "name" } })
-								</div>
-								<div class="form-group">
-									<label><i class="fa fa-envelope"></i></label>
-									@Html.EditorFor(model => model.Email, new { htmlAttributes = new { placeholder = "Email", name = "Email", id = "email" } })
-								</div>
-								<div class="form-group">
-									<label><i class="fa fa-globe"></i></label>
-									@Html.EditorFor(model => model.Country, new { htmlAttributes = new { placeholder = "Country", name = "Country", id = "country" } })
-								</div>
-								<div class="form-group">
-									<label><i class="fa fa-phone"></i></label>
-									@Html.EditorFor(model => model.MobileNo, new { htmlAttributes = new { placeholder = "Mobile No", name = "MobileNo", id = "mobile" } })
-								</div>
-								<div class="form-group">
-									<label><i class="fa fa-calendar"></i></label>
-									@Html.EditorFor(model => model.BirthDate, new { htmlAttributes = new { placeholder = "Birth Date", name = "BirthDate", id = "birthdate" } })
-								</div>
-								<div class="form-group">
-									<label><i class="fa fa-lock"></i></label>
-									@Html.EditorFor(model => model.Password, new { htmlAttributes = new { type = "password", placeholder = "Password", name = "Password", id = "password" } })
-								</div>
-								<div class="form-group">
-									<input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-									<label for="agree-term" class="label-agree-term">
-										<span><span></span></span>I agree all statements in <a href="#" class="term-service">Terms of service</a>
-									</label>
-								</div>
-								<div class="form-group form-button">
-									<div class="col-md-offset-2 col-md-10">
-										<input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
-									</div>
-								</div>
-							</form>
-						}
-					</div>
-					<div class="signup-image">
-						<figure><img src="/img/Registration/signup-image.jpg" alt="sing up image"></figure>
-						<a href="../Auth/Login" class="signup-image-link">I am already member</a>
-					</div>
-				</div>
-			</div>
-		</section>
-	</div>
+    <div class="main">
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+                        @using (Html.BeginForm("SignUp", "Auth", FormMethod.Post, new { @class = "validate-form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Vereyon.Web.FlashMessageHtmlHelper.RenderFlashMessages(Html)
+                            <div class="form-group">
+                                <div class="validate-input" data-validate="First Name is required">
+                                    <label><i class="fa fa-user"></i></label>
+                                    @Html.TextBoxFor(model => model.FirstName, new { @class = "validate-field", placeholder = "First Name", name = "FirstName", id = "firstName" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="validate-input" data-validate="Last Name is required">
+                                    <label><i class="fa fa-user"></i></label>
+                                    @Html.TextBoxFor(model => model.LastName, new { @class = "validate-field", placeholder = "Last Name", name = "LastName", id = "lastName" })
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="validate-input" data-validate="Email is required">
+                                    <label><i class="fa fa-envelope"></i></label>
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "validate-field", placeholder = "Email", name = "Email", id = "email" })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="validate-input" data-validate="Country is required">
+                                    <label><i class="fa fa-globe"></i></label>
+                                    @Html.TextBoxFor(model => model.Country, new { @class = "validate-field", placeholder = "Country", name = "Country", id = "country" })
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="validate-input" data-validate="Mobile No is required">
+                                    <label><i class="fa fa-phone"></i></label>
+                                    @Html.TextBoxFor(model => model.MobileNo, new { @class = "validate-field", placeholder = "Mobile No", name = "MobileNo", id = "mobile" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="validate-input" data-validate="Birthdate is required" id="BirthDate">
+                                    <label><i class="fa fa-calendar"></i></label>
+                                    @Html.TextBoxFor(model => model.BirthDate, new { @class = "validate-field", placeholder = "Birth Date", name = "BirthDate" })
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="validate-input" data-validate="Password is required">
+                                    <label><i class="fa fa-lock"></i></label>
+                                    @Html.TextBoxFor(model => model.Password, new { @class = "validate-field", type = "password", placeholder = "Password", name = "Password", id = "password" })
+                                </div>
+
+                            </div>
+                            @*<div class="form-group">
+                                <div class="validate-input" data-validate="Agree is required">
+                                    <input type="checkbox" name="agree-term" id="agree-term" class="agree-term validate-field" />
+                                    <label for="agree-term" class="label-agree-term">
+                                        <span><span></span></span>I agree all statements in <a href="/Home/Terms" class="term-service" style="color: #1AD69C">Terms of service</a>
+                                    </label>
+                                </div>
+                            </div>*@
+                            <div class="form-group form-button">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="/img/Registration/signup-image.jpg" alt="sing up image"></figure>
+                        <a href="../Auth/Login" class="signup-image-link">I am already member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/customJs")
+    <script src="~/Scripts/CustomJs/signUp-val.js"></script>
+    <script>
+        $('#BirthDate').calendar({
+            type: 'date'
+        });
+    </script>
 </body>
 </html>

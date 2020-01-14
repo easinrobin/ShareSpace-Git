@@ -4,13 +4,14 @@ using System.Data;
 using System.Data.SqlClient;
 using ShareSpace.DataLayer.Client;
 using ShareSpace.DataLayerSql.Common;
+using ShareSpace.Models.Auth;
 using ShareSpace.Utility;
 
 namespace ShareSpace.DataLayerSql.Client
 {
     public class SqlClientProvider : IClientProvider
     {
-        #region Client
+        #region SetClient
         public long InsertClient(Models.Client.Client client)
         {
             long id = 0;
@@ -62,7 +63,7 @@ namespace ShareSpace.DataLayerSql.Client
                 {
                     string name = clients.Name;
                     var value = clients.GetValue(client, null);
-                    command.Parameters.Add(new SqlParameter("@" + name, value));
+                    command.Parameters.Add(new SqlParameter("@" + name, value == null ? DBNull.Value : value));
                 }
 
                 try
@@ -88,7 +89,7 @@ namespace ShareSpace.DataLayerSql.Client
             bool isDelete = true;
             using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
             {
-                SqlCommand command = new SqlCommand(StoreProcedure.DELETECLIENT);
+                SqlCommand command = new SqlCommand(StoreProcedure.DELETECLIENT, connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.Add(new SqlParameter("@ClientID", clientId));
 
@@ -109,6 +110,37 @@ namespace ShareSpace.DataLayerSql.Client
             }
             return isDelete;
         }
+
+        public bool HideClient(long clientId)
+        {
+            bool isDelete = true;
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.HideClient, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@ClientID", clientId));
+
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    isDelete = false;
+                    throw new Exception("Exception Updating Data." + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return isDelete;
+        }
+
+        #endregion
+
+        #region GetClients
 
         public List<Models.Client.Client> GetAllClients()
         {
@@ -191,6 +223,62 @@ namespace ShareSpace.DataLayerSql.Client
             }
         }
 
+        public Models.Client.Client GetClientByMobile(string mobile)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Get_Client_By_Mobile, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@MobileNo", mobile));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    Models.Client.Client client = new Models.Client.Client();
+                    client = UtilityManager.DataReaderMap<Models.Client.Client>(reader);
+                    return client;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        public Models.Client.Client GetClientByEmailAndPassword(string email, string password)
+        {
+            using (SqlConnection connection = new SqlConnection(CommonUtility.ConnectionString))
+            {
+                SqlCommand command = new SqlCommand(StoreProcedure.Get_Client_By_Email_And_Password, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter("@Email", email));
+                command.Parameters.Add(new SqlParameter("@Password", password));
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    Models.Client.Client client = new Models.Client.Client();
+                    client = UtilityManager.DataReaderMap<Models.Client.Client>(reader);
+                    return client;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Exception retrieving reviews. " + e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
         #endregion
+
     }
 }

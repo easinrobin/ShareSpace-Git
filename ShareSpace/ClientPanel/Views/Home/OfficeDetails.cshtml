@@ -1,504 +1,725 @@
-﻿@{
-	ViewBag.Title = "Office Details";
+﻿@model ShareSpace.Models.Client.ClientViewModel
+@{
+    ViewBag.Title = "Office Details";
 }
+@{
+    var maploc = Model.PropertyView.RoadNo + "," + Model.PropertyView.Area + "," + Model.PropertyView.City + "," + Model.PropertyView.ZipCode;
 
+    var mapurl = "https://maps.google.com/maps?q=" + @maploc + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
+
+    var propertyHiddenAddress = "House No. " + Model.PropertyView.HouseNo + ", Flat No. " + Model.PropertyView.FlatNo + ", Road No. " + Model.PropertyView.RoadNo + ", ";
+
+    var ytvideourl = "https://www.youtube.com/embed/" + Model.PropertyView.VideoLink;
+}
+<link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
 <div class="clear">
 
 </div>
 
 <div class="content-area rooms-details-page">
-	<div class="container">
+    <div class="container">
 
-		<div class="row">
+        <div class="row">
 
-			<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-				<!--  Rooms detail slider start -->
-				<div class="rooms-detail-slider simple-slider mrg-btm-40 ">
-					<div id="carousel-custom" class="carousel slide" data-ride="carousel">
-						<div class="carousel-outer">
-							<!-- Wrapper for slides -->
-							<div class="carousel-inner">
-								<div class="item">
-									<img src="/img/properties/office-room1.jpg" class="thumb-preview" alt="Chevrolet Impala">
-								</div>
-								<div class="item">
-									<img src="/img/properties/office-room3.jpg" class="thumb-preview" alt="Chevrolet Impala">
-								</div>
-								<div class="item">
-									<img src="/img/properties/office-room4.jpg" class="thumb-preview" alt="Chevrolet Impala">
-								</div>
-								<div class="item">
-									<img src="/img/properties/office-room5.jpg" class="thumb-preview" alt="Chevrolet Impala">
-								</div>
-								<div class="item">
-									<img src="/img/properties/office-room1.jpg" class="thumb-preview" alt="Chevrolet Impala">
-								</div>
-								<div class="item">
-									<img src="/img/properties/office-room3.jpg" class="thumb-preview" alt="Chevrolet Impala">
-								</div>
-								<div class="item active">
-									<img src="/img/properties/office-room4.jpg" class="thumb-preview" alt="Chevrolet Impala">
-								</div>
-							</div>
-							<!-- Controls -->
-							<a class="left carousel-control" href="#carousel-custom" role="button" data-slide="prev">
-								<span class="slider-mover-left no-bg" aria-hidden="true">
-									<i class="fa fa-angle-left"></i>
-								</span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="right carousel-control" href="#carousel-custom" role="button" data-slide="next">
-								<span class="slider-mover-right no-bg" aria-hidden="true">
-									<i class="fa fa-angle-right"></i>
-								</span>
-								<span class="sr-only">Next</span>
-							</a>
-						</div>
-						<!-- Indicators -->
-						<ol class="carousel-indicators thumbs visible-lg visible-md">
-							<li data-target="#carousel-custom" data-slide-to="0" class="">
-								<img src="/img/properties/office-room1.jpg"
-									 alt="Chevrolet Impala">
-							</li>
-							<li data-target="#carousel-custom" data-slide-to="1" class="">
-								<img src="/img/properties/office-room3.jpg"
-									 alt="Chevrolet Impala">
-							</li>
-							<li data-target="#carousel-custom" data-slide-to="2" class="">
-								<img src="/img/properties/office-room4.jpg"
-									 alt="Chevrolet Impala">
-							</li>
-							<li data-target="#carousel-custom" data-slide-to="3" class="">
-								<img src="/img/properties/office-room5.jpg"
-									 alt="Chevrolet Impala">
-							</li>
-							<li data-target="#carousel-custom" data-slide-to="4" class="">
-								<img src="/img/properties/office-room1.jpg"
-									 alt="Chevrolet Impala">
-							</li>
-							<li data-target="#carousel-custom" data-slide-to="5" class="">
-								<img src="/img/properties/office-room3.jpg"
-									 alt="Chevrolet Impala">
-							</li>
-							<li data-target="#carousel-custom" data-slide-to="6" class="">
-								<img src="/img/properties/office-room4.jpg"
-									 alt="Chevrolet Impala">
-							</li>
-						</ol>
-					</div>
-				</div>
-				<!-- Rooms detail slider end -->
-				<div class="heading-rooms  clearfix sidebar-widget">
-					<div class="pull-left">
-						<h3>Shared Office</h3>
-						<p>
-							<i class="fa fa-map-marker"></i>123 Uttara, Dhaka City,
-						</p>
-					</div>
-					<div class="pull-right">
-						<h3><span>৳800</span></h3>
-						<h5>/ Hour</h5>
-					</div>
-				</div>
-				<!-- Rooms details section start -->
-				<div class="rooms-detail-slider  sidebar-widget">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <!--  Rooms detail slider start -->
+                <div class="rooms-detail-slider simple-slider mrg-btm-40 office-gallery">
+                    <div id="carousel-custom" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-outer">
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                @foreach (var item in Model.GalleryList.Take((7)))
+                                {
+                                    var imagepath = "http://adminss.thebyteheart.com/" + item.ImageUrl;
+                                    if (item.GalleryId == Model.GalleryList.First().GalleryId)
+                                    {
+                                        <div class="item active">
+                                            <img src="@imagepath" class="thumb-preview" alt="Chevrolet Impala">
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="item">
+                                            <img src="@imagepath" class="thumb-preview" alt="Chevrolet Impala">
+                                        </div>
+                                    }
 
-					<!-- Search area box 2 start -->
-					<div class="search-area-box-2 hidden-lg hidden-md mrg-btm-30">
+                                }
+                            </div>
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#carousel-custom" role="button" data-slide="prev">
+                                <span class="slider-mover-left no-bg" aria-hidden="true">
+                                    <i class="fa fa-angle-left"></i>
+                                </span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-custom" role="button" data-slide="next">
+                                <span class="slider-mover-right no-bg" aria-hidden="true">
+                                    <i class="fa fa-angle-right"></i>
+                                </span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators thumbs visible-lg visible-md">
+                            @foreach (var item in Model.GalleryList.Take((7)))
+                            {
+                                //var imagepath =Request.Url.Scheme+"://" + Request.Url.Authority + item.ImageUrl;
+                                var imagepath = "http://adminss.thebyteheart.com/" + item.ImageUrl;
+                                <li data-target="#carousel-custom" data-slide-to="0" class="">
+                                    <img src="@imagepath" alt="Chevrolet Impala">
+                                </li>
+                            }
+                        </ol>
+                    </div>
+                </div>
+                <!-- Rooms detail slider end -->
+                <div class="heading-rooms  clearfix sidebar-widget">
 
-						<div class="search-contents">
-							<form method="GET">
-								<div class="row">
-									<div class="col-md-3 col-pad col-pad-2">
-										<div class="search-your-rooms">
-											<h3 class="hidden-xs hidden-sm">Reserve</h3>
-											<h2 class="hidden-xs hidden-sm">Your <span>Space</span></h2>
-											<h2 class="hidden-lg hidden-md">Reserve Your <span>Space</span></h2>
-										</div>
-									</div>
-									<div class="search-your-details">
-										<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
-											<div class="form-group">
-												<input type="text" class="btn-default" id="smallCheckInDate" placeholder="Check In Date">
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
-											<div class="form-group">
-												<input type="text" class="btn-default" id="smallCheckOutDate" placeholder="Check Out Date">
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
-											<div class="form-group">
-												<input type="text" class="btn-default" id="smallCheckInTime" placeholder="Check In Time">
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
-											<div class="form-group">
-												<input type="text" class="btn-default" id="smallCheckOutTime" placeholder="Check Out Time">
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
-											<div class="form-group">
-												<select class="selectpicker search-fields form-control-2" name="room">
-													<option>Office Type</option>
-													<option>Shared Office</option>
-													<option>Whole Office</option>
-													<option>Meeting Space</option>
-													<option>Auditorium</option>
-												</select>
-											</div>
-										</div>
-										<div class="col-md-6 col-sm-6 col-xs-6 col-pad">
-											<div class="form-group">
-												<select class="selectpicker search-fields form-control-2" name="adults">
-													<option>Number of Person</option>
-													<option>1</option>
-													<option>2</option>
-													<option>3</option>
-													<option>4</option>
-													<option>5</option>
-												</select>
-											</div>
-										</div>
+                    <div class="pull-left">
+                        <h3>@Model.PropertyView.PropertyName</h3>
+                        <p>
+                            <i class="fa fa-map-marker"></i>@if (Session["UserName"] != null)
+                            {
+                                @propertyHiddenAddress
+                            }
+                            @Model.PropertyView.Area, @Model.PropertyView.City - @Model.PropertyView.ZipCode
+                        </p>
+                    </div>
+                    <div class="pull-right">
+                        <h3><span>৳@Model.PropertyView.RetailPrice.ToString("0.00")</span></h3>
+                        <h5>/ Hour</h5>
+                    </div>
 
-										<div class="col-md-12 col-sm-12 col-xs-12 col-pad">
-											<div class="form-group">
-												<button class="search-button">Book Now</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-					<!-- Search area box 2 end -->
+                </div>
+                <!-- Rooms details section start -->
+                <div class="rooms-detail-slider sidebar-widget">
 
-					<div class="mrg-btm-30">
-						<!-- Title -->
-						<h3>Rooms Description</h3>
-						<!-- paragraph -->
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus
-							lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar
-							nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor
-							iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra a. Aliquam
-							pellentesque nibh et nibh feugiat gravida. Maecenas ultricies, diam vitae semper placerat, velit risus
-							accumsan nisl, eget tempor lacus est vel nunc. Proin accumsan elit sed neque euismod fringilla.
-							Curabitur lobortis nunc velit,
-						</p>
-					</div>
+                    <!-- Search area box 2 start -->
+                    <div class="search-area-box-2 hidden-lg hidden-md mrg-btm-30">
 
-					<!-- Rooms features start -->
-					<div class="rooms-features mrg-btm-30">
-						<h3>Rooms Features</h3>
-						<div class="row">
-							<div class="col-md-4 col-sm-4 col-xs-12">
-								<ul class="condition">
-									<li>
-										<i class="flaticon-air-conditioner"></i>Air conditioning
-									</li>
-									<li>
-										<i class="flaticon-balcony-and-door"></i>Balcony
-									</li>
-									<li>
-										<i class="flaticon-weightlifting"></i>Gym
-									</li>
-									<li>
-										<i class="flaticon-parking"></i>Parking
-									</li>
-									<li>
-										<i class="flaticon-sunbed"></i>Beach View
-									</li>
+                        <div class="search-contents">
+                            @using (Html.BeginForm("OfficeDetails", "Home", FormMethod.Post, new { @class = "validate-form" }))
+                            {
 
-								</ul>
-							</div>
-							<div class="col-md-4 col-sm-4 col-xs-12">
-								<ul class="condition">
-									<li>
-										<i class="flaticon-bed"></i>2 Bedroom
-									</li>
-									<li>
-										<i class="flaticon-person-learning-by-reading"></i>Free Newspaper
-									</li>
-									<li>
-										<i class="flaticon-swimming-silhouette"></i>Use of pool
-									</li>
-									<li>
-										<i class="flaticon-monitor"></i>TV
-									</li>
-									<li>
-										<i class="flaticon-no-smoking-sign"></i>No Smoking
-									</li>
-								</ul>
-							</div>
-							<div class="col-md-4 col-sm-4 col-xs-12">
-								<ul class="condition">
-									<li>
-										<i class="flaticon-room-service"></i>Room Service
-									</li>
-									<li>
-										<i class="flaticon-breakfast"></i>Breakfast
-									</li>
-									<li>
-										<i class="flaticon-phone-receiver"></i>Telephone
-									</li>
-									<li>
-										<i class="flaticon-bed"></i>2 Bedroom
-									</li>
-									<li>
-										<i class="flaticon-wifi-connection-signal-symbol"></i>Free Wi-Fi
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- Rooms features end -->
-					<!-- Comments section start -->
-					<div class="comments-section mrg-btm-30">
-						<!-- Main Title 2 -->
-						<div class="main-title-2">
-							<h1><span>Rooms </span> Reviews</h1>
-						</div>
+                                @Html.HiddenFor(m => m.PropertyView.HouseNo)
+                                @Html.HiddenFor(m => m.PropertyView.FlatNo)
+                                @Html.HiddenFor(m => m.PropertyView.RoadNo)
+                                @Html.HiddenFor(m => m.PropertyView.Area)
+                                @Html.HiddenFor(m => m.PropertyView.City)
+                                @Html.HiddenFor(m => m.PropertyView.ZipCode)
+                                @Html.HiddenFor(m => m.PropertyView.PropertyId)
 
-						<ul class="comments">
-							<li>
-								<div class="comment">
-									<div class="comment-author">
-										<a href="#">
-											<img src="/img/avatar/avatar-5.png" alt="avatar-5">
-										</a>
-									</div>
-									<div class="comment-content">
-										<div class="comment-meta">
-											<div class="comment-meta-author">
-												Jane Doe
-											</div>
 
-											<div class="comment-meta-date">
-												<span class="hidden-xs">8:42 PM 3/3/2017</span>
-											</div>
-										</div>
-										<div class="clearfix"></div>
-										<div class="comment-body">
-											<div class="comment-rating">
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star-o"></i>
-											</div>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam.
-												Aliquam gravida massa at sem vulputate interdum et vel eros. Maecenas eros enim, tincidunt vel
-												turpis vel, dapibus tempus nulla. Donec vel nulla dui. Pellentesque sed ante sed ligula
-												hendrerit condimentum. Suspendisse rhoncus fringilla ipsum quis porta.
-											</p>
-										</div>
-									</div>
-								</div>
+                                <div class="row">
+                                    <div class="col-md-3 col-pad col-pad-2">
+                                        <div class="search-your-rooms">
+                                            <h3 class="hidden-xs hidden-sm">Reserve</h3>
+                                            <h2 class="hidden-xs hidden-sm">Your <span>Space</span></h2>
+                                            <h2 class="hidden-lg hidden-md">Reserve Your <span>Space</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="search-your-details">
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
+                                            <div class="form-group">
+                                                <div class="validate-input" data-validate="Date is required" id="rangeStartDatesm">
+                                                    @Html.TextBoxFor(m => m.BookingEmail.FromDate, new { @class = "btn-default validate-field", placeholder = "Check In Date" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
+                                            <div class="form-group">
+                                                <div class="validate-input" data-validate="Date is required" id="rangEndDatesm">
+                                                    @Html.TextBoxFor(m => m.BookingEmail.ToDate, new { @class = "btn-default validate-field", type = "text", placeholder = "Check Out Date" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
+                                            <div class="form-group">
+                                                <div class="validate-input" data-validate="Time is required" id="rangestart">
+                                                    @Html.TextBoxFor(m => m.BookingEmail.FromHour, new { @class = "btn-default validate-field", type = "text", placeholder = "Check In Time" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
+                                            <div class="form-group">
+                                                <div class="validate-input" data-validate="Time is required" id="rangeend">
+                                                    @Html.TextBoxFor(m => m.BookingEmail.ToHour, new { @class = "btn-default validate-field", type = "text", placeholder = "Check Out Time" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
+                                            <div class="form-group">
+                                                <div class="validate-input" data-validate="Email is required">
+                                                    @Html.TextBoxFor(m => m.BookingEmail.Email, new { @class = "btn-default validate-field", id = string.Format("email"), type = "email", placeholder = "Your Email Address" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
+                                            <div class="form-group">
+                                                <div class="validate-input" data-validate="Mobile is required">
+                                                    @Html.TextBoxFor(m => m.BookingEmail.MobileNo, new { @class = "btn-default validate-field", type = "phone", placeholder = "Mobile" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12 col-pad">
+                                            <div class="form-group">
+                                                <div class="validate-input" data-validate="Number of Person is required">
+                                                    @Html.DropDownListFor(m => m.BookingEmail.MaximumPerson, new List<SelectListItem>
+                                                    {
+                                                        new SelectListItem {Text = "1", Value = "1"},
+                                                        new SelectListItem {Text = "2", Value = "2"},
+                                                        new SelectListItem {Text = "3", Value = "3"},
+                                                        new SelectListItem {Text = "4", Value = "4"},
+                                                        new SelectListItem {Text = "5", Value = "5"},
+                                                        new SelectListItem {Text = "6", Value = "6"},
+                                                        new SelectListItem {Text = "7", Value = "7"},
+                                                        new SelectListItem {Text = "8", Value = "8"},
+                                                        new SelectListItem {Text = "9", Value = "9"},
+                                                        new SelectListItem {Text = "10", Value = "10"}
+                                                    },
+                                                        "Number of Person", new
+                                                        {@class = "selectpicker search-fields form-control-2", name = "Person"}
+                                                        )
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 col-pad">
+                                            <div class="form-group">
+                                                @*<input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />*@
+                                                @Html.CheckBoxFor(x => x.PropertyView.TermsAndConditions, new { @class = "agree-term" })
+                                                <label for="agree-term" class="label-agree-term">
+                                                    <span><span></span></span>I agree all statements in <a href="/Home/Terms" target="_blank" class="term-service">Terms of service</a>
+                                                </label><br/>
+                                                @Html.ValidationMessageFor(x => x.PropertyView.TermsAndConditions, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12 col-pad">
+                                            <div class="form-group">
+                                                <button type="submit" class="search-button">Book Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <!-- Search area box 2 end -->
 
-							</li>
-							<li>
-								<div class="comment">
-									<div class="comment-author">
-										<a href="#">
-											<img src="/img/avatar/avatar-5.png" alt="avatar-5">
-										</a>
-									</div>
-									<div class="comment-content">
-										<div class="comment-meta">
-											<div class="comment-meta-author">
-												Jane Doe
-											</div>
-											<div class="comment-meta-date">
-												<span class="hidden-xs">8:42 PM 3/3/2017</span>
-											</div>
-										</div>
-										<div class="clearfix"></div>
-										<div class="comment-body">
-											<div class="comment-rating">
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star-o"></i>
-											</div>
-											<p>
-												Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-												been the industry's standard dummy text ever since the 1500s, when an unknown printer
-											</p>
-										</div>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<!-- Comments section end -->
-					<!-- Contact form start -->
-					<div class="contact-form">
-						<div class="main-title-2">
-							<h1> <span>Leave</span> a Comment</h1>
-						</div>
-						<form id="contact_form" action="" method="GET" enctype="multipart/form-data">
-							<div class="row">
-								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-									<div class="form-group fullname">
-										<input type="text" name="full-name" class="input-text" placeholder="Full Name">
-									</div>
-								</div>
-								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-									<div class="form-group enter-email">
-										<input type="email" name="email" class="input-text" placeholder="Enter email">
-									</div>
-								</div>
+                    <div class="mrg-btm-40">
+                        <!-- Title -->
+                        <div class="main-title-2">
+                            <h1>
+                                <span style="color: #1AD69C">Office </span>Description
+                            </h1>
+                            <div class="section-title-border"></div>
+                        </div>
+                        <!-- paragraph -->
+                        @Html.Raw(@Model.PropertyView.Description)
+                    </div>
 
-								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-									<div class="form-group message">
-										<textarea class="input-text" name="message" placeholder="Write message"></textarea>
-									</div>
-								</div>
-								<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-									<div class="form-group send-btn">
-										<button type="submit" class="button-md button-theme">Post Comment</button>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-					<!-- Contact form end -->
-				</div>
-				<!-- Course details section end -->
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-				<!-- Sidebar start -->
-				<div class="sidebar right">
-					<!-- Search area box start -->
-					<div class="search-area-box-6 hidden-xs hidden-sm">
-						<div class="search-contents">
-							<form method="GET" action="../Home/About">
-								<div class="col-lg-12 col-pad col-pad-2">
-									<div class="search-your-rooms">
-										<h3 class="hidden-xs hidden-sm">Reserve Your</h3>
-										<h2 class="hidden-xs hidden-sm" style="letter-spacing: 2px">Space<span> Now</span></h2>
-										<h2 class="hidden-lg hidden-md">Search Your <span>Rooms</span></h2>
-									</div>
-								</div>
-								<div class="search-your-details">
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div class="form-group">
-											<div class="input-group date" id="checkInDate">
-												<input type="text" class="btn-default" placeholder="Check In" />
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-calendar"></span>
-												</span>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div class="form-group">
-											<div class="input-group date" id="checkOutDate">
-												<input type="text" class="btn-default" placeholder="Check Out" />
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-calendar"></span>
-												</span>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div class="form-group">
-											<div class="input-group date" id="checkInTime">
-												<input type="text" class="btn-default" placeholder="Check In Time" />
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-time"></span>
-												</span>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div class="form-group">
-											<div class="input-group date" id="checkOutTime">
-												<input type="text" class="btn-default" placeholder="Check Out Time" />
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-time"></span>
-												</span>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div class="form-group">
-											<select class="selectpicker search-fields form-control-2" name="room">
-												<option>Office Type</option>
-												<option>Shared Office</option>
-												<option>Whole Office</option>
-												<option>Meeting Space</option>
-												<option>Auditorium</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div class="form-group">
-											<select class="selectpicker search-fields form-control-2" name="adults">
-												<option>Number of Person</option>
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-											</select>
-										</div>
-									</div>
+                    <!-- Rooms features start -->
+                    <div class="rooms-features mrg-btm-40">
+                        <div class="main-title-2">
+                            <h1><span style="color: #1AD69C">Office</span> Amenities</h1>
+                            <div class="section-title-border"></div>
+                        </div>
 
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div class="form-group">
-											<button class="search-button">@Html.ActionLink("Book", "About", "Home")</button>
-										</div>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-					<!-- Search area box end -->
-					<!-- Inside video start  -->
-					<div class="inside-video sidebar-widget">
-						<div class="main-title-2">
-							<h1>Office Video</h1>
-						</div>
-						<iframe src="https://www.youtube.com/embed/5e0LxrLSzok" allowfullscreen=""></iframe>
-					</div>
-					<!-- Inside video end -->
-					<!-- Social media start -->
-					<div class="social-media sidebar-widget clearfix">
-						<!-- Main Title 2 -->
-						<div class="main-title-2">
-							<h1>Social Media</h1>
-						</div>
-						<!-- Social list -->
-						<ul class="social-list">
-							<li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
-							<li><a href="#" class="rss"><i class="fa fa-rss"></i></a></li>
-						</ul>
-					</div>
-					<!-- Social media end -->
-					<!-- Location start  -->
-					<div class="location sidebar-widget">
-						<div class="map">
-							<!-- Main Title 2 -->
-							<div class="main-title-2">
-								<h1>Location</h1>
-							</div>
-							<div id="map" class="contact-map" style="height: 662px; background-color: crimson">
-								<img src="/img/dhaka map.jpg" height="250" width="320" />
-							</div>
-						</div>
-					</div>
-					<!-- Location end -->
+                        <div class="row">
+                            <ul class="condition">
+                                @foreach (var services in Model.PropertyServiceOnClient)
+                                {
+                                    <li class="col-md-4 col-sm-4 col-xs-12">
+                                        <i class="@services.ImagePath"></i>@services.ServiceName
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Rooms features end -->
+                    <!-- Price Table start -->
+                    @if (Model.PropertyView != null)
+                    {
+                        <div class="rooms-features mrg-btm-40">
+                            <div class="main-title-2">
+                                <h1><span style="color: #1AD69C">Price</span> Table</h1>
+                                <div class="section-title-border"></div>
+                            </div>
 
-				</div>
-				<!-- Sidebar end -->
-			</div>
-		</div>
-	</div>
+                            <div class="row">
+                                <table class="table-responsive table-striped tbl-price" style="width: 100%; margin: 0 20px;">
+                                    @if (Model.PropertyView.One_hr_price != 0)
+                                    {
+                                        <tr>
+                                            <td>One Hour Rent</td>
+                                            <td>৳@Model.PropertyView.One_hr_price.ToString("0.00")</td>
+                                        </tr>
+                                    }
+                                    @if (Model.PropertyView.Four_hr_price != 0)
+                                    {
+                                        <tr>
+                                            <td>Four Hour Rent</td>
+                                            <td>৳@Model.PropertyView.Four_hr_price.ToString("0.00")</td>
+                                        </tr>
+                                    }
+                                    @if (Model.PropertyView.Weekly_price != 0)
+                                    {
+                                        <tr>
+                                            <td>Weekly Rent</td>
+                                            <td>৳@Model.PropertyView.Weekly_price.ToString("0.00")</td>
+                                        </tr>
+                                    }
+                                    @if (Model.PropertyView.Monthly_price != 0)
+                                    {
+                                        <tr>
+                                            <td>Monthly Rent</td>
+                                            <td>৳@Model.PropertyView.Monthly_price.ToString("0.00")</td>
+                                        </tr>
+                                    }
+                                    @if (Model.PropertyView.Three_months_price != 0)
+                                    {
+                                        <tr>
+                                            <td>Three Months Rent</td>
+                                            <td>৳@Model.PropertyView.Three_months_price.ToString("0.00")</td>
+                                        </tr>
+                                    }
+
+                                </table>
+                            </div>
+                        </div>
+                    }
+                    <!-- Price Table end -->
+                    <!-- Office working days start -->
+                    @if (Model.PropertyWorkingDays != null)
+                    {
+                        <div class="rooms-features mrg-btm-40">
+                            <div class="main-title-2">
+                                <h1><span style="color: #1AD69C">Opening</span> Hours</h1>
+                                <div class="section-title-border"></div>
+                            </div>
+                            <div class="row">
+                                <ul class="condition">
+                                    @if (Model.PropertyWorkingDays.Sat == false)
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Saturday</strong><br />
+                                            Closed
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Saturday</strong><br />
+                                            @Model.PropertyWorkingDays.StartTime - @Model.PropertyWorkingDays.EndTime
+                                        </li>
+                                    }
+
+                                    @if (Model.PropertyWorkingDays.Sun == false)
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Sunday</strong><br />
+                                            Closed
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Sunday</strong><br />
+                                            @Model.PropertyWorkingDays.StartTime - @Model.PropertyWorkingDays.EndTime
+                                        </li>
+                                    }
+
+                                    @if (Model.PropertyWorkingDays.Mon == false)
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Monday</strong><br />
+                                            Closed
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Monday</strong><br />
+                                            @Model.PropertyWorkingDays.StartTime - @Model.PropertyWorkingDays.EndTime
+                                        </li>
+                                    }
+
+                                    @if (Model.PropertyWorkingDays.Tue == false)
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Tuesday</strong><br />
+                                            Closed
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Tuesday</strong><br />
+                                            @Model.PropertyWorkingDays.StartTime - @Model.PropertyWorkingDays.EndTime
+                                        </li>
+                                    }
+
+                                    @if (Model.PropertyWorkingDays.Wed == false)
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Wednesday</strong><br />
+                                            Closed
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Wednesday</strong><br />
+                                            @Model.PropertyWorkingDays.StartTime - @Model.PropertyWorkingDays.EndTime
+                                        </li>
+                                    }
+
+                                    @if (Model.PropertyWorkingDays.Thu == false)
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Thursday</strong><br />
+                                            Closed
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Thursday</strong><br />
+                                            @Model.PropertyWorkingDays.StartTime - @Model.PropertyWorkingDays.EndTime
+                                        </li>
+                                    }
+
+                                    @if (Model.PropertyWorkingDays.Fri == false)
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Friday</strong><br />
+                                            Closed
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="col-md-6 col-sm-12 col-xs-12">
+                                            <strong>Friday</strong><br />
+                                            @Model.PropertyWorkingDays.StartTime - @Model.PropertyWorkingDays.EndTime
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- Office working days end -->
+                    <!-- Comments section start -->
+                    <div class="comments-section mrg-btm-40">
+                        <!-- Main Title 2 -->
+                        <div class="main-title-2">
+                            <h1><span style="color: #1AD69C">Office </span> Reviews</h1>
+                            <div class="section-title-border"></div>
+                        </div>
+
+                    </div>
+                    <ul class="comments">
+                        @foreach (var comments in Model.ClientPropertyRatings)
+                        {
+                            var imagepath = "http://ss.byteheart.com/" + @comments.ClientPhoto;
+                            <li>
+                                <div class="comment">
+                                    <div class="comment-author">
+                                        <a>
+                                            <img src="@imagepath" alt="@comments.FirstName @comments.LastName">
+                                        </a>
+                                    </div>
+                                    <div class="comment-content">
+                                        <div class="comment-meta">
+                                            <div class="comment-meta-author">
+                                                @comments.FirstName @comments.LastName
+                                            </div>
+
+                                            <div class="comment-meta-date">
+                                                <span class="hidden-xs">@comments.CreatedDate</span>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <div class="comment-body">
+                                            <div class="comment-rating">
+                                                <div class="rating" data-rateyo-star-width="20px" data-rateyo-rating="@comments.Rating">
+                                                </div>
+                                            </div>
+                                            <p>
+                                                @comments.Review
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+                <!-- Comments section end -->
+                <!-- Contact form start -->
+                @if (Session["UserName"] != null)
+                {
+                    <div class="contact-form">
+                        @using (Html.BeginForm("ClientReview", "Home", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(m => m.PropertyView.PropertyId)
+
+                            <div class="main-title-2">
+                                <h1>Rate this Office</h1>
+                                @*<div id="client-rating" data-rateyo-star-width="20px" data-rateyo-rating="@Model.PropertyRating.Rating">
+
+                                    </div>*@
+                                @*@Html.EditorFor(x => x.PropertyRating.Rating, new{ @id = "client-rating" })
+                                    @Html.HiddenFor(x => x.PropertyRating.Rating)*@
+                                @Html.DropDownListFor(model => model.PropertyRating.Rating, new List<SelectListItem>
+                                {
+                                    new SelectListItem {Text = "1", Value = "1"},
+                                    new SelectListItem {Text = "2", Value = "2"},
+                                    new SelectListItem {Text = "3", Value = "3"},
+                                    new SelectListItem {Text = "4", Value = "4"},
+                                    new SelectListItem {Text = "5", Value = "5"},
+                                },"Rating", new{@class = "form-control ddlbg", name = "Rating" }
+                                    )
+                            </div>
+                            <div class="main-title-2">
+                                <h1> <span>Leave</span> a Comment</h1>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="form-group message">
+                                        @*<textarea class="input-text" name="message" placeholder="Write message"></textarea>*@
+                                        @Html.TextAreaFor(x => x.PropertyRating.Review, new { @class = "input-text", placeholder = "Write message" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group send-btn">
+                                        @*<button type="submit" class="button-md button-theme">Post Comment</button>*@
+                                        <input type="submit" class="button-md button-theme" value="Post a Comment" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+
+                <!-- Contact form end -->
+
+            </div>
+            <!-- Course details section end -->
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <!-- Sidebar start -->
+                <div class="sidebar right">
+                    <!-- Search area box start -->
+                    <div class="search-area-box-6 hidden-xs hidden-sm">
+                        <div class="search-contents">
+                            @using (Html.BeginForm("OfficeDetails", "Home", FormMethod.Post, new { @class = "validate-big-form" }))
+                            {
+                                @Html.HiddenFor(m => m.PropertyView.PropertyId)
+                                @Html.HiddenFor(m => m.PropertyView.HouseNo)
+                                @Html.HiddenFor(m => m.PropertyView.FlatNo)
+                                @Html.HiddenFor(m => m.PropertyView.RoadNo)
+                                @Html.HiddenFor(m => m.PropertyView.Area)
+                                @Html.HiddenFor(m => m.PropertyView.City)
+                                @Html.HiddenFor(m => m.PropertyView.ZipCode)
+                                <div class="col-lg-12 col-pad col-pad-2">
+                                    <div class="search-your-rooms">
+                                        <h3 class="hidden-xs hidden-sm">Reserve Your</h3>
+                                        <h2 class="hidden-xs hidden-sm" style="letter-spacing: 2px">Space<span> Now</span></h2>
+                                        <h2 class="hidden-lg hidden-md">Search Your <span>Rooms</span></h2>
+                                    </div>
+                                </div>
+                                <div class="search-your-details">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="validate-big-input" data-validate="Date is required" id="rangeStartDate">
+                                                @Html.TextBoxFor(m => m.BookingEmail.FromDate, new { @class = "btn-default validate-big-field", type = "text", placeholder = "Check In Date", autocomplete = "off" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="validate-big-input" data-validate="Date is required" id="rangeEndDate">
+                                                @Html.TextBoxFor(m => m.BookingEmail.ToDate, new { @class = "btn-default validate-big-field", type = "text", placeholder = "Check Out Date", autocomplete = "off" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="validate-big-input" data-validate="Time is required" id="rangestartsm">
+                                                @Html.TextBoxFor(m => m.BookingEmail.FromHour, new { @class = "btn-default validate-big-field", type = "text", placeholder = "Check In Time", autocomplete = "off" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="validate-big-input" data-validate="Time is required" id="rangeendsm">
+                                                @Html.TextBoxFor(m => m.BookingEmail.ToHour, new { @class = "btn-default validate-big-field", type = "text", placeholder = "Check Out Time", autocomplete = "off" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="validate-big-input" data-validate="Email is required">
+                                                @Html.TextBoxFor(m => m.BookingEmail.Email, new { @class = "btn-default validate-big-field", id = string.Format("email"), type = "email", placeholder = "Your Email Address", autocomplete = "off" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="validate-big-input" data-validate="Mobile is required">
+                                                @Html.TextBoxFor(m => m.BookingEmail.MobileNo, new { @class = "btn-default validate-big-field", type = "phone", placeholder = "Mobile", autocomplete = "off" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="validate-big-input" data-validate="Number of Person is required">
+                                                @Html.DropDownListFor(m => m.BookingEmail.MaximumPerson, new List<SelectListItem>
+                                                {
+                                                    new SelectListItem {Text = "1", Value = "1"},
+                                                    new SelectListItem {Text = "2", Value = "2"},
+                                                    new SelectListItem {Text = "3", Value = "3"},
+                                                    new SelectListItem {Text = "4", Value = "4"},
+                                                    new SelectListItem {Text = "5", Value = "5"},
+                                                    new SelectListItem {Text = "6", Value = "6"},
+                                                    new SelectListItem {Text = "7", Value = "7"},
+                                                    new SelectListItem {Text = "8", Value = "8"},
+                                                    new SelectListItem {Text = "9", Value = "9"},
+                                                    new SelectListItem {Text = "10", Value = "10"}
+                                                }, "Number of Person", new {@class = "selectpicker search-fields form-control-2", name = "Person"})
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                        <div class="form-group">
+                                            @*<input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />*@
+                                            @Html.CheckBoxFor(x => x.PropertyView.TermsAndConditions, new { @class = "agree-term" })
+                                            <label for="agree-term" class="label-agree-term">
+                                                <span><span></span></span>I agree all statements in <a href="/Home/Terms" target="_blank" class="term-service">Terms of service</a>
+                                            </label><br/>
+                                            @Html.ValidationMessageFor(x => x.PropertyView.TermsAndConditions, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <button type="submit" class="search-button">Book Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <!-- Search area box end -->
+                    <!-- Inside video start  -->
+                    @if (Model.PropertyView.VideoLink == null)
+                    {
+                        <div class="inside-video sidebar-widget" style="display: none">
+                            <div class="main-title-2">
+                                <h1>Office Video</h1>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="inside-video sidebar-widget">
+                            <div class="main-title-2">
+                                <h1>Office Video</h1>
+                            </div>
+                            <iframe src="@ytvideourl" allowfullscreen=""></iframe>
+                            @*<iframe src="https://www.youtube.com/embed/C4Xjdxg2vTg" allowfullscreen=""></iframe>*@
+                        </div>
+                    }
+                    <!-- Inside video end -->
+                    <!-- Social media start -->
+                    <div class="social-media sidebar-widget clearfix">
+                        <!-- Main Title 2 -->
+                        <div class="main-title-2">
+                            <h1>Social Media</h1>
+                        </div>
+                        <!-- Social list -->
+                        <div class="addthis_inline_share_toolbox"></div>
+                    </div>
+                    <!-- Social media end -->
+                    <!-- Location start  -->
+                    <div class="location sidebar-widget">
+                        <div class="map">
+                            <!-- Main Title 2 -->
+                            <div class="main-title-2">
+                                <h1>Location</h1>
+                            </div>
+
+                            <iframe class="contact-map" style="height: 662px; width: 100%; background-color: #fff" id="gmap_canvas"
+                                    src="@mapurl" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+
+                        </div>
+                    </div>
+                    <!-- Location end -->
+
+                </div>
+                <!-- Sidebar end -->
+            </div>
+        </div>
+
+    </div>
 </div>
+
+<script>
+    $('#rangestart').calendar({
+        type: 'time',
+        endCalendar: $('#rangeend')
+    });
+    $('#rangeend').calendar({
+        type: 'time',
+        startCalendar: $('#rangestart')
+    });
+
+    $('#rangestartsm').calendar({
+        type: 'time',
+        endCalendar: $('#rangeendsm')
+    });
+    $('#rangeendsm').calendar({
+        type: 'time',
+        startCalendar: $('#rangestartsm')
+    });
+
+
+    $('#rangeStartDate').calendar({
+        type: 'date',
+        endCalendar: $('#rangeEndDate')
+    });
+    $('#rangeEndDate').calendar({
+        type: 'date',
+        startCalendar: $('#rangeStarDate')
+    });
+
+    $('#rangeStartDatesm').calendar({
+        type: 'date',
+        endCalendar: $('#rangEndDatesm')
+    });
+    $('#rangEndDatesm').calendar({
+        type: 'date',
+        startCalendar: $('#rangeStarDatesm')
+    });
+
+</script>
+
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.js"></script>
+
+<script>
+    // extend jquery range validator to work for required checkboxes
+    var defaultRangeValidator = $.validator.methods.range;
+    $.validator.methods.range = function (value, element, param) {
+        if (element.type === 'checkbox') {
+            // if it's a checkbox return true if it is checked
+            return element.checked;
+        } else {
+            // otherwise run the default validation function
+            return defaultRangeValidator.call(this, value, element, param);
+        }
+    }
+</script>

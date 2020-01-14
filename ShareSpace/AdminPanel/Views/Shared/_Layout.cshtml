@@ -1,284 +1,180 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
 
-	@Styles.Render("~/Content/material-font")
-	@Styles.Render("~/Content/font-awesome")
-	@Styles.Render("~/Content/animate-min")
-	@Styles.Render("~/Content/jquery-scrollbar")
-	@Styles.Render("~/Content/fullcalendar-min")
-	@Styles.Render("~/Content/app-min")
-	@Styles.Render("~/Content/demo-css")
-	@Styles.Render("~/Content/rich-text-1")
-	@Styles.Render("~/Content/rich-text-2")
-	@Styles.Render("~/Content/rich-text-3")
-	@Styles.Render("~/Content/rich-text-4")
-	@Styles.Render("~/Content/rich-text-5")
-	@Styles.Render("~/Content/rich-text-6")
-	@Styles.Render("~/Content/rich-text-7")
-	@Styles.Render("~/Content/rich-text-8")
-	@Styles.Render("~/Content/rich-text-9")
-	@Styles.Render("~/Content/rich-text-10")
-	@Styles.Render("~/Content/rich-text-11")
-	@Styles.Render("~/Content/rich-text-12")
-	@Styles.Render("~/Content/rich-text-13")
-	@Styles.Render("~/Content/rich-text-14")
-	@Styles.Render("~/Content/rich-text-15")
-	@Styles.Render("~/Content/rich-text-16")
+    @Styles.Render("~/Content/material-font")
+    @Styles.Render("~/Content/font-awesome")
+    @Styles.Render("~/Content/animate-min")
+    @Styles.Render("~/Content/jquery-scrollbar")
+    @Styles.Render("~/Content/app-min")
+    @Styles.Render("~/Content/demo-css")
+    @Styles.Render("~/Content/dropzone")
+    @Styles.Render("~/Content/fullcalendar")
+    @Styles.Render("~/Content/select")
+    @Styles.Render("~/Content/sweetAlert2")
+    @Styles.Render("~/fonts/flatIcon")
+    @Styles.Render("~/Content/flatpickr")
+    @Styles.Render("~/Content/rich-text-1")
+    @Styles.Render("~/Content/rich-text-2")
 
 
 </head>
 <body data-sa-theme="1">
-	<main class="main">
-		@*<div class="page-loader">
-				<div class="page-loader__spinner">
-					<svg viewBox="25 25 50 50">
-						<circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-					</svg>
-				</div>
-			</div>*@
+    <main class="main">
+        <div class="page-loader">
+            <div class="page-loader__spinner">
+                <svg viewBox="25 25 50 50">
+                    <circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                </svg>
+            </div>
+        </div>
 
-		<header class="header">
-			<div class="navigation-trigger hidden-xl-up" data-sa-action="aside-open" data-sa-target=".sidebar">
-				<i class="zmdi zmdi-menu"></i>
-			</div>
+        <header class="header">
+            <div class="navigation-trigger hidden-xl-up" data-sa-action="aside-open" data-sa-target=".sidebar">
+                <i class="zmdi zmdi-menu"></i>
+            </div>
 
-			<div class="logo hidden-sm-down">
-				<h1><a href="index.html">Share Space</a></h1>
-			</div>
+            <div class="logo hidden-sm-down">
+                <h1><a href="~/Home/Index">Share Space</a></h1>
+            </div>
 
-			<ul class="top-nav">
-				<li class="hidden-xl-up"><a href="#" data-sa-action="search-open"><i class="zmdi zmdi-search"></i></a></li>
+            <ul class="top-nav">
+                <li class="hidden-xl-up"></li>
+            </ul>
 
-				<li class="dropdown">
-					<a href="#" data-toggle="dropdown" class="top-nav__notify"><i class="zmdi zmdi-email"></i></a>
-					<div class="dropdown-menu dropdown-menu-right dropdown-menu--block">
-						<div class="dropdown-header">
-							Messages
+            <div class="clock hidden-md-down">
+                <div class="time">
+                    <span class="time__hours"></span>
+                    <span class="time__min"></span>
+                    <span class="time__sec"></span>
+                </div>
+            </div>
+        </header>
 
-							<div class="actions">
-								<a href="messages.html" class="actions__item zmdi zmdi-plus"></a>
-							</div>
-						</div>
+        <aside class="sidebar">
+            <div class="scrollbar-inner">
 
-						<div class="listview listview--hover">
+                <div class="user">
+                    <div class="user__info" data-toggle="dropdown">
+                        <img class="user__img" src="/img/profile-pics/8.jpg" alt="">
+                        <div>
+                            @if (Session["UserName"] != null && Session["Name"] != null)
+                            {
+                                <div class="user__name">@Session["Name"].ToString()</div>
+                                <div class="user__email">@Session["UserName"].ToString()</div>
+                            }
+                            else
+                            {
+                                Response.Redirect("~/Auth/Login");
+                            }
+                        </div>
+                    </div>
 
+                    @*<div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">View Profile</a>
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="#">Logout</a>
+                    </div>*@
+                </div>
 
-							<a href="#" class="listview__item">
-								<img src="demo/img/profile-pics/3.jpg" class="listview__img" alt="">
+                <ul class="navigation">
+                    <li><a href="/Home/Index"><i class="zmdi zmdi-view-dashboard"></i>Dashboard</a></li>
 
-								<div class="listview__content">
-									<div class="listview__heading">
-										Fredric Mitchell Jr.
-										<small>08:21 PM</small>
-									</div>
-									<p>Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies</p>
-								</div>
-							</a>
+                    <li><a href="/Vendor/AdminVendors"><i class="zmdi zmdi-accounts-list"></i>Vendors</a></li>
 
-							<a href="#" class="listview__item">
-								<img src="demo/img/profile-pics/4.jpg" class="listview__img" alt="">
+                    <li><a href="/Client/AdminClients"><i class="zmdi zmdi-accounts"></i>Clients</a></li>
 
-								<div class="listview__content">
-									<div class="listview__heading">
-										Glenn Jecobs
-										<small>08:43 PM</small>
-									</div>
-									<p>Ut vitae lacus sem ellentesque maximus, nunc sit amet varius dignissim, dui est consectetur neque</p>
-								</div>
-							</a>
+                    <li><a href="/Property/Index"><i class="zmdi zmdi-city"></i>Properties</a></li>
 
-							<a href="#" class="listview__item">
-								<img src="demo/img/profile-pics/5.jpg" class="listview__img" alt="">
+                    <li><a href="/Booking/AdminBookings"><i class="zmdi zmdi-book"></i>Booking</a></li>
 
-								<div class="listview__content">
-									<div class="listview__heading">
-										Bill Phillips
-										<small>11:32 PM</small>
-									</div>
-									<p>Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat</p>
-								</div>
-							</a>
+                    @*<li><a href="/Transaction/AdminTransactions"><i class="zmdi zmdi-money-box"></i>Transactions</a></li>*@
 
-							<a href="#" class="view-more">View all messages</a>
-						</div>
-					</div>
-				</li>
+                    <li><a href="/Testimonial/AdminTestimonials"><i class="zmdi zmdi-comments"></i>Testimonial</a></li>
 
-				<li class="dropdown top-nav__notifications">
-					<a href="#" data-toggle="dropdown" class="top-nav__notify">
-						<i class="zmdi zmdi-notifications"></i>
-					</a>
-					<div class="dropdown-menu dropdown-menu-right dropdown-menu--block">
-						<div class="dropdown-header">
-							Notifications
+                    <li><a href="/NewsLetter/AdminNewsLetters"><i class="zmdi zmdi-email"></i>Newsletter</a></li>
 
-							<div class="actions">
-								<a href="#" class="actions__item zmdi zmdi-check-all" data-sa-action="notifications-clear"></a>
-							</div>
-						</div>
+                    <li><a href="/User/AdminUsers"><i class="zmdi zmdi-account"></i>Users</a></li>
 
-						<div class="listview listview--hover">
-							<div class="listview__scroll scrollbar-inner">
+                    <li><a href="/Auth/Logout"><i class="fa fa-sign-out"></i>Logout</a></li>
 
-								<a href="#" class="listview__item">
-									<img src="demo/img/profile-pics/5.jpg" class="listview__img" alt="">
+                    @*<li>@Html.ActionLink("  Logout", "Logout", "Auth", null, new { @class = "fa fa-sign-out" })</li>*@
+                </ul>
+            </div>
+        </aside>
+        
+        <section class="content">
 
-									<div class="listview__content">
-										<div class="listview__heading">Bill Phillips</div>
-										<p>Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat</p>
-									</div>
-								</a>
+            @RenderBody()
+            <footer class="footer hidden-xs-down">
+                <p>&copy; @DateTime.Now.Year <a href="http://byteheart.com/" target="_blank">ByteHeart</a>. Trademarks and brands are the property of their respective owners.</p>
+            </footer>
+        </section>
+    </main>
 
-								<a href="#" class="listview__item">
-									<img src="demo/img/profile-pics/1.jpg" class="listview__img" alt="">
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery.validate.unobtrusive")
+    @Scripts.Render("~/bundles/poppermin")
+    @Scripts.Render("~/bundles/bootstrapmin")
+    @Scripts.Render("~/bundles/jqueryscrollbarmin")
+    @Scripts.Render("~/bundles/jqueryscrollLockmin")
 
-									<div class="listview__content">
-										<div class="listview__heading">David Belle</div>
-										<p>Cum sociis natoque penatibus et magnis dis parturient montes</p>
-									</div>
-								</a>
-
-								<a href="#" class="listview__item">
-									<img src="demo/img/profile-pics/2.jpg" class="listview__img" alt="">
-
-									<div class="listview__content">
-										<div class="listview__heading">Jonathan Morris</div>
-										<p>Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel</p>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
-				</li>
-			</ul>
-
-			<div class="clock hidden-md-down">
-				<div class="time">
-					<span class="time__hours"></span>
-					<span class="time__min"></span>
-					<span class="time__sec"></span>
-				</div>
-			</div>
-		</header>
-
-		<aside class="sidebar">
-			<div class="scrollbar-inner">
-
-				<div class="user">
-					<div class="user__info" data-toggle="dropdown">
-						<img class="user__img" src="demo/img/profile-pics/8.jpg" alt="">
-						<div>
-							<div class="user__name">Mr.x</div>
-							<div class="user__email">mr.x@gmail.com</div>
-						</div>
-					</div>
-
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">View Profile</a>
-						<a class="dropdown-item" href="#">Settings</a>
-						<a class="dropdown-item" href="#">Logout</a>
-					</div>
-				</div>
-
-				<ul class="navigation">
-					<li><a href="/Home/Index"><i class="zmdi zmdi-dashbord"></i>Dashboard</a></li>
-
-					<li><a href="/Home/Bookings"><i class="zmdi zmdi-dashbord"></i>Bookings</a></li>
-
-					<li><a href="/Home/Vendors"><i class="zmdi zmdi-vendors"></i>Vendors</a></li>
-
-					<li><a href="/Home/Client"><i class="zmdi zmdi-clients"></i>Clients</a></li>
-
-					<li><a href="/Home/Property"><i class="zmdi zmdi-property"></i>Properties</a></li>
-
-					<li><a href="/Home/Gallerys"><i class="zmdi zmdi-gallery"></i>Gallerys</a></li>
-
-					<li><a href="/Home/Transactions"><i class="zmdi zmdi-transaction"></i>Transactions</a></li>
-				</ul>
-			</div>
-		</aside>
-
-		<section class="content">
-
-			@RenderBody()
-			<footer class="footer hidden-xs-down">
-				<p>© Super Admin Responsive. All rights reserved.</p>
-
-				<ul class="nav footer__nav">
-					<a class="nav-link" href="#">Homepage</a>
-
-					<a class="nav-link" href="#">Company</a>
-
-					<a class="nav-link" href="#">Support</a>
-
-					<a class="nav-link" href="#">News</a>
-
-					<a class="nav-link" href="#">Contacts</a>
-				</ul>
-			</footer>
-		</section>
-	</main>
+    @Scripts.Render("~/bundles/jquerydataTablesmin")
+    @Scripts.Render("~/bundles/dataTablesbuttonsmin")
+    @Scripts.Render("~/bundles/buttonsprintmin")
+    @Scripts.Render("~/bundles/jszipmin")
+    @Scripts.Render("~/bundles/buttonshtml5min")
+    @Scripts.Render("~/bundles/appmin")
+    @*@Scripts.Render("~/bundles/curvedline")*@
+    @Scripts.Render("~/bundles/autosize")
+    @Scripts.Render("~/bundles/dropzone")
+    @Scripts.Render("~/bundles/momentJs")
+    @Scripts.Render("~/bundles/flatpickr")
+    @*@Scripts.Render("~/bundles/fullcalendar")*@
+    @Scripts.Render("~/bundles/easypiechart")
+    @Scripts.Render("~/bundles/flot")
+    @Scripts.Render("~/bundles/flotResize")
+    @Scripts.Render("~/bundles/peity")
+    @Scripts.Render("~/bundles/lightgallery")
+    @Scripts.Render("~/bundles/salvattore")
+    @Scripts.Render("~/bundles/select")
+    @Scripts.Render("~/bundles/sweetAlert2")
 
 
+    @Scripts.Render("~/bundles/rich-textJs-1")
+    @Scripts.Render("~/bundles/rich-textJs-2")
+    
 
-	@Scripts.Render("~/bundles/jquery")
-	@Scripts.Render("~/bundles/poppermin")
-	@Scripts.Render("~/bundles/bootstrapmin")
-	@Scripts.Render("~/bundles/jqueryscrollbarmin")
-	@Scripts.Render("~/bundles/jqueryscrollLockmin")
+    <script>
+        $(document).ready(function () {
+            $('a[data-confirm]').click(function (ev) {
+                var href = $(this).attr('href');
 
-	@Scripts.Render("~/bundles/jquerydataTablesmin")
-	@Scripts.Render("~/bundles/dataTablesbuttonsmin")
-	@Scripts.Render("~/bundles/buttonsprintmin")
-	@Scripts.Render("~/bundles/jszipmin")
-	@Scripts.Render("~/bundles/buttonshtml5min")
-	@Scripts.Render("~/bundles/appmin")
+                if (!$('#dataConfirmModal').length) {
+                    $('body').append('<div id="dataConfirmModal" class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="dataConfirmLabel">Please Confirm</h3></div><div class="modal-body"></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button><a class="btn btn-primary" id="dataConfirmOK">OK</a></div></div>');
+                }
+                $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
+                $('#dataConfirmOK').attr('href', href);
+                $('#dataConfirmModal').modal({
+                    show: true
+                });
+                return false;
+            });
+        });
 
+        $('#confirm-delete').on('show.bs.modal', function (e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+        });
 
+        $('#wysiwyg-editor').trumbowyg();
 
-	@*@Scripts.Render("~/bundles/curvedline")
-		@Scripts.Render("~/bundles/line")*@
-	@*@Scripts.Render("~/bundles/charttooltips")
-		@Scripts.Render("~/bundles/othercharts")
-		@Scripts.Render("~/bundles/jqvmap")*@
-	@Scripts.Render("~/bundles/rich-textJs-1")
-	@Scripts.Render("~/bundles/rich-textJs-2")
-	@Scripts.Render("~/bundles/rich-textJs-3")
-	@Scripts.Render("~/bundles/rich-textJs-4")
-	@Scripts.Render("~/bundles/rich-textJs-5")
-	@Scripts.Render("~/bundles/rich-textJs-6")
-	@Scripts.Render("~/bundles/rich-textJs-7")
-	@Scripts.Render("~/bundles/rich-textJs-8")
-	@Scripts.Render("~/bundles/rich-textJs-9")
-	@Scripts.Render("~/bundles/rich-textJs-10")
-	@Scripts.Render("~/bundles/rich-textJs-11")
-	@Scripts.Render("~/bundles/rich-textJs-12")
-	@Scripts.Render("~/bundles/rich-textJs-13")
-	@Scripts.Render("~/bundles/rich-textJs-14")
-	@Scripts.Render("~/bundles/rich-textJs-15")
-	@Scripts.Render("~/bundles/rich-textJs-16")
-	@Scripts.Render("~/bundles/rich-textJs-17")
-	@Scripts.Render("~/bundles/rich-textJs-18")
-	@Scripts.Render("~/bundles/rich-textJs-19")
-	@Scripts.Render("~/bundles/rich-textJs-20")
-	@Scripts.Render("~/bundles/rich-textJs-21")
-	@Scripts.Render("~/bundles/rich-textJs-22")
-	@Scripts.Render("~/bundles/rich-textJs-23")
-	@Scripts.Render("~/bundles/rich-textJs-24")
-	@Scripts.Render("~/bundles/rich-textJs-25")
-	@Scripts.Render("~/bundles/rich-textJs-26")
-	@Scripts.Render("~/bundles/rich-textJs-27")
-	@Scripts.Render("~/bundles/rich-textJs-28")
-	@Scripts.Render("~/bundles/rich-textJs-29")
-	@Scripts.Render("~/bundles/rich-textJs-30")
+    </script>
 
-
-
-	@RenderSection("scripts", required: false)
+    @RenderSection("scripts", false)
 
 </body>
 </html>

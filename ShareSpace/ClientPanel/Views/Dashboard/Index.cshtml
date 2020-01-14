@@ -1,71 +1,80 @@
-﻿
+﻿@model ShareSpace.Models.Client.Client
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_ClientDashboardLayout.cshtml";
+    var imagepath2 = "http://ss.byteheart.com/" + Model.ClientPhoto;
 }
 
 <div class="content__inner content__inner--sm">
-	<header class="content__title">
-		<h1>Malinda Hollaway</h1>
-		<small>Web/UI Developer, Edinburgh, Scotland</small>
-	</header>
+    <header class="content__title">
+        <h1>@Model.FirstName @Model.LastName</h1>
+        <small>Web/UI Developer, Edinburgh, Scotland</small>
+    </header>
 
-	<div class="card profile">
-		<div class="profile__img">
-			<img src="/img/avatar/2.jpg" alt="">
-		</div>
+    <div class="card profile">
+        <div class="profile__img">
+            <img src="@imagepath2" alt="@Model.FirstName">
+        </div>
 
-		<div class="profile__info">
-			<p>Cras mattis consectetur purus sit amet fermentum. Maecenas sed diam eget risus varius blandit sit amet non magnae tiam porta sem malesuada magna mollis euismod.</p>
+        <div class="profile__info">
+            <ul class="icon-list">
+                <li><i class="fa fa-user"></i>@Model.FirstName @Model.LastName</li>
+                <li><i class="fa fa-phone"></i>@Model.MobileNo</li>
+                <li><i class="fa fa-envelope"></i>@Model.Email</li>
+                <li><i class="fa fa-map-marker"></i>House No. 29, Road No. 01/A, Sector No. 05, Dhaka 1230</li>
+            </ul>
+        </div>
+    </div>
 
-			<ul class="icon-list">
-				<li><i class="fa fa-phone"></i> 308-360-8938</li>
-				<li><i class="fa fa-envelope"></i> malinda@inbound.plus</li>
-				<li><i class="fa fa-twitter"></i> mallinda-hollaway</li>
-			</ul>
-		</div>
-	</div>
+    <div class="card">
+        <div class="card-body">
+            <h5>FEATURED SPACES</h5>
+            <div class="container">
+                <div class="row">
+                    @foreach (var property in ViewBag.featuredProperties)
+                    {
+                        var propertyLink = "/Home/OfficeDetails/" + property.PropertyId;
+                        //var imagepath = Request.Url.Scheme + "://" + Request.Url.Authority + property.FeatureImage;
+                        var imagepath = "http://adminss.thebyteheart.com/" + property.FeatureImage;
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 wow fadeInUp delay-04s">
+                            <!-- Hotel box start -->
+                            <div class="hotel-box">
+                                <!--header -->
+                                <div class="clearfix">
+                                    <img src="@imagepath" alt="img-6" class="img-responsive">
+                                </div>
+                                <!-- Detail -->
+                                <div class="detail clearfix">
+                                    <div class="price">
+                                        ৳@property.RetailPrice.ToString("0.00")<sub>/Hour</sub>
+                                    </div>
+                                    <h4>
+                                        <a href="@propertyLink" style="color: #e3e3e3">@property.PropertyName</a>
+                                    </h4>
+                                    <div class="rating" data-rateyo-star-width="15px" data-rateyo-rating="@property.Rating">
 
-	<div class="toolbar">
-		<nav class="toolbar__nav">
-			<a class="active" href="../Dashboard/Index">About</a>
-		</nav>
+                                    </div>
+                                    <p>@property.ShortDescription</p>
+                                    @*<a href="@propertyLink" class="btn button-sm button-theme">View Details</a>*@
+                                </div>
+                            </div>
+                            <!-- Hotel box end -->
+                        </div>
+                    }
+                </div>
+            </div>
 
-		<div class="actions">
-			<i class="actions__item zmdi zmdi-search" data-sa-action="toolbar-search-open"></i>
-		</div>
 
-		<div class="toolbar__search">
-			<input type="text" placeholder="Search...">
 
-			<i class="toolbar__search__close zmdi zmdi-long-arrow-left" data-sa-action="toolbar-search-close"></i>
-		</div>
-	</div>
+            @*View all*@
+            <div class="ViewAll">
+                <i class="zmdi zmdi-view-headline zmdi-hc-fw"></i>
+                <a href="/Home/Index" class="btn button-sm button-theme" style="background: #009667;color: white;float: right;margin: 43px 24px 0 0;padding: 8px 22px 10px 22px;font-size: 14px;font-weight: bold; border: 1px solid white;">
 
-	<div class="card">
-		<div class="card-body">
-			<h4 class="card-body__title mb-4">About Mallinda Hollaway</h4>
+                    View All  <b style="font-size:18px;">»</b>
 
-			<p>Pellentesque vitae quam quis tellus dignissim faucibus. Suspendisse mattis felis at faucibus lobortis. 
-				Sed sit amet tellus dolor. Fusce quis sollicitudin velit. Praesent gravida ullamcorper lectus et tincidunt. 
-				Phasellus lectus quam, porta pharetra feugiat in, auctor eget dolor.</p>
-
-			<p>Vestibulum tincidunt imperdiet egestas. In in nunc vitae elit tincidunt tristique id eu justo. 
-				Quisque gravida maximus orci, vulputate pharetra mauris commodo at. Mauris eget fermentum ipsum, 
-				quis faucibus neque. Fusce eleifend sapien sit amet convallis rhoncus. Proin commodo lacinia lectus, 
-				et tempus turpis.</p>
-
-			<br>
-
-			<h4 class="card-body__title mb-4">Contact Information</h4>
-
-			<ul class="icon-list">
-				<li><i class="fa fa-phone"></i>308-360-8938</li>
-				<li><i class="fa fa-envelope"></i>robertbosborne@inbound.plus</li>
-				<li><i class="fa fa-facebook"></i>robertbosborne</li>
-				<li><i class="fa fa-twitter"></i>robertbosborne</li>
-				<li><i class="fa fa-map-marker"></i>5470 Madison Street Severna Park, MD 21146</li>
-			</ul>
-		</div>
-	</div>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

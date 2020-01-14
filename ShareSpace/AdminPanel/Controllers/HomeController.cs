@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShareSpace.BusinessLayer;
+using ShareSpace.Models.Client;
 
 namespace AdminPanel.Controllers
 {
@@ -10,35 +12,73 @@ namespace AdminPanel.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var model = PropertyManager.GetPendingPropertyList();
+            return View(model);
         }
 
-        public ActionResult About()
+        public ActionResult HideProperty(long propertyId)
+        {
+            PropertyManager.HideProperty(propertyId);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult ApproveProperty(long propertyId)
+        {
+            PropertyManager.ApproveProperty(propertyId);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Property()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Vendors()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        public ActionResult Client()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
 
-        public ActionResult Bookings()
+        public ActionResult Booking()
         {
-            ViewBag.Message = "Bookings";
+            ViewBag.Message = "Your contact page.";
 
             return View();
         }
 
-        public ActionResult BookingConfirmation()
+        public ActionResult Transactions()
         {
-            ViewBag.Message = "Booking Confirmation";
+            ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Gallerys()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult New_contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+        
+        public ActionResult InsertClient(Client client)
+        {
+            return View(client);
         }
     }
 }

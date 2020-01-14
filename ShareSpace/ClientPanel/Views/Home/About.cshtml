@@ -1,0 +1,189 @@
+﻿@model List<ShareSpace.Models.Testimonial.Testimonial>
+@{
+    ViewBag.Title = "About Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="clear"></div>
+<div class="about-banner">
+    <div class="container">
+        <h1>About ShareSpace</h1>
+    </div>
+</div>
+
+<div class="about-institute content-area-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">
+
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="about-text">
+                    <!-- title -->
+                    <div class="main-title-2 text-center">
+                        <h1>Who We Are?</h1>
+                    </div>
+                    <!-- paragraph -->
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor arcu non ligula convallis, vel tincidunt
+                        ipsum posuere. Fusce sodales lacus ut pellentes sollicitudin.
+                        Duis iaculis, arcu ut hendrerit pharetra, elit augue pulvinar magna, a consectetur.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor arcu non ligula convallis, vel tincidunt
+                        ipsum posuere. Fusce sodales lacus ut pellentes sollicitudin.
+                        Duis iaculis, arcu ut hendrerit pharetra, elit augue pulvinar magna, a consectetur.
+                    </p>
+                    <!-- ul -->
+                    <ul class="clearfix">
+                        <li>
+                            <i class="fa fa-check-square-o"></i> Lorem ipsum dolor sit amet
+                        </li>
+                        <li>
+                            <i class="fa fa-check-square-o"></i> Lorem ipsum dolor sit amet
+                        </li>
+                        <li>
+                            <i class="fa fa-check-square-o"></i> Lorem ipsum dolor sit amet
+                        </li>
+                        <li>
+                            <i class="fa fa-check-square-o"></i> Lorem ipsum dolor sit amet
+                        </li>
+                        <li>
+                            <i class="fa fa-check-square-o"></i> Lorem ipsum dolor sit amet
+                        </li>
+                        <li>
+                            <i class="fa fa-check-square-o"></i> Lorem ipsum dolor sit amet
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<!-- Testimonial secion start -->
+<div class="testimonial-section testimonial-bg">
+    <div class="overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+                    <div class="sec-title-three">
+                        <h4>Happy Client</h4>
+                        <h2>Client Testimonial</h2>
+                        <div class="text">
+                            We collect reviews from our customers so you can get an honest opinion of what an Promotion is really like!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12">
+                    <div class="testimonials">
+                        <div id="carouse3-example-generic" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <!-- Wrapper for slides -->
+                            @*/img/avatar/avatar1.jpg*@
+                            <div class="carousel-inner" role="listbox">
+                                @foreach (var item in Model)
+                                {
+                                    if (item.TestimonialId == Model.First().TestimonialId)
+                                    {
+                                        var imagepath = "http://adminss.thebyteheart.com/" + @item.ProfileImage;
+                                        <div class="item content active clearfix">
+                                            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
+                                                <div class="avatar">
+                                                    <img src="@imagepath" alt="@item.Name" class="img-responsive">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                                                <div class="text">
+                                                    <sup>
+                                                        <i class="fa fa-quote-left"></i>
+                                                    </sup>
+                                                    @item.Message
+                                                    <sub>
+                                                        <i class="fa fa-quote-right"></i>
+                                                    </sub>
+                                                </div>
+                                                <div class="author-name">
+                                                    @item.Name
+                                                </div>
+                                                <div class="department">
+                                                    - @item.ClientDetails
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        var imagepath = "http://adminss.thebyteheart.com/" + @item.ProfileImage;
+                                        <div class="item content clearfix">
+                                            <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
+                                                <div class="avatar">
+                                                    <img src="@imagepath" alt="avatar-1" class="img-responsive">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                                                <div class="text">
+                                                    <sup>
+                                                        <i class="fa fa-quote-left"></i>
+                                                    </sup>
+                                                    @item.Message
+                                                    <sub>
+                                                        <i class="fa fa-quote-right"></i>
+                                                    </sub>
+                                                </div>
+                                                <div class="author-name">
+                                                    @item.Name
+                                                </div>
+                                                <div class="department">
+                                                    - @item.ClientDetails
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+
+                                @*<div class="item content active clearfix">
+                                        <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
+                                            <div class="avatar">
+                                                <img src="/img/avatar/avatar2.jpg" alt="avatar-2" class="img-responsive">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                                            <div class="text">
+                                                <sup>
+                                                    <i class="fa fa-quote-left"></i>
+                                                </sup>
+                                                Aliquam dictum elit vitae mauris facilisis, at dictum urna dignissim. Donec vel lectus vel felis lacinia luctus vitae iaculis arcu. Mauris mattis, massa eu porta ultricies.
+                                                <sub>
+                                                    <i class="fa fa-quote-right"></i>
+                                                </sub>
+                                            </div>
+                                            <div class="author-name">
+                                                John Doe
+                                            </div>
+                                        </div>
+                                    </div>*@
+                            </div>
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#carouse3-example-generic" role="button" data-slide="prev">
+                                <span class="slider-mover-left" aria-hidden="true">
+                                    <i class="fa fa-angle-left"></i>
+                                </span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#carouse3-example-generic" role="button" data-slide="next">
+                                <span class="slider-mover-right" aria-hidden="true">
+                                    <i class="fa fa-angle-right"></i>
+                                </span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial section end -->

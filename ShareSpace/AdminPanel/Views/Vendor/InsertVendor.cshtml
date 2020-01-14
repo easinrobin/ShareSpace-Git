@@ -1,0 +1,115 @@
+﻿@model ShareSpace.Models.Admin.AdminVWModel
+@{
+    ViewBag.Title = "New Vendor";
+}
+
+<nav aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/Vendor/AdminVendors">Vendors</a></li>
+        @if (Model == null)
+        {
+            <li class="breadcrumb-item active" aria-current="page">New Vendor</li>
+        }
+        else
+        {
+            <li class="breadcrumb-item active" aria-current="page">Update Vendor</li>
+        }
+    </ol>
+</nav>
+
+<header class="content__title">
+    <h1>Vendor</h1>
+    <div class="actions">
+        <a href="~/Vendor/AdminVendors" class="actions__item zmdi zmdi-view-list zmdi-hc-fw" title="Back to List"></a>
+        @if (Model == null)
+        {
+            <a href="~/Vendor/InsertVendor" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
+
+        }
+        else
+        {
+            <a href="~/Vendor/UpdateVendor?vendorId=@Model.Vendors.VendorId" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
+
+        }
+    </div>
+</header>
+
+<div class="card">
+    <div class="card-body">
+        @using (Html.BeginForm("InsertVendor", "Vendor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(x => x.Vendors.VendorId)
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Vendors.FirstName, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.Vendors.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "First Name" } })
+                @Html.ValidationMessageFor(model => model.Vendors.FirstName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Vendors.LastName, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.Vendors.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Last Name" } })
+                @Html.ValidationMessageFor(model => model.Vendors.LastName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Vendors.Email, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.Vendors.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+                @Html.ValidationMessageFor(model => model.Vendors.Email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Vendors.BirthDate, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.Vendors.BirthDate, new { htmlAttributes = new { @class = "form-control date-picker", placeholder = "Birth Date" } })
+                @Html.ValidationMessageFor(model => model.Vendors.BirthDate, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Vendors.Country, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.Vendors.Country, new { htmlAttributes = new { @class = "form-control ", placeholder = "Country" } })
+                @Html.ValidationMessageFor(model => model.Vendors.Country, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Vendors.VendorPhoto, new { @class = "card-body__title" })
+                <div class="card">
+                    <div class="card-body">
+                        <span class="card-body__title">Upload Images:</span>
+                        <div class="col-md-10">
+                            @*<input type="file" name="files" id="file" class="btn btn-success" />*@
+                            @Html.TextBoxFor(model => model.Files, new { type = "file", id = "files" })
+                            @Html.ValidationMessageFor(model => model.Files, "", new { @class = "validation-text" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Vendors.MobileNo, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.Vendors.MobileNo, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile No" } })
+                @Html.ValidationMessageFor(model => model.Vendors.MobileNo, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Vendors.Password, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.Vendors.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password", type = "password", @Value = ViewBag.GeneratePassword } })
+                @Html.ValidationMessageFor(model => model.Vendors.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @if (Model == null)
+                    {
+                        <input type="submit" value="Create" class="btn btn-light" />
+                    }
+                    else
+                    {
+                        <input type="submit" value="Update" class="btn btn-light" />
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

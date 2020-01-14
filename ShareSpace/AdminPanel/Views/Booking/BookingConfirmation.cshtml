@@ -1,0 +1,139 @@
+﻿@{
+    ViewBag.Title = "Booking Confirmations";
+}
+
+<div class="card">
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table id="" class="table">
+                <thead>
+                    <tr>
+                        <th>Client Name</th>
+                        <th>Property Name</th>
+                        <th>Vendor Name</th>
+                        <th>Vendor ID</th>
+                        <th>Location</th>
+                        <th>Rent/Hour</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tiger Nixon</td>
+                        <td>System Hub</td>
+                        <td>Abraham Lincoln</td>
+                        <td>61</td>
+                        <td>Dhaka</td>
+                        <td>৳800</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Property Services</h4>
+
+        <div class="demo-inline-wrapper">
+            <label class="custom-control custom-control--char">
+                <input class="custom-control-input" type="checkbox">
+                <span class="custom-control--char__helper"><i class="zmdi zmdi-wifi-alt zmdi-hc-fw"></i></span>
+                <span class="custom-control-description">Wifi</span>
+            </label>
+        </div>
+
+
+        <div class="demo-inline-wrapper">
+            <label class="custom-control custom-control--char">
+                <input class="custom-control-input" type="checkbox">
+                <span class="custom-control--char__helper"><i class="zmdi zmdi-print zmdi-hc-fw"></i></span>
+                <span class="custom-control-description">Printer</span>
+            </label>
+        </div>
+
+        <div class="demo-inline-wrapper">
+            <label class="custom-control custom-control--char">
+                <input class="custom-control-input" type="checkbox">
+                <span class="custom-control--char__helper"><i class="zmdi zmdi-directions-car zmdi-hc-fw"></i></span>
+                <span class="custom-control-description">Car Hire</span>
+            </label>
+        </div>
+
+        <div class="demo-inline-wrapper">
+            <label class="custom-control custom-control--char">
+                <input class="custom-control-input" type="checkbox">
+                <span class="custom-control--char__helper"><i class="zmdi zmdi-parking zmdi-hc-fw"></i></span>
+                <span class="custom-control-description">Car Parking</span>
+            </label>
+        </div>
+
+        <div class="demo-inline-wrapper">
+            <label class="custom-control custom-control--char">
+                <input class="custom-control-input" type="checkbox">
+                <span class="custom-control--char__helper"><i class="zmdi zmdi-tv zmdi-hc-fw"></i></span>
+                <span class="custom-control-description">Projector</span>
+            </label>
+        </div>
+
+        <div class="demo-inline-wrapper">
+            <label class="custom-control custom-control--char">
+                <input class="custom-control-input" type="checkbox">
+                <span class="custom-control--char__helper"><i class="zmdi zmdi-local-cafe zmdi-hc-fw"></i></span>
+                <span class="custom-control-description">Cafeteria</span>
+            </label>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Rent/Hour</label>
+                    <input type="text" class="form-control is-valid" value="800">
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Vendor Gets</label>
+                    <input type="text" class="form-control is-valid" value="650">
+                    <i class="form-group__bar"></i>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <h4>Notes for Client</h4>
+                <section id="editor" class="rich-text-box">
+                    <div id='edit'>
+
+                    </div>
+                </section>
+                <button type="button" id="sa-success" class="btn btn-block btn-outline-success">Confirm Client</button>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <h4>Notes for Vendor</h4>
+                <section id="editor" class="rich-text-box">
+                    <div id='edit'>
+
+                    </div>
+                </section>
+                <button type="button" id="sa-success" class="btn btn-block btn-outline-success">Confirm Vendor</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+		(function () {
+			new FroalaEditor("#edit",
+				{
+					theme: 'dark'
+				})
+		})()
+    </script>
+}

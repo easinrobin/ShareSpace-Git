@@ -1,0 +1,157 @@
+﻿@model ShareSpace.Models.Admin.AdminVWModel
+<link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+
+<div class="form-horizontal">
+    <div class="row">
+        <div class="card-body">
+            <h4 class="card-title">Services</h4>
+            <h6 class="card-subtitle">Add Your Service Item.</h6>
+            <div class="listview">
+                @*@for (int idx = 0; idx < Model.WorkingDaysList.Count; idx++)
+                    {
+                        <div class="listview__item float-right col-sm-6">
+                            <label class="custom-control custom-checkbox align-self-start">
+                                @Html.HiddenFor(x => Model.WorkingDaysList[idx].Id)
+                                @Html.CheckBoxFor(x => x.WorkingDaysList[idx].IsSelected, new { @class = "custom-control-input" })
+
+                                <span class="custom-control-indicator"></span>
+                            </label>
+
+                            <div class="listview__content">
+                                <div class="listview__heading">&nbsp;&nbsp;@Model.WorkingDaysList[idx].Sat</div>
+                            </div>
+                        </div>
+                    }*@
+
+                <div class="listview__item col-md-6">
+                    <label class="custom-control custom-checkbox align-self-start">
+                        @*@Html.HiddenFor(x => Model.WorkingDays.Sat)*@
+                        @Html.CheckBoxFor(x => x.WorkingDays.Sat, new { @class = "custom-control-input" })
+
+                        <span class="custom-control-indicator"></span>
+                    </label>
+
+                    <div class="listview__content">
+                        <div class="listview__heading">
+                            @Html.LabelFor(model => model.WorkingDays.Sat)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="listview__item col-md-6">
+                    <label class="custom-control custom-checkbox align-self-start">
+                        @*@Html.HiddenFor(x => Model.WorkingDays.Sat)*@
+                        @Html.CheckBoxFor(x => x.WorkingDays.Sun, new { @class = "custom-control-input" })
+
+                        <span class="custom-control-indicator"></span>
+                    </label>
+
+                    <div class="listview__content">
+                        <div class="listview__heading">
+                            @Html.LabelFor(model => model.WorkingDays.Sun)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="listview__item col-md-6">
+                    <label class="custom-control custom-checkbox align-self-start">
+                        @*@Html.HiddenFor(x => Model.WorkingDays.Sat)*@
+                        @Html.CheckBoxFor(x => x.WorkingDays.Mon, new { @class = "custom-control-input" })
+
+                        <span class="custom-control-indicator"></span>
+                    </label>
+
+                    <div class="listview__content">
+                        <div class="listview__heading">
+                            @Html.LabelFor(model => model.WorkingDays.Mon)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="listview__item col-md-6">
+                    <label class="custom-control custom-checkbox align-self-start">
+                        @*@Html.HiddenFor(x => Model.WorkingDays.Sat)*@
+                        @Html.CheckBoxFor(x => x.WorkingDays.Tue, new { @class = "custom-control-input" })
+
+                        <span class="custom-control-indicator"></span>
+                    </label>
+
+                    <div class="listview__content">
+                        <div class="listview__heading">
+                            @Html.LabelFor(model => model.WorkingDays.Tue)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="listview__item col-md-6">
+                    <label class="custom-control custom-checkbox align-self-start">
+                        @*@Html.HiddenFor(x => Model.WorkingDays.Sat)*@
+                        @Html.CheckBoxFor(x => x.WorkingDays.Wed, new { @class = "custom-control-input" })
+
+                        <span class="custom-control-indicator"></span>
+                    </label>
+
+                    <div class="listview__content">
+                        <div class="listview__heading">
+                            @Html.LabelFor(model => model.WorkingDays.Wed)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="listview__item col-md-6">
+                    <label class="custom-control custom-checkbox align-self-start">
+                        @*@Html.HiddenFor(x => Model.WorkingDays.Sat)*@
+                        @Html.CheckBoxFor(x => x.WorkingDays.Thu, new { @class = "custom-control-input" })
+
+                        <span class="custom-control-indicator"></span>
+                    </label>
+
+                    <div class="listview__content">
+                        <div class="listview__heading">
+                            @Html.LabelFor(model => model.WorkingDays.Thu)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="listview__item col-md-6">
+                    <label class="custom-control custom-checkbox align-self-start">
+                        @*@Html.HiddenFor(x => Model.WorkingDays.Sat)*@
+                        @Html.CheckBoxFor(x => x.WorkingDays.Fri, new { @class = "custom-control-input" })
+
+                        <span class="custom-control-indicator"></span>
+                    </label>
+
+                    <div class="listview__content">
+                        <div class="listview__heading">
+                            @Html.LabelFor(model => model.WorkingDays.Fri)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group col-md-6" id="rangestart">
+                    @Html.LabelFor(model => model.WorkingDays.StartTime, new { @class = "card-body__title" })
+                    @Html.TextBoxFor(model => model.WorkingDays.StartTime, new { @class = "form-control", placeHolder = "Start Time" })
+                </div>
+
+                <div class="form-group col-md-6" id="rangeend">
+                    @Html.LabelFor(model => model.WorkingDays.EndTime, new { @class = "card-body__title" })
+                    @Html.TextBoxFor(model => model.WorkingDays.EndTime, new { @class = "form-control", placeHolder = "End Time" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#rangestart').calendar({
+        type: 'time',
+        endCalendar: $('#rangeend')
+    });
+    $('#rangeend').calendar({
+        type: 'time',
+        startCalendar: $('#rangestart')
+    });
+</script>

@@ -1,0 +1,151 @@
+﻿@model ShareSpace.Models.Booking.BookingConfirmed
+@{
+    ViewBag.Title = "Booking Confirmed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var imagepath = "http://adminss.thebyteheart.com/" + Model.FeatureImage;
+}
+
+<div class="clear"></div>
+
+<div class="contact-body content-area-6">
+
+
+    <div class="container" id="container">
+        <div style="text-align: right;"> <button onclick="printContent('container')" class="fa fa-print">Print</button></div>
+        <div class="contact-box">
+
+            <!-- Main title -->
+            <div class="main-title">
+
+                <h1><span>Booking Request Successful</span></h1>
+                <h3 style="font-weight:800;">Request Confirmation No. #@Model.BookingNo</h3>
+                <p>
+                    We've sent a confirmation to your e-mail
+                    for verification.
+                </p>
+            </div>
+
+            <div class="row">
+                <h3 style="margin-left: 14px;font-weight: bold;">Booking Details</h3>
+                <div class="col-md-8 col-sm-6">
+                    <!-- Booking Image Start-->
+                    <div class="Bookin_img">
+                        <img src="@imagepath" alt="sharespace" style="width: 100%; height:370px;" />
+                    </div>
+                    <!-- Booking Image end -->
+                </div>
+
+                <div class="col-md-4 col-sm-6" style="float: right;">
+                    <!-- Address start -->
+                    <div class="contact-details">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <i class="fa fa-handshake-o"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4>Booking information</h4>
+                                        <div class="media-body">
+                                            <p><span style="font-weight: 600;">Check In:</span> @Model.FromDate.ToShortDateString() @Model.FromHour</p>
+                                            <p><span style="font-weight: 600;">Check Out:</span> @Model.ToDate.ToShortDateString() @Model.ToHour</p>
+                                            <p><span style="font-weight: 600;">Total Person:</span> @Model.TotalPerson</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <i class="fa fa-map-marker"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4>Office Address</h4>
+                                        <p>@Model.FullAddressWithoutHome</p>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="media mrg-btm-0">
+                                    <div class="media-left">
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4>Contact Information</h4>
+                                        <p>@Model.FullName</p>
+                                        <p>
+                                            @Model.MobileNo
+                                        </p>
+                                        <p>
+                                            @Model.Email
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- Address end  -->
+                </div>
+
+
+            </div>
+
+            <hr>
+            <!-- Payment Details start-->
+            <div class="main-title" style="margin-bottom: 20px;">
+                <h3 style="text-align: start; font-weight: bold;">Payment Details</h3>
+            </div>
+            <!-- Payment Details end -->
+            <div class="col-md-8 col-sm-6">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <img src="~/img/bkash.png" alt="share space" style="border: 2px solid #c57b94;border-radius: 9px; width:150px; height: 60px;    margin-bottom: 10px;" />
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <label style="font-size: 17px;"> 017112345678</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <img src="~/img/Rocket.png" alt="Alternate Text" style="border: 2px solid #c57b94;border-radius: 9px;  width:150px; height: 60px;    margin-bottom: 10px;" />
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <label style="font-size: 17px;"> 017112345678</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <img src="~/img/Bank.png" alt="Alternate Text" style="border: 2px solid #c57b94;border-radius: 9px;  width:150px; height: 60px;    margin-bottom: 10px;" />
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <label style="font-size: 17px;"> 017112345678</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-title col-md-12 col-sm-12" style="margin-bottom: 20px;">
+                <h3 style="text-align: start; font-weight: bold;margin-left: -14px;">Terms & Conditions</h3>
+                <p style="text-align: justify;margin-left: -12px;">
+                    We may change or otherwise modify the Agreement in the future, and you understand and agree that your continued access or use of this Website after such change signifies your acceptance of the updated or modified Agreement. We will note the date that revisions were last made to the Agreement at the bottom of this page, and any revisions will take effect upon posting. Be sure to return to this page periodically to review the most current version of the Agreement.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function printContent(el) {
+        var restorepage = document.body.innerHTML;
+        var printcontent = document.getElementById(el).innerHTML;
+        document.body.innerHTML = printcontent;
+        window.print();
+        document.body.innerHTML = restorepage;
+    }
+</script>

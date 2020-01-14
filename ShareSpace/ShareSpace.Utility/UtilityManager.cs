@@ -11,7 +11,13 @@ namespace ShareSpace.Utility
 {
     public class UtilityManager
     {
-
+        private static Random random = new Random();
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
         public static string FormatCSV(string input)
         {
             try
@@ -105,7 +111,7 @@ namespace ShareSpace.Utility
                 obj = Activator.CreateInstance<T>();
                 foreach (PropertyInfo prop in obj.GetType().GetProperties())
                 {
-                    if (!object.Equals(dr[prop.Name], DBNull.Value))
+                    if (!prop.CustomAttributes.Any(x => x.AttributeType.Name == "NotMappedAttribute") && !object.Equals(dr[prop.Name], DBNull.Value))
                     {
                         prop.SetValue(obj, dr[prop.Name], null);
                     }

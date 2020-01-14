@@ -1,73 +1,35 @@
-﻿@{
-	ViewBag.Title = "History";
-	Layout = "~/Views/Shared/_ClientDashboardLayout.cshtml";
+﻿@using Microsoft.Ajax.Utilities
+@model List<ShareSpace.Models.Client.ClientsBookingHistory>
+
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Views/Shared/_ClientDashboardLayout.cshtml";
 }
 
 <div class="content__inner content__inner--sm">
-	<header class="content__title">
-		<h1>Your Booking History</h1>
-	</header>
+    <header class="content__title">
+        <h1>Your Booking History</h1>
+    </header>
 
+    <div class="contacts row">
+        @foreach (var booking in Model.ToList())
+        {
+            var imagepath = "http://adminss.thebyteheart.com/" + booking.FeatureImage;
+            <div class="col-md-6 col-sm-6 col-6">
+                <div class="contacts__item">
+                    <a href="#" class="contacts__img">
+                        <img src="@imagepath" alt="@booking.PropertyName">
+                    </a>
 
+                    <div class="contacts__info">
+                        <strong>@booking.PropertyName</strong>
+                        <small>@booking.Area, @booking.City - @booking.ZipCode</small>
+                        <small>@booking.FromDate.ToString("MM/dd/yyyy") At @booking.FromHour, To @booking.ToDate.ToString("MM/dd/yyyy") At @booking.ToHour</small>
+                    </div>
 
-	<div class="contacts row">
-		<div class="col-md-6 col-sm-6 col-6">
-			<div class="contacts__item">
-				<a href="#" class="contacts__img">
-					<img src="/img/properties/office-room6.jpg" alt="">
-				</a>
-
-				<div class="contacts__info">
-					<strong>System Hub</strong>
-					<small>Dhaka</small>
-				</div>
-
-				<button class="contacts__btn" onclick="location.href='/Home/OfficeDetails'">Review</button>
-			</div>
-		</div>
-
-		<div class="col-md-6 col-sm-6 col-6">
-			<div class="contacts__item">
-				<a href="#" class="contacts__img">
-					<img src="/img/properties/office-room7.jpg" alt="">
-				</a>
-
-				<div class="contacts__info">
-					<strong>Premier Lab</strong>
-					<small>Dhaka</small>
-				</div>
-
-				<button class="contacts__btn" onclick="location.href='/Home/OfficeDetails'">Review</button>
-			</div>
-		</div>
-		<div class="col-md-6 col-sm-6 col-6">
-			<div class="contacts__item">
-				<a href="#" class="contacts__img">
-					<img src="/img/properties/office-room6.jpg" alt="">
-				</a>
-
-				<div class="contacts__info">
-					<strong>System Hub</strong>
-					<small>Dhaka</small>
-				</div>
-
-				<button class="contacts__btn" onclick="location.href='/Home/OfficeDetails'">Review</button>
-			</div>
-		</div>
-
-		<div class="col-md-6 col-sm-6 col-6">
-			<div class="contacts__item">
-				<a href="#" class="contacts__img">
-					<img src="/img/properties/office-room7.jpg" alt="">
-				</a>
-
-				<div class="contacts__info">
-					<strong>Premier Lab</strong>
-					<small>Dhaka</small>
-				</div>
-
-				<button class="contacts__btn" onclick="location.href='/Home/OfficeDetails'">Review</button>
-			</div>
-		</div>
-	</div>
+                    <button class="contacts__btn" onclick="location.href='/Home/OfficeDetails/@booking.PropertyId'">Review</button>
+                </div>
+            </div>
+        }
+    </div>
 </div>

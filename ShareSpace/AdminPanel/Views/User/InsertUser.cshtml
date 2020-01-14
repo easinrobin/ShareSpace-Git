@@ -1,0 +1,84 @@
+﻿@model ShareSpace.Models.User.User
+
+
+
+<nav aria-label="breadcrumb" role="navigation">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/User/AdminUsers">Users</a></li>
+        @if (Model == null)
+        {
+            <li class="breadcrumb-item active" aria-current="page">New User</li>
+        }
+        else
+        {
+            <li class="breadcrumb-item active" aria-current="page">Update User</li>
+        }
+    </ol>
+</nav>
+
+<header class="content__title">
+    <h1>User</h1>
+    <div class="actions">
+        <a href="~/User/AdminUsers" class="actions__item zmdi zmdi-view-list zmdi-hc-fw" title="Back to List"></a>
+        @if (Model == null)
+        {
+            <a href="~/User/InsertUser" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
+
+        }
+        else
+        {
+            <a href="~/User/UpdateUser?userId=@Model.UserID" class="actions__item zmdi zmdi-refresh zmdi-hc-fw" title="Refresh"></a>
+
+        }
+    </div>
+</header>
+
+<div class="card">
+    <div class="card-body">
+        @using (Html.BeginForm("InsertUser", "User", FormMethod.Post))
+        {
+            @Html.HiddenFor(x => x.UserID)
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.FullName, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Full Name" } })
+                @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserName, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", placeholder = "User Name" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Mobile, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control", placeholder = "Mobile" } })
+                @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserPassword, new { @class = "card-body__title" })
+                @Html.EditorFor(model => model.UserPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Password", type = "password" } })
+                @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })
+            </div>
+            
+            <div class="form-group">
+                <div class="col-md-10">
+                    @if (Model == null)
+                    {
+                        <input type="submit" value="Create" class="btn btn-light" />
+                    }
+                    else
+                    {
+                        <input type="submit" value="Update" class="btn btn-light" />
+                    }
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

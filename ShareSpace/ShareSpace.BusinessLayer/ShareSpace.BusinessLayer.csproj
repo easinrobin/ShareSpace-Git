@@ -51,8 +51,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressManager.cs" />
+    <Compile Include="BookingManager.cs" />
     <Compile Include="ClientManager.cs" />
+    <Compile Include="GalleryManager.cs" />
+    <Compile Include="NewsLetterManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyManager.cs" />
+    <Compile Include="PropertyRatingManager.cs" />
+    <Compile Include="PropertyServiceManager.cs" />
+    <Compile Include="PropertyWorkingDaysManager.cs" />
+    <Compile Include="ServiceManager.cs" />
+    <Compile Include="TestimonialManager.cs" />
+    <Compile Include="TransactionManager.cs" />
+    <Compile Include="UserManager.cs" />
+    <Compile Include="VendorManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

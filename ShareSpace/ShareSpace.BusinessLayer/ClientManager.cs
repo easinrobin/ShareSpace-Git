@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ShareSpace.DataLayerSql.Client;
-using ShareSpace.Models;
+using ShareSpace.Models.Auth;
 using ShareSpace.Models.Client;
 
 namespace ShareSpace.BusinessLayer
@@ -27,9 +26,23 @@ namespace ShareSpace.BusinessLayer
             SqlClientProvider sqlClientProvider = new SqlClientProvider();
             return sqlClientProvider.GetClientByEmail(email);
         }
+
+        public static Client GetClientByMobile(string mobile)
+        {
+            SqlClientProvider sqlClientProvider = new SqlClientProvider();
+            return sqlClientProvider.GetClientByMobile(mobile);
+        }
+
+        public static Client GetClientByEmailAndPassword(string email, string password)
+        {
+            SqlClientProvider clientProvider = new SqlClientProvider();
+            return clientProvider.GetClientByEmailAndPassword(email, password);
+        }
         #endregion
+
+
         #region Set
-        public long InsertClient(Client client)
+        public static long InsertClient(Client client)
         {
             SqlClientProvider sqlClientProvider = new SqlClientProvider();
             var id = sqlClientProvider.InsertClient(client);
@@ -47,6 +60,13 @@ namespace ShareSpace.BusinessLayer
         {
             SqlClientProvider sqlClientProvider = new SqlClientProvider();
             var isDelete = sqlClientProvider.DeleteClient(clientId);
+            return isDelete;
+        }
+
+        public static bool HideClient(long clientId)
+        {
+            SqlClientProvider sqlClientProvider = new SqlClientProvider();
+            var isDelete = sqlClientProvider.HideClient(clientId);
             return isDelete;
         }
         #endregion
