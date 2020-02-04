@@ -43,11 +43,6 @@ namespace ClientPanel.Controllers
             return RedirectToAction("Login", "Auth");
         }
 
-        //public ActionResult EditProfile()
-        //{
-        //    return View();
-        //}
-
         public ActionResult EditProfile()
         {
             if (Session["ClientId"] != null)

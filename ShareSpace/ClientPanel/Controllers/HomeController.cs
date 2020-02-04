@@ -47,7 +47,7 @@ namespace ClientPanel.Controllers
                         if (cvModel.OfficeSearch.ShareType != "All")
                             allPropertyList = allPropertyList.Where(x => x.ShareType == cvModel.OfficeSearch.ShareType)
                                 .ToList();
-                        
+
                     }
 
                     _loadServices(allPropertyList, cvModel);
@@ -58,7 +58,7 @@ namespace ClientPanel.Controllers
                 {
                     cvModel.PropertySearchResultList = new List<PropertySearchResultNew>();
                 }
-                
+
             }
             else if (!string.IsNullOrEmpty(Request.QueryString["search"]))
             {
@@ -178,21 +178,20 @@ namespace ClientPanel.Controllers
             long propertyId = propertyView.PropertyId;
             try
             {
-                if (!ModelState.IsValid)
+
+                string password = string.Empty;
+                long clientId = _checkExclient(bookingEmail.Email.Trim());
+                if (clientId == 0)
                 {
-                    string password = string.Empty;
-                    long clientId = _checkExclient(bookingEmail.Email.Trim());
-                    if (clientId == 0)
-                    {
-                        password = UtilityManager.RandomString(5);
-                        clientId = _insertClient(bookingEmail, password);
-                    }
-
-                    string bookingNo = "SS" + UtilityManager.RandomString(5);
-                    bookingId = _insertBooking(bookingEmail, clientId, propertyId, bookingNo);
-                    //_sendEmail(bookingEmail, propertyId, bookingNo, address, area, city, zipCode, password);
-
+                    password = UtilityManager.RandomString(5);
+                    clientId = _insertClient(bookingEmail, password);
                 }
+
+                string bookingNo = "SS" + UtilityManager.RandomString(5);
+                bookingId = _insertBooking(bookingEmail, clientId, propertyId, bookingNo);
+                //_sendEmail(bookingEmail, propertyId, bookingNo, address, area, city, zipCode, password);
+
+
             }
             catch (Exception ex)
             {

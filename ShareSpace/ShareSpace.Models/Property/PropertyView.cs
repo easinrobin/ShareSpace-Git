@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+
 namespace ShareSpace.Models.Property
 {
     public class PropertyView
@@ -61,8 +62,8 @@ namespace ShareSpace.Models.Property
         public string MobileNo { get; set; }
 
         [NotMapped]
-        [Display(Name = "Terms and Conditions")]
-        [Range(typeof(bool), "true", "true", ErrorMessage = "Accept Terms of service")]
+        [Display(Name = "I agree all statements in ")]
+        [CheckBoxRequired(ErrorMessage = "Accept Terms of service")]
         public bool TermsAndConditions { get; set; }
 
         [NotMapped]

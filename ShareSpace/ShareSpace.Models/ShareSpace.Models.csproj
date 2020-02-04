@@ -47,6 +47,7 @@
     <Reference Include="System.Web.Mvc">
       <HintPath>..\ClientPanel\bin\System.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,6 +63,7 @@
     <Compile Include="Booking\Booking.cs" />
     <Compile Include="Booking\BookingConfirmed.cs" />
     <Compile Include="Booking\BookingEmail.cs" />
+    <Compile Include="CheckBoxRequired.cs" />
     <Compile Include="Client\Client.cs" />
     <Compile Include="Client\ClientsBookingHistory.cs" />
     <Compile Include="Client\ClientViewModel.cs" />
